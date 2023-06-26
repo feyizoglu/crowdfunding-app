@@ -19,7 +19,7 @@ Entrepreneurs, artists, social activists, nonprofit organizations, and individua
 
 ## Live link of the project
 
-[Crowdfunding project's live link](#)
+[crowdfunding-app-team-9.vercel.app](https://crowdfunding-app-team-9-akej.vercel.app/)
 
 
 
