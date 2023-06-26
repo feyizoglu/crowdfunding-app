@@ -19,7 +19,7 @@ Entrepreneurs, artists, social activists, nonprofit organizations, and individua
 
 ## Live link of the project
 
-[Crowdfunding live link](#)
+[Crowdfunding project's live link](#)
 
 
 
