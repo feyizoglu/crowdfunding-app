@@ -2,15 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+
+@layer components {
   .button-dark {
-    @apply inline-flex items-center justify-center py-2 px-6  font-medium tracking-wide text-whiteColor transition duration-200 bg-blackColor rounded-lg hover:bg-whiteColor hover:text-blackColor hover:border hover:border-blackColor cursor-pointer
+    @apply border border-transparent inline-flex items-center justify-center py-1 px-4  font-medium tracking-wide text-whiteColor transition duration-200 bg-blackColor rounded-needed hover:bg-transparent hover:text-blackColor hover:border hover:border-blackColor cursor-pointer
   }
   .button-green {
-    @apply inline-flex items-center justify-center py-2 px-6  font-medium tracking-wide text-blackColor transition duration-200 bg-greenColor rounded-lg hover:bg-blackColor hover:border hover:border-greenColor hover:text-greenColor cursor-pointer
+    @apply border border-transparent inline-flex items-center justify-center py-1 px-4  font-medium tracking-wide text-blackColor transition duration-200 bg-greenColor rounded-needed hover:bg-blackColor hover:border hover:border-greenColor hover:text-greenColor cursor-pointer
   }
   .button-light {
-    @apply inline-flex items-center justify-center py-2 px-6  font-medium tracking-wide text-blackColor border border-blackColor transition duration-200 bg-whiteColor rounded-lg hover:bg-blackColor hover:text-whiteColor  cursor-pointer
+    @apply border border-transparent inline-flex items-center justify-center py-1 px-4  font-medium tracking-wide text-blackColor border-blackColor transition duration-200 bg-whiteColor rounded-needed hover:bg-blackColor hover:text-whiteColor  cursor-pointer
   }
 }
 
