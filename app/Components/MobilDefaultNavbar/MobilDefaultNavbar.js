@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { setShowSignInBox, setShowMobilNav } from '@/app/redux/features/authSlice';
 
 import NavbarSearchInput from '../NavbarSearchInput/NavbarSearchInput';
 
@@ -10,6 +12,8 @@ const style = {
 };
 
 function MobilDefaultNavbar() {
+  const dispatch = useDispatch();
+
   return (
     <div className={style.container}>
       <NavbarSearchInput style={style} placeholder='Search for projects..' />
@@ -19,7 +23,13 @@ function MobilDefaultNavbar() {
       <Link className={style.headerLinks} href="/projects">
         Projects
       </Link>
-      <button className={style.headerButton}>
+      <button
+        onClick={() => {
+          dispatch(setShowSignInBox());
+          dispatch(setShowMobilNav())
+        }}
+        className={style.headerButton}
+      >
         Sing In
       </button>
     </div >
