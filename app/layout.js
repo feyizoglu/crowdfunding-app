@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 
 import NavbarLayOut from './Components/NavbarLayout/NavbarLayout'
 import { ReduxProvider } from './redux/provider'
-
+import ProjectOfTheWeek from './Components/ProjectOfTheWeek/ProjectOfTheWeek'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,6 +19,7 @@ export default function RootLayout({ children }) {
         <ReduxProvider>
           <NavbarLayOut />
           {children}
+          <ProjectOfTheWeek/>
         </ReduxProvider>
       </body>
     </html>
