@@ -12,7 +12,7 @@ import NavbarSearchInput from "../NavbarSearchInput/NavbarSearchInput";
 import SignIn from "../SignIn/SignIn";
 
 const style = {
-  header: `container mx-auto px-12 pt-2 flex justify-between items-center h-[70px] text-lg text-blackColor md:px-4 lg:px-0 `,
+  header: `container mx-auto px-12 py-2 flex justify-between items-center h-[70px] text-lg text-blackColor`,
   headerLinks: `font-medium hover:opacity-60`,
   headerInput: `hidden rounded-needed outline-0 py-1.5 px-2 w-60 md:block`,
   nav: `hidden md:block`,

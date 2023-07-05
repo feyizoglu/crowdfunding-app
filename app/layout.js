@@ -4,7 +4,6 @@ import { Inter } from 'next/font/google'
 import NavbarLayOut from './Components/NavbarLayout/NavbarLayout'
 import { ReduxProvider } from './redux/provider'
 
-
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
