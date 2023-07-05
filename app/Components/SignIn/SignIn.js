@@ -20,9 +20,9 @@ const SignUp = () => {
   const onsubmit = data => console.log(data);
 
   return (
-    <div className="bg-opacity-70 w-screen h-screen fixed top-0 left-0 grid place-content-center z-50 bg-black text-center">
+    <div className="bg-opacity-70 w-screen h-screen fixed top-0 left-0 grid place-content-center z-50 bg-blackColor text-center">
       <div
-        className="bg-white mb-24 p-4 sm:p-6 md:p-10 rounded-xl shadow relative max-w-xs sm:max-w-md md:max-w-lg"
+        className="bg-whiteColor p-4 sm:p-6 md:p-10 rounded-xl shadow relative max-w-xs sm:max-w-md md:max-w-lg"
       >
         <button
           onClick={() => dispatch(setShowSignInBox())}
@@ -36,23 +36,23 @@ const SignUp = () => {
           Change-Maker !
         </h2>
 
-        <div className="flex flex-col justify-center max-w-xs sm:max-w-sm md:max-w-md m-auto">
+        <div className="flex flex-col justify-center max-w-xs sm:max-w-sm md:max-w-md m-auto ">
           <form onSubmit={handleSubmit(onsubmit)} >
             <input
               {...register('email')}
               id="mail"
               placeholder="Email"
-              className="border-b border-blackColor px-3 py-1 mt-5 mb-8 w-full text-lg outline-none sm:text-xl"
+              className="border-b border-blackColor bg-whiteColor px-3 py-1 mt-5 mb-8 w-full text-lg outline-none sm:text-xl"
             />
-            {errors.email && <p className="text-red-500 text-xs">{errors.email?.message}</p>}
+            {/* {errors.email && <p className="text-red-500 text-xs">{errors.email?.message}</p>} */}
             <input
               {...register('password')}
               id="password"
               type="password"
               placeholder="Password"
-              className="border-b border-blackColor px-3 py-1 mb-5 w-full outline-none text-lg sm:text-xl"
+              className="border-b border-blackColor bg-whiteColor px-3 py-1 mb-5 w-full outline-none text-lg sm:text-xl"
             />
-            {errors.password && <p className="text-red-500 text-xs">{errors.password?.message}</p>}
+            {/* {errors.password && <p className="text-red-500 text-xs">{errors.password?.message}</p>} */}
             <button className="button-dark mt-5 w-full">
               Continue to sign in
             </button>
