@@ -2,22 +2,26 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-  isClicked: false,
+  showSignInBox: false,
   showInfoBox: false,
+  showMobilNav: false,
 }
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    signInClickHandler: (state) => {
-      state.isClicked = !state.isClicked;
+    setShowSignInBox: (state) => {
+      state.showSignInBox = !state.showSignInBox;
     },
     setShowInfoBox: (state) => {
       state.showInfoBox = !state.showInfoBox
+    },
+    setShowMobilNav: (state) => {
+      state.showMobilNav = !state.showMobilNav
     }
   }
 })
 
-export const { signInClickHandler, setShowInfoBox } = authSlice.actions
+export const { setShowSignInBox, setShowInfoBox, setShowMobilNav } = authSlice.actions
 export default authSlice.reducer
