@@ -22,7 +22,7 @@ function DefaultNavbar() {
         Projects
       </Link>
       <button onClick={() => dispatch(setShowSignInBox())} className={style.headerButton}>
-        Sing In
+        Sign In
       </button>
     </div>
   );
