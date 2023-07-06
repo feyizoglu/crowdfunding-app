@@ -7,16 +7,13 @@ import Alert from "../Components/SignUpAlert/Alert";
 import Link from "next/link";
 import { FaUpload } from "react-icons/fa";
 
-const schema = yup
-  .object()
-  .shape({
-    email: yup
-      .string()
-      .email("Please enter a valid email address, including the '@' symbol.")
-      .required(),
-    password: yup.string().required(),
-  })
-  .required();
+const schema = yup.object().shape({
+  email: yup.string().email("please enter a valid email address.").required(),
+  password: yup
+    .string()
+    .required()
+    .min(6, "password must be at least 6 characters"),
+});
 
 const Page = () => {
   const {
@@ -45,7 +42,7 @@ const Page = () => {
           href="/signIn"
           className="text-sm text-[#0361FD] hover:opacity-60"
         >
-          Already a member? Sing-in
+          Already a member? Sign-in
         </Link>
         <form onSubmit={handleSubmit(onSubmit)} className="w-full p-8">
           <div className="mb-4">
@@ -72,13 +69,11 @@ const Page = () => {
               className="bg-whiteColor w-full px-4 py-2 border-b border-blackColor border-opacity-100 focus:outline-none"
               {...register("password")}
             />
-            {errors.password && errors.password.type === "required" && (
-              <Alert message="password is a required field" />
-            )}
+            {errors.password && <Alert message={errors.password?.message} />}
           </div>
           <div className="mb-4">
             <label htmlFor="image" className="text-xl font-semibold block mb-2">
-              Image
+              Upload Profile Picture
             </label>
             <div className="file-input m-5 ml-0">
               <label htmlFor="file-upload" className="file-label button-light">
