@@ -8,20 +8,24 @@ import { setShowInfoBox } from '@/app/redux/features/authSlice';
 const style = {
   container: `relative flex items-center space-x-6`,
   headerLinks: `font-medium hover:opacity-60`,
-  button: `button-dark hover:bg-transparent`,
+  button: `button-dark hover:bg-transparent text-center text-sm lg:text-lg`,
   userContainer: `flex`,
-  userImage: `border border-blackColor rounded-full p-[1px] hover:opacity-80`,
-  InfoBoxContainer: `absolute flex flex-col top-14 right-0 py-2 px-6 rounded-md bg-grayishColor text-blackColor text-[12px] shadow-lg`,
+  userImage: `rounded-full  hover:opacity-80`,
+  InfoBoxContainer: `w-[200px] absolute flex flex-col top-16 right-0 py-2 px-6 rounded-md bg-grayishColor text-blackColor text-[12px] shadow-lg`,
   infoBoxLinks: `flex items-center gap-1 font-medium hover:opacity-60`,
+  infoBoxPTags: `flex items-center gap-1 font-medium cursor-default `,
   userInfos: `flex flex-col items-start py-1  px-1 border-b border-blackColor `,
-  userFeatures: `flex flex-col items-start py-1  px-1 `,
-  infoBoxPointer: `absolute top-14 right-2.5`,
+  userFeatures: `flex flex-col mt-1 `,
+  infoBoxPointer: `absolute top-16 right-3`,
 }
 
 
 function NavbarWithUser() {
   const showInfoBox = useSelector((state) => state.auth.showInfoBox)
+  const profilePicture = useSelector( (state) => state.auth.profilePicture)
   const dispatch = useDispatch();
+
+  console.log('Profil Picture:', profilePicture);
 
   return (
     <div className={style.container}>
@@ -39,8 +43,8 @@ function NavbarWithUser() {
           <Image
             className={style.userImage}
             src="/user.png"
-            width={40}
-            height={40}
+            width={50}
+            height={50}
             alt="Picture of the user"
           />
         </Link>

@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 import { setShowSignInBox } from '@/app/redux/features/authSlice';
+import { useRouter } from 'next/navigation';
 
 
 const style = {
@@ -13,6 +14,15 @@ const style = {
 
 function DefaultNavbar() {
   const dispatch = useDispatch();
+  const router = useRouter();
+
+  const signInClickHandler = () => {
+    router.push('/')
+    setTimeout(() => {
+      dispatch(setShowSignInBox());
+    },400)
+  }
+
   return (
     <div className={style.container}>
       <Link className={style.headerLinks} href="/">
@@ -21,7 +31,7 @@ function DefaultNavbar() {
       <Link className={style.headerLinks} href="/projects">
         Projects
       </Link>
-      <button onClick={() => dispatch(setShowSignInBox())} className={style.headerButton}>
+      <button onClick={signInClickHandler } className={style.headerButton}>
         Sign In
       </button>
     </div>

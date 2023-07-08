@@ -4,12 +4,20 @@ import { useDispatch } from "react-redux";
 import { useForm } from 'react-hook-form';
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { auth } from "@/app/firebase/firebase-confing";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 import { setShowSignInBox } from "@/app/redux/features/authSlice";
+import Alert from "../SignUpAlert/Alert";
+
+
 
 const schema = yup.object({
-  email: yup.string().email('Please provide valid email!').required('Email section have to be filled'),
-  password: yup.string().required('You cannot leave empty password!'),
+  email: yup.string().email("please enter a valid email address.").required(),
+  password: yup
+    .string()
+    .required()
+    .min(6, "password must be at least 6 characters"),
 }).required();
 
 const SignUp = () => {
@@ -17,7 +25,19 @@ const SignUp = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   });
-  const onsubmit = data => console.log(data);
+  const onsubmit = async (data) => {
+    try {
+      const user = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      )
+      dispatch(setShowSignInBox());
+      alert('You have been succesfully signed in')
+    } catch (err) { 
+      alert(err.message)
+    }
+  };
 
   return (
     <div className="bg-opacity-70 w-screen h-screen fixed top-0 left-0 grid place-content-center z-50 bg-blackColor text-center">
@@ -44,7 +64,7 @@ const SignUp = () => {
               placeholder="Email"
               className="border-b border-blackColor bg-whiteColor px-3 py-1 mt-5 mb-8 w-full text-lg outline-none sm:text-xl"
             />
-            {/* {errors.email && <p className="text-red-500 text-xs">{errors.email?.message}</p>} */}
+            {errors.email && <Alert message={errors.email?.message} />}
             <input
               {...register('password')}
               id="password"
@@ -52,7 +72,7 @@ const SignUp = () => {
               placeholder="Password"
               className="border-b border-blackColor bg-whiteColor px-3 py-1 mb-5 w-full outline-none text-lg sm:text-xl"
             />
-            {/* {errors.password && <p className="text-red-500 text-xs">{errors.password?.message}</p>} */}
+            {errors.password && <Alert message={errors.password?.message} />}
             <button className="button-dark mt-5 w-full">
               Continue to sign in
             </button>
@@ -72,7 +92,7 @@ const SignUp = () => {
         <p>
           Unlock funding opportunities!
           <br />
-          <Link href='/signup' className="cursor-pointer text-blueColor hover:opacity-60"> Create an account.</Link>
+          <Link href='/signup' onClick={() => dispatch(setShowSignInBox())} className="cursor-pointer text-blueColor hover:opacity-60"> Create an account.</Link>
         </p>
       </div>
     </div>
