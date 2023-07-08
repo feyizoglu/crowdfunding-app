@@ -11,7 +11,7 @@ const style = {
   button: `button-dark hover:bg-transparent text-center text-sm lg:text-lg`,
   userContainer: `flex`,
   userImage: `rounded-full  hover:opacity-80`,
-  InfoBoxContainer: `w-[200px] absolute flex flex-col top-16 right-0 py-2 px-6 rounded-md bg-grayishColor text-blackColor text-[12px] shadow-lg`,
+  InfoBoxContainer: `absolute flex flex-col top-16 right-0 py-2 px-6 rounded-md bg-grayishColor text-blackColor text-[12px] shadow-lg`,
   infoBoxLinks: `flex items-center gap-1 font-medium hover:opacity-60`,
   infoBoxPTags: `flex items-center gap-1 font-medium cursor-default `,
   userInfos: `flex flex-col items-start py-1  px-1 border-b border-blackColor `,
@@ -22,10 +22,7 @@ const style = {
 
 function NavbarWithUser() {
   const showInfoBox = useSelector((state) => state.auth.showInfoBox)
-  const profilePicture = useSelector( (state) => state.auth.profilePicture)
   const dispatch = useDispatch();
-
-  console.log('Profil Picture:', profilePicture);
 
   return (
     <div className={style.container}>
@@ -43,8 +40,8 @@ function NavbarWithUser() {
           <Image
             className={style.userImage}
             src="/user.png"
-            width={50}
-            height={50}
+            width={45}
+            height={45}
             alt="Picture of the user"
           />
         </Link>
