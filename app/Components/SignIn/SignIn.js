@@ -34,7 +34,7 @@ const SignUp = () => {
       )
       dispatch(setShowSignInBox());
       alert('You have been succesfully signed in')
-    } catch (err) { 
+    } catch (err) {
       alert(err.message)
     }
   };
