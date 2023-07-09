@@ -4,7 +4,6 @@ import ProjectOfTheWeek from '../Components/ProjectOfTheWeek/ProjectOfTheWeek';
 import Categories from '../Components/Projects/Categories';
 import Cards from '../Components/Projects/Cards';
 import projects from '../data/projectData';
-import Loading from '../Components/Projects/Loading';
 
 const Page = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
