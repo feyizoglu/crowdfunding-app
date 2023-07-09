@@ -8,14 +8,15 @@ import { setShowInfoBox } from '@/app/redux/features/authSlice';
 const style = {
   container: `relative flex items-center space-x-6`,
   headerLinks: `font-medium hover:opacity-60`,
-  button: `button-dark hover:bg-transparent`,
+  button: `button-dark hover:bg-transparent text-center text-sm lg:text-lg`,
   userContainer: `flex`,
-  userImage: `border border-blackColor rounded-full p-[1px] hover:opacity-80`,
-  InfoBoxContainer: `absolute flex flex-col top-14 right-0 py-2 px-6 rounded-md bg-grayishColor text-blackColor text-[12px] shadow-lg`,
-  infoBoxLinks: `flex items-center gap-1 font-medium hover:opacity-60`,
-  userInfos: `flex flex-col items-start py-1  px-1 border-b border-blackColor `,
-  userFeatures: `flex flex-col items-start py-1  px-1 `,
-  infoBoxPointer: `absolute top-14 right-2.5`,
+  userImage: `rounded-full  hover:opacity-80`,
+  InfoBoxContainer: `absolute flex flex-col top-16 right-0 py-2 px-6 rounded-md bg-grayishColor text-blackColor text-[12px] shadow-lg`,
+  infoBoxLinks: `flex items-center w-[130px] gap-1 font-medium hover:opacity-60`,
+  infoBoxPTags: `flex items-center gap-1 font-medium cursor-default `,
+  userInfos: `flex flex-col items-start py-2 px-1 border-b border-blackColor space-y-2`,
+  userFeatures: `flex flex-col items-start  px-1 py-2 space-y-2`,
+  infoBoxPointer: `absolute top-16 right-3`,
 }
 
 
@@ -39,8 +40,8 @@ function NavbarWithUser() {
           <Image
             className={style.userImage}
             src="/user.png"
-            width={40}
-            height={40}
+            width={45}
+            height={45}
             alt="Picture of the user"
           />
         </Link>

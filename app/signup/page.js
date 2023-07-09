@@ -1,11 +1,16 @@
 "use client";
-import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import Alert from "../Components/SignUpAlert/Alert";
 import Link from "next/link";
 import { FaUpload } from "react-icons/fa";
+import { auth } from "../firebase/firebase-confing";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { setShowSignInBox } from "../redux/features/authSlice";
+import { useRouter } from "next/navigation";
+
+import Alert from "../Components/SignUpAlert/Alert";
 
 const schema = yup.object().shape({
   email: yup.string().email("please enter a valid email address.").required(),
@@ -24,12 +29,31 @@ const Page = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const dispatch = useDispatch();
+
+  const route = useRouter();
+
+
+  const onSubmit = async (data) => {
+    try {
+      const user  = await createUserWithEmailAndPassword(auth, data.email, data.password)
+      route.push('/')
+      alert('you have been successfully signed up')
+    } catch (err) {
+      alert(err.message)
+    }
   };
 
+  const handleAlreadyMemberClick = () => {
+    setTimeout(() => {
+      dispatch(setShowSignInBox())
+    }, 400);
+  }
+
+  
+
   return (
-    <div className="flex flex-col mt-20 justify-start items-center  ">
+    <div className="flex flex-col py-20 justify-start items-center ">
       <h2 className="text-4xl font-bold mb-7 text-blackColor">Sign-Up</h2>
       <div className="max-w-2xl w-full  flex flex-col items-center justify-start p-6 bg-whiteColor rounded-md shadow-md">
         <p className="text-md mb-3 max-w-lg text-center">
@@ -39,7 +63,8 @@ const Page = () => {
         <hr className="bg-blackColor w-24 mt-1 mb-5" />
 
         <Link
-          href="/signIn"
+          href='/'
+          onClick={handleAlreadyMemberClick}
           className="text-sm text-[#0361FD] hover:opacity-60"
         >
           Already a member? Sign-in
@@ -54,8 +79,8 @@ const Page = () => {
               className="bg-whiteColor w-full px-4 py-2 border-b border-blackColor border-opacity-100 focus:outline-none"
               {...register("email")}
             />
-            {errors.email && <Alert message={errors.email?.message} />}
           </div>
+          {errors.email && <Alert message={errors.email?.message} />}
           <div className="mb-4">
             <label
               htmlFor="password"
@@ -69,8 +94,8 @@ const Page = () => {
               className="bg-whiteColor w-full px-4 py-2 border-b border-blackColor border-opacity-100 focus:outline-none"
               {...register("password")}
             />
-            {errors.password && <Alert message={errors.password?.message} />}
           </div>
+          {errors.password && <Alert message={errors.password?.message} />}
           <div className="mb-4">
             <label htmlFor="image" className="text-xl font-semibold block mb-2">
               Upload Profile Picture

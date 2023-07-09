@@ -16,8 +16,9 @@ const style = {
   headerInput: `rounded-needed outline-0 py-1 px-2`,
   InfoBoxContainer: `flex flex-col mt-3 py-2 px-6 rounded-md bg-grayishColor text-blackColor text-[12px] shadow-lg`,
   infoBoxLinks: `flex items-center gap-1 font-medium hover:opacity-60`,
-  userInfos: `flex flex-col items-start py-2 px-1 border-b border-blackColor space-y-1`,
-  userFeatures: `flex flex-col items-start  px-1 py-2 space-y-1`,
+  infoBoxPTags: `flex items-center gap-1 font-medium cursor-default `,
+  userInfos: `flex flex-col items-start py-2 px-1 border-b border-blackColor space-y-2`,
+  userFeatures: `flex flex-col items-start  px-1 py-2 space-y-2`,
   infoBoxPointer: `absolute top-3 left-1/2 -translate-x-1`,
 }
 
@@ -33,8 +34,8 @@ function MobilNavbarWithUser() {
           <Image
             onClick={() => dispatch(setShowInfoBox())}
             src="/user.png"
-            width={40}
-            height={40}
+            width={45}
+            height={45}
             alt="Picture of the user"
           />
         </Link>
