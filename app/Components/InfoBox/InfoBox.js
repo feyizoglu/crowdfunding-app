@@ -31,7 +31,7 @@ function InfoBox({ style }) {
           </p>
         </div>
         <div className={style.userFeatures}>
-          <Link className={style.infoBoxLinks} href="#" >
+          <Link className={`${style.infoBoxLinks}`} href="#" >
             <RiProfileLine size={15} />
             View your project
           </Link>
