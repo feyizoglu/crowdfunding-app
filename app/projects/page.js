@@ -17,22 +17,17 @@ const Page = () => {
     ? projects
     : projects.filter((project) => project.category === selectedCategory);
 
-  return (
-    <>
-      <ProjectOfTheWeek />
-      
-      {/* Check if projects data is available */}
-      {projects ? (
+    return (
+      <>
+        <ProjectOfTheWeek />
         <div className=" ">
-          {/* Render other components */}
-          <Categories selectedCategory={selectedCategory} handleCategoryChange={handleCategoryChange} />
+          <Categories
+            selectedCategory={selectedCategory}
+            handleCategoryChange={handleCategoryChange}
+          />
           <Cards projects={filteredProjects} />
         </div>
-      ) : (
-        <Loading /> // Display the Loading component if projects data is not available
-      )}
-    </>
-  );
-};
-
-export default Page;
+      </>
+    );
+  };
+  export default Page;
