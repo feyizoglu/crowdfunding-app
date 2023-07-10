@@ -20,10 +20,10 @@ export default function RootLayout({ children }) {
         <ReduxProvider>
           <NavbarLayOut />
           {children}
-          <ToastContainer />
           <div className="h-[300px] grid place-content-center bg-greenColor">
             Footer section will be here!
           </div>
+          <ToastContainer />
         </ReduxProvider>
       </body>
     </html>

@@ -70,7 +70,7 @@ const Page = () => {
 
 
   return (
-    <div className="flex flex-col py-20 justify-start items-center h-screen-70">
+    <div className="flex flex-col py-20 justify-start items-center">
       <h2 className="text-4xl font-bold mb-7 text-blackColor">Sign-Up</h2>
       <div className="max-w-2xl w-full  flex flex-col items-center justify-start p-6 bg-whiteColor rounded-md shadow-md">
         <p className="text-md mb-3 max-w-lg text-center">
