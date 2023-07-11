@@ -20,9 +20,9 @@ const SuccessPage = () => {
         <Link href="/projects" className='px-5 py-2 hover:bg-blackColor hover:text-whiteColor border border-grayishColor focus:ring-4 focus:outline-none focus:ring-grayishColor font-medium rounded-lg text-sm text-center mr-2 mb-2'>
             Make another donation
         </Link>
-        <button disabled className='px-10 py-2 hover:bg-blackColor hover:text-whiteColor  border border-grayishColor focus:ring-4 focus:outline-none focus:ring-grayishColor font-medium rounded-lg text-sm text-center mr-2 mb-2  '>
+        <Link href="/" className='px-10 py-2 hover:bg-blackColor hover:text-whiteColor  border border-grayishColor focus:ring-4 focus:outline-none focus:ring-grayishColor font-medium rounded-lg text-sm text-center mr-2 mb-2  '>
           Go to home page
-        </button>
+        </Link>
       </div>
     </div>
   );
