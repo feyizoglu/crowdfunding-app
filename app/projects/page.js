@@ -18,16 +18,16 @@ const Page = () => {
     : projects.filter((project) => project.category === selectedCategory);
 
     return (
-      <>
+      <div className='bg-whiteColor'>
         <ProjectOfTheWeek />
-        <div className=" ">
+        <div>
           <Categories
             selectedCategory={selectedCategory}
             handleCategoryChange={handleCategoryChange}
           />
           <Cards projects={filteredProjects} />
         </div>
-      </>
+      </div>
     );
   };
   export default Page;
