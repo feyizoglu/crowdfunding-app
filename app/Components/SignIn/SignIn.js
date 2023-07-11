@@ -6,11 +6,10 @@ import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { auth } from "@/app/firebase/firebase-confing";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { toast } from 'react-toastify';
 
 import { setShowSignInBox } from "@/app/redux/features/authSlice";
 import Alert from "../SignUpAlert/Alert";
-
-
 
 const schema = yup.object({
   email: yup.string().email("please enter a valid email address.").required(),
@@ -33,11 +32,17 @@ const SignUp = () => {
         data.password
       )
       dispatch(setShowSignInBox());
-      alert('You have been succesfully signed in')
+      let userName = data.email.split('@')[0];
+      toast.success(`Congratulations ${userName[0].toUpperCase() + userName.slice(1, userName.length)}! You have successfully logged in.`, {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
     } catch (err) {
-      alert(err.message)
+      toast.error(`Invalid credentials. Please check your email and password and try again!`, {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
     }
   };
+
 
   return (
     <div className="bg-opacity-70 w-screen h-screen fixed top-0 left-0 grid place-content-center z-50 bg-blackColor text-center">

@@ -5,10 +5,11 @@ import * as yup from "yup";
 import Link from "next/link";
 import { FaUpload } from "react-icons/fa";
 import { auth } from "../firebase/firebase-confing";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, AuthErrorCodes } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { setShowSignInBox } from "../redux/features/authSlice";
 import { useRouter } from "next/navigation";
+import { toast } from 'react-toastify';
 
 import Alert from "../Components/SignUpAlert/Alert";
 
@@ -36,11 +37,27 @@ const Page = () => {
 
   const onSubmit = async (data) => {
     try {
-      const user  = await createUserWithEmailAndPassword(auth, data.email, data.password)
+      const user = await createUserWithEmailAndPassword(auth, data.email, data.password)
       route.push('/')
-      alert('you have been successfully signed up')
+      let userName = data.email.split('@')[0]
+      toast.success(`Congratulations ${userName[0].toUpperCase() + userName.slice(1, userName.length)}! Your sign-up was successful. Welcome to our community.`, {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
     } catch (err) {
-      alert(err.message)
+      let errorMsg = 'default';
+      switch (err.code) {
+        case AuthErrorCodes.EMAIL_EXISTS:
+          errorMsg = "The email address is already in use by another account.";
+          break;
+        case AuthErrorCodes.INVALID_EMAIL:
+          errorMsg = "The email address is invalid.";
+          break;
+        default:
+          errorMsg = err.message;
+      }
+      toast.error(errorMsg, {
+        position: toast.POSITION.BOTTOM_RIGHT
+      })
     }
   };
 
@@ -50,10 +67,10 @@ const Page = () => {
     }, 400);
   }
 
-  
+
 
   return (
-    <div className="flex flex-col py-20 justify-start items-center ">
+    <div className="flex flex-col py-20 justify-start items-center">
       <h2 className="text-4xl font-bold mb-7 text-blackColor">Sign-Up</h2>
       <div className="max-w-2xl w-full  flex flex-col items-center justify-start p-6 bg-whiteColor rounded-md shadow-md">
         <p className="text-md mb-3 max-w-lg text-center">

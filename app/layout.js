@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 
 import NavbarLayOut from './Components/NavbarLayout/NavbarLayout'
 import { ReduxProvider } from './redux/provider'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,6 +20,10 @@ export default function RootLayout({ children }) {
         <ReduxProvider>
           <NavbarLayOut />
           {children}
+          <div className="h-[300px] grid place-content-center bg-greenColor">
+            Footer section will be here!
+          </div>
+          <ToastContainer />
         </ReduxProvider>
       </body>
     </html>
