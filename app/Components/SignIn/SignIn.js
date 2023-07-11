@@ -90,7 +90,7 @@ const SignUp = () => {
         <p className="mb-5">
           Make an impact today.
           <br />
-          <Link href="/projects" className="cursor-pointer text-blueColor hover:opacity-60">
+          <Link href="/projects" onClick={() => dispatch(setShowSignInBox())} className="cursor-pointer text-blueColor hover:opacity-60">
             Explore projects that need your help!
           </Link>
         </p>

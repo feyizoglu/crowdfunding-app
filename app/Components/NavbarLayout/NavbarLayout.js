@@ -12,6 +12,7 @@ import NavbarWithUser from "../NavbarWithUser/NavbarWithUser";
 import MobilNavbarWithUser from "../MobilNavbarWithUser/MobilNavbarWithUser";
 import NavbarSearchInput from "../NavbarSearchInput/NavbarSearchInput";
 import SignIn from "../SignIn/SignIn";
+import KickOffBox from "../KickOffBox/KickOffBox";
 
 const style = {
   header: `container mx-auto px-4 py-2 flex justify-between items-center h-[70px] text-lg text-blackColor space-x-5 `,
@@ -24,6 +25,7 @@ const style = {
 export default function NavbarLayOut() {
   const showMobilNav = useSelector(state => state.auth.showMobilNav);
   const showSignInBox = useSelector(state => state.auth.showSignInBox);
+  const showKickOffBox = useSelector(state => state.auth.showKickOffBox);
   const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
 
@@ -54,6 +56,7 @@ export default function NavbarLayOut() {
           {user ? <MobilNavbarWithUser /> : <MobilDefaultNavbar />}
         </section>}
       {showSignInBox && <SignIn />}
+      {showKickOffBox && <KickOffBox />}
     </div>
   );
 }

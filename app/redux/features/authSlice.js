@@ -6,6 +6,7 @@ const initialState = {
   showSignInBox: false,
   showInfoBox: false,
   showMobilNav: false,
+  showKickOffBox: true,
 }
 
 const authSlice = createSlice({
@@ -23,9 +24,12 @@ const authSlice = createSlice({
     },
     setShowMobilNav: (state) => {
       state.showMobilNav = !state.showMobilNav;
+    },
+    setShowKickOffBox: (state) => {
+      state.showKickOffBox = !state.showKickOffBox
     }
   }
 })
 
-export const { setShowSignInBox, setShowInfoBox, setShowMobilNav, setUser } = authSlice.actions
+export const { setShowSignInBox, setShowInfoBox, setShowMobilNav, setUser, setShowKickOffBox } = authSlice.actions
 export default authSlice.reducer
