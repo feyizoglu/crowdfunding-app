@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
 
 import InfoBox from '../InfoBox/InfoBox';
-import { setShowInfoBox } from '@/app/redux/features/authSlice';
+import { setShowInfoBox, setShowKickOffBox } from '@/app/redux/features/authSlice';
 
 const style = {
   container: `relative flex items-center space-x-6`,
@@ -32,9 +32,9 @@ function NavbarWithUser() {
       <Link className={style.headerLinks} href="/projects">
         Projects
       </Link>
-      <Link className={style.button} href="#">
+      <button onClick={() => dispatch(setShowKickOffBox())} className={style.button}>
         New Project
-      </Link>
+      </button>
       <div className={style.userContainer}>
         <Link onClick={() => dispatch(setShowInfoBox())} href='#'>
           <Image
