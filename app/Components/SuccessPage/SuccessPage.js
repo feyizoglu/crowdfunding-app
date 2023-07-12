@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const SuccessPage = () => {
   return (
-    <div className='container mx-auto px-4 flex flex-col'>
+    <div className='container mx-auto px-4 flex flex-col h-screen'>
       <Image
                     src="/donation.jpg"
                     width={500}
@@ -16,11 +16,11 @@ const SuccessPage = () => {
             <h1 className=' text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-center'>Thank you!</h1>
             <h2 className='text-2xl font-bold mb-2 text-center'>for supporting us!</h2>
         </div>
-      <div className='donation-buttons flex space-x-4 justify-center pb-20'>
-        <Link href="/projects" className='px-5 py-2 hover:bg-blackColor hover:text-whiteColor  border border-grayishColor focus:ring-4 focus:outline-none focus:ring-grayishColor font-medium rounded-lg text-sm text-center mr-2 mb-2'>
+      <div className='donation-buttons flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center pb-20 text-center'>
+        <Link href="/projects" className='button-light'>
             Make another donation
         </Link>
-        <Link href="/" className='px-10 py-2 hover:bg-blackColor hover:text-whiteColor  border border-grayishColor focus:ring-4 focus:outline-none focus:ring-grayishColor font-medium rounded-lg text-sm text-center mr-2 mb-2'>
+        <Link href="/" className='px-10 button-light'>
           Go to home page
         </Link>
       </div>
