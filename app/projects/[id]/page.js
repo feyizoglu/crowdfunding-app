@@ -72,7 +72,7 @@ function Page({ params }) {
               </div>
               <div className="flex justify-center space-x-2 pt-2 md:pb-5">
                 <FaCalendarAlt size={20} />
-                <p className="font-extralight">{days} days left</p>
+                <p>{days} days left</p>
               </div>
             </div>
           </div>
