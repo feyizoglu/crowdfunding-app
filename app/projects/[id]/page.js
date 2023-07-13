@@ -39,16 +39,16 @@ function Page({ params }) {
               width={50}
               height={50}
             />
-            <h2 className="text-xl">{selectedProject.creator}</h2>
+            <h2 className="text-lg">{selectedProject.creator}</h2>
           </div>
           <div className="flex flex-col justify-between  md:border-y md:border-blackColor md:flex-row md:space-y-0 md:container">
-            <div className="flex flex-col space-y-5 md:w-1/2">
-              <h1 className="text-xl font-bold md:pt-5">About project</h1>
-              <p className="text-sm pb-5">{selectedProject.description}</p>
+            <div className="flex flex-col space-y-5 md:w-1/2 md:pt-5">
+              <h1 className="text-lg font-bold">About project</h1>
+              <p className="text-lg pb-5">{selectedProject.description}</p>
             </div>
             <div className="md:border-l md:border-blackColor "></div>
-            <div className="md:w-1/2">
-              <div className="space-y-2 progress-bar flex flex-col justify-between md:pt-2 md:px-2">
+            <div className="md:w-1/2 md:py-5">
+              <div className="space-y-5 progress-bar flex flex-col justify-between md:px-2">
                 <div className="flex justify-between">
                   <div className="raised flex flex-col px-4 py-2 justify-between">
                     <p className="text-sm sm:text-base md:text-lg">Raised:</p>
@@ -70,7 +70,7 @@ function Page({ params }) {
                   />
                 </div>
               </div>
-              <div className="flex justify-center space-x-2 pt-2 md:pb-5">
+              <div className="flex justify-center space-x-2 pt-2 md:py-5 text-lg">
                 <FaCalendarAlt size={20} />
                 <p>{days} days left</p>
               </div>
