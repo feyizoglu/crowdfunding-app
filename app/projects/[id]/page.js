@@ -33,7 +33,7 @@ function Page({ params }) {
           <h1 className="text-2xl font-bold">{selectedProject.title}</h1>
           <div className="flex flex-row space-x-1 items-center justify-center md:justify-start">
             <Image
-              className="border border-blackColor w-6 h-6 items-start"
+              className=" w-6 h-6 items-start"
               alt={selectedProject.title} //It will change after firebase adaption
               src={selectedProject.image} //It will change after firebase adaption
               width={50}
@@ -44,9 +44,7 @@ function Page({ params }) {
           <div className="flex flex-col justify-between  md:border-y md:border-blackColor md:flex-row md:space-y-0 md:container">
             <div className="flex flex-col space-y-5 md:w-1/2">
               <h1 className="text-xl font-bold md:pt-5">About project</h1>
-              <p className="text-sm font-thin pb-5">
-                {selectedProject.description}
-              </p>
+              <p className="text-sm pb-5">{selectedProject.description}</p>
             </div>
             <div className="md:border-l md:border-blackColor "></div>
             <div className="md:w-1/2">
@@ -79,7 +77,9 @@ function Page({ params }) {
             </div>
           </div>
           <div>
-            <button className="button-dark mt-2">Fund This Project</button>
+            <button className="button-dark mt-2 w-full md:w-1/2">
+              Fund This Project
+            </button>
           </div>
         </div>
       </div>
