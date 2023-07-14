@@ -18,8 +18,8 @@ const schema = yup.object().shape({
   password: yup
     .string()
     .required()
-    .min(6, "password must be at least 6 characters"),
-});
+    .min(6, "asdfasdfasdfsd"),
+});  
 
 const Page = () => {
   const {
@@ -66,8 +66,6 @@ const Page = () => {
       dispatch(setShowSignInBox())
     }, 400);
   }
-
-
 
   return (
     <div className="flex flex-col py-20 justify-start items-center">

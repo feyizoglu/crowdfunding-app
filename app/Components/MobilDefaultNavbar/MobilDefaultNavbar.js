@@ -25,10 +25,10 @@ function MobilDefaultNavbar() {
   return (
     <div className={style.container}>
       <NavbarSearchInput style={style} placeholder='Search for projects..' />
-      <Link className={style.headerLinks} href="/">
+      <Link onClick={() => dispatch(setShowMobilNav())} className={style.headerLinks} href="/">
         Home
       </Link>
-      <Link className={style.headerLinks} href="/projects">
+      <Link onClick={() => dispatch(setShowMobilNav())} className={style.headerLinks} href="/projects">
         Projects
       </Link>
       <button

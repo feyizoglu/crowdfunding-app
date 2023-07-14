@@ -1,13 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const initialState = {
   user: null,
   showSignInBox: false,
   showInfoBox: false,
   showMobilNav: false,
   showKickOffBox: false,
-  showDatePicker: false,
 }
 
 const authSlice = createSlice({
@@ -29,11 +27,8 @@ const authSlice = createSlice({
     setShowKickOffBox: (state) => {
       state.showKickOffBox = !state.showKickOffBox
     },
-    setShowDatePicker: (state) => {
-      state.showDatePicker = !state.showDatePicker;
-    }
   }
 })
 
-export const { setShowSignInBox, setShowInfoBox, setShowMobilNav, setUser, setShowKickOffBox, setShowDatePicker } = authSlice.actions
+export const { setShowSignInBox, setShowInfoBox, setShowMobilNav, setUser, setShowKickOffBox } = authSlice.actions
 export default authSlice.reducer

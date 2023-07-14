@@ -24,6 +24,7 @@ const SignUp = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   });
+
   const onsubmit = async (data) => {
     try {
       const user = await signInWithEmailAndPassword(
@@ -42,7 +43,6 @@ const SignUp = () => {
       });
     }
   };
-
 
   return (
     <div className="bg-opacity-70 w-screen h-screen fixed top-0 left-0 grid place-content-center z-50 bg-blackColor text-center">

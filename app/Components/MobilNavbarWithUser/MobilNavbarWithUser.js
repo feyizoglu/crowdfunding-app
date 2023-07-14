@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { setShowInfoBox, setShowKickOffBox } from '@/app/redux/features/authSlice';
+import { setShowInfoBox, setShowKickOffBox, setShowMobilNav } from '@/app/redux/features/authSlice';
 import NavbarSearchInput from '../NavbarSearchInput/NavbarSearchInput';
 import InfoBox from '../InfoBox/InfoBox';
 
@@ -42,13 +42,16 @@ function MobilNavbarWithUser() {
         {showInfoBox && <InfoBox style={style} />}
       </div>
       <NavbarSearchInput style={style} placeholder='Search for projects..' />
-      <Link className={style.headerLinks} href="/">
+      <Link onClick={() => dispatch(setShowMobilNav())} className={style.headerLinks} href="/">
         Home
       </Link>
-      <Link className={style.headerLinks} href="/projects">
+      <Link onClick={() => dispatch(setShowMobilNav())} className={style.headerLinks} href="/projects">
         Projects
       </Link>
-      <button onClick={() => dispatch(setShowKickOffBox())} className={style.button}>
+      <button  onClick={() => {
+        dispatch(setShowKickOffBox());
+        dispatch(setShowMobilNav())
+      }} className={style.button}>
         New Project
       </button>
     </div>
