@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
-import { setShowKickOffBox } from "@/app/redux/features/authSlice";
+import { setShowKickOffBox, closeKickOffBox } from "@/app/redux/features/authSlice";
 import { FaLessThan, FaUpload, FaCalendarAlt } from 'react-icons/fa';
 import { DateRange } from "react-date-range";
 import { addDays, format } from "date-fns";
@@ -11,7 +11,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const schema = yup.object({
   title: yup.string().required(),
@@ -33,27 +33,28 @@ const KickOffBox = () => {
 
   useEffect(() => {
     window.addEventListener('click', clickHandler);
-
     return () => {
       window.removeEventListener('click', clickHandler);
     }
   }, []);
 
-  const rangeRef = useRef(null);
+  const rangeRef = useRef();
 
   const { register, handleSubmit, formState: { errors }, control, watch } = useForm({
     resolver: yupResolver(schema)
   });
   const onSubmit = (data) => {
     setShowDateBox(false)
+    dispatch(setShowKickOffBox());
+    toast.success('You have successfully created your project', {
+      position: toast.POSITION.BOTTOM_RIGHT
+    })
     console.log(data)
   };
 
-
-
   const clickHandler = (e) => {
     if (!rangeRef.current.contains(e.target)) {
-      setShowDateBox(false)
+      setShowDateBox(false);
     }
   };
 
@@ -68,12 +69,12 @@ const KickOffBox = () => {
         >
           <FaLessThan />
         </button>
-        <h1 className="text-4xl font-semibold py-10 sm:text-5xl">
+        <h1 className="text-4xl font-semibold py-8 sm:text-5xl">
           Kick-off
           <br /> your project
         </h1>
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-3  text-blackColor">
-          <div className="flex justify-center sm:flex-row space-x-2 sm:space-x-6 ">
+        <form id="form" onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-3  text-blackColor">
+          <div className="flex justify-center  space-x-2 sm:space-x-6 ">
             <div className="left-side flex flex-col space-y-6 w-1/2 py-4 ">
               <div>
                 <label htmlFor="projectTitle" className={`text-md font-semibold block mb-2 ${errors.title && `text-red-500`}`}>
@@ -128,13 +129,14 @@ const KickOffBox = () => {
                 </label>
                 <div className="flex space-x-3">
                   <input
+                    id="timeline"
                     onClick={() => setShowDateBox(prev => !prev)}
                     value={`${timeline ? `${format(timeline[0], 'dd/MM/yy')}-${format(timeline[1], 'dd/MM/yy')}` : ''}`}
-                    placeholder="dd/MM/yy-dd/MM/yy"
-                    className={`bg-whiteColor text-sm w-full px-2 py-2 border-b border-blackColor border-opacity-100 focus:outline-none cursor-pointer ${errors.timeline && `border-red-500 placeholder-red-500`}`}
+                    placeholder="dd/MM/yy"
+                    className={`bg-whiteColor placeholder-blackColor text-sm w-full p-2 border-b border-blackColor border-opacity-100 focus:outline-none cursor-pointer ${errors.timeline && `border-red-500 placeholder-red-500`}`}
                     readOnly
                   />
-                  <div onClick={() => setShowDateBox(prev => !prev)} className={`button-light ${errors.timeline && `bg-redColor text-red-500 border-red-500 hover:bg-redColor hover:text-blackColor`}`}>
+                  <div onClick={() => setShowDateBox(prev => !prev)} className={`button-light ${errors.timeline && `bg-redColor text-red-500 border-red-500 hover:bg-redColor hover:text-blackColor hover:opacity-60`}`}>
                     <FaCalendarAlt />
                   </div>
                 </div>
@@ -167,7 +169,7 @@ const KickOffBox = () => {
                 </textarea>
               </div>
               <div className="text-center">
-                <label htmlFor="file-upload" className={`file-label button-light py-2.5 ${errors.image && `bg-redColor text-red-500 border-red-500 hover:bg-redColor hover:text-blackColor`}`}>
+                <label htmlFor="file-upload" className={`file-label button-light py-2.5 ${errors.image && `bg-redColor text-red-500 border-red-500 hover:bg-redColor hover:text-blackColor hover:opacity-60`}`}>
                   <FaUpload size={20} />
                   <span className="ml-2">Add media</span>
                 </label>

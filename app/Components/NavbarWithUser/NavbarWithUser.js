@@ -19,10 +19,13 @@ const style = {
   infoBoxPointer: `absolute top-16 right-3`,
 }
 
-
 function NavbarWithUser() {
   const showInfoBox = useSelector((state) => state.auth.showInfoBox)
   const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(setShowKickOffBox());
+  }
 
   return (
     <div className={style.container}>
@@ -32,11 +35,11 @@ function NavbarWithUser() {
       <Link className={style.headerLinks} href="/projects">
         Projects
       </Link>
-      <button onClick={() => dispatch(setShowKickOffBox())} className={style.button}>
+      <button onClick={handleClick} className={style.button}>
         New Project
       </button>
       <div className={style.userContainer}>
-        <Link onClick={() => dispatch(setShowInfoBox())} href='#'>
+        <button onClick={() => dispatch(setShowInfoBox())}>
           <Image
             className={style.userImage}
             src="/user.png"
@@ -44,7 +47,7 @@ function NavbarWithUser() {
             height={45}
             alt="Picture of the user"
           />
-        </Link>
+        </button>
         {showInfoBox && <InfoBox style={style} />}
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { FaLessThan } from 'react-icons/fa';
 import { useDispatch } from "react-redux";
@@ -25,6 +26,16 @@ const SignUp = () => {
     resolver: yupResolver(schema)
   });
 
+  const containerRef = useRef();
+
+  useEffect(() => {
+    window.addEventListener('click', handleClick);
+
+    return () => {
+      window.removeEventListener('click', handleClick)
+    }
+  }, [])
+
   const onsubmit = async (data) => {
     try {
       const user = await signInWithEmailAndPassword(
@@ -44,9 +55,17 @@ const SignUp = () => {
     }
   };
 
+  const handleClick = (e) => {
+    if (!containerRef.current.contains(e.target)) {
+      dispatch(setShowSignInBox());
+    }
+  }
+
+
   return (
     <div className="bg-opacity-70 w-screen h-screen fixed top-0 left-0 grid place-content-center z-50 bg-blackColor text-center">
       <div
+        ref={containerRef}
         className="bg-whiteColor p-4 sm:p-6 md:p-10 rounded-xl shadow relative max-w-xs sm:max-w-md md:max-w-lg"
       >
         <button

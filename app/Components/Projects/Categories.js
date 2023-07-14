@@ -12,7 +12,7 @@ const Categories = ({ selectedCategory, handleCategoryChange }) => {
           <header>
                 <h1 className="projects__title text-center text-4xl sm:text-5xl md:text-6xl font-bold mb-4 pb-10 sm:text-start">Categories</h1>
           </header>
-        <div className="cat-buttons flex justify-center sm:justify-start space-x-5 flex-wrap">
+        <div className="cat-buttons flex justify-center sm:justify-start gap-4 flex-wrap">
           <div className="flex flex-col items-center">
             <button
               className={`category-button ${selectedCategory === 'all' ? `bg-blackColor text-whiteColor` : ''} px-4 py-4 hover:bg-blackColor hover:text-whiteColor  border border-grayishColor focus:ring-4 focus:outline-none focus:ring-grayishColor font-medium rounded-lg text-sm text-center mr-2 mb-2   `}
