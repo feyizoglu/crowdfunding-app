@@ -1,15 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const initialState = {
   user: null,
   showSignInBox: false,
   showInfoBox: false,
   showMobilNav: false,
-}
+};
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     setUser: (state, action) => {
@@ -23,9 +22,10 @@ const authSlice = createSlice({
     },
     setShowMobilNav: (state) => {
       state.showMobilNav = !state.showMobilNav;
-    }
-  }
-})
+    },
+  },
+});
 
-export const { setShowSignInBox, setShowInfoBox, setShowMobilNav, setUser } = authSlice.actions
-export default authSlice.reducer
+export const { setShowSignInBox, setShowInfoBox, setShowMobilNav, setUser } =
+  authSlice.actions;
+export default authSlice.reducer;

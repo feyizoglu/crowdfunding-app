@@ -19,14 +19,14 @@ function Page({ params }) {
 
   return (
     <div className="bg-whiteColor">
-      <div className="container mx-auto px-4 flex flex-col justify-around items-center text-center md:flex-row  md:text-start md:h-screen">
-        <div className="bg-grayishColor mt-4 rounded-xl md:w-2/5 md:mt-0 md:flex md:items-center md:h-[calc(100%-6rem)]">
+      <div className="container mx-auto h-screen px-4 -space-y-10 flex flex-col justify-around items-center text-center md:flex-row  md:text-start md:space-y-0 ">
+        <div className=" mt-4 rounded-xl md:w-2/5 md:mt-0 md:flex md:items-center md:h-[calc(100%-20rem)] grid place-content-center">
           <Image
-            className=""
+            className="rounded-xl"
             alt={selectedProject.title}
             src={selectedProject.image}
-            width={400}
-            height={100}
+            width={500}
+            height={500}
           />
         </div>
         <div className="flex flex-col px-6 space-y-3 py-3 md:w-3/5 md:text-start ">
