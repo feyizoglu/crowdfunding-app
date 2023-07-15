@@ -35,7 +35,7 @@ function NavbarWithUser() {
       <Link className={style.headerLinks} href="/projects">
         Projects
       </Link>
-      <button onClick={handleClick} className={style.button}>
+      <button onClick={() => setTimeout(() => dispatch(setShowKickOffBox()), 1)} className={style.button}>
         New Project
       </button>
       <div className={style.userContainer}>

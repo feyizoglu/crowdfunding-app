@@ -38,7 +38,9 @@ const KickOffBox = () => {
     }
   }, []);
 
+  const containerRef = useRef();
   const rangeRef = useRef();
+
 
   const { register, handleSubmit, formState: { errors }, control, watch } = useForm({
     resolver: yupResolver(schema)
@@ -56,13 +58,16 @@ const KickOffBox = () => {
     if (!rangeRef.current.contains(e.target)) {
       setShowDateBox(false);
     }
+    if (containerRef.current && !containerRef.current.contains(e.target)) {
+      dispatch(setShowKickOffBox());
+    }
   };
 
   const timeline = watch('timeline');
 
   return (
     <div className="bg-opacity-70 h-screen w-screen  fixed top-0 left-0 grid place-content-center z-50 bg-blackColor  ">
-      <div className="relative bg-whiteColor p-6 rounded-xl shadow sm:p-12">
+      <div ref={containerRef} className="relative bg-whiteColor p-6 rounded-xl shadow sm:p-12">
         <button
           onClick={() => dispatch(setShowKickOffBox())}
           className="absolute top-3 left-0  p-3 text-blackColor hover:opacity-60 sm:left-8"
@@ -136,7 +141,7 @@ const KickOffBox = () => {
                     className={`bg-whiteColor placeholder-blackColor text-sm w-full p-2 border-b border-blackColor border-opacity-100 focus:outline-none cursor-pointer ${errors.timeline && `border-red-500 placeholder-red-500`}`}
                     readOnly
                   />
-                  <div onClick={() => setShowDateBox(prev => !prev)} className={`button-light ${errors.timeline && `bg-redColor text-red-500 border-red-500 hover:bg-redColor hover:text-blackColor hover:opacity-60`}`}>
+                  <div onClick={() => setShowDateBox(prev => !prev)} className={`button-light ${errors.timeline && `bg-redColor text-red-500 border-red-500 hover:bg-redColor hover:text-red-500 hover:opacity-60`}`}>
                     <FaCalendarAlt />
                   </div>
                 </div>
@@ -169,7 +174,7 @@ const KickOffBox = () => {
                 </textarea>
               </div>
               <div className="text-center">
-                <label htmlFor="file-upload" className={`file-label button-light py-2.5 ${errors.image && `bg-redColor text-red-500 border-red-500 hover:bg-redColor hover:text-blackColor hover:opacity-60`}`}>
+                <label htmlFor="file-upload" className={`file-label button-light py-2.5 ${errors.image && `bg-redColor text-red-500 border-red-500 hover:bg-redColor hover:text-red-500 hover:opacity-60`}`}>
                   <FaUpload size={20} />
                   <span className="ml-2">Add media</span>
                 </label>

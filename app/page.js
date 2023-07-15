@@ -4,7 +4,7 @@ export default function Home() {
 
   return (
     <main className=''>
-      <div className="h-screen-70 grid place-content-center bg-greenColor">
+      <div className="h-screen grid place-content-center bg-greenColor">
         Hero section will be here
       </div>
       <ProjectOfTheWeek />

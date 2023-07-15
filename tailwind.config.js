@@ -14,14 +14,12 @@ module.exports = {
         whiteColor: '#FAFAFA',
         blueColor : '#0361FD',
         redColor: '#FED7D7',
-        darkRedColor: '#E53E3E'
+        darkRedColor: '#E53E3E',
+        greenTransparent: "rgba(212, 238, 37, 0.8)"
       },
       borderRadius: {
         needed: '0.375rem',
       },
-      height: {
-        'screen-70' : 'calc(100vh - 70px)'
-      }
     },
   },
   plugins: [],
