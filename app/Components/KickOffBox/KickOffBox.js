@@ -26,7 +26,6 @@ const schema = yup.object({
     }),
 }).required();
 
-
 const KickOffBox = () => {
   const [showDateBox, setShowDateBox] = useState(false);
   const dispatch = useDispatch();
@@ -40,7 +39,6 @@ const KickOffBox = () => {
 
   const containerRef = useRef();
   const rangeRef = useRef();
-
 
   const { register, handleSubmit, formState: { errors }, control, watch } = useForm({
     resolver: yupResolver(schema)
@@ -114,7 +112,7 @@ const KickOffBox = () => {
                     ]}
                     render={({ field }) => (
                       <DateRange
-                        className="absolute top-1/2 -translate-y-1/2 right-2 rounded-xl shadow-2xl shadow-blackColor"
+                        className="absolute top-1/2 -translate-y-1/2 right-2 rounded-xl shadow-2xl shadow-blackColor z-10"
                         onChange={(item) => {
                           field.onChange([item.selection.startDate, item.selection.endDate]);
                         }}
@@ -141,7 +139,7 @@ const KickOffBox = () => {
                     className={`bg-whiteColor placeholder-blackColor text-sm w-full p-2 border-b border-blackColor border-opacity-100 focus:outline-none cursor-pointer ${errors.timeline && `border-red-500 placeholder-red-500`}`}
                     readOnly
                   />
-                  <div onClick={() => setShowDateBox(prev => !prev)} className={`button-light ${errors.timeline && `bg-redColor text-red-500 border-red-500 hover:bg-redColor hover:text-red-500 hover:opacity-60`}`}>
+                  <div onClick={() => setShowDateBox(prev => !prev)} className={`button-light z-0 ${errors.timeline && `bg-redColor text-red-500 border-red-500 hover:bg-redColor hover:text-red-500 hover:opacity-60`}`}>
                     <FaCalendarAlt />
                   </div>
                 </div>

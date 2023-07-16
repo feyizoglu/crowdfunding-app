@@ -13,9 +13,9 @@ module.exports = {
         grayishColor: '#E9E9E9',
         whiteColor: '#FAFAFA',
         blueColor : '#0361FD',
-        redColor: '#FED7D7',
+        lightRedColor: '#FED7D7',
         darkRedColor: '#E53E3E',
-        greenTransparent: "rgba(212, 238, 37, 0.8)"
+        greenTransparent: "rgba(212, 238, 37, 0.9)"
       },
       borderRadius: {
         needed: '0.375rem',

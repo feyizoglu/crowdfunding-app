@@ -23,8 +23,16 @@ function NavbarWithUser() {
   const showInfoBox = useSelector((state) => state.auth.showInfoBox)
   const dispatch = useDispatch();
 
-  const handleClick = () => {
-    dispatch(setShowKickOffBox());
+  const handleNewProjectClick = () => {
+    setTimeout(() => {
+      dispatch(setShowKickOffBox())
+    }, 1);
+  }
+
+  const handleInfoBoxClick = () => {
+    setTimeout(() => {
+      dispatch(setShowInfoBox());
+    }, 1)
   }
 
   return (
@@ -35,11 +43,11 @@ function NavbarWithUser() {
       <Link className={style.headerLinks} href="/projects">
         Projects
       </Link>
-      <button onClick={() => setTimeout(() => dispatch(setShowKickOffBox()), 1)} className={style.button}>
+      <button onClick={handleNewProjectClick} className={style.button}>
         New Project
       </button>
       <div className={style.userContainer}>
-        <button onClick={() => dispatch(setShowInfoBox())}>
+        <button onClick={handleInfoBoxClick}>
           <Image
             className={style.userImage}
             src="/user.png"

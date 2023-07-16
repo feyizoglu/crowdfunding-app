@@ -66,7 +66,7 @@ const SignUp = () => {
     <div className="bg-opacity-70 w-screen h-screen fixed top-0 left-0 grid place-content-center z-50 bg-blackColor text-center">
       <div
         ref={containerRef}
-        className="bg-whiteColor p-4 sm:p-6 md:p-10 rounded-xl shadow relative max-w-xs sm:max-w-md md:max-w-lg"
+        className="bg-whiteColor p-6 sm:p-8 md:p-10 rounded-xl shadow relative max-w-xs sm:max-w-md md:max-w-lg"
       >
         <button
           onClick={() => dispatch(setShowSignInBox())}
@@ -74,21 +74,22 @@ const SignUp = () => {
         >
           <FaLessThan />
         </button>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-5 mt-6 ">
+        <h2 className="text-2xl font-bold mb-5 mt-6  sm:text-3xl md:text-4xl ">
           Welcome Back
           <br />
           Change-Maker !
         </h2>
-
         <div className="flex flex-col justify-center max-w-xs sm:max-w-sm md:max-w-md m-auto ">
           <form onSubmit={handleSubmit(onsubmit)} >
             <input
               {...register('email')}
               id="mail"
               placeholder="Email"
-              className="border-b border-blackColor bg-whiteColor px-3 py-1 mt-5 mb-8 w-full text-lg outline-none sm:text-xl"
+              className="border-b border-blackColor bg-whiteColor px-3 py-1 mt-7 mb-8 w-full text-lg outline-none sm:text-xl"
             />
-            {errors.email && <Alert message={errors.email?.message} />}
+            <div className="">
+              {errors.email && <Alert message={errors.email?.message} />}
+            </div>
             <input
               {...register('password')}
               id="password"
@@ -96,7 +97,9 @@ const SignUp = () => {
               placeholder="Password"
               className="border-b border-blackColor bg-whiteColor px-3 py-1 mb-5 w-full outline-none text-lg sm:text-xl"
             />
-            {errors.password && <Alert message={errors.password?.message} />}
+            <div className="">
+              {errors.password && <Alert message={errors.password?.message} />}
+            </div>
             <button className="button-dark mt-5 w-full">
               Continue to sign in
             </button>
