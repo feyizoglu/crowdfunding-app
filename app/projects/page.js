@@ -19,7 +19,7 @@ const Page = () => {
 
     return (
       <div className='bg-whiteColor'>
-        <ProjectOfTheWeek />
+        <ProjectOfTheWeek/>
         <div>
           <Categories
             selectedCategory={selectedCategory}
