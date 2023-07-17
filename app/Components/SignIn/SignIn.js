@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { FaLessThan } from 'react-icons/fa';
 import { useDispatch } from "react-redux";
@@ -24,6 +25,17 @@ const SignUp = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   });
+
+  const containerRef = useRef();
+
+  useEffect(() => {
+    window.addEventListener('click', handleClick);
+
+    return () => {
+      window.removeEventListener('click', handleClick)
+    }
+  }, [])
+
   const onsubmit = async (data) => {
     try {
       const user = await signInWithEmailAndPassword(
@@ -43,11 +55,18 @@ const SignUp = () => {
     }
   };
 
+  const handleClick = (e) => {
+    if (!containerRef.current.contains(e.target)) {
+      dispatch(setShowSignInBox());
+    }
+  }
+
 
   return (
     <div className="bg-opacity-70 w-screen h-screen fixed top-0 left-0 grid place-content-center z-50 bg-blackColor text-center">
       <div
-        className="bg-whiteColor p-4 sm:p-6 md:p-10 rounded-xl shadow relative max-w-xs sm:max-w-md md:max-w-lg"
+        ref={containerRef}
+        className="bg-whiteColor p-6 sm:p-8 md:p-10 rounded-xl shadow relative max-w-xs sm:max-w-md md:max-w-lg"
       >
         <button
           onClick={() => dispatch(setShowSignInBox())}
@@ -55,21 +74,22 @@ const SignUp = () => {
         >
           <FaLessThan />
         </button>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-5 mt-6 ">
+        <h2 className="text-2xl font-bold mb-5 mt-6  sm:text-3xl md:text-4xl ">
           Welcome Back
           <br />
           Change-Maker !
         </h2>
-
         <div className="flex flex-col justify-center max-w-xs sm:max-w-sm md:max-w-md m-auto ">
           <form onSubmit={handleSubmit(onsubmit)} >
             <input
               {...register('email')}
               id="mail"
               placeholder="Email"
-              className="border-b border-blackColor bg-whiteColor px-3 py-1 mt-5 mb-8 w-full text-lg outline-none sm:text-xl"
+              className="border-b border-blackColor bg-whiteColor px-3 py-1 mt-7 mb-8 w-full text-lg outline-none sm:text-xl"
             />
-            {errors.email && <Alert message={errors.email?.message} />}
+            <div className="">
+              {errors.email && <Alert message={errors.email?.message} />}
+            </div>
             <input
               {...register('password')}
               id="password"
@@ -77,7 +97,9 @@ const SignUp = () => {
               placeholder="Password"
               className="border-b border-blackColor bg-whiteColor px-3 py-1 mb-5 w-full outline-none text-lg sm:text-xl"
             />
-            {errors.password && <Alert message={errors.password?.message} />}
+            <div className="">
+              {errors.password && <Alert message={errors.password?.message} />}
+            </div>
             <button className="button-dark mt-5 w-full">
               Continue to sign in
             </button>
@@ -90,7 +112,7 @@ const SignUp = () => {
         <p className="mb-5">
           Make an impact today.
           <br />
-          <Link href="/projects" className="cursor-pointer text-blueColor hover:opacity-60">
+          <Link href="/projects" onClick={() => dispatch(setShowSignInBox())} className="cursor-pointer text-blueColor hover:opacity-60">
             Explore projects that need your help!
           </Link>
         </p>

@@ -3,14 +3,34 @@ import { useSelector } from 'react-redux';
 import { auth } from '@/app/firebase/firebase-confing';
 import { signOut } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
+import { useRef, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setShowInfoBox } from '@/app/redux/features/authSlice';
 
 import { BiUser, BiUserX } from 'react-icons/bi'
 import { HiOutlineMail } from 'react-icons/hi'
 import { RiProfileLine } from 'react-icons/ri'
 
 function InfoBox({ style }) {
-  const user = useSelector(state => state.auth.user); 
+  const user = useSelector(state => state.auth.user);
   const router = useRouter();
+
+  const dispatch = useDispatch();
+  const infoRef = useRef();
+
+  useEffect(() => {
+    window.addEventListener('click', handleOutBoxClick);
+
+    return () => {
+      window.removeEventListener('click', handleOutBoxClick)
+    }
+  }, [])
+
+  const handleOutBoxClick = (e) => {
+    if (!infoRef.current.contains(e.target)) {
+      dispatch(setShowInfoBox());
+    }
+  }
 
   const signOutHandler = async () => {
     await signOut(auth);
@@ -19,7 +39,7 @@ function InfoBox({ style }) {
 
   return (
     <div className='relative'>
-      <section className={style.InfoBoxContainer}>
+      <section ref={infoRef} className={style.InfoBoxContainer}>
         <div className={`${style.userInfos}`}>
           <p className={style.infoBoxPTags} >
             <BiUser size={15} />

@@ -8,12 +8,11 @@ const ProjectOfTheWeek = () => {
   const progressPercentage = (moneyRaised / goalAmount) * 100;
 
   return (
-    <div className="bg-whiteColor text-center md:text-start">
-      <div className="container mx-auto project-of-the-week grid place-content-center py-20 px-12 ">
-        <div className="border-b border-blackColor pb-20">
-          <h1 className="project-of-the-week__title text-4xl sm:text-5xl md:text-6xl font-bold mb-4 pb-10 ">
-            Project of the Week
-          </h1>
+
+    <div className='bg-whiteColor text-center md:text-start'>
+      <div className="container mx-auto project-of-the-week grid place-content-center py-20 px-4 ">
+        <div className='border-b border-blackColor pb-20'>
+          <h1 className="project-of-the-week__title text-4xl sm:text-5xl md:text-6xl font-bold mb-4 pb-10 ">Project of the Week</h1>
           <div className="project-of-the-week__content grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-20 ">
             <div className="img-container flex flex-col justify-center items-center bg-grayishColor rounded-lg border-0">
               <Link href="#">
