@@ -9,7 +9,7 @@ const initialState = {
 }
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     setUser: (state, action) => {
@@ -35,3 +35,4 @@ const authSlice = createSlice({
 
 export const { setShowSignInBox, setShowInfoBox, setShowMobilNav, setUser, setShowKickOffBox, setCloseMobileNav } = authSlice.actions
 export default authSlice.reducer
+
