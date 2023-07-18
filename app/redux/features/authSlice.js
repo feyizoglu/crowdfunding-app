@@ -6,6 +6,7 @@ const initialState = {
   showInfoBox: false,
   showMobilNav: false,
   showKickOffBox: false,
+  projects: [],
 }
 
 const authSlice = createSlice({
@@ -29,6 +30,9 @@ const authSlice = createSlice({
     },
     setCloseMobileNav: (state, action) => {
       state.showMobilNav = action.payload;
+    },
+    setProjects: (state, action) => {
+      state.projects = action.payload;
     }
   }
 })
@@ -40,6 +44,7 @@ export const {
   setUser,
   setShowKickOffBox,
   setCloseMobileNav,
+  setProjects
 } = authSlice.actions;
 export default authSlice.reducer
 

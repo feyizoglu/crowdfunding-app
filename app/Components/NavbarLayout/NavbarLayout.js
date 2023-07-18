@@ -16,8 +16,8 @@ import SignIn from "../SignIn/SignIn";
 import KickOffBox from "../KickOffBox/KickOffBox";
 
 const style = {
-  headerContainer: `container mx-auto `,
-  header: `fixed top-0 left-0 w-full bg-greenColor px-12  py-2 flex justify-between items-center h-[70px] text-lg text-blackColor space-x-5 lg:px-24`,
+  headerContainer: `container mx-auto z-50`,
+  header: `fixed top-0 left-0 w-full bg-greenColor px-12  py-2 flex justify-between items-center h-[70px] text-lg text-blackColor space-x-5 lg:px-24 z-50`,
   headerLogo: `font-md`,
   headerLinks: `font-medium hover:opacity-60`,
   headerInput: `hidden rounded-needed outline-0 py-1 px-2 w-60 md:block`,
@@ -32,8 +32,7 @@ export default function NavbarLayOut() {
   const showKickOffBox = useSelector(state => state.auth.showKickOffBox);
   const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
-  console.log(user)
-
+  
   useEffect(() => {
     window.addEventListener('scroll', changeBgColorOnScrolling);
     return () => {
@@ -52,13 +51,6 @@ export default function NavbarLayOut() {
       unsubscribe();
     };
   }, [dispatch]);
-
-  // onAuthStateChanged(auth, (currentUser) => {
-  //   dispatch(setUser({
-  //     email: currentUser?.email,
-  //     id: currentUser?.uid
-  //   }));
-  // });
 
   const changeBgColorOnScrolling = () => {
     if (window.scrollY >= 70) {
@@ -82,7 +74,7 @@ export default function NavbarLayOut() {
         </Link>
         <NavbarSearchInput style={style} placeholder='Search for projects..' />
         <nav className={style.nav}>
-          {true ? <NavbarWithUser /> : <DefaultNavbar />}
+          {user?.email ? <NavbarWithUser /> : <DefaultNavbar />}
         </nav>
         <section className={style.hamMenu} onClick={handleLinkClicks}>
           <div className={`${styles.container} ${showMobilNav && styles.change}`}>
@@ -94,7 +86,7 @@ export default function NavbarLayOut() {
       </header>
       {showMobilNav &&
         <section>
-          {true ? <MobilNavbarWithUser bgColor={bgColor} /> : <MobilDefaultNavbar bgColor={bgColor} />}
+          {user?.email ? <MobilNavbarWithUser bgColor={bgColor} /> : <MobilDefaultNavbar bgColor={bgColor} />}
         </section>}
       {showSignInBox && <SignIn />}
       {showKickOffBox && <KickOffBox />}

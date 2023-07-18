@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import { setShowInfoBox, setShowKickOffBox, setShowMobilNav } from '@/app/redux/features/authSlice';
 import NavbarSearchInput from '../NavbarSearchInput/NavbarSearchInput';
@@ -9,10 +10,12 @@ import InfoBox from '../InfoBox/InfoBox';
 
 function MobilNavbarWithUser({ bgColor }) {
   const showInfoBox = useSelector((state) => state.auth.showInfoBox);
+  const user = useSelector(state => state.auth.user)
+  const projects = useSelector(state => state.auth.projects);
   const dispatch = useDispatch();
 
   const style = {
-    container: `fixed top-[69px] left-1/2 -translate-x-1/2 w-full bg-greenColor flex flex-col space-y-3 py-5 items-center md:hidden ${bgColor && `bg-greenTransparent`}`,
+    container: `fixed top-[69px] left-1/2 -translate-x-1/2 w-full bg-greenColor flex flex-col space-y-3 py-5 items-center md:hidden z-50 ${bgColor && `bg-greenTransparent`}`,
     headerLinks: `font-medium hover:opacity-60`,
     button: `button-dark hover:bg-transparent`,
     userContainer: `flex flex-col items-center space-y-1`,
@@ -28,9 +31,17 @@ function MobilNavbarWithUser({ bgColor }) {
 
   const handleNewProjectClick = () => {
     dispatch(setShowMobilNav())
-    setTimeout(() => {
-      dispatch(setShowKickOffBox())
-    }, 1);
+    const isUserHaveProject = projects.find(project => project.id === user.id)
+    if (isUserHaveProject) {
+      let username = user?.email.split('@')[0];
+      toast.error(`Existing active project under ${username}. Wait or delete it before creating a new one.`, {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+    } else {
+      setTimeout(() => {
+        dispatch(setShowKickOffBox)
+      }, 1)
+    }
   }
 
   const handleLinkClicks = () => {
@@ -40,7 +51,7 @@ function MobilNavbarWithUser({ bgColor }) {
   const handleInfoBoxClick = () => {
     setTimeout(() => {
       dispatch(setShowInfoBox())
-    },1)
+    }, 1)
   }
 
   return (
@@ -50,8 +61,8 @@ function MobilNavbarWithUser({ bgColor }) {
           <Image
             onClick={handleInfoBoxClick}
             src="/user.png"
-            width={45}
-            height={45}
+            width={40}
+            height={40}
             alt="Picture of the user"
           />
         </Link>

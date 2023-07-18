@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import InfoBox from '../InfoBox/InfoBox';
 import { setShowInfoBox, setShowKickOffBox } from '@/app/redux/features/authSlice';
@@ -21,12 +22,23 @@ const style = {
 
 function NavbarWithUser() {
   const showInfoBox = useSelector((state) => state.auth.showInfoBox)
+  const user = useSelector(state => state.auth.user);
+  const projects = useSelector(state => state.auth.projects)
   const dispatch = useDispatch();
 
   const handleNewProjectClick = () => {
-    setTimeout(() => {
-      dispatch(setShowKickOffBox())
-    }, 1);
+    const isUserHaveProject = projects.find(project => project?.id === user?.id);
+
+    if (isUserHaveProject) {
+      let username = user?.email.split('@')[0];
+      toast.error(`Existing active project under ${username}. Wait or delete it before creating a new one.`, {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+    } else {
+      setTimeout(() => {
+        dispatch(setShowKickOffBox())
+      }, 1);
+    }
   }
 
   const handleInfoBoxClick = () => {
@@ -51,8 +63,8 @@ function NavbarWithUser() {
           <Image
             className={style.userImage}
             src="/user.png"
-            width={45}
-            height={45}
+            width={40}
+            height={40}
             alt="Picture of the user"
           />
         </button>

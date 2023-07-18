@@ -18,7 +18,7 @@ function MobilDefaultNavbar({ bgColor }) {
   }
 
   const style = {
-    container: `fixed left-1/2 -translate-x-1/2 top-[69px] bg-greenColor flex flex-col items-center w-full space-y-3 md:hidden py-3 ${bgColor && `bg-greenTransparent`}`,
+    container: `fixed left-1/2 -translate-x-1/2 top-[69px] bg-greenColor flex flex-col items-center w-full space-y-3 md:hidden py-3 z-50 ${bgColor && `bg-greenTransparent`}`,
     headerLinks: `font-medium hover:opacity-60`,
     headerButton: `button-dark hover:bg-transparent`,
     headerInput: `rounded-needed outline-0 py-1 px-2 `,

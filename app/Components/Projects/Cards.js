@@ -3,6 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Cards = ({ projects }) => {
+  if (projects.length === 0) {
+    return <div className="text-center text-4xl pb-20">No projects available in this category</div>;
+  };
+
   return (
     <div className="projects-part container mx-auto place-content-center pb-20 px-12 grid gap-8 md:gap-6 xl:gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
       {projects.map((project) => (
@@ -11,19 +15,20 @@ const Cards = ({ projects }) => {
           className="w-full bg-whiteColor border border-grayishColor rounded-lg shadow "
         >
           <div className="img-container flex flex-col justify-center items-center bg-grayishColor rounded-lg border-0">
-            <Link href={`/projects/${project.id}`}>
-              <div className="image-wrapper flex justify-center items-center">
+            <Link href={`/projects/${project.docId}`}>
+              <div className="image-wrapper flex justify-center items-center ">
                 <Image
                   alt={project.title}
                   src={project.image}
                   width={500}
                   height={500}
+                  className="rounded-lg"
                 />
               </div>
             </Link>
           </div>
           <div className="p-5">
-            <Link href={`/projects/${project.id}`}>
+            <Link href={`/projects/${project.docId}`}>
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-blackColor">
                 {project.title}
               </h5>
@@ -33,9 +38,8 @@ const Cards = ({ projects }) => {
                 <div
                   className="h-full rounded-lg bg-greenColor"
                   style={{
-                    width: `${
-                      (project.moneyRaised / project.goalAmount) * 100
-                    }%`,
+                    width: `${(project.moneyRaised / project.goalAmount) * 100
+                      }%`,
                   }}
                 />
               </div>

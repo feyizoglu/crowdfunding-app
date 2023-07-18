@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
 import { setShowKickOffBox } from "@/app/redux/features/authSlice";
 import { FaLessThan, FaUpload, FaCalendarAlt } from 'react-icons/fa';
@@ -32,6 +32,7 @@ const schema = yup.object({
 
 const KickOffBox = () => {
   const [showDateBox, setShowDateBox] = useState(false);
+  const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -60,14 +61,21 @@ const KickOffBox = () => {
       const snapshot = await uploadBytes(storageRef, imgFile);
       const downloadURL = await getDownloadURL(snapshot.ref);
 
+      const formattedTimeline = data.timeline.map((date) =>
+      format(date, "dd/MM/yy")
+    );
+
       await addDoc(collection(db, 'projects'), {
+        id: user.id,
         ...data,
-        image: downloadURL
+        image: downloadURL,
+        creator: user.email,
+        timeline: formattedTimeline,
+        moneyRaised: Math.floor(data.goalAmount * Math.random())
       })
     } catch (err) {
       console.log(err.message);
     }
-
   };
 
   const clickHandler = (e) => {
