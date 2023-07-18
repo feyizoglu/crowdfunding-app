@@ -17,17 +17,19 @@ const Page = () => {
     ? projects
     : projects.filter((project) => project.category === selectedCategory);
 
-    return (
-      <div className='bg-whiteColor'>
-        <ProjectOfTheWeek/>
-        <div>
-          <Categories
-            selectedCategory={selectedCategory}
-            handleCategoryChange={handleCategoryChange}
-          />
-          <Cards projects={filteredProjects} />
-        </div>
+  return (
+    <div className='bg-whiteColor'>
+      <div className='mt-[70px]'>
+        <ProjectOfTheWeek />
       </div>
-    );
-  };
-  export default Page;
+      <div>
+        <Categories
+          selectedCategory={selectedCategory}
+          handleCategoryChange={handleCategoryChange}
+        />
+        <Cards projects={filteredProjects} />
+      </div>
+    </div>
+  );
+};
+export default Page;

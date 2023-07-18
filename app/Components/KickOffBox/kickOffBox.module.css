@@ -1,0 +1,8 @@
+.rangeContainer .rdrDayNumber,
+.rangeContainer .rdrDayNumber span {
+  color: blueviolet; /* Replace with your desired color */
+}
+
+.rangeContainer .rdrMonthAndYearPickers select {
+  color: pink; /* Replace with your desired color */
+}

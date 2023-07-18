@@ -5,7 +5,8 @@ const initialState = {
   showSignInBox: false,
   showInfoBox: false,
   showMobilNav: false,
-};
+  showKickOffBox: false,
+}
 
 const authSlice = createSlice({
   name: "auth",
@@ -23,9 +24,15 @@ const authSlice = createSlice({
     setShowMobilNav: (state) => {
       state.showMobilNav = !state.showMobilNav;
     },
-  },
-});
+    setShowKickOffBox: (state) => {
+      state.showKickOffBox = !state.showKickOffBox;
+    },
+    setCloseMobileNav: (state, action) => {
+      state.showMobilNav = action.payload;
+    }
+  }
+})
 
-export const { setShowSignInBox, setShowInfoBox, setShowMobilNav, setUser } =
-  authSlice.actions;
-export default authSlice.reducer;
+export const { setShowSignInBox, setShowInfoBox, setShowMobilNav, setUser, setShowKickOffBox, setCloseMobileNav } = authSlice.actions
+export default authSlice.reducer
+
