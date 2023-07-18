@@ -32,6 +32,7 @@ export default function NavbarLayOut() {
   const showKickOffBox = useSelector(state => state.auth.showKickOffBox);
   const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
+  console.log(user)
 
   useEffect(() => {
     window.addEventListener('scroll', changeBgColorOnScrolling);
@@ -40,9 +41,24 @@ export default function NavbarLayOut() {
     }
   }, []);
 
-  onAuthStateChanged(auth, (currentUser) => {
-    dispatch(setUser(currentUser?.email));
-  });
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      dispatch(setUser({
+        email: currentUser?.email,
+        id: currentUser?.uid
+      }));
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, [dispatch]);
+
+  // onAuthStateChanged(auth, (currentUser) => {
+  //   dispatch(setUser({
+  //     email: currentUser?.email,
+  //     id: currentUser?.uid
+  //   }));
+  // });
 
   const changeBgColorOnScrolling = () => {
     if (window.scrollY >= 70) {
@@ -66,7 +82,7 @@ export default function NavbarLayOut() {
         </Link>
         <NavbarSearchInput style={style} placeholder='Search for projects..' />
         <nav className={style.nav}>
-          {user ? <NavbarWithUser /> : <DefaultNavbar />}
+          {true ? <NavbarWithUser /> : <DefaultNavbar />}
         </nav>
         <section className={style.hamMenu} onClick={handleLinkClicks}>
           <div className={`${styles.container} ${showMobilNav && styles.change}`}>
@@ -78,7 +94,7 @@ export default function NavbarLayOut() {
       </header>
       {showMobilNav &&
         <section>
-          {user ? <MobilNavbarWithUser bgColor={bgColor} /> : <MobilDefaultNavbar bgColor={bgColor} />}
+          {true ? <MobilNavbarWithUser bgColor={bgColor} /> : <MobilDefaultNavbar bgColor={bgColor} />}
         </section>}
       {showSignInBox && <SignIn />}
       {showKickOffBox && <KickOffBox />}

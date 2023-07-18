@@ -33,6 +33,13 @@ const authSlice = createSlice({
   }
 })
 
-export const { setShowSignInBox, setShowInfoBox, setShowMobilNav, setUser, setShowKickOffBox, setCloseMobileNav } = authSlice.actions
+export const {
+  setShowSignInBox,
+  setShowInfoBox,
+  setShowMobilNav,
+  setUser,
+  setShowKickOffBox,
+  setCloseMobileNav,
+} = authSlice.actions;
 export default authSlice.reducer
 

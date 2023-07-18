@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
-import { setShowKickOffBox, closeKickOffBox } from "@/app/redux/features/authSlice";
+import { setShowKickOffBox } from "@/app/redux/features/authSlice";
 import { FaLessThan, FaUpload, FaCalendarAlt } from 'react-icons/fa';
 import { DateRange } from "react-date-range";
 import { addDays, format } from "date-fns";
@@ -10,6 +10,10 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
+
+import { db, storage } from "@/app/firebase/firebase-confing";
+import { addDoc, collection } from "firebase/firestore";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 import { toast } from 'react-toastify';
 
@@ -43,13 +47,27 @@ const KickOffBox = () => {
   const { register, handleSubmit, formState: { errors }, control, watch } = useForm({
     resolver: yupResolver(schema)
   });
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     setShowDateBox(false)
     dispatch(setShowKickOffBox());
     toast.success('You have successfully created your project', {
       position: toast.POSITION.BOTTOM_RIGHT
     })
-    console.log(data)
+
+    try {
+      const imgFile = data.image[0];
+      const storageRef = ref(storage, `project-img/${imgFile.name}`);
+      const snapshot = await uploadBytes(storageRef, imgFile);
+      const downloadURL = await getDownloadURL(snapshot.ref);
+
+      await addDoc(collection(db, 'projects'), {
+        ...data,
+        image: downloadURL
+      })
+    } catch (err) {
+      console.log(err.message);
+    }
+
   };
 
   const clickHandler = (e) => {
