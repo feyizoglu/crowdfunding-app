@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
 
 import InfoBox from '../InfoBox/InfoBox';
-import { setShowInfoBox } from '@/app/redux/features/authSlice';
+import { setShowInfoBox, setShowKickOffBox } from '@/app/redux/features/authSlice';
 
 const style = {
   container: `relative flex items-center space-x-6`,
@@ -19,10 +19,21 @@ const style = {
   infoBoxPointer: `absolute top-16 right-3`,
 }
 
-
 function NavbarWithUser() {
   const showInfoBox = useSelector((state) => state.auth.showInfoBox)
   const dispatch = useDispatch();
+
+  const handleNewProjectClick = () => {
+    setTimeout(() => {
+      dispatch(setShowKickOffBox())
+    }, 1);
+  }
+
+  const handleInfoBoxClick = () => {
+    setTimeout(() => {
+      dispatch(setShowInfoBox());
+    }, 1)
+  }
 
   return (
     <div className={style.container}>
@@ -32,11 +43,11 @@ function NavbarWithUser() {
       <Link className={style.headerLinks} href="/projects">
         Projects
       </Link>
-      <Link className={style.button} href="#">
+      <button onClick={handleNewProjectClick} className={style.button}>
         New Project
-      </Link>
+      </button>
       <div className={style.userContainer}>
-        <Link onClick={() => dispatch(setShowInfoBox())} href='#'>
+        <button onClick={handleInfoBoxClick}>
           <Image
             className={style.userImage}
             src="/user.png"
@@ -44,7 +55,7 @@ function NavbarWithUser() {
             height={45}
             alt="Picture of the user"
           />
-        </Link>
+        </button>
         {showInfoBox && <InfoBox style={style} />}
       </div>
     </div>

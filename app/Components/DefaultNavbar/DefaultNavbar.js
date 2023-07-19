@@ -1,9 +1,9 @@
-"use client";
-import React from "react";
-import Link from "next/link";
-import { useDispatch } from "react-redux";
-import { setShowSignInBox } from "@/app/redux/features/authSlice";
-import { useRouter } from "next/navigation";
+
+'use client'
+import React from 'react';
+import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { setShowSignInBox } from '@/app/redux/features/authSlice';
 
 const style = {
   container: `flex items-center space-x-12`,
@@ -13,14 +13,6 @@ const style = {
 
 function DefaultNavbar() {
   const dispatch = useDispatch();
-  const router = useRouter();
-
-  const signInClickHandler = () => {
-    router.push("/");
-    setTimeout(() => {
-      dispatch(setShowSignInBox());
-    }, 400);
-  };
 
   return (
     <div className={style.container}>
@@ -30,10 +22,14 @@ function DefaultNavbar() {
       <Link className={style.headerLinks} href="/projects">
         Projects
       </Link>
-      <button onClick={signInClickHandler} className={style.headerButton}>
+      <Link href='/' onClick={() => {
+        setTimeout(() => {
+          dispatch(setShowSignInBox())
+        }, 1)
+      }} className={style.headerButton}>
         Sign In
-      </button>
-    </div>
+      </Link>
+    </div >
   );
 }
 

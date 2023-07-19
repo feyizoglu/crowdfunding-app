@@ -7,10 +7,10 @@ import { FaUpload } from "react-icons/fa";
 import { auth } from "../firebase/firebase-confing";
 import { createUserWithEmailAndPassword, AuthErrorCodes } from "firebase/auth";
 import { useDispatch } from "react-redux";
-import { setShowSignInBox } from "../redux/features/authSlice";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-toastify';
 
+import { setShowSignInBox } from "../redux/features/authSlice";
 import Alert from "../Components/SignUpAlert/Alert";
 
 const schema = yup.object().shape({
@@ -18,7 +18,7 @@ const schema = yup.object().shape({
   password: yup
     .string()
     .required()
-    .min(6, "password must be at least 6 characters"),
+    .min(6, "asdfasdfasdfsd"),
 });
 
 const Page = () => {
@@ -33,7 +33,6 @@ const Page = () => {
   const dispatch = useDispatch();
 
   const route = useRouter();
-
 
   const onSubmit = async (data) => {
     try {
@@ -64,10 +63,8 @@ const Page = () => {
   const handleAlreadyMemberClick = () => {
     setTimeout(() => {
       dispatch(setShowSignInBox())
-    }, 400);
-  }
-
-
+    }, 1)
+  };
 
   return (
     <div className="flex flex-col py-20 justify-start items-center">
