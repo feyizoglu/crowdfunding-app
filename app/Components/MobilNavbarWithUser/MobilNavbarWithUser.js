@@ -40,7 +40,7 @@ function MobilNavbarWithUser({ bgColor }) {
       });
     } else {
       setTimeout(() => {
-        dispatch(setShowKickOffBox)
+        dispatch(setShowKickOffBox())
       }, 1)
     }
   }
