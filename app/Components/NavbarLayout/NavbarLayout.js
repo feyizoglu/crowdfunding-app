@@ -2,8 +2,8 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setShowMobilNav, setUser, setCloseMobileNav } from "@/app/redux/features/authSlice";
-import { auth } from "@/app/firebase/firebase-confing";
+import { setShowMobilNav, setUser, setCloseMobileNav, setProfilPic } from "@/app/redux/features/authSlice";
+import { auth, db } from "@/app/firebase/firebase-confing";
 import { onAuthStateChanged } from "firebase/auth";
 
 import styles from './navbarLayout.module.css'
@@ -14,6 +14,7 @@ import MobilNavbarWithUser from "../MobilNavbarWithUser/MobilNavbarWithUser";
 import NavbarSearchInput from "../NavbarSearchInput/NavbarSearchInput";
 import SignIn from "../SignIn/SignIn";
 import KickOffBox from "../KickOffBox/KickOffBox";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 
 const style = {
   headerContainer: `container mx-auto z-50`,
@@ -31,14 +32,28 @@ export default function NavbarLayOut() {
   const showSignInBox = useSelector(state => state.auth.showSignInBox);
   const showKickOffBox = useSelector(state => state.auth.showKickOffBox);
   const user = useSelector(state => state.auth.user);
-  const dispatch = useDispatch();
-  
+  const dispatch = useDispatch()
+
   useEffect(() => {
     window.addEventListener('scroll', changeBgColorOnScrolling);
+    const fetchProfilePicture = () => {
+      if (user?.id) {
+        const q = query(collection(db, 'profilPics'), where('id', '==', user.id));
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            dispatch(setProfilPic(data.profilPic));
+          });
+        });
+        return unsubscribe;
+      }
+    };
+    const unsubscribeProfilePicture = fetchProfilePicture();
     return () => {
       window.removeEventListener('scroll', changeBgColorOnScrolling)
+      unsubscribeProfilePicture && unsubscribeProfilePicture();
     }
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -46,6 +61,7 @@ export default function NavbarLayOut() {
         email: currentUser?.email,
         id: currentUser?.uid
       }));
+
     });
     return () => {
       unsubscribe();

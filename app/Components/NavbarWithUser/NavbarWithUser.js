@@ -23,12 +23,12 @@ const style = {
 function NavbarWithUser() {
   const showInfoBox = useSelector((state) => state.auth.showInfoBox)
   const user = useSelector(state => state.auth.user);
-  const projects = useSelector(state => state.auth.projects)
+  const projects = useSelector(state => state.auth.projects);
+  const profilPic = useSelector(state => state.auth.profilPic);
   const dispatch = useDispatch();
 
   const handleNewProjectClick = () => {
     const isUserHaveProject = projects.find(project => project?.id === user?.id);
-
     if (isUserHaveProject) {
       let username = user?.email.split('@')[0];
       toast.error(`Existing active project under ${username}. Wait or delete it before creating a new one.`, {
@@ -62,9 +62,9 @@ function NavbarWithUser() {
         <button onClick={handleInfoBoxClick}>
           <Image
             className={style.userImage}
-            src="/user.png"
-            width={40}
-            height={40}
+            src={profilPic ? profilPic : '/user.png'}
+            width={50}
+            height={50}
             alt="Picture of the user"
           />
         </button>

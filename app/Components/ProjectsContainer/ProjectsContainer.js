@@ -1,8 +1,8 @@
 'use client'
 import { useEffect } from 'react';
-import { collection, onSnapshot, query } from 'firebase/firestore';
-import { useDispatch } from 'react-redux';
+import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import { setProjects } from '@/app/redux/features/authSlice';
+import { useDispatch } from 'react-redux';
 import { db } from '@/app/firebase/firebase-confing';
 
 function ProjectsContainer({ children }) {
@@ -20,11 +20,12 @@ function ProjectsContainer({ children }) {
       });
       dispatch(setProjects(projectsArr));
     })
+
     return () => {
       unsubscribe();
     };
-  }, [
-  ])
+  }, [])
+
   return children;
 }
 

@@ -49,22 +49,22 @@ function Page({ params }) {
             <h1 className="text-2xl font-bold">{project?.title}</h1>
             <div className="flex flex-row space-x-1 items-center justify-center md:justify-start">
               <Image
-                className=" w-6 h-6 items-start"
-                alt={project?.title} //It will change after firebase adaption
-                src='/user.png' //It will change after firebase adaption
+                className=" w-6 h-6 items-start rounded-full"
+                alt={project?.title}
+                src={project.profilPic ? project.profilPic : '/user.png'}
                 width={50}
                 height={50}
               />
               <h2 className="text-lg">{project?.creator.split('@')[0]}</h2>
             </div>
             <div className="flex flex-col justify-between  md:border-y md:border-blackColor md:flex-row md:space-y-0 md:container">
-              <div className="flex flex-col space-y-5 md:w-1/2 md:pt-5">
+              <div className="flex flex-col space-y-5 px-2 md:w-1/2 md:pt-5">
                 <h1 className="text-lg font-bold">About project</h1>
                 <p className="text-lg pb-5">{project?.description}</p>
               </div>
               <div className="md:border-l md:border-blackColor "></div>
               <div className="md:w-1/2 md:py-5">
-                <div className="space-y-5 progress-bar flex flex-col justify-between md:px-2">
+                <div className="space-y-5 progress-bar flex flex-col justify-between md:px-2  ">
                   <div className="flex justify-between">
                     <div className="raised flex flex-col px-4 py-2 justify-between">
                       <p className="text-sm sm:text-base md:text-lg">Raised:</p>

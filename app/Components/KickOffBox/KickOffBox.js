@@ -20,7 +20,11 @@ import { toast } from 'react-toastify';
 const schema = yup.object({
   title: yup.string().required(),
   goalAmount: yup.number().required(),
-  timeline: yup.array().of(yup.date()).min(2).required(),
+  timeline: yup
+    .array()
+    .of(yup.date().min(new Date(), "Please select a future date"))
+    .min(2, "Please select a start and end date")
+    .required("Please select a timeline"),
   category: yup.string().required(),
   description: yup.string().required(),
   image: yup
@@ -33,6 +37,7 @@ const schema = yup.object({
 const KickOffBox = () => {
   const [showDateBox, setShowDateBox] = useState(false);
   const user = useSelector(state => state.auth.user);
+  const profilPic = useSelector( state => state.auth.profilPic);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -48,13 +53,13 @@ const KickOffBox = () => {
   const { register, handleSubmit, formState: { errors }, control, watch } = useForm({
     resolver: yupResolver(schema)
   });
+
   const onSubmit = async (data) => {
     setShowDateBox(false)
     dispatch(setShowKickOffBox());
     toast.success('You have successfully created your project', {
       position: toast.POSITION.BOTTOM_RIGHT
     })
-
     try {
       const imgFile = data.image[0];
       const storageRef = ref(storage, `project-img/${imgFile.name}`);
@@ -62,13 +67,14 @@ const KickOffBox = () => {
       const downloadURL = await getDownloadURL(snapshot.ref);
 
       const formattedTimeline = data.timeline.map((date) =>
-      format(date, "dd/MM/yy")
-    );
+        format(date, "dd/MM/yy")
+      );
 
       await addDoc(collection(db, 'projects'), {
         id: user.id,
         ...data,
         image: downloadURL,
+        profilPic: profilPic,
         creator: user.email,
         timeline: formattedTimeline,
         moneyRaised: Math.floor(data.goalAmount * Math.random())

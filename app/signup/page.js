@@ -10,6 +10,11 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-toastify';
 
+import { db, storage } from "@/app/firebase/firebase-confing";
+import { addDoc, collection } from "firebase/firestore";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+
+
 import { setShowSignInBox } from "../redux/features/authSlice";
 import Alert from "../Components/SignUpAlert/Alert";
 
@@ -19,6 +24,11 @@ const schema = yup.object().shape({
     .string()
     .required()
     .min(6, "asdfasdfasdfsd"),
+  profilePic: yup
+    .mixed()
+    .test("fileRequired", "Image is required", (value) => {
+      return value.length > 0;
+    }),
 });
 
 const Page = () => {
@@ -38,6 +48,16 @@ const Page = () => {
     try {
       const user = await createUserWithEmailAndPassword(auth, data.email, data.password)
       route.push('/')
+      const profilePicFile = data.profilePic[0];
+      const storageRef = ref(storage, `profil-pic/${profilePicFile.name}`);
+      const snapshot = await uploadBytes(storageRef, profilePicFile);
+      const downloadURL = await getDownloadURL(snapshot.ref)
+      
+      await addDoc(collection(db, 'profilPics'), {
+        id: user.user.uid,
+        profilPic: downloadURL
+      })
+      
       let userName = data.email.split('@')[0]
       toast.success(`Congratulations ${userName[0].toUpperCase() + userName.slice(1, userName.length)}! Your sign-up was successful. Welcome to our community.`, {
         position: toast.POSITION.BOTTOM_RIGHT
@@ -67,7 +87,7 @@ const Page = () => {
   };
 
   return (
-    <div className="flex flex-col py-20 justify-start items-center">
+    <div className="flex flex-col py-20 justify-start items-center mt-[70px]">
       <h2 className="text-4xl font-bold mb-7 text-blackColor">Sign-Up</h2>
       <div className="max-w-2xl w-full  flex flex-col items-center justify-start p-6 bg-whiteColor rounded-md shadow-md">
         <p className="text-md mb-3 max-w-lg text-center">
@@ -75,7 +95,6 @@ const Page = () => {
           <br /> Crownfunding App.
         </p>
         <hr className="bg-blackColor w-24 mt-1 mb-5" />
-
         <Link
           href='/'
           onClick={handleAlreadyMemberClick}
@@ -118,7 +137,12 @@ const Page = () => {
               <label htmlFor="file-upload" className="file-label button-light">
                 <FaUpload className="text-[#0361FD] mr-4" /> Choose File
               </label>
-              <input id="file-upload" type="file" style={{ display: "none" }} />
+              <input
+                {...register('profilePic')}
+                id="file-upload"
+                type="file"
+                style={{ display: "none" }}
+              />
             </div>
           </div>
           <button type="submit" className="w-full h-10 button-dark">

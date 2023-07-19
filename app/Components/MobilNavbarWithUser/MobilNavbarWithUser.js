@@ -12,6 +12,7 @@ function MobilNavbarWithUser({ bgColor }) {
   const showInfoBox = useSelector((state) => state.auth.showInfoBox);
   const user = useSelector(state => state.auth.user)
   const projects = useSelector(state => state.auth.projects);
+  const profilPic = useSelector(state => state.auth.profilPic)
   const dispatch = useDispatch();
 
   const style = {
@@ -57,15 +58,14 @@ function MobilNavbarWithUser({ bgColor }) {
   return (
     <div className={style.container}>
       <div className={style.userContainer}>
-        <Link href='#'>
-          <Image
-            onClick={handleInfoBoxClick}
-            src="/user.png"
-            width={40}
-            height={40}
-            alt="Picture of the user"
-          />
-        </Link>
+        <Image
+          className='rounded-full'
+          onClick={handleInfoBoxClick}
+          src={profilPic ? profilPic : '/user.png'}
+          width={50}
+          height={50}
+          alt="Picture of the user"
+        />
         {showInfoBox && <InfoBox style={style} />}
       </div>
       <NavbarSearchInput style={style} placeholder='Search for projects..' />

@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Crownfunding App',
+  title: 'Crowdfunding App',
   description: 'The project will be created by team 9 in the near future',
 }
 

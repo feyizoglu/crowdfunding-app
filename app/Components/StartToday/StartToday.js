@@ -8,11 +8,10 @@ const StartToday = () => {
   const [kickOffCheck, setKickOffCheck] = useState(false);
 
   const supportClickHandle = () => {
-    setSupportCheck((prev) => !prev);
     setKickOffCheck(prev => !prev)
   };
   const kickOffClickHandle = () => {
-    setKickOffCheck((prev) => !prev);
+    setKickOffCheck(prev => !prev);
     setSupportCheck(prev => !prev)
   };
 

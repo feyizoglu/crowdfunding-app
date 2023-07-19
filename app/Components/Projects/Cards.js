@@ -8,7 +8,7 @@ const Cards = ({ projects }) => {
   };
 
   return (
-    <div className="projects-part container mx-auto place-content-center pb-20 px-12 grid gap-8 md:gap-6 xl:gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+    <div className="projects-part container mx-auto place-content-center pb-20 px-12 grid gap-8 md:gap-6 xl:gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {projects.map((project) => (
         <div
           key={project.id}
