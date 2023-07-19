@@ -1,0 +1,51 @@
+const placeholderDonations = [
+  {
+    id: 1,
+    projectId: 1,
+    donorName: "John Smith",
+    amount: 100,
+    avatar: "https://via.placeholder.com/150/D4EE25/0A0A0A?text=JS",
+    comment: "Great cause! Happy to contribute.",
+  },
+  {
+    id: 2,
+    projectId: 1,
+    donorName: "Jane Doe",
+    amount: 50,
+    avatar: "https://via.placeholder.com/150/D4EE25/0A0A0A?text=JD",
+    comment: "Wishing you all the best with the project.",
+  },
+  {
+    id: 3,
+    projectId: 1,
+    donorName: "Michael Johnson",
+    amount: 200,
+    avatar: "https://via.placeholder.com/150/D4EE25/0A0A0A?text=MJ",
+    comment: "Happy to support such a meaningful initiative.",
+  },
+  {
+    id: 4,
+    projectId: 1,
+    donorName: "Sarah Thompson",
+    amount: 150,
+    avatar: "https://via.placeholder.com/150/D4EE25/0A0A0A?text=ST",
+    comment: "For the love of animals!",
+  },
+  {
+    id: 5,
+    projectId: 1,
+    donorName: "David Wilson",
+    amount: 75,
+    avatar: "https://via.placeholder.com/150/D4EE25/0A0A0A?text=DW",
+    comment: "Inspired by your project. Keep up the good work.",
+  },
+  {
+    id: 6,
+    projectId: 1,
+    donorName: "Emily Davis",
+    amount: 120,
+    avatar: "https://via.placeholder.com/150/D4EE25/0A0A0A?text=ED",
+    comment: "This cause is close to my heart. Best of luck!",
+  },
+];
+export default placeholderDonations;
