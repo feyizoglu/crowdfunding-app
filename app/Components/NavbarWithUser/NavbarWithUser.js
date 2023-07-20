@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import InfoBox from '../InfoBox/InfoBox';
-import { setShowInfoBox, setShowKickOffBox } from '@/app/redux/features/authSlice';
+import { setShowInfoBox, setShowKickOffBox, setSearchInputVal } from '@/app/redux/features/authSlice';
 
 const style = {
   container: `relative flex items-center space-x-6`,
@@ -21,26 +22,42 @@ const style = {
 
 function NavbarWithUser() {
   const showInfoBox = useSelector((state) => state.auth.showInfoBox)
+  const user = useSelector(state => state.auth.user);
+  const projects = useSelector(state => state.auth.projects);
+  const profilPic = useSelector(state => state.auth.profilPic);
   const dispatch = useDispatch();
 
   const handleNewProjectClick = () => {
-    setTimeout(() => {
-      dispatch(setShowKickOffBox())
-    }, 1);
+    const isUserHaveProject = projects.find(project => project?.id === user?.id);
+    if (isUserHaveProject) {
+      let username = user?.email.split('@')[0];
+      toast.error(`Existing active project under ${username}. Wait or delete it before creating a new one.`, {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+    } else {
+      setTimeout(() => {
+        dispatch(setShowKickOffBox())
+      }, 1);
+    }
   }
 
   const handleInfoBoxClick = () => {
+    dispatch(setSearchInputVal(''))
     setTimeout(() => {
       dispatch(setShowInfoBox());
     }, 1)
   }
 
+  const handleLinkClicks = () => {
+    dispatch(setSearchInputVal(''))
+  }
+
   return (
     <div className={style.container}>
-      <Link className={style.headerLinks} href="/">
+      <Link onClick={handleLinkClicks} className={style.headerLinks} href="/">
         Home
       </Link>
-      <Link className={style.headerLinks} href="/projects">
+      <Link onClick={handleLinkClicks} className={style.headerLinks} href="/projects">
         Projects
       </Link>
       <button onClick={handleNewProjectClick} className={style.button}>
@@ -50,9 +67,9 @@ function NavbarWithUser() {
         <button onClick={handleInfoBoxClick}>
           <Image
             className={style.userImage}
-            src="/user.png"
-            width={45}
-            height={45}
+            src={profilPic ? profilPic : `https://via.placeholder.com/150/FF7F50/FFFFFF?text=${user.email[0].toUpperCase()}`}
+            width={50}
+            height={50}
             alt="Picture of the user"
           />
         </button>

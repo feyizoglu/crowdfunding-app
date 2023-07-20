@@ -42,7 +42,7 @@ const SignUp = () => {
         auth,
         data.email,
         data.password
-      )
+      );
       dispatch(setShowSignInBox());
       let userName = data.email.split('@')[0];
       toast.success(`Congratulations ${userName[0].toUpperCase() + userName.slice(1, userName.length)}! You have successfully logged in.`, {

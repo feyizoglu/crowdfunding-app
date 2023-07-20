@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
-import { setShowSignInBox } from '@/app/redux/features/authSlice';
+import { setShowSignInBox, setSearchInputVal } from '@/app/redux/features/authSlice';
 
 const style = {
   container: `flex items-center space-x-12`,
@@ -14,12 +14,16 @@ const style = {
 function DefaultNavbar() {
   const dispatch = useDispatch();
 
+  const handleLinkClicks = () => {
+    dispatch(setSearchInputVal(''))
+  }
+
   return (
     <div className={style.container}>
-      <Link className={style.headerLinks} href="/">
+      <Link onClick={handleLinkClicks} className={style.headerLinks} href="/">
         Home
       </Link>
-      <Link className={style.headerLinks} href="/projects">
+      <Link onClick={handleLinkClicks} className={style.headerLinks} href="/projects">
         Projects
       </Link>
       <Link href='/' onClick={() => {

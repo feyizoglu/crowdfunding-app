@@ -31,6 +31,7 @@ const projectOfTheWeek = () => {
                     width={500}
                     height={500}
                     alt="projectImage"
+                    priority
                   />
                 </div>
               </Link>
