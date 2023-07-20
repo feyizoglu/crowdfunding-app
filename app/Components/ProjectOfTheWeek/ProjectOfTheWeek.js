@@ -1,14 +1,23 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import projects from "../../data/projectData";
 
-const ProjectOfTheWeek = () => {
-  const moneyRaised = 2500;
-  const goalAmount = 3500;
+const projectOfTheWeek = () => {
+  let leastMoneyRaisedProject = projects[0];
+
+  for (let i = 1; i < projects.length; i++) {
+    if (projects[i].moneyRaised < leastMoneyRaisedProject.moneyRaised) {
+      leastMoneyRaisedProject = projects[i];
+    }
+  }
+
+  const { title, description, image, creator, category, goalAmount, moneyRaised, backers, endDate } = leastMoneyRaisedProject;
+
   const progressPercentage = (moneyRaised / goalAmount) * 100;
 
+  
   return (
-
     <div className='bg-whiteColor text-center md:text-start'>
       <div className="container mx-auto project-of-the-week grid place-content-center py-20 px-4 ">
         <div className='border-b border-blackColor pb-20'>
@@ -30,13 +39,14 @@ const ProjectOfTheWeek = () => {
             <div className="flex flex-col justify-between">
               <div className="mb-2">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2">
-                  Help us release cookbook for parents and kids.
+                  <Link href="#">
+                    {title}
+                  </Link>
                 </h1>
               </div>
               <div>
                 <p className="mb-2">
-                  We want to create a beautiful and helpful cookbook for parents
-                  and kids to have fun in the kitchen.
+                  {description}
                 </p>
               </div>
               <div className="progress-bar flex flex-col justify-between">
@@ -69,4 +79,5 @@ const ProjectOfTheWeek = () => {
   );
 };
 
-export default ProjectOfTheWeek;
+
+export default projectOfTheWeek;
