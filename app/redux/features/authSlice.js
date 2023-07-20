@@ -6,6 +6,9 @@ const initialState = {
   showInfoBox: false,
   showMobilNav: false,
   showKickOffBox: false,
+  projects: [],
+  profilPic: null,
+  searchInputVal: '',
 }
 
 const authSlice = createSlice({
@@ -29,10 +32,29 @@ const authSlice = createSlice({
     },
     setCloseMobileNav: (state, action) => {
       state.showMobilNav = action.payload;
+    },
+    setProjects: (state, action) => {
+      state.projects = action.payload;
+    },
+    setProfilPic: (state, action) => {
+      state.profilPic = action.payload;
+    },
+    setSearchInputVal: (state, action) => {
+      state.searchInputVal = action.payload;
     }
   }
 })
 
-export const { setShowSignInBox, setShowInfoBox, setShowMobilNav, setUser, setShowKickOffBox, setCloseMobileNav } = authSlice.actions
+export const {
+  setShowSignInBox,
+  setShowInfoBox,
+  setShowMobilNav,
+  setUser,
+  setShowKickOffBox,
+  setCloseMobileNav,
+  setProjects,
+  setProfilPic,
+  setSearchInputVal
+} = authSlice.actions;
 export default authSlice.reducer
 

@@ -1,8 +1,8 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
-import { setShowKickOffBox, closeKickOffBox } from "@/app/redux/features/authSlice";
+import { setShowKickOffBox } from "@/app/redux/features/authSlice";
 import { FaLessThan, FaUpload, FaCalendarAlt } from 'react-icons/fa';
 import { DateRange } from "react-date-range";
 import { addDays, format } from "date-fns";
@@ -11,12 +11,20 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 
+import { db, storage } from "@/app/firebase/firebase-confing";
+import { addDoc, collection } from "firebase/firestore";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+
 import { toast } from 'react-toastify';
 
 const schema = yup.object({
   title: yup.string().required(),
   goalAmount: yup.number().required(),
-  timeline: yup.array().of(yup.date()).min(2).required(),
+  timeline: yup
+    .array()
+    .of(yup.date().min(new Date(), "Please select a future date"))
+    .min(2, "Please select a start and end date")
+    .required("Please select a timeline"),
   category: yup.string().required(),
   description: yup.string().required(),
   image: yup
@@ -28,6 +36,8 @@ const schema = yup.object({
 
 const KickOffBox = () => {
   const [showDateBox, setShowDateBox] = useState(false);
+  const user = useSelector(state => state.auth.user);
+  const profilPic = useSelector(state => state.auth.profilPic);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,13 +53,35 @@ const KickOffBox = () => {
   const { register, handleSubmit, formState: { errors }, control, watch } = useForm({
     resolver: yupResolver(schema)
   });
-  const onSubmit = (data) => {
+
+  const onSubmit = async (data) => {
+    try {
+      const imgFile = data.image[0];
+      const storageRef = ref(storage, `project-img/${imgFile.name}`);
+      const snapshot = await uploadBytes(storageRef, imgFile);
+      const downloadURL = await getDownloadURL(snapshot.ref);
+
+      const formattedTimeline = data.timeline.map((date) =>
+        format(date, "dd/MM/yy")
+      );
+
+      await addDoc(collection(db, 'projects'), {
+        id: user.id,
+        ...data,
+        image: downloadURL,
+        profilPic: profilPic,
+        creator: user.email,
+        timeline: formattedTimeline,
+        moneyRaised: Math.floor(data.goalAmount * Math.random())
+      })
+    } catch (err) {
+      console.log(err.message);
+    }
     setShowDateBox(false)
     dispatch(setShowKickOffBox());
     toast.success('You have successfully created your project', {
       position: toast.POSITION.BOTTOM_RIGHT
     })
-    console.log(data)
   };
 
   const clickHandler = (e) => {
@@ -139,7 +171,7 @@ const KickOffBox = () => {
                     className={`bg-whiteColor placeholder-blackColor text-sm w-full p-2 border-b border-blackColor border-opacity-100 focus:outline-none cursor-pointer ${errors.timeline && `border-red-500 placeholder-red-500`}`}
                     readOnly
                   />
-                  <div onClick={() => setShowDateBox(prev => !prev)} className={`button-light z-0 ${errors.timeline && `bg-redColor text-red-500 border-red-500 hover:bg-redColor hover:text-red-500 hover:opacity-60`}`}>
+                  <div onClick={() => setShowDateBox(prev => !prev)} className={`button-light z-0 ${errors.timeline && `bg-redColor text-red-500 border-red-500 hover:bg-lightRedColor hover:text-red-500 hover:opacity-60`}`}>
                     <FaCalendarAlt />
                   </div>
                 </div>
@@ -172,7 +204,7 @@ const KickOffBox = () => {
                 </textarea>
               </div>
               <div className="text-center">
-                <label htmlFor="file-upload" className={`file-label button-light py-2.5 ${errors.image && `bg-redColor text-red-500 border-red-500 hover:bg-redColor hover:text-red-500 hover:opacity-60`}`}>
+                <label htmlFor="file-upload" className={`file-label button-light py-2.5 ${errors.image && `bg-redColor text-red-500 border-red-500 hover:bg-lightRedColor hover:text-red-500 hover:opacity-60`}`}>
                   <FaUpload size={20} />
                   <span className="ml-2">Add media</span>
                 </label>

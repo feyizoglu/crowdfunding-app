@@ -35,6 +35,7 @@ function InfoBox({ style }) {
   const signOutHandler = async () => {
     await signOut(auth);
     router.push('/');
+    dispatch(setShowInfoBox())
   }
 
   return (
@@ -43,11 +44,11 @@ function InfoBox({ style }) {
         <div className={`${style.userInfos}`}>
           <p className={style.infoBoxPTags} >
             <BiUser size={15} />
-            {user.split('@')[0]}
+            {user.email.split('@')[0]}
           </p>
           <p className={style.infoBoxPTags} >
             <HiOutlineMail size={15} />
-            {user}
+            {user.email}
           </p>
         </div>
         <div className={style.userFeatures}>
