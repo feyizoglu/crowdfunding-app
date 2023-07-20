@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import InfoBox from '../InfoBox/InfoBox';
-import { setShowInfoBox, setShowKickOffBox } from '@/app/redux/features/authSlice';
+import { setShowInfoBox, setShowKickOffBox, setSearchInputVal } from '@/app/redux/features/authSlice';
 
 const style = {
   container: `relative flex items-center space-x-6`,
@@ -42,17 +42,22 @@ function NavbarWithUser() {
   }
 
   const handleInfoBoxClick = () => {
+    dispatch(setSearchInputVal(''))
     setTimeout(() => {
       dispatch(setShowInfoBox());
     }, 1)
   }
 
+  const handleLinkClicks = () => {
+    dispatch(setSearchInputVal(''))
+  }
+
   return (
     <div className={style.container}>
-      <Link className={style.headerLinks} href="/">
+      <Link onClick={handleLinkClicks} className={style.headerLinks} href="/">
         Home
       </Link>
-      <Link className={style.headerLinks} href="/projects">
+      <Link onClick={handleLinkClicks} className={style.headerLinks} href="/projects">
         Projects
       </Link>
       <button onClick={handleNewProjectClick} className={style.button}>
@@ -62,7 +67,7 @@ function NavbarWithUser() {
         <button onClick={handleInfoBoxClick}>
           <Image
             className={style.userImage}
-            src={profilPic ? profilPic : '/user.png'}
+            src={profilPic ? profilPic : `https://via.placeholder.com/150/FF7F50/FFFFFF?text=${user.email[0].toUpperCase()}`}
             width={50}
             height={50}
             alt="Picture of the user"

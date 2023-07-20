@@ -2,17 +2,37 @@
 import Link from "next/link";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { setShowKickOffBox, setShowSignInBox } from "@/app/redux/features/authSlice";
+import { toast } from 'react-toastify';
 
 const StartToday = () => {
   const [supportCheck, setSupportCheck] = useState(true);
   const [kickOffCheck, setKickOffCheck] = useState(false);
+  const user = useSelector(state => state.auth.user);
+  const projects = useSelector(state => state.auth.projects);
+
+  const dispatch = useDispatch();
 
   const supportClickHandle = () => {
-    setKickOffCheck(prev => !prev)
+    setKickOffCheck(false);
   };
   const kickOffClickHandle = () => {
-    setKickOffCheck(prev => !prev);
-    setSupportCheck(prev => !prev)
+    setKickOffCheck(true);
+    setSupportCheck(false)
+    if (user?.email) {
+      const isUserHaveProject = projects.find(project => project.id == user.id);
+      if (isUserHaveProject) {
+        let username = user?.email.split('@')[0];
+        toast.error(`Existing active project under ${username}. Wait or delete it before creating a new one.`, {
+          position: toast.POSITION.BOTTOM_RIGHT
+        });
+      } else {
+        setTimeout(() => { dispatch(setShowKickOffBox()) }, 1)
+      }
+    } else {
+      setTimeout(() => { dispatch(setShowSignInBox()) }, 1)
+    }
   };
 
   return (
@@ -45,10 +65,9 @@ const StartToday = () => {
       </div>
       <div className="border-b border-black w-full "></div>
       <div className=" justify-center px-12 items-center md:px-0 md:ml-10 ">
-        <Link
+        <button
           onClick={kickOffClickHandle}
           className="flex items-center space-x-6"
-          href="/"
         >
           <div className="relative">
             <input
@@ -65,7 +84,7 @@ const StartToday = () => {
             <span className="text-4xl font-bold flex">Kick<span>-</span>off</span>
             <span className="text-2l font-semibold">my project</span>
           </div>
-        </Link>
+        </button>
       </div>
     </div>
   );

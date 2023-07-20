@@ -20,6 +20,9 @@ module.exports = {
       borderRadius: {
         needed: '0.375rem',
       },
+      height: {
+        'screen-70': 'calc(100vh - 70px)'
+      }
     },
   },
   plugins: [],

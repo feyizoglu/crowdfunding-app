@@ -37,7 +37,7 @@ const schema = yup.object({
 const KickOffBox = () => {
   const [showDateBox, setShowDateBox] = useState(false);
   const user = useSelector(state => state.auth.user);
-  const profilPic = useSelector( state => state.auth.profilPic);
+  const profilPic = useSelector(state => state.auth.profilPic);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -55,11 +55,6 @@ const KickOffBox = () => {
   });
 
   const onSubmit = async (data) => {
-    setShowDateBox(false)
-    dispatch(setShowKickOffBox());
-    toast.success('You have successfully created your project', {
-      position: toast.POSITION.BOTTOM_RIGHT
-    })
     try {
       const imgFile = data.image[0];
       const storageRef = ref(storage, `project-img/${imgFile.name}`);
@@ -82,6 +77,11 @@ const KickOffBox = () => {
     } catch (err) {
       console.log(err.message);
     }
+    setShowDateBox(false)
+    dispatch(setShowKickOffBox());
+    toast.success('You have successfully created your project', {
+      position: toast.POSITION.BOTTOM_RIGHT
+    })
   };
 
   const clickHandler = (e) => {
@@ -171,7 +171,7 @@ const KickOffBox = () => {
                     className={`bg-whiteColor placeholder-blackColor text-sm w-full p-2 border-b border-blackColor border-opacity-100 focus:outline-none cursor-pointer ${errors.timeline && `border-red-500 placeholder-red-500`}`}
                     readOnly
                   />
-                  <div onClick={() => setShowDateBox(prev => !prev)} className={`button-light z-0 ${errors.timeline && `bg-redColor text-red-500 border-red-500 hover:bg-redColor hover:text-red-500 hover:opacity-60`}`}>
+                  <div onClick={() => setShowDateBox(prev => !prev)} className={`button-light z-0 ${errors.timeline && `bg-redColor text-red-500 border-red-500 hover:bg-lightRedColor hover:text-red-500 hover:opacity-60`}`}>
                     <FaCalendarAlt />
                   </div>
                 </div>
@@ -204,7 +204,7 @@ const KickOffBox = () => {
                 </textarea>
               </div>
               <div className="text-center">
-                <label htmlFor="file-upload" className={`file-label button-light py-2.5 ${errors.image && `bg-redColor text-red-500 border-red-500 hover:bg-redColor hover:text-red-500 hover:opacity-60`}`}>
+                <label htmlFor="file-upload" className={`file-label button-light py-2.5 ${errors.image && `bg-redColor text-red-500 border-red-500 hover:bg-lightRedColor hover:text-red-500 hover:opacity-60`}`}>
                   <FaUpload size={20} />
                   <span className="ml-2">Add media</span>
                 </label>

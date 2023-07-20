@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux';
 const Page = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const projects = useSelector(state => state.auth.projects);
+  const searchInputVal = useSelector(state => state.auth.searchInputVal);
+  const showMobilNav = useSelector(state => state.auth.showMobilNav)
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -17,6 +19,17 @@ const Page = () => {
     ? projects
     : projects.filter((project) => project.category === selectedCategory);
 
+  if (searchInputVal) {
+    return (
+      <div className={`${showMobilNav && 'mt-[270px]'}`}>
+        <Categories
+          selectedCategory={selectedCategory}
+          handleCategoryChange={handleCategoryChange}
+        />
+        <Cards projects={filteredProjects} />
+      </div>
+    )
+  }
   return (
     <div className='bg-whiteColor'>
       <div className='mt-[70px]'>

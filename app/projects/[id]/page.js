@@ -17,13 +17,12 @@ function Page({ params }) {
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         setProject(docSnap.data());
-        console.log(docSnap.data().timeline[1])
       } else {
         console.log('no such doc!!')
       }
     }
     fetchData()
-  }, []);
+  }, [params]);
 
   const today = new Date();
   const endDate = parse(project?.timeline[1], 'dd/MM/yy', new Date());

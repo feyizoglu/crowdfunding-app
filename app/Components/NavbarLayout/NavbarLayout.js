@@ -53,7 +53,7 @@ export default function NavbarLayOut() {
       window.removeEventListener('scroll', changeBgColorOnScrolling)
       unsubscribeProfilePicture && unsubscribeProfilePicture();
     }
-  }, [user]);
+  }, [user, dispatch]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -76,10 +76,8 @@ export default function NavbarLayOut() {
     }
   };
 
-  const handleLinkClicks = () => {
-    setTimeout(() => {
-      dispatch(setShowMobilNav());
-    }, {})
+  const handleHamIconClick = () => {
+    dispatch(setShowMobilNav());
   }
 
   return (
@@ -92,7 +90,7 @@ export default function NavbarLayOut() {
         <nav className={style.nav}>
           {user?.email ? <NavbarWithUser /> : <DefaultNavbar />}
         </nav>
-        <section className={style.hamMenu} onClick={handleLinkClicks}>
+        <section className={style.hamMenu} onClick={handleHamIconClick}>
           <div className={`${styles.container} ${showMobilNav && styles.change}`}>
             <div className={styles.bar1}></div>
             <div className={styles.bar2}></div>

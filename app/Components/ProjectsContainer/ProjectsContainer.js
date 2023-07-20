@@ -24,7 +24,7 @@ function ProjectsContainer({ children }) {
     return () => {
       unsubscribe();
     };
-  }, [])
+  }, [dispatch])
 
   return children;
 }

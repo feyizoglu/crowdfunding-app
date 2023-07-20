@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import { setShowInfoBox, setShowKickOffBox, setShowMobilNav } from '@/app/redux/features/authSlice';
+import { setShowInfoBox, setShowKickOffBox, setShowMobilNav, setSearchInputVal } from '@/app/redux/features/authSlice';
 import NavbarSearchInput from '../NavbarSearchInput/NavbarSearchInput';
 import InfoBox from '../InfoBox/InfoBox';
 
@@ -46,6 +46,7 @@ function MobilNavbarWithUser({ bgColor }) {
   }
 
   const handleLinkClicks = () => {
+    dispatch(setSearchInputVal(''))
     dispatch(setShowMobilNav())
   }
 
@@ -59,9 +60,9 @@ function MobilNavbarWithUser({ bgColor }) {
     <div className={style.container}>
       <div className={style.userContainer}>
         <Image
-          className='rounded-full'
+          className='rounded-full cursor-pointer'
           onClick={handleInfoBoxClick}
-          src={profilPic ? profilPic : '/user.png'}
+          src={profilPic ? profilPic :  `https://via.placeholder.com/150/FF7F50/FFFFFF?text=${user.email[0].toUpperCase()}`}
           width={50}
           height={50}
           alt="Picture of the user"

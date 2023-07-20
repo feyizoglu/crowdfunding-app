@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
-import { setShowSignInBox, setShowMobilNav } from '@/app/redux/features/authSlice';
+import { setShowSignInBox, setShowMobilNav, setSearchInputVal } from '@/app/redux/features/authSlice';
 import { useRouter } from 'next/navigation';
 
 import NavbarSearchInput from '../NavbarSearchInput/NavbarSearchInput';
@@ -17,6 +17,11 @@ function MobilDefaultNavbar({ bgColor }) {
     }, 1);
   }
 
+  const hadnleLinkClicks = () => {
+    dispatch(setSearchInputVal(''));
+    dispatch(setShowMobilNav())
+  }
+
   const style = {
     container: `fixed left-1/2 -translate-x-1/2 top-[69px] bg-greenColor flex flex-col items-center w-full space-y-3 md:hidden py-3 z-50 ${bgColor && `bg-greenTransparent`}`,
     headerLinks: `font-medium hover:opacity-60`,
@@ -28,10 +33,10 @@ function MobilDefaultNavbar({ bgColor }) {
     <div className='container mx-auto'>
       <div className={style.container}>
         <NavbarSearchInput style={style} placeholder='Search for projects..' />
-        <Link onClick={() => dispatch(setShowMobilNav())} className={style.headerLinks} href="/">
+        <Link onClick={hadnleLinkClicks} className={style.headerLinks} href="/">
           Home
         </Link>
-        <Link onClick={() => dispatch(setShowMobilNav())} className={style.headerLinks} href="/projects">
+        <Link onClick={hadnleLinkClicks} className={style.headerLinks} href="/projects">
           Projects
         </Link>
         <button

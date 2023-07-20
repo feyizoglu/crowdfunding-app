@@ -8,6 +8,7 @@ const initialState = {
   showKickOffBox: false,
   projects: [],
   profilPic: null,
+  searchInputVal: '',
 }
 
 const authSlice = createSlice({
@@ -37,6 +38,9 @@ const authSlice = createSlice({
     },
     setProfilPic: (state, action) => {
       state.profilPic = action.payload;
+    },
+    setSearchInputVal: (state, action) => {
+      state.searchInputVal = action.payload;
     }
   }
 })
@@ -49,7 +53,8 @@ export const {
   setShowKickOffBox,
   setCloseMobileNav,
   setProjects,
-  setProfilPic
+  setProfilPic,
+  setSearchInputVal
 } = authSlice.actions;
 export default authSlice.reducer
 
