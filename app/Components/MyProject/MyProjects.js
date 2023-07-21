@@ -1,20 +1,34 @@
 'use client'
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setShowConfirmationBox } from '@/app/redux/features/authSlice';
 
+import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
 import MyProjectDetails from "../MyProjectDetail/MyProjectsDetail";
 import MyProjectsTransaction from "../MyProjectTransaction/MyProjectsTransaction";
 import MyProjectsStatistics from "../MyProjectStatistics/MyProjectsStatistics";
 
 const MyProjects = () => {
-  const [matchedProject, setMatchedProject] = useState([])
+  const [matchedProject, setMatchedProject] = useState([]);
   const projects = useSelector(state => state.auth.projects);
   const user = useSelector(state => state.auth.user);
+  const showConfirmationBox = useSelector(state => state.auth.showConfirmationBox);
+
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
     const filterForMatch = projects.filter(project => project.id === user.id);
     setMatchedProject(filterForMatch)
   }, [projects, user])
+
+
+  const handleDeleteClicks = () => {
+    setTimeout(() => {
+      dispatch(setShowConfirmationBox())
+    }, 1);
+  }
 
   return (
     <>
@@ -49,6 +63,10 @@ const MyProjects = () => {
             </div>
           </div>
           <div className="lg:w-2/5">
+            <button onClick={handleDeleteClicks} className='button-dark'>delete</button>
+            {showConfirmationBox && (
+              <ConfirmationBox project={matchedProject[0]} user={user} />
+            )}
             <MyProjectsTransaction project={matchedProject[0]} />
             <MyProjectsStatistics project={matchedProject[0]} />
           </div>

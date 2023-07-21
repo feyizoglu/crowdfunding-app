@@ -15,7 +15,7 @@ function MobilNavbarWithUser({ bgColor }) {
   const profilPic = useSelector(state => state.auth.profilPic)
   const dispatch = useDispatch();
 
-  const isUserHaveProject = projects.find(project => project.id === user.id)
+  const isUserHaveProject = projects.some(project => project.id === user.id)
 
   const style = {
     container: `fixed top-[69px] left-1/2 -translate-x-1/2 w-full bg-greenColor flex flex-col space-y-3 py-5 items-center md:hidden z-50 ${bgColor && `bg-greenTransparent`}`,
@@ -34,10 +34,16 @@ function MobilNavbarWithUser({ bgColor }) {
   }
 
   const handleNewProjectClick = () => {
-    dispatch(setShowMobilNav())
-    setTimeout(() => {
-      dispatch(setShowKickOffBox())
-    }, 1)
+    if (isUserHaveProject) {
+      toast.error(`Existing active project under ${user?.email}. Wait or delete it before creating a new one.`, {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+    } else {
+      dispatch(setShowMobilNav())
+      setTimeout(() => {
+        dispatch(setShowKickOffBox())
+      }, 1)
+    }
   }
 
   const handleLinkClicks = () => {
@@ -57,7 +63,7 @@ function MobilNavbarWithUser({ bgColor }) {
         <Image
           className='rounded-full cursor-pointer'
           onClick={handleInfoBoxClick}
-          src={profilPic ? profilPic : `https://via.placeholder.com/150/FF7F50/FFFFFF?text=${user.email[0].toUpperCase()}`}
+          src={profilPic ? profilPic : `https://via.placeholder.com/150/0A0A0A/FAFAFA?text=${user.email[0].toUpperCase()}`}
           width={50}
           height={50}
           alt="Picture of the user"
@@ -71,9 +77,10 @@ function MobilNavbarWithUser({ bgColor }) {
       <Link onClick={handleLinkClicks} className={style.headerLinks} href="/projects">
         Projects
       </Link>
-      {!isUserHaveProject && <button onClick={handleNewProjectClick} className={style.button}>
-        New Project
-      </button>}
+      {!isUserHaveProject &&
+        <button onClick={handleNewProjectClick} className={style.button}>
+          New Project
+        </button>}
     </div>
   );
 }

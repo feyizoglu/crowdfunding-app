@@ -61,7 +61,6 @@ export default function NavbarLayOut() {
         email: currentUser?.email,
         id: currentUser?.uid
       }));
-
     });
     return () => {
       unsubscribe();

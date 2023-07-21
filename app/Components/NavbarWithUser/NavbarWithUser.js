@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import InfoBox from '../InfoBox/InfoBox';
 import { setShowInfoBox, setShowKickOffBox, setSearchInputVal } from '@/app/redux/features/authSlice';
@@ -21,18 +23,38 @@ const style = {
 }
 
 function NavbarWithUser() {
+  const [isUserHaveProject, setIsUserHaveProject] = useState(false);
   const showInfoBox = useSelector((state) => state.auth.showInfoBox)
   const user = useSelector(state => state.auth.user);
   const projects = useSelector(state => state.auth.projects);
   const profilPic = useSelector(state => state.auth.profilPic);
   const dispatch = useDispatch();
 
-  const isUserHaveProject = projects.find(project => project?.id === user?.id);
+  useEffect(() => {
+    setIsUserHaveProject(projects.some(project => project.id === user.id));
+  }, [projects, user])
+
+  useEffect(() => {
+    const getStoredItem = localStorage.getItem('isUserHaveProject');
+    if(getStoredItem !== false){
+      setIsUserHaveProject(getStoredItem === 'true')
+    }
+  },[])
+
+  useEffect(() => {
+    localStorage.setItem('isUserHaveProject', isUserHaveProject)
+  }, [isUserHaveProject])
 
   const handleNewProjectClick = () => {
-    setTimeout(() => {
-      dispatch(setShowKickOffBox())
-    }, 1);
+    if (isUserHaveProject) {
+      toast.error(`Existing active project under ${user?.email}. Wait or delete it before creating a new one.`, {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+    } else {
+      setTimeout(() => {
+        dispatch(setShowKickOffBox())
+      }, 1);
+    }
   }
 
   const handleInfoBoxClick = () => {
