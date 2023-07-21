@@ -15,6 +15,8 @@ function MobilNavbarWithUser({ bgColor }) {
   const profilPic = useSelector(state => state.auth.profilPic)
   const dispatch = useDispatch();
 
+  const isUserHaveProject = projects.find(project => project.id === user.id)
+
   const style = {
     container: `fixed top-[69px] left-1/2 -translate-x-1/2 w-full bg-greenColor flex flex-col space-y-3 py-5 items-center md:hidden z-50 ${bgColor && `bg-greenTransparent`}`,
     headerLinks: `font-medium hover:opacity-60`,
@@ -24,7 +26,8 @@ function MobilNavbarWithUser({ bgColor }) {
     headerInput: `rounded-needed outline-0 py-1 px-2`,
     InfoBoxContainer: `flex flex-col mt-3 py-2 px-6 rounded-md bg-grayishColor text-blackColor text-[12px] shadow-lg`,
     infoBoxLinks: `flex items-center gap-1 font-medium hover:opacity-60`,
-    infoBoxPTags: `flex items-center gap-1 font-medium cursor-default `,
+    infoBoxUserName: `flex items-center gap-1 font-medium cursor-default capitalize `,
+    infoBoxEmail: `flex items-center gap-1 font-medium cursor-default `,
     userInfos: `flex flex-col items-start py-2 px-1 border-b border-blackColor space-y-2`,
     userFeatures: `flex flex-col items-start  px-1 py-2 space-y-2`,
     infoBoxPointer: `absolute top-3 left-1/2 -translate-x-1`,
@@ -32,17 +35,9 @@ function MobilNavbarWithUser({ bgColor }) {
 
   const handleNewProjectClick = () => {
     dispatch(setShowMobilNav())
-    const isUserHaveProject = projects.find(project => project.id === user.id)
-    if (isUserHaveProject) {
-      let username = user?.email.split('@')[0];
-      toast.error(`Existing active project under ${username}. Wait or delete it before creating a new one.`, {
-        position: toast.POSITION.BOTTOM_RIGHT
-      });
-    } else {
-      setTimeout(() => {
-        dispatch(setShowKickOffBox())
-      }, 1)
-    }
+    setTimeout(() => {
+      dispatch(setShowKickOffBox())
+    }, 1)
   }
 
   const handleLinkClicks = () => {
@@ -62,7 +57,7 @@ function MobilNavbarWithUser({ bgColor }) {
         <Image
           className='rounded-full cursor-pointer'
           onClick={handleInfoBoxClick}
-          src={profilPic ? profilPic :  `https://via.placeholder.com/150/FF7F50/FFFFFF?text=${user.email[0].toUpperCase()}`}
+          src={profilPic ? profilPic : `https://via.placeholder.com/150/FF7F50/FFFFFF?text=${user.email[0].toUpperCase()}`}
           width={50}
           height={50}
           alt="Picture of the user"
@@ -76,9 +71,9 @@ function MobilNavbarWithUser({ bgColor }) {
       <Link onClick={handleLinkClicks} className={style.headerLinks} href="/projects">
         Projects
       </Link>
-      <button onClick={handleNewProjectClick} className={style.button}>
+      {!isUserHaveProject && <button onClick={handleNewProjectClick} className={style.button}>
         New Project
-      </button>
+      </button>}
     </div>
   );
 }

@@ -5,7 +5,8 @@ import { signOut } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import { useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setShowInfoBox } from '@/app/redux/features/authSlice';
+import { setShowInfoBox, setShowMobilNav } from '@/app/redux/features/authSlice';
+import { toast } from 'react-toastify';
 
 import { BiUser, BiUserX } from 'react-icons/bi'
 import { HiOutlineMail } from 'react-icons/hi'
@@ -13,6 +14,7 @@ import { RiProfileLine } from 'react-icons/ri'
 
 function InfoBox({ style }) {
   const user = useSelector(state => state.auth.user);
+  const projects = useSelector(state => state.auth.projects);
   const router = useRouter();
 
   const dispatch = useDispatch();
@@ -38,24 +40,39 @@ function InfoBox({ style }) {
     dispatch(setShowInfoBox())
   }
 
+  const viewProjectClickHandler = () => {
+    let isUserHaveProject = projects.find(project => project.id === user.id);
+    if (isUserHaveProject) {
+      dispatch(setShowInfoBox());
+      dispatch(setShowMobilNav());
+      router.push('/myproject')
+    } else {
+      toast.error(`Oops! You don't have any projects yet.
+      Please create a project first to access the 'My Project' page.
+      Click 'New Project' to create a new project.`, {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+    }
+  }
+
   return (
     <div className='relative'>
       <section ref={infoRef} className={style.InfoBoxContainer}>
         <div className={`${style.userInfos}`}>
-          <p className={style.infoBoxPTags} >
+          <p className={style.infoBoxUserName} >
             <BiUser size={15} />
             {user.email.split('@')[0]}
           </p>
-          <p className={style.infoBoxPTags} >
+          <p className={style.infoBoxEmail} >
             <HiOutlineMail size={15} />
             {user.email}
           </p>
         </div>
         <div className={style.userFeatures}>
-          <Link className={`${style.infoBoxLinks}`} href="#" >
+          <button onClick={viewProjectClickHandler} className={`${style.infoBoxLinks}`} >
             <RiProfileLine size={15} />
             View your project
-          </Link>
+          </button>
           <button onClick={signOutHandler} className={style.infoBoxLinks}>
             <BiUserX size={15} />
             Sign out

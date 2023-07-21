@@ -36,6 +36,7 @@ const schema = yup.object({
 
 const KickOffBox = () => {
   const [showDateBox, setShowDateBox] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false)
   const user = useSelector(state => state.auth.user);
   const profilPic = useSelector(state => state.auth.profilPic);
   const dispatch = useDispatch();
@@ -56,6 +57,7 @@ const KickOffBox = () => {
 
   const onSubmit = async (data) => {
     try {
+      setIsDisabled(true)
       const imgFile = data.image[0];
       const storageRef = ref(storage, `project-img/${imgFile.name}`);
       const snapshot = await uploadBytes(storageRef, imgFile);
@@ -74,8 +76,12 @@ const KickOffBox = () => {
         timeline: formattedTimeline,
         moneyRaised: Math.floor(data.goalAmount * Math.random())
       })
+
+
     } catch (err) {
       console.log(err.message);
+    } finally {
+      setIsDisabled(false)
     }
     setShowDateBox(false)
     dispatch(setShowKickOffBox());
@@ -218,7 +224,7 @@ const KickOffBox = () => {
             </div>
           </div>
           <div className="w-full">
-            <button type="submit" className="button-dark w-full">Upload project</button>
+            <button type="submit" className={`button-dark w-full ${isDisabled && `opacity-70`}`} disabled={isDisabled}>Upload project</button>
           </div>
         </form>
       </div>

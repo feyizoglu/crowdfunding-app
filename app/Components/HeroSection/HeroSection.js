@@ -28,6 +28,7 @@ const HeroSection = () => {
             height={1200}
             width={1200}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            priority
           />
         </div>
       </div>

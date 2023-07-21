@@ -15,7 +15,7 @@ const StartToday = () => {
   const dispatch = useDispatch();
 
   const supportClickHandle = () => {
-    setKickOffCheck(false);
+    setKickOffCheck(prev => !prev);
   };
   const kickOffClickHandle = () => {
     setKickOffCheck(true);
@@ -23,8 +23,7 @@ const StartToday = () => {
     if (user?.email) {
       const isUserHaveProject = projects.find(project => project.id == user.id);
       if (isUserHaveProject) {
-        let username = user?.email.split('@')[0];
-        toast.error(`Existing active project under ${username}. Wait or delete it before creating a new one.`, {
+        toast.error(`Existing active project under ${user?.email}. Wait or delete it before creating a new one.`, {
           position: toast.POSITION.BOTTOM_RIGHT
         });
       } else {

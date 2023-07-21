@@ -1,21 +1,38 @@
-import React from "react";
+import Image from "next/image";
 
 const MyProjectsStatisticsDetails = ({ project }) => {
   return (
-    <div className="w-full mx-auto bg-gradient-to-r from-whiteColor to-grayishColor text-blackColor p-5 rounded-md shadow-lg mt-5 flex items-center space-x-1.5 md:w-2/3 lg:w-full">
-      <div className="font-semibold">
-        <p>Creator :</p>
-        <p>Backers :</p>
-        <p>Project End Date :</p>
-        <p>Project Category :</p>
-      </div>
-      <div className="text-center">
-        <p>{project.creator}</p>
-        <p>{project.backers}</p>
-        <p className="bg-redColor rounded-xl">{project.endDate}</p>
-        <p>{project.category}</p>
-      </div>
-    </div>
+    <table className="w-full mx-auto bg-gradient-to-r from-whiteColor to-grayishColor text-blackColor rounded-md shadow-lg mt-5 md:w-2/3 lg:w-full">
+      <tbody className="text-center">
+        <tr>
+          <td className="font-semibold ">Creator:</td>
+          <td>
+            <div className="flex items-center justify-center space-x-2">
+              <Image
+                className="rounded-full mt-1"
+                src={project.profilPic}
+                width={30}
+                height={30}
+                alt="profil picture"
+              />
+              <p className="capitalize">{project.creator.split('@')[0]}</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td className="font-semibold">End Date:</td>
+          <td>
+            <p className="bg-redColor rounded-xl">{project.timeline[1]}</p>
+          </td>
+        </tr>
+        <tr>
+          <td className="font-semibold">Category:</td>
+          <td>
+            <p className="capitalize">{project.category}</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 };
 

@@ -24,7 +24,7 @@ const Cards = ({ projects }) => {
         searchedProjects.map((project) => (
           <div
             key={project.id}
-            className="w-full bg-whiteColor border border-grayishColor rounded-lg shadow "
+            className="w-full bg-whiteColor border border-grayishColor rounded-lg shadow ease-in duration-200 hover:scale-105"
           >
             <div className="img-container flex flex-col justify-center items-center bg-grayishColor rounded-lg border-0">
               <Link href={`/projects/${project.docId}`}>

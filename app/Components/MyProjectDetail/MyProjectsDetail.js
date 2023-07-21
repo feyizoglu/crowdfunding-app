@@ -8,18 +8,20 @@ const MyProjectDetails = ({ project }) => {
         My Project
       </h1>
       <h2 className="text-blackColor text-xl text-center font-bold md:text-left">
-        {project.title}
+        {project?.title}
       </h2>
       <div className="flex items-center justify-center ">
         <Image
-          src={project.image}
-          alt={project.title}
+          className="rounded-lg"
+          src={project?.image ? project?.image : `https://placehold.co/600x400/D4EE25/FAFAFA.png`}
+          alt='project image'
           width={500}
           height={500}
+          priority
         />
       </div>
-      <p className="text-blackColor font-semibold text-center text-xl md:text-left md:text-xl lg:text-[32px]">
-        {project.description}
+      <p className="text-blackColor font-semibold text-center  md:text-left ">
+        {project?.description}
       </p>
     </div>
   );
