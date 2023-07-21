@@ -2,13 +2,17 @@ import React from "react";
 import Image from "next/image";
 import testimonials from "@/app/data/testimonials";
 
+const style = {
+  card: `flex flex-col justify-center items-center bg-grayishColor h-64 w-96 text-center relative mb-20 px-5 rounded-lg transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300`,
+};
+
 function Testimonial({ id }) {
   const testimonialData = testimonials.find(
     (testimonial) => testimonial.id === id
   );
 
   return (
-    <div className="flex flex-col justify-center items-center bg-grayishColor h-64 w-96 text-center relative mb-20 px-5 rounded-lg hover:scale-125">
+    <div className={style.card}>
       <Image
         src={testimonialData.image}
         width={96}
