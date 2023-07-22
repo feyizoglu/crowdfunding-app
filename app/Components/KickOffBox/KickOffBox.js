@@ -93,7 +93,6 @@ const KickOffBox = () => {
       setIsDisabled(false)
     }
     setShowDateBox(false)
-    dispatch(setShowKickOffBox());
     toast.success('You have successfully created your project', {
       position: toast.POSITION.BOTTOM_RIGHT
     })
