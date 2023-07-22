@@ -2,7 +2,7 @@
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setShowConfirmationBox } from '@/app/redux/features/authSlice';
+
 
 import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
 import MyProjectDetails from "../MyProjectDetail/MyProjectsDetail";
@@ -14,9 +14,7 @@ const MyProjects = () => {
   const projects = useSelector(state => state.auth.projects);
   const user = useSelector(state => state.auth.user);
   const showConfirmationBox = useSelector(state => state.auth.showConfirmationBox);
-
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     const filterForMatch = projects.filter(project => project.id === user.id);
@@ -24,16 +22,12 @@ const MyProjects = () => {
   }, [projects, user])
 
 
-  const handleDeleteClicks = () => {
-    setTimeout(() => {
-      dispatch(setShowConfirmationBox())
-    }, 1);
-  }
+  
 
   return (
     <>
       <div className="bg-whiteColor">
-        <div className="container min-h-screen mx-auto w-4/5 pt-[calc(70px+5rem)] pb-10 px-4 space-y-10 flex flex-col lg:flex-row lg:space-x-24 md:space-y-0 md:w-full">
+        <div className="container min-h-screen mx-auto w-4/5 pt-[calc(70px+2rem)] pb-10 px-4 space-y-10 flex flex-col lg:flex-row lg:space-x-24 md:space-y-0 md:w-full">
           <div className="space-y-10 lg:w-3/5">
             <MyProjectDetails project={matchedProject[0]} />
             <div className="progress-bar flex flex-col justify-between">
@@ -59,11 +53,13 @@ const MyProjects = () => {
                     ${matchedProject[0]?.goalAmount}
                   </p>
                 </div>
+                
               </div>
+              
             </div>
+            
           </div>
           <div className="lg:w-2/5">
-            <button onClick={handleDeleteClicks} className='button-dark'>delete</button>
             {showConfirmationBox && (
               <ConfirmationBox project={matchedProject[0]} user={user} />
             )}

@@ -4,6 +4,7 @@ import { setShowConfirmationBox } from "@/app/redux/features/authSlice";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "@/app/firebase/firebase-confing";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 function ConfirmationBox({ project, user }) {
   const dispatch = useDispatch();
@@ -31,13 +32,17 @@ function ConfirmationBox({ project, user }) {
 
   const handleDeleteClicks = async () => {
     push('/')
-    await deleteDoc(doc(db, 'projects', project.docId));
+    await deleteDoc(doc(db, 'projects', project.docId));  
+    dispatch(setShowConfirmationBox())
+    toast.success('You have successfully deleted your project', {
+      position: toast.POSITION.BOTTOM_RIGHT
+    })
   }
 
   return (
-    <div className='h-screen bg-blackColor w-screen fixed top-0 left-0 bg-opacity-70 grid place-content-center text-center'>
+    <div className='bg-opacity-70 w-screen h-screen fixed top-0 left-0 grid place-content-center z-50 bg-blackColor text-center'>
       <div ref={containerRef} className='bg-whiteColor p-10 rounded-lg shadow-xl flex flex-col space-y-3'>
-        <h1 className='text-lg font-semibold'>Just to confirm, are you certain you want to delete this project?</h1>
+        <h1 className='text-lg font-semibold'>Just to confirm, <br /> are you certain you want to delete this project?</h1>
         <div className='flex items-center justify-center space-x-3'>
           <button onClick={handleDeleteClicks} className='button-green'>Yes</button>
           <button onClick={handleNoClicks} className='button-green'>No</button>

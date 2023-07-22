@@ -1,11 +1,13 @@
 'use client'
 import { useEffect } from 'react';
-import { collection, onSnapshot, query, where } from 'firebase/firestore';
+import { collection, deleteDoc, doc, onSnapshot, query } from 'firebase/firestore';
 import { setProjects } from '@/app/redux/features/authSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { db } from '@/app/firebase/firebase-confing';
+import format from 'date-fns/format';
 
 function ProjectsContainer({ children }) {
+  const projects = useSelector(state => state.auth.projects);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,12 +21,28 @@ function ProjectsContainer({ children }) {
         };
       });
       dispatch(setProjects(projectsArr));
-    })
 
+      const currentDate = format(new Date(), 'dd/MM/yy');
+      const deletionPromises = projectsArr
+        .filter((project) => project.timeline[1] < currentDate)
+        .map(async (project) => {
+          await deleteDoc(doc(db, 'projects', project.docId));
+        });
+
+      Promise.all(deletionPromises)
+        .then(() => {
+          console.log('All passed due date projects have been deleted.');
+        })
+        .catch((error) => {
+          console.error('Error deleting projects:', error);
+        });
+    });
     return () => {
       unsubscribe();
     };
   }, [dispatch])
+
+
 
   return children;
 }

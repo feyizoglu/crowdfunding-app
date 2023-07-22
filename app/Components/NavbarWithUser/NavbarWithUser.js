@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import InfoBox from '../InfoBox/InfoBox';
-import { setShowInfoBox, setShowKickOffBox, setSearchInputVal } from '@/app/redux/features/authSlice';
+import { setShowInfoBox, setShowKickOffBox, setSearchInputVal, setCloseKickOffBox } from '@/app/redux/features/authSlice';
 
 const style = {
   container: `relative flex items-center space-x-6`,
@@ -35,15 +35,10 @@ function NavbarWithUser() {
   }, [projects, user])
 
   useEffect(() => {
-    const getStoredItem = localStorage.getItem('isUserHaveProject');
-    if(getStoredItem !== false){
-      setIsUserHaveProject(getStoredItem === 'true')
+    if (isUserHaveProject) {
+      dispatch(setCloseKickOffBox(false))
     }
-  },[])
-
-  useEffect(() => {
-    localStorage.setItem('isUserHaveProject', isUserHaveProject)
-  }, [isUserHaveProject])
+  }, [isUserHaveProject, dispatch])
 
   const handleNewProjectClick = () => {
     if (isUserHaveProject) {

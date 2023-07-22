@@ -31,6 +31,9 @@ const authSlice = createSlice({
     setShowKickOffBox: (state) => {
       state.showKickOffBox = !state.showKickOffBox;
     },
+    setCloseKickOffBox: (state, action) => {
+      state.showKickOffBox = action.payload
+    },
     setCloseMobileNav: (state, action) => {
       state.showMobilNav = action.payload;
     },
@@ -59,7 +62,8 @@ export const {
   setProjects,
   setProfilPic,
   setSearchInputVal,
-  setShowConfirmationBox
+  setShowConfirmationBox,
+  setCloseKickOffBox
 } = authSlice.actions;
 export default authSlice.reducer
 

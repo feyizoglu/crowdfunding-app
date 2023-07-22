@@ -28,12 +28,12 @@ const Cards = ({ projects }) => {
           >
             <div className="img-container flex flex-col justify-center items-center bg-grayishColor rounded-lg border-0">
               <Link href={`/projects/${project.docId}`}>
-                <div className="image-wrapper flex justify-center items-center ">
+                <div className="image-wrapper flex justify-center items-center  ">
                   <Image
                     alt={project.title}
                     src={project.image}
-                    width={500}
-                    height={500}
+                    width={400}
+                    height={400}
                     className="rounded-lg"
                   />
                 </div>
@@ -79,3 +79,4 @@ const Cards = ({ projects }) => {
 };
 
 export default Cards;
+
