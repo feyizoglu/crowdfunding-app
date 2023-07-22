@@ -11,7 +11,7 @@ function Testimonials() {
             Testimonials
           </h1>
         </div>
-        <div className="flex flex-col md:flex-row md:flex-wrap items-center md:justify-between ">
+        <div className="grid grid-cols-1 place-items-center text-center gap-10 md:grid-cols-2 lg:grid-cols-3 ">
           {testimonials.map((testimonial) => (
             <Testimonial key={testimonial.id} id={testimonial.id} />
           ))}
