@@ -6,6 +6,7 @@ import { ReduxProvider } from './redux/provider'
 import { ToastContainer } from 'react-toastify';
 import ProjectsContainer from './Components/ProjectsContainer/ProjectsContainer';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from './Components/Footer/Footer';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,9 +23,7 @@ export default function RootLayout({ children }) {
           <ProjectsContainer>
             <NavbarLayOut />
             {children}
-            <div className="h-[300px] grid place-content-center bg-greenColor">
-              Footer section will be here!
-            </div>
+            <Footer />
             <ToastContainer />
           </ProjectsContainer>
         </ReduxProvider>
