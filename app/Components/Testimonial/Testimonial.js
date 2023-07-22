@@ -3,7 +3,7 @@ import Image from "next/image";
 import testimonials from "@/app/data/testimonials";
 
 const style = {
-  card: `flex flex-col justify-center items-center bg-grayishColor max-w-xs text-sm text-center h-80 px-3 relative mb-20  rounded-lg transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300 sm:text-lg`,
+  card: `flex flex-col justify-center items-center bg-grayishColor max-w-xs text-sm text-center h-80 px-3 relative mb-20  rounded-lg transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300 sm:text-lg lg:h-96 xl:h-80`,
 };
 
 function Testimonial({ id }) {
