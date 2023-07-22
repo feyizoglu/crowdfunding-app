@@ -29,13 +29,7 @@ function ProjectsContainer({ children }) {
           await deleteDoc(doc(db, 'projects', project.docId));
         });
 
-      Promise.all(deletionPromises)
-        .then(() => {
-          console.log('All passed due date projects have been deleted.');
-        })
-        .catch((error) => {
-          console.error('Error deleting projects:', error);
-        });
+      Promise.all(deletionPromises);
     });
     return () => {
       unsubscribe();
