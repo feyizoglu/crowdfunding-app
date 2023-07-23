@@ -16,10 +16,10 @@ const projectOfTheWeek = () => {
 
   const progressPercentage = (moneyRaised / goalAmount) * 100;
 
-  
+
   return (
     <div className='bg-whiteColor text-center md:text-start'>
-      <div className="container mx-auto project-of-the-week py-20 px-4 ">
+      <div className="project-of-the-week container mx-auto py-20 px-4">
         <div className='border-b border-blackColor pb-20'>
           <h1 className="project-of-the-week__title text-4xl sm:text-5xl md:text-6xl font-bold mb-4 pb-10 ">Project of the Week</h1>
           <div className="project-of-the-week__content grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 ">

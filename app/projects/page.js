@@ -32,7 +32,7 @@ const Page = () => {
   }
   return (
     <div className='bg-whiteColor'>
-      <div className='mt-[70px]'>
+      <div className='pt-[70px]'>
         <ProjectOfTheWeek />
       </div>
       <div>
