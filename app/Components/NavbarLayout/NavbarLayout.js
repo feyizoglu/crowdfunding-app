@@ -28,11 +28,29 @@ const style = {
 
 export default function NavbarLayOut() {
   const [bgColor, setBgColor] = useState(false);
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const showMobilNav = useSelector(state => state.auth.showMobilNav);
   const showSignInBox = useSelector(state => state.auth.showSignInBox);
   const showKickOffBox = useSelector(state => state.auth.showKickOffBox);
   const user = useSelector(state => state.auth.user);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setInnerWidth(window.innerWidth);
+    }
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
+  useEffect(() => {
+    console.log(innerWidth)
+    if(innerWidth >= 768 ){
+      dispatch(setCloseMobileNav(false))
+    }
+  }, [innerWidth, dispatch])
 
   useEffect(() => {
     window.addEventListener('scroll', changeBgColorOnScrolling);
