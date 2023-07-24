@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebook, faTwitter,} from '@fortawesome/free-brands-svg-icons';
 import { faCopyright } from '@fortawesome/free-regular-svg-icons';
+import Image from 'next/image';
 
 
 function Footer() {
@@ -40,11 +41,13 @@ function Footer() {
                             <div>
                                 {projects.slice(0, 2).map(project => (
                                 <div key={project.key} className="flex items-center mb-4">
-                                    <img
+                                    <Image
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-16 h-16 object-cover"
-                                    />
+                                    width={75}
+                                    height={75}
+                                    className="rounded-lg shadow-lg object-cover"
+                                    />                                    
                                     <h3 className="font-semibold ml-2">{project.title}</h3>
                                 </div>
                                 ))}
