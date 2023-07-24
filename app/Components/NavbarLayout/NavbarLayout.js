@@ -28,7 +28,7 @@ const style = {
 
 export default function NavbarLayOut() {
   const [bgColor, setBgColor] = useState(false);
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+  const [innerWidth, setInnerWidth] = useState(0);
   const showMobilNav = useSelector(state => state.auth.showMobilNav);
   const showSignInBox = useSelector(state => state.auth.showSignInBox);
   const showKickOffBox = useSelector(state => state.auth.showKickOffBox);
@@ -38,19 +38,25 @@ export default function NavbarLayOut() {
   useEffect(() => {
     const handleResize = () => {
       setInnerWidth(window.innerWidth);
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
     }
-    window.addEventListener('resize', handleResize)
+
     return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize);
+      }
+    };
+  }, []);
 
   useEffect(() => {
-    console.log(innerWidth)
-    if(innerWidth >= 768 ){
-      dispatch(setCloseMobileNav(false))
+    if (typeof window !== 'undefined' && innerWidth >= 768) {
+      dispatch(setCloseMobileNav(false));
     }
-  }, [innerWidth, dispatch])
+  }, [innerWidth, dispatch]);
+
 
   useEffect(() => {
     window.addEventListener('scroll', changeBgColorOnScrolling);
