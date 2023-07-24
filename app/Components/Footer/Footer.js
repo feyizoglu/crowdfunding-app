@@ -38,15 +38,15 @@ function Footer() {
                                 Projects
                             </h1>
                             <div>
-                                {projects.slice(0, 2).map(project => (
+                                 {projects.slice(0, 2).map((project) => (
                                 <div key={project.key} className="flex items-center mb-4">
                                     <Image
                                     src={project.image}
                                     alt={project.title}
                                     width={75}
                                     height={75}
-                                    className="rounded-lg shadow-lg object-cover"
-                                    />                                    
+                                    className="rounded-lg shadow-lg"
+                                    />
                                     <h3 className="font-semibold ml-2">{project.title}</h3>
                                 </div>
                                 ))}
