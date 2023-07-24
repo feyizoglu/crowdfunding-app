@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useEffect, useState } from "react";
 import { db } from "@/app/firebase/firebase-confing";
 import { doc, getDoc } from "firebase/firestore";
@@ -13,23 +13,31 @@ function Page({ params }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const docRef = doc(db, 'projects', params.id);
+      const docRef = doc(db, "projects", params.id);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         setProject(docSnap.data());
       } else {
-        console.log('no such doc!!')
+        console.log("no such doc!!");
       }
-    }
-    fetchData()
+    };
+    fetchData();
   }, [params]);
 
   const today = new Date();
-  const endDate = parse(project?.timeline[1], 'dd/MM/yy', new Date());
-  const dayLeft = differenceInDays(endDate, today)
+  const endDate = parse(project?.timeline[1], "dd/MM/yy", new Date());
+  const dayLeft = differenceInDays(endDate, today);
+  const message = (() => {
+    if (dayLeft == 1) {
+      return "1 day left";
+    } else if (dayLeft == 0) {
+      return "Ends today";
+    } else {
+      return `${dayLeft} days left`;
+    }
+  })();
 
-  const progressPercentage =
-    (project?.moneyRaised / project?.goalAmount) * 100;
+  const progressPercentage = (project?.moneyRaised / project?.goalAmount) * 100;
 
   return (
     <div className="bg-whiteColor md:h-screen mt-[70px]">
@@ -50,11 +58,11 @@ function Page({ params }) {
               <Image
                 className=" w-6 h-6 items-start rounded-full"
                 alt={project?.title}
-                src={project.profilPic ? project.profilPic : '/user.png'}
+                src={project.profilPic ? project.profilPic : "/user.png"}
                 width={50}
                 height={50}
               />
-              <h2 className="text-lg">{project?.creator.split('@')[0]}</h2>
+              <h2 className="text-lg">{project?.creator.split("@")[0]}</h2>
             </div>
             <div className="flex flex-col justify-between  md:border-y md:border-blackColor md:flex-row md:space-y-0 md:container">
               <div className="flex flex-col space-y-5 px-2 md:w-1/2 md:pt-5">
@@ -87,7 +95,7 @@ function Page({ params }) {
                 </div>
                 <div className="flex justify-center space-x-2 pt-2 md:py-5 text-lg">
                   <FaCalendarAlt size={20} />
-                  <p>{dayLeft} days left</p>
+                  <p>{message}</p>
                 </div>
               </div>
             </div>
@@ -98,7 +106,9 @@ function Page({ params }) {
             </div>
           </div>
         </div>
-      ) : <Loader />}
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 }
