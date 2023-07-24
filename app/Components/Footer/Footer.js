@@ -10,7 +10,7 @@ function Footer() {
     const projects = useSelector(state => state.auth.projects);
 
     return (
-        <footer className="bg-greenColor pt-10">
+        <footer className="bg-greenColor pt-10 text-center sm:text-left">
             <div className="container mx-auto px-4">
             <div className='border-b border-whiteColor pb-10'>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -21,7 +21,7 @@ function Footer() {
                             <p className=''>
                             Join our vibrant community of changemakers and be a part of the crowdfunding revolution. Together, we can make a difference and turn ideas into reality.                
                             </p>
-                            <div className='icons flex py-10 space-x-8'>
+                            <div className='icons flex py-10 space-x-8 justify-center sm:justify-start'>
                                 <div className="flex ">
                                     <FontAwesomeIcon icon={faInstagram} className="text-3xl" />
                                 </div>
