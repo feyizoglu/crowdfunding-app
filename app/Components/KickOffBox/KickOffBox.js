@@ -14,6 +14,7 @@ import 'react-date-range/dist/theme/default.css';
 import { db, storage } from "@/app/firebase/firebase-confing";
 import { addDoc, collection } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import Alert from "../SignUpAlert/Alert";
 
 import { toast } from 'react-toastify';
 
@@ -22,9 +23,9 @@ const schema = yup.object({
   goalAmount: yup.number().required(),
   timeline: yup
     .array()
-    .of(yup.date().min(new Date(), "Please select a future date"))
-    .min(2, "Please select a start and end date")
-    .required("Please select a timeline"),
+    .of(yup.date().min(new Date()))
+    .min(2)
+    .required(),
   category: yup.string().required(),
   description: yup.string().required(),
   image: yup
@@ -36,6 +37,7 @@ const schema = yup.object({
 
 const KickOffBox = () => {
   const [showDateBox, setShowDateBox] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false)
   const user = useSelector(state => state.auth.user);
   const profilPic = useSelector(state => state.auth.profilPic);
   const dispatch = useDispatch();
@@ -54,8 +56,17 @@ const KickOffBox = () => {
     resolver: yupResolver(schema)
   });
 
+  useEffect(() => {
+    if (errors.timeline) {
+      toast.error(`Please select a future date, and also make sure to select both a start and end date.`, {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+    }
+  }, [errors.timeline])
+
   const onSubmit = async (data) => {
     try {
+      setIsDisabled(true)
       const imgFile = data.image[0];
       const storageRef = ref(storage, `project-img/${imgFile.name}`);
       const snapshot = await uploadBytes(storageRef, imgFile);
@@ -74,11 +85,14 @@ const KickOffBox = () => {
         timeline: formattedTimeline,
         moneyRaised: Math.floor(data.goalAmount * Math.random())
       })
+
+
     } catch (err) {
       console.log(err.message);
+    } finally {
+      setIsDisabled(false)
     }
     setShowDateBox(false)
-    dispatch(setShowKickOffBox());
     toast.success('You have successfully created your project', {
       position: toast.POSITION.BOTTOM_RIGHT
     })
@@ -175,6 +189,10 @@ const KickOffBox = () => {
                     <FaCalendarAlt />
                   </div>
                 </div>
+                {/* {errors.timeline &&
+                  <div className="mt-2">
+                    <Alert message='Please select a future date, and also make sure to select both a start and end date.' />
+                  </div>} */}
               </div>
             </div>
             <div className="mid-side border-l border-blackColor"></div>
@@ -218,7 +236,7 @@ const KickOffBox = () => {
             </div>
           </div>
           <div className="w-full">
-            <button type="submit" className="button-dark w-full">Upload project</button>
+            <button type="submit" className={`button-dark w-full ${isDisabled && `opacity-50`}`} disabled={isDisabled}>Upload project</button>
           </div>
         </form>
       </div>

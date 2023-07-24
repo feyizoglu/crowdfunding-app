@@ -28,11 +28,35 @@ const style = {
 
 export default function NavbarLayOut() {
   const [bgColor, setBgColor] = useState(false);
+  const [innerWidth, setInnerWidth] = useState(0);
   const showMobilNav = useSelector(state => state.auth.showMobilNav);
   const showSignInBox = useSelector(state => state.auth.showSignInBox);
   const showKickOffBox = useSelector(state => state.auth.showKickOffBox);
   const user = useSelector(state => state.auth.user);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setInnerWidth(window.innerWidth);
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && innerWidth >= 768) {
+      dispatch(setCloseMobileNav(false));
+    }
+  }, [innerWidth, dispatch]);
+
 
   useEffect(() => {
     window.addEventListener('scroll', changeBgColorOnScrolling);
@@ -61,7 +85,6 @@ export default function NavbarLayOut() {
         email: currentUser?.email,
         id: currentUser?.uid
       }));
-
     });
     return () => {
       unsubscribe();

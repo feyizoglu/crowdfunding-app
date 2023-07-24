@@ -52,12 +52,10 @@ const Page = () => {
       const storageRef = ref(storage, `profil-pic/${profilePicFile.name}`);
       const snapshot = await uploadBytes(storageRef, profilePicFile);
       const downloadURL = await getDownloadURL(snapshot.ref)
-      
       await addDoc(collection(db, 'profilPics'), {
         id: user.user.uid,
         profilPic: downloadURL
       })
-      
       let userName = data.email.split('@')[0]
       toast.success(`Congratulations ${userName[0].toUpperCase() + userName.slice(1, userName.length)}! Your sign-up was successful. Welcome to our community.`, {
         position: toast.POSITION.BOTTOM_RIGHT

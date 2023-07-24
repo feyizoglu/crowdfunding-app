@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ProjectOfTheWeek from '../Components/ProjectOfTheWeek/ProjectOfTheWeek';
 import Categories from '../Components/Projects/Categories';
 import Cards from '../Components/Projects/Cards';
@@ -9,7 +9,8 @@ const Page = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const projects = useSelector(state => state.auth.projects);
   const searchInputVal = useSelector(state => state.auth.searchInputVal);
-  const showMobilNav = useSelector(state => state.auth.showMobilNav)
+  const showMobilNav = useSelector(state => state.auth.showMobilNav);
+
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -21,7 +22,7 @@ const Page = () => {
 
   if (searchInputVal) {
     return (
-      <div className={`${showMobilNav && 'mt-[270px]'}`}>
+      <div className={`pt-[calc(70px+2rem)]  ${showMobilNav && 'mt-[200px]'}`}>
         <Categories
           selectedCategory={selectedCategory}
           handleCategoryChange={handleCategoryChange}
@@ -32,7 +33,7 @@ const Page = () => {
   }
   return (
     <div className='bg-whiteColor'>
-      <div className='mt-[70px]'>
+      <div className='pt-[70px]'>
         <ProjectOfTheWeek />
       </div>
       <div>

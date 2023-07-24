@@ -13,7 +13,6 @@ const Cards = ({ projects }) => {
     return project.title.toLowerCase().includes(searchInputVal.toLowerCase());
   })
 
-
   return (
     <div className="projects-part container mx-auto place-content-center pb-20 px-12 grid gap-8 md:gap-6 xl:gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {searchedProjects.length == 0 ? (
@@ -24,16 +23,16 @@ const Cards = ({ projects }) => {
         searchedProjects.map((project) => (
           <div
             key={project.id}
-            className="w-full bg-whiteColor border border-grayishColor rounded-lg shadow "
+            className="w-full bg-whiteColor border border-grayishColor rounded-lg shadow ease-in duration-200 hover:scale-105"
           >
             <div className="img-container flex flex-col justify-center items-center bg-grayishColor rounded-lg border-0">
               <Link href={`/projects/${project.docId}`}>
-                <div className="image-wrapper flex justify-center items-center ">
+                <div className="image-wrapper flex justify-center items-center  ">
                   <Image
                     alt={project.title}
                     src={project.image}
-                    width={500}
-                    height={500}
+                    width={400}
+                    height={400}
                     className="rounded-lg"
                   />
                 </div>
@@ -79,3 +78,4 @@ const Cards = ({ projects }) => {
 };
 
 export default Cards;
+

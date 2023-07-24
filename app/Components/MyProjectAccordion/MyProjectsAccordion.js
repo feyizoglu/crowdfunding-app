@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
-const MyProjectsAccordion = ({ project, title, component, isOpenDefault }) => {
+const MyProjectsAccordion = ({ title, component, isOpenDefault }) => {
   const [isOpen, setIsOpen] = useState(isOpenDefault);
 
   const toggleDropdown = () => {
