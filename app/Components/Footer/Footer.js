@@ -15,7 +15,7 @@ function Footer() {
             <div className='border-b border-whiteColor pb-10'>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                         <div className="firstcolumn flex flex-col">
-                            <h1 className='font-bold text-l sm:text-xl md:text-2xl py-4'>
+                            <h1 className='font-semibold text-l sm:text-xl md:text-2xl py-4'>
                             Givingly
                             </h1>
                             <p className=''>
@@ -34,7 +34,7 @@ function Footer() {
                             </div>     
                         </div>
                         <div className="secondcolumn">
-                            <h1 className='font-bold text-l sm:text-xl md:text-2xl py-4'>
+                            <h1 className='font-semibold text-l sm:text-xl md:text-2xl py-4'>
                                 Projects
                             </h1>
                             <div>
@@ -45,7 +45,7 @@ function Footer() {
                                     alt={project.title}
                                     className="w-16 h-16 object-cover"
                                     />
-                                    <h3 className="font-bold ml-2">{project.title}</h3>
+                                    <h3 className="font-semibold ml-2">{project.title}</h3>
                                 </div>
                                 ))}
                             </div>
