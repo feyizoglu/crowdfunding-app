@@ -1,9 +1,8 @@
 'use client'
 import React from 'react';
 import { useSelector } from 'react-redux'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faFacebook, faTwitter,} from '@fortawesome/free-brands-svg-icons';
-import { faCopyright } from '@fortawesome/free-regular-svg-icons';
+import { FaInstagram, FaFacebook, FaTwitter } from 'react-icons/fa';
+import { FaCopyright } from 'react-icons/fa';
 import Image from 'next/image';
 
 
@@ -23,15 +22,15 @@ function Footer() {
                             Join our vibrant community of changemakers and be a part of the crowdfunding revolution. Together, we can make a difference and turn ideas into reality.                
                             </p>
                             <div className='icons flex py-10 space-x-5 md:space-x-8 justify-center sm:justify-start'>
-                                <div className="flex ">
-                                    <FontAwesomeIcon icon={faInstagram} className="text-3xl" />
-                                </div>
-                                <div className="flex ">
-                                    <FontAwesomeIcon icon={faFacebook} className="text-3xl" />
-                                </div>
-                                <div className="flex ">
-                                    <FontAwesomeIcon icon={faTwitter} className="text-3xl" />
-                                </div>
+                                    <div className="flex">
+                                    <FaInstagram className="text-3xl" />
+                                    </div>
+                                    <div className="flex">
+                                    <FaFacebook className="text-3xl" />
+                                    </div>
+                                    <div className="flex">
+                                    <FaTwitter className="text-3xl" />
+                                    </div>
                             </div>     
                         </div>
                         <div className="secondcolumn">
@@ -64,7 +63,7 @@ function Footer() {
                 </div>
             </div>
             <p className='text-center py-8'>
-                    <FontAwesomeIcon icon={faCopyright} className="mr-2" />
+                    <FaCopyright className="inline-block mr-2" />
                     2023 All rights reserved.
             </p>
             </div>
