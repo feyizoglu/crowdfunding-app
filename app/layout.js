@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Oswald } from "next/font/google";
+import { Outfit } from "next/font/google";
 
 import NavbarLayOut from "./Components/NavbarLayout/NavbarLayout";
 import { ReduxProvider } from "./redux/provider";
@@ -7,8 +7,9 @@ import { ToastContainer } from "react-toastify";
 import ProjectsContainer from "./Components/ProjectsContainer/ProjectsContainer";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./Components/Footer/Footer";
+("");
 
-const oswald = Oswald({
+const oswald = Outfit({
   subsets: ["latin"],
 });
 
