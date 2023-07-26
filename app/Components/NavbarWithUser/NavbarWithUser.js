@@ -11,7 +11,7 @@ const style = {
   container: `relative flex items-center space-x-6`,
   headerLinks: `font-medium hover:opacity-60`,
   button: `button-dark hover:bg-transparent text-center text-sm lg:text-lg`,
-  userContainer: `flex`,
+  userContainer: `flex w-[50px] h-[50px]`,
   userImage: `rounded-full hover:opacity-80`,
   InfoBoxContainer: `absolute flex flex-col top-16 right-0 py-2 px-6 rounded-md bg-grayishColor text-blackColor text-[12px] shadow-lg`,
   infoBoxLinks: `flex items-center w-[130px] gap-1 font-medium hover:opacity-60`,
@@ -76,15 +76,14 @@ function NavbarWithUser() {
           New Project
         </button>}
       <div className={style.userContainer}>
-        <button onClick={handleInfoBoxClick}>
-          <Image
-            className={style.userImage}
-            src={profilPic ? profilPic : `https://via.placeholder.com/150/0A0A0A/FAFAFA?text=${user.email[0].toUpperCase()}`}
-            width={50}
-            height={50}
-            alt="Picture of the user"
-          />
-        </button>
+        <Image
+          onClick={handleInfoBoxClick}
+          className={style.userImage}
+          src={profilPic ? profilPic : `https://via.placeholder.com/150/0A0A0A/FAFAFA?text=${user.email[0].toUpperCase()}`}
+          width={50}
+          height={50}
+          alt="Picture of the user"
+        />
         {showInfoBox && <InfoBox style={style} />}
       </div>
     </div>
