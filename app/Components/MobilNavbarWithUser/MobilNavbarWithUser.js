@@ -22,6 +22,7 @@ function MobilNavbarWithUser({ bgColor }) {
     headerLinks: `font-medium hover:opacity-60`,
     button: `button-dark hover:bg-transparent`,
     userContainer: `flex flex-col items-center space-y-1`,
+    userImage: `rounded-full cursor-pointer w-[50px] h-[50px] hover:opacity-80`,
     signOutButton: `flex space-x-[1px] items-center text-xs text-red-600 hover:opacity-60`,
     headerInput: `rounded-needed outline-0 py-1 px-2`,
     InfoBoxContainer: `flex flex-col mt-3 py-2 px-6 rounded-md bg-grayishColor text-blackColor text-[12px] shadow-lg`,
@@ -61,7 +62,7 @@ function MobilNavbarWithUser({ bgColor }) {
     <div className={style.container}>
       <div className={style.userContainer}>
         <Image
-          className='rounded-full cursor-pointer'
+          className={style.userImage}
           onClick={handleInfoBoxClick}
           src={profilPic ? profilPic : `https://via.placeholder.com/150/0A0A0A/FAFAFA?text=${user.email[0].toUpperCase()}`}
           width={50}

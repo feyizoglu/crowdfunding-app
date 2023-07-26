@@ -37,7 +37,7 @@ function Footer() {
               <h1 className='font-semibold text-l sm:text-xl md:text-2xl py-4'>
                 Projects
               </h1>
-              <div className='flex flex-col items-center md:items-start'>
+              <div>
                 {projects.slice(0, 2).map((project) => (
                   <Link href={`/projects/${project.docId}`} key={project.id} className="flex items-center mb-4 ease-in duration-200 hover:scale-105">
                     <Image
