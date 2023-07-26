@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Footer from "./Components/Footer/Footer";
 ("");
 
-const oswald = Outfit({
+const outfit = Outfit({
   subsets: ["latin"],
 });
 
@@ -21,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={oswald.className}>
+      <body className={outfit.className}>
         <ReduxProvider>
           <ProjectsContainer>
             <NavbarLayOut />
