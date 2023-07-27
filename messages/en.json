@@ -1,0 +1,29 @@
+{
+  "NavbarLayout": {
+    "Search for projects": "Search for projects.."
+  },
+  "DefaultNavbar": {
+    "Home": "Home",
+    "Projects": "Projects",
+    "Sign In": "Sign In"
+  },
+  "NavbarWithUser": {
+    "Home": "Home",
+    "Projects" : "Projects"
+  },
+  "MobilNavbarWithUser": {
+    "Search for projects": "Search for projects..",
+    "Home": "Home",
+    "Projects": "Projects"
+  },
+  "MobilDefaultNavbar": {
+    "Search for projects": "Search for projects..",
+    "Home": "Home",
+    "Projects": "Projects",
+    "Sign In": "Sign In"
+  },
+  "InfoBox": {
+    "View your project": "View your project",
+    "Sign out": "Sign out"
+  }
+}

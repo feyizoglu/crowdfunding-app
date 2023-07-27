@@ -1,0 +1,29 @@
+{
+  "NavbarLayout": {
+    "Search for projects": "Projeleri ara.."
+  },
+  "DefaultNavbar": {
+    "Home": "Anasayfa",
+    "Projects": "Projeler",
+    "Sign In": "Giriş yap"
+  },
+  "NavbarWithUser": {
+    "Home": "Anasayfa",
+    "Projects": "Projeler"
+  },
+  "MobilNavbarWithUser": {
+    "Search for projects": "Projeleri ara..",
+    "Home": "Anasayfa",
+    "Projects": "Projeler"
+  },
+  "MobilDefaultNavbar": {
+    "Search for projects": "Projeleri ara..",
+    "Home": "Anasayfa",
+    "Projects": "Projeler",
+    "Sign In": "Giriş yap"
+  },
+  "InfoBox": {
+    "View your project": "Projenizi goruntuleyin",
+    "Sign out": "Çıkış Yap"
+  }
+}
