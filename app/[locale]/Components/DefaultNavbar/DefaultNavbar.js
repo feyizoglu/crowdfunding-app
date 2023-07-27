@@ -11,33 +11,27 @@ const style = {
   headerButton: `button-dark text-center text-lg md:text-sm lg:text-lg hover:bg-transparent`,
 };
 
-function DefaultNavbar({ linkStyle, activeLink }) {
+function DefaultNavbar({ defaultLink, activeLink }) {
   const dispatch = useDispatch();
   const selectedLink = useSelector(state => state.auth.selectedLink);
   const t = useTranslations('DefaultNavbar');
 
-  useEffect(() => {
-    const savedLink = localStorage.getItem('selectedItem');
-    if (savedLink) {
-      dispatch(setSelectedLink(savedLink));
-    }
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem('selectedItem', selectedLink);
-  }, [selectedLink])
-
   const handleLinkClicks = (e) => {
-    dispatch(setSearchInputVal(''))
-    dispatch(setSelectedLink(e.target.textContent))
+
   }
 
   return (
     <div className={style.container}>
-      <Link onClick={handleLinkClicks} className={selectedLink === t('Home') ? activeLink : linkStyle} href="/">
+      <Link onClick={() => {
+        dispatch(setSearchInputVal(''))
+        dispatch(setSelectedLink('Home'))
+      }} className={selectedLink === 'Home' ? activeLink : defaultLink} href="/">
         {t('Home')}
       </Link>
-      <Link onClick={handleLinkClicks} className={selectedLink === t('Projects') ? activeLink : linkStyle} href="/projects">
+      <Link onClick={() => {
+        dispatch(setSearchInputVal(''))
+        dispatch(setSelectedLink('Projects'))
+      }} className={selectedLink === 'Projects' ? activeLink : defaultLink} href="/projects">
         {t('Projects')}
       </Link>
       <Link href='/' onClick={() => {

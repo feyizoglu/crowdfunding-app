@@ -1,8 +1,12 @@
-import React from "react";
+'use client'
+import { useDispatch } from "react-redux";
+import { setCloseMobileNav, setSelectedLink } from "@/app/redux/features/authSlice";
 import Image from "next/image";
 import Link from "next/link";
 
 const HeroSection = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className="bg-greenColor pt-[70px] z-0">
       <div className="relative container mx-auto px-4 py-8 flex flex-col items-center justify-center md:py-0  md:flex-row md:justify-start md:h-screen-70 ">
@@ -18,7 +22,16 @@ const HeroSection = () => {
             idea kicked off or support others kick off their amazing projects.
           </p>
           <div className="md:mr-4">
-            <Link href='/starttoday' className="button-dark py-1.5 w-full ">Start Today</Link>
+            <Link
+              onClick={() => {
+                dispatch(setSelectedLink(''));
+                dispatch(setCloseMobileNav())
+              }}
+              href='/starttoday'
+              className="button-dark py-1.5 w-full "
+            >
+              Start Today
+            </Link>
           </div>
         </div>
         <div>

@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect, useTransition, startTransition } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setShowMobilNav, setUser, setCloseMobileNav, setProfilPic } from "@/app/redux/features/authSlice";
+import { setShowMobilNav, setUser, setCloseMobileNav, setProfilPic, setSelectedLink } from "@/app/redux/features/authSlice";
 import { auth, db } from "@/app/firebase/firebase-confing";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -20,18 +20,19 @@ import { useLocale, useTranslations } from 'next-intl';
 
 const style = {
   headerContainer: `relative container mx-auto z-50`,
-  header: `fixed top-0 left-0 w-full bg-greenColor px-20  py-2 flex justify-between items-center h-[70px] text-lg text-blackColor space-x-5 lg:px-24 z-50`,
-  headerLogo: `font-md text-2xl`,
+  header: `fixed top-0 left-0 w-full bg-greenColor px-14 py-2 flex justify-between items-center h-[70px] text-lg text-blackColor space-x-2 md:justify-around md:px-10 lg:px-0 z-50`,
+  headerLogo: `font-medium sm:text-xl lg:text-2xl`,
   headerLinks: `font-medium hover:opacity-60`,
-  activeLink : `font-medium  `,
-  headerInput: `hidden rounded-needed outline-0 py-1 px-4 w-60 md:block`,
+  activeLink: `font-medium px-1.5 border-b border-blackColor hover:opacity-60 `,
+  headerInput: `hidden rounded-needed outline-0 py-1 pl-4  md:block lg:pr-4`,
   nav: `hidden md:block`,
   hamMenu: `md:hidden`,
+  langPickerContainer: `fixed z-50 top-1 right-0  lg:right-2 xl:right-12`,
+  langPickerSelect: `inline-flex text-xl appearance-none outline-none cursor-pointer bg-transparent py-3 pl-2 pr-6 md:text-2xl`
 };
 
 export default function NavbarLayOut() {
   const [bgColor, setBgColor] = useState(false);
-  const [selectedLink, setSelectedLink] = useState('Home')
   const [innerWidth, setInnerWidth] = useState(0);
   const locale = useLocale()
   const [selectedLocale, setSelectedLocale] = useState(locale);
@@ -40,6 +41,7 @@ export default function NavbarLayOut() {
   const showMobilNav = useSelector(state => state.auth.showMobilNav);
   const showSignInBox = useSelector(state => state.auth.showSignInBox);
   const showKickOffBox = useSelector(state => state.auth.showKickOffBox);
+  const selectedLink = useSelector(state => state.auth.selectedLink);
   const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
 
@@ -51,20 +53,27 @@ export default function NavbarLayOut() {
       }));
       fetchProfilePicture(currentUser?.uid);
     });
+
+    const savedLink = localStorage.getItem('selectedLink');
+    if (savedLink) {
+      dispatch(setSelectedLink(savedLink));
+    }
     return () => {
       unsubscribeAuth();
     };
   }, [dispatch]);
 
   useEffect(() => {
+    localStorage.setItem('selectedLink', selectedLink)
+  }, [selectedLink])
+
+  useEffect(() => {
     const handleResize = () => {
       setInnerWidth(window.innerWidth);
     };
-
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', handleResize);
     }
-
     return () => {
       if (typeof window !== 'undefined') {
         window.removeEventListener('resize', handleResize);
@@ -122,19 +131,18 @@ export default function NavbarLayOut() {
     });
   }
 
-  const handleSelectedLink = (e) => {
-    setSelectedLink(e.target.textContent);
-  }
-
   return (
     <div className={style.headerContainer}>
       <header className={`${style.header} ${bgColor && `bg-greenTransparent`}`}>
-        <Link href="/" onClick={() => dispatch(setCloseMobileNav(false))} className={`${style.headerLogo}`}>
+        <Link href="/" onClick={() => {
+          dispatch(setCloseMobileNav(false));
+          dispatch(setSelectedLink('Home'))
+        }} className={`${style.headerLogo}`}>
           Givingly
         </Link>
         <NavbarSearchInput style={style} placeholder={t('Search for projects')} />
         <nav className={style.nav}>
-          {user?.email ? <NavbarWithUser linkStyle={style.headerLinks} activeLink={style.activeLink}/> : <DefaultNavbar linkStyle={style.headerLinks} activeLink={style.activeLink}/>}
+          {user?.email ? <NavbarWithUser defaultLink={style.headerLinks} activeLink={style.activeLink} /> : <DefaultNavbar defaultLink={style.headerLinks} activeLink={style.activeLink} />}
         </nav>
         <section className={style.hamMenu} onClick={handleHamIconClick}>
           <div className={`${styles.container} ${showMobilNav && styles.change}`}>
@@ -146,13 +154,13 @@ export default function NavbarLayOut() {
       </header>
       {showMobilNav &&
         <section>
-          {user?.email ? <MobilNavbarWithUser linkStyle={style.headerLinks} activeLink={style.activeLink} bgColor={bgColor} /> : <MobilDefaultNavbar  bgColor={bgColor} />}
+          {user?.email ? <MobilNavbarWithUser defaultLink={style.headerLinks} activeLink={style.activeLink} bgColor={bgColor} /> : <MobilDefaultNavbar defaultLink={style.headerLinks} activeLink={style.activeLink} bgColor={bgColor} />}
         </section>}
       {showSignInBox && <SignIn />}
       {showKickOffBox && <KickOffBox />}
-      <section className="fixed top-1 right-0 z-50 md:top-2 md:right-2 lg:right-3 xl:right-4">
+      <section className={style.langPickerContainer}>
         <select
-          className="inline-flex text-2xl appearance-none outline-none cursor-pointer bg-transparent py-3 pl-2 pr-6"
+          className={style.langPickerSelect}
           onChange={handleLocaleChange}
           value={selectedLocale}
         >

@@ -9,16 +9,15 @@ import { setShowInfoBox, setShowKickOffBox, setShowMobilNav, setSearchInputVal, 
 import NavbarSearchInput from '../NavbarSearchInput/NavbarSearchInput';
 import InfoBox from '../InfoBox/InfoBox';
 
-function MobilNavbarWithUser({ bgColor, linkStyle, activeLink }) {
+function MobilNavbarWithUser({ bgColor, defaultLink, activeLink }) {
   const showInfoBox = useSelector((state) => state.auth.showInfoBox);
   const user = useSelector(state => state.auth.user)
   const projects = useSelector(state => state.auth.projects);
   const profilPic = useSelector(state => state.auth.profilPic);
   const selectedLink = useSelector(state => state.auth.selectedLink);
   const dispatch = useDispatch();
-  const t = useTranslations('MobilNavbarWithUser')
-
-  const isUserHaveProject = projects.some(project => project.id === user.id)
+  const t = useTranslations('MobilNavbarWithUser');
+  const isUserHaveProject = projects.some(project => project.id === user.id);
 
   const style = {
     container: `fixed top-[69px] left-1/2 -translate-x-1/2 w-full bg-greenColor flex flex-col space-y-3 py-5 items-center md:hidden z-50 ${bgColor && `bg-greenTransparent`}`,
@@ -26,7 +25,7 @@ function MobilNavbarWithUser({ bgColor, linkStyle, activeLink }) {
     userContainer: `flex flex-col items-center space-y-1`,
     userImage: `rounded-full cursor-pointer w-[50px] h-[50px] hover:opacity-80`,
     signOutButton: `flex space-x-[1px] items-center text-xs text-red-600 hover:opacity-60`,
-    headerInput: `rounded-needed outline-0 py-1 px-4`,
+    headerInput: `rounded-needed outline-0 py-1 pl-2 placeholder:text-center `,
     InfoBoxContainer: `flex flex-col mt-3 py-2 px-6 rounded-md bg-grayishColor text-blackColor text-[12px] shadow-lg`,
     infoBoxLinks: `flex items-center gap-1 font-medium hover:opacity-60`,
     infoBoxUserName: `flex items-center gap-1 font-medium cursor-default capitalize `,
@@ -34,7 +33,7 @@ function MobilNavbarWithUser({ bgColor, linkStyle, activeLink }) {
     userInfos: `flex flex-col items-start py-2 px-1 border-b border-blackColor space-y-2`,
     userFeatures: `flex flex-col items-start  px-1 py-2 space-y-2`,
     infoBoxPointer: `absolute top-3 left-1/2 -translate-x-1`,
-  }
+  };
 
   const handleNewProjectClick = () => {
     if (isUserHaveProject) {
@@ -47,12 +46,6 @@ function MobilNavbarWithUser({ bgColor, linkStyle, activeLink }) {
         dispatch(setShowKickOffBox())
       }, 1)
     }
-  }
-
-  const handleLinkClicks = (e) => {
-    dispatch(setSearchInputVal(''))
-    dispatch(setShowMobilNav())
-    dispatch(setSelectedLink(e.target.textContent))
   }
 
   const handleInfoBoxClick = () => {
@@ -75,10 +68,18 @@ function MobilNavbarWithUser({ bgColor, linkStyle, activeLink }) {
         {showInfoBox && <InfoBox style={style} />}
       </div>
       <NavbarSearchInput style={style} placeholder={t('Search for projects')} />
-      <Link onClick={handleLinkClicks} className={selectedLink === t('Home') ? activeLink : linkStyle} href="/">
+      <Link onClick={() => {
+        dispatch(setSearchInputVal(''))
+        dispatch(setShowMobilNav())
+        dispatch(setSelectedLink('Home'))
+      }} className={selectedLink === 'Home' ? activeLink : defaultLink} href="/">
         {t('Home')}
       </Link>
-      <Link onClick={handleLinkClicks} className={selectedLink === t('Projects') ? activeLink : linkStyle} href="/projects">
+      <Link onClick={() => {
+        dispatch(setSearchInputVal(''))
+        dispatch(setShowMobilNav())
+        dispatch(setSelectedLink('Projects'))
+      }} className={selectedLink === 'Projects' ? activeLink : defaultLink} href="/projects">
         {t('Projects')}
       </Link>
       {!isUserHaveProject &&

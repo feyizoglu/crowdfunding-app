@@ -9,7 +9,7 @@ import { auth } from "@/app/firebase/firebase-confing";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from 'react-toastify';
 
-import { setShowSignInBox } from "@/app/redux/features/authSlice";
+import { setSelectedLink, setShowSignInBox } from "@/app/redux/features/authSlice";
 import Alert from "../SignUpAlert/Alert";
 
 const schema = yup.object({
@@ -112,14 +112,20 @@ const SignUp = () => {
         <p className="mb-5">
           Make an impact today.
           <br />
-          <Link href="/projects" onClick={() => dispatch(setShowSignInBox())} className="cursor-pointer text-blueColor hover:opacity-60">
+          <Link href="/projects" onClick={() => {
+            dispatch(setShowSignInBox())
+            dispatch(setSelectedLink('Projects'))
+          }} className="cursor-pointer text-blueColor hover:opacity-60">
             Explore projects that need your help!
           </Link>
         </p>
         <p>
           Unlock funding opportunities!
           <br />
-          <Link href='/signup' onClick={() => dispatch(setShowSignInBox())} className="cursor-pointer text-blueColor hover:opacity-60"> Create an account.</Link>
+          <Link href='/signup' onClick={() => {
+            dispatch(setShowSignInBox())
+            setTimeout(() => { dispatch(setSelectedLink('')) }, 100)
+          }} className="cursor-pointer text-blueColor hover:opacity-60"> Create an account.</Link>
         </p>
       </div>
     </div>

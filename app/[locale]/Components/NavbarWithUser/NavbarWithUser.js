@@ -22,7 +22,7 @@ const style = {
   infoBoxPointer: `absolute top-16 right-4`,
 }
 
-function NavbarWithUser() {
+function NavbarWithUser({ activeLink, defaultLink }) {
   const [isUserHaveProject, setIsUserHaveProject] = useState(false);
   const showInfoBox = useSelector((state) => state.auth.showInfoBox)
   const user = useSelector(state => state.auth.user);
@@ -31,17 +31,6 @@ function NavbarWithUser() {
   const selectedLink = useSelector(state => state.auth.selectedLink)
   const dispatch = useDispatch();
   const t = useTranslations('NavbarWithUser')
-
-  useEffect(() => {
-    const savedLink = localStorage.getItem('selectedItem');
-    if (savedLink) {
-      dispatch(setSelectedLink(savedLink))
-    }
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem('selectedItem', selectedLink)
-  }, [selectedLink])
 
   useEffect(() => {
     setIsUserHaveProject(projects.some(project => project.id === user.id));
@@ -68,15 +57,20 @@ function NavbarWithUser() {
 
   const handleLinkClicks = (e) => {
     dispatch(setSearchInputVal(''))
-    dispatch(setSelectedLink(e.target.textContent))
   }
 
   return (
     <div className={style.container}>
-      <Link onClick={handleLinkClicks} className={selectedLink === t('Home') ? style.activeLink : style.headerLinks} href="/">
+      <Link onClick={() => {
+        dispatch(setSearchInputVal(''))
+        dispatch(setSelectedLink('Home'))
+      }} className={selectedLink === 'Home' ? activeLink : defaultLink} href="/">
         {t('Home')}
       </Link>
-      <Link onClick={handleLinkClicks} className={selectedLink === t('Projects') ? style.activeLink : style.headerLinks} href="/projects">
+      <Link onClick={() => {
+        dispatch(setSearchInputVal(''))
+        dispatch(setSelectedLink('Projects'))
+      }} className={selectedLink === 'Projects' ? activeLink : defaultLink} href="/projects">
         {t('Projects')}
       </Link>
       {!isUserHaveProject &&

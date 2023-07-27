@@ -1,13 +1,15 @@
 'use client'
 import Link from 'next/link';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { FaInstagram, FaFacebook, FaTwitter } from 'react-icons/fa';
 import { FaCopyright } from 'react-icons/fa';
 import Image from 'next/image';
+import { setSelectedLink } from '@/app/redux/features/authSlice';
 
 
 function Footer() {
   const projects = useSelector(state => state.auth.projects);
+  const dispatch = useDispatch();
 
   return (
     <footer className="bg-greenColor pt-5 md:pt-10 text-center md:text-left">
@@ -39,7 +41,7 @@ function Footer() {
               </h1>
               <div>
                 {projects.slice(0, 2).map((project) => (
-                  <Link href={`/projects/${project.docId}`} key={project.id} className="flex items-center mb-4 ease-in duration-200 hover:scale-105">
+                  <Link onClick={() => {dispatch(setSelectedLink('Projects'))}} href={`/projects/${project.docId}`} key={project.id} className="flex items-center mb-4 ease-in duration-200 hover:scale-105">
                     <Image
                       src={project.image}
                       alt={project.title}

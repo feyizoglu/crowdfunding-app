@@ -15,7 +15,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 
-import { setShowSignInBox } from "../../redux/features/authSlice";
+import { setShowSignInBox, setSelectedLink } from "../../redux/features/authSlice";
 import Alert from "../Components/SignUpAlert/Alert";
 
 const schema = yup.object().shape({
@@ -60,6 +60,7 @@ const Page = () => {
       toast.success(`Congratulations ${userName[0].toUpperCase() + userName.slice(1, userName.length)}! Your sign-up was successful. Welcome to our community.`, {
         position: toast.POSITION.BOTTOM_RIGHT
       });
+      dispatch(setSelectedLink('Home'))
     } catch (err) {
       let errorMsg = 'default';
       switch (err.code) {
@@ -81,6 +82,7 @@ const Page = () => {
   const handleAlreadyMemberClick = () => {
     setTimeout(() => {
       dispatch(setShowSignInBox())
+      dispatch(setSelectedLink('Home'))
     }, 1)
   };
 
