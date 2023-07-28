@@ -3,14 +3,11 @@ import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import Image from "next/image";
 import Link from "next/link";
-import { setSelectedLink } from '@/app/redux/features/authSlice';
 import Loader from "../Loader/Loader";
 
 function projectOfTheWeek() {
   const projects = useSelector(state => state.auth.projects);
   const dispatch = useDispatch();
-
-  console.log(projects[0])
 
   // Check if the projects array is empty or undefined
   if (!projects || projects.length === 0) {
