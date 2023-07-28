@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import projects from "../../../data/projectData";
+import { setSelectedLink } from '@/app/redux/features/authSlice';
 
 const projectOfTheWeek = () => {
   let leastMoneyRaisedProject = projects[0];
@@ -81,3 +82,4 @@ const projectOfTheWeek = () => {
 
 
 export default projectOfTheWeek;
+
