@@ -82,6 +82,4 @@ const projectOfTheWeek = () => {
 
 
 export default projectOfTheWeek;
-ProjectOfTheWeek.js
-
 
