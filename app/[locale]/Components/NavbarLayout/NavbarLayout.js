@@ -27,7 +27,7 @@ const style = {
   headerInput: `hidden rounded-needed outline-0 py-1 pl-4  md:block lg:pr-4`,
   nav: `hidden md:block`,
   hamMenu: `md:hidden`,
-  langPickerContainer: `fixed z-50 top-1 right-0  lg:right-2 xl:right-12`,
+  langPickerContainer: `fixed z-50 top-1 right-0 md:-right-2 lg:-right-1 xl:right-8`,
   langPickerSelect: `inline-flex text-xl appearance-none outline-none cursor-pointer bg-transparent py-3 pl-2 pr-6 md:text-2xl`
 };
 
@@ -54,7 +54,7 @@ export default function NavbarLayOut() {
       fetchProfilePicture(currentUser?.uid);
     });
 
-    const savedLink = localStorage.getItem('selectedLink');
+    const savedLink = sessionStorage.getItem('selectedLink');
     if (savedLink) {
       dispatch(setSelectedLink(savedLink));
     }
@@ -64,7 +64,7 @@ export default function NavbarLayOut() {
   }, [dispatch]);
 
   useEffect(() => {
-    localStorage.setItem('selectedLink', selectedLink)
+    sessionStorage.setItem('selectedLink', selectedLink)
   }, [selectedLink])
 
   useEffect(() => {
@@ -73,11 +73,11 @@ export default function NavbarLayOut() {
     };
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', handleResize);
-    }
+    };
     return () => {
       if (typeof window !== 'undefined') {
         window.removeEventListener('resize', handleResize);
-      }
+      };
     };
   }, []);
 

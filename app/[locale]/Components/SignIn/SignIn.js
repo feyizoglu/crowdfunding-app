@@ -25,7 +25,6 @@ const SignUp = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   });
-
   const containerRef = useRef();
 
   useEffect(() => {
@@ -60,7 +59,6 @@ const SignUp = () => {
       dispatch(setShowSignInBox());
     }
   }
-
 
   return (
     <div className="bg-opacity-70 w-screen h-screen fixed top-0 left-0 grid place-content-center z-50 bg-blackColor text-center">

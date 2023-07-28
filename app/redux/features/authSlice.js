@@ -10,7 +10,7 @@ const initialState = {
   profilPic: null,
   searchInputVal: '',
   showConfirmationBox: false,
-  selectedLink: '',
+  selectedLink: 'Home',
 }
 
 const authSlice = createSlice({

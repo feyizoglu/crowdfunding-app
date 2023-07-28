@@ -9,7 +9,7 @@
   },
   "NavbarWithUser": {
     "Home": "Home",
-    "Projects" : "Projects"
+    "Projects": "Projects"
   },
   "MobilNavbarWithUser": {
     "Search for projects": "Search for projects..",
@@ -25,5 +25,46 @@
   "InfoBox": {
     "View your project": "View your project",
     "Sign out": "Sign out"
-  }
+  },
+  "ConfirmationBox": {
+    "Just to confirm": "Just to confirm",
+    "are you certain you want to delete this project": "are you certain you want to delete this project",
+    "Yes": "Yes",
+    "No": "No"
+  },
+  "Footer": {},
+  "HeroSection": {},
+  "KickOffBox": {
+    "Kick-off" : "Kick-off",
+    "your project": "your project",
+    "Name of your project" : "Name of your project",
+    "Build a cat shelter":"Build a cat shelter",
+    "Add your goal": "Add your goal",
+    "Add your timeline":"Add your timeline",
+    "Select category":"Select category",
+    "Education":"Education",
+    "Culture":"Culture",
+    "Animals":"Animals",
+    "Children":"Children",
+    "About your project":"About your project",
+    "Tell us about your project to build a cat shelter":"Tell us about your project to build a cat shelter...",
+    "Add media":"Add media",
+    "Upload project":"Upload project"
+  },
+  "MyProject": {},
+  "MyProjectAccordion": {},
+  "MyProjectDetail": {},
+  "MyProjectDonorCard": {},
+  "MyProjectStatistics": {},
+  "MyProjectStatisticsDetails": {},
+  "MyProjectTransaction": {},
+  "MyProjectTransactionDetails": {},
+  "NewsLetterBox": {},
+  "ProjectOfTheWeek": {},
+  "Projects": {},
+  "SignIn": {},
+  "SignUpAlert": {},
+  "StartToday": {},
+  "SuccessPage": {},
+  "Testimonials": {}
 }

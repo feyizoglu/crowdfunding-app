@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslations } from 'next-intl';
-import { setShowInfoBox, setShowMobilNav, setSelectedLink } from '@/app/redux/features/authSlice';
+import { setShowInfoBox, setShowMobilNav, setSelectedLink, setCloseMobileNav } from '@/app/redux/features/authSlice';
 import { toast } from 'react-toastify';
 
 import { BiUser, BiUserX } from 'react-icons/bi'
@@ -40,6 +40,7 @@ function InfoBox({ style }) {
     await signOut(auth);
     router.push('/');
     dispatch(setShowInfoBox())
+    dispatch(setCloseMobileNav())
     dispatch(setSelectedLink('Home'))
   }
 

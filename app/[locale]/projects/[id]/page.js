@@ -25,7 +25,7 @@ function Page({ params }) {
   }, [params]);
 
   const today = new Date();
-  const endDate = parse(project?.timeline[1], "dd/MM/yy", new Date());
+  const endDate = parse(project?.timeline, "dd/MM/yy", new Date());
   const dayLeft = differenceInDays(endDate, today);
   const message = (() => {
     if (dayLeft == 1) {

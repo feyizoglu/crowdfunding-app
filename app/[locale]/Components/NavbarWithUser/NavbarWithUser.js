@@ -14,7 +14,7 @@ const style = {
   userContainer: `flex w-[50px] h-[50px]`,
   userImage: `rounded-full hover:opacity-80 cursor-pointer`,
   InfoBoxContainer: `absolute flex flex-col top-16 right-0 py-2 px-6 rounded-md bg-grayishColor text-blackColor text-[12px] shadow-lg`,
-  infoBoxLinks: `flex items-center w-[150px] gap-1 font-medium hover:opacity-60`,
+  infoBoxLinks: `flex items-center gap-1 whitespace-nowrap font-medium hover:opacity-60`,
   infoBoxUserName: `flex items-center gap-1 font-medium cursor-default capitalize `,
   infoBoxEmail: `flex items-center gap-1 font-medium cursor-default `,
   userInfos: `flex flex-col items-start py-2 px-1 border-b border-blackColor space-y-2`,
@@ -53,10 +53,6 @@ function NavbarWithUser({ activeLink, defaultLink }) {
     setTimeout(() => {
       dispatch(setShowInfoBox());
     }, 1)
-  }
-
-  const handleLinkClicks = (e) => {
-    dispatch(setSearchInputVal(''))
   }
 
   return (

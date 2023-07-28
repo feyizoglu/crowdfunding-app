@@ -27,11 +27,11 @@ function MobilNavbarWithUser({ bgColor, defaultLink, activeLink }) {
     signOutButton: `flex space-x-[1px] items-center text-xs text-red-600 hover:opacity-60`,
     headerInput: `rounded-needed outline-0 py-1 pl-2 placeholder:text-center `,
     InfoBoxContainer: `flex flex-col mt-3 py-2 px-6 rounded-md bg-grayishColor text-blackColor text-[12px] shadow-lg`,
-    infoBoxLinks: `flex items-center gap-1 font-medium hover:opacity-60`,
+    infoBoxLinks: `flex items-center gap-1 whitespace-nowrap  font-medium hover:opacity-60`,
     infoBoxUserName: `flex items-center gap-1 font-medium cursor-default capitalize `,
-    infoBoxEmail: `flex items-center gap-1 font-medium cursor-default `,
-    userInfos: `flex flex-col items-start py-2 px-1 border-b border-blackColor space-y-2`,
-    userFeatures: `flex flex-col items-start  px-1 py-2 space-y-2`,
+    infoBoxEmail: `flex items-center gap-1 font-medium cursor-default  `,
+    userInfos: `flex flex-col items-start py-2.5 px-1 border-b border-blackColor space-y-2.5`,
+    userFeatures: `flex flex-col items-start  px-1 py-2.5 space-y-2.5`,
     infoBoxPointer: `absolute top-3 left-1/2 -translate-x-1`,
   };
 

@@ -135,7 +135,7 @@ const Page = () => {
             </label>
             <div className="file-input m-5 ml-0">
               <label htmlFor="file-upload" className={`file-label button-light ${errors.profilePic && `bg-redColor text-red-500 border-red-500 hover:bg-lightRedColor hover:text-red-500 hover:opacity-60`}`}>
-                <FaUpload className={`text-[#0361FD] mr-4 ${errors.profilePic && 'text-darkRedColor'}`} /> Choose File
+                <FaUpload className={`text-[#0361FD] mr-4 ${errors.profilePic && 'text-darkRedColor'}`} /> Upload Profile Pic
               </label>
               <input
                 {...register('profilePic')}
