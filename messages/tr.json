@@ -1,0 +1,70 @@
+{
+  "NavbarLayout": {
+    "Search for projects": "Projeleri ara.."
+  },
+  "DefaultNavbar": {
+    "Home": "Anasayfa",
+    "Projects": "Projeler",
+    "Sign In": "Giriş yap"
+  },
+  "NavbarWithUser": {
+    "Home": "Anasayfa",
+    "Projects": "Projeler"
+  },
+  "MobilNavbarWithUser": {
+    "Search for projects": "Projeleri ara..",
+    "Home": "Anasayfa",
+    "Projects": "Projeler"
+  },
+  "MobilDefaultNavbar": {
+    "Search for projects": "Projeleri ara..",
+    "Home": "Anasayfa",
+    "Projects": "Projeler",
+    "Sign In": "Giriş yap"
+  },
+  "InfoBox": {
+    "View your project": "Projenizi goruntuleyin",
+    "Sign out": "Çıkış Yap"
+  },
+  "ConfirmationBox": {
+    "Just to confirm": "Onaylamak için",
+    "are you certain you want to delete this project": "Bu projeyi silmek istediğinizden emin misiniz",
+    "No": "Hayır",
+    "Yes": "Evet"
+  },
+  "Footer": {},
+  "HeroSection": {},
+  "KickOffBox": {
+    "Kick-off": "Projenize",
+    "your project": "başlangıç yapın",
+    "Name of your project": "Proje adı",
+    "Build a cat shelter": "Bir kedi barınağı inşa edin",
+    "Add your goal": "Hedefinizi ekleyin",
+    "Add your timeline": "Tarih aralığınızı ekleyin",
+    "Select category": "Kategori seçin",
+    "Education": "Eğitim",
+    "Culture": "Kültür",
+    "Animals": "Hayvanlar",
+    "Children": "Çocuklar",
+    "About your project": "Projeniz hakkında",
+    "Tell us about your project to build a cat shelter": "Bir kedi barınağı inşa etmek için projenizi anlatın...",
+    "Add media": "Medya ekle",
+    "Upload project": "Projenizi yükleyin"
+  },  
+  "MyProject": {},
+  "MyProjectAccordion": {},
+  "MyProjectDetail": {},
+  "MyProjectDonorCard": {},
+  "MyProjectStatistics": {},
+  "MyProjectStatisticsDetails": {},
+  "MyProjectTransaction": {},
+  "MyProjectTransactionDetails": {},
+  "NewsLetterBox": {},
+  "ProjectOfTheWeek": {},
+  "Projects": {},
+  "SignIn": {},
+  "SignUpAlert": {},
+  "StartToday": {},
+  "SuccessPage": {},
+  "Testimonials": {}
+}
