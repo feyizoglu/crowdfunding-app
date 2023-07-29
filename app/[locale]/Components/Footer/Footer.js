@@ -39,7 +39,7 @@ function Footer() {
               <h1 className='font-semibold text-l sm:text-xl md:text-2xl py-4'>
                 Projects
               </h1>
-              <div>
+              <div className='flex flex-col items-center md:items-start'>
                 {projects.slice(0, 2).map((project) => (
                   <Link onClick={() => {dispatch(setSelectedLink('Projects'))}} href={`/projects/${project.docId}`} key={project.id} className="flex items-center mb-4 ease-in duration-200 hover:scale-105">
                     <Image
@@ -47,7 +47,7 @@ function Footer() {
                       alt={project.title}
                       width={75}
                       height={50}
-                      className="rounded-lg shadow-lg w-[75px] h-[50px]"
+                      className="rounded-lg shadow-lg w-[75px] h-[50px] object-cover"
                     />
                     <h3 className="font-semibold ml-2">{project.title}</h3>
                   </Link>

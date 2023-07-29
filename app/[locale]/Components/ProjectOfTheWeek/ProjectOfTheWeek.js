@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Loader from "../Loader/Loader";
 
+
 function projectOfTheWeek() {
   const projects = useSelector(state => state.auth.projects);
   const dispatch = useDispatch();
@@ -18,12 +19,9 @@ function projectOfTheWeek() {
     );
   }
 
-  // Find the most recent project
   const mostRecentProject = projects.reduce((prev, curr) => (
     curr.uploadTimestamp > prev.uploadTimestamp ? curr : prev
   ));
-
- 
 
   return (
     <div className='bg-whiteColor text-center md:text-start'>
@@ -89,3 +87,4 @@ function projectOfTheWeek() {
 }
 
 export default projectOfTheWeek;
+
