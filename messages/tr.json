@@ -61,6 +61,13 @@
   "MyProjectTransactionDetails": {},
   "NewsLetterBox": {},
   "ProjectOfTheWeek": {},
+  "Project": {
+    "Raised:": "Toplanan:",
+    "Goal:": "Hedef:",
+    "Fund This Project": "Projeye Bağış Yap",
+    "About Project": "Proje Hakkında",
+    "Lang": "Türkçe"
+  },
   "Projects": {},
   "SignIn": {},
   "SignUpAlert": {},

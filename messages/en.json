@@ -61,6 +61,13 @@
   "MyProjectTransactionDetails": {},
   "NewsLetterBox": {},
   "ProjectOfTheWeek": {},
+  "Project": {
+    "Raised:": "Raised:",
+    "Goal:": "Goal:",
+    "Fund This Project": "Fund This Project",
+    "About Project": "About Project",
+    "Lang": "English"
+  },
   "Projects": {},
   "SignIn": {},
   "SignUpAlert": {},
