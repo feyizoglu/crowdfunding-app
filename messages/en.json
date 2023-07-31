@@ -35,21 +35,21 @@
   "Footer": {},
   "HeroSection": {},
   "KickOffBox": {
-    "Kick-off" : "Kick-off",
+    "Kick-off": "Kick-off",
     "your project": "your project",
-    "Name of your project" : "Name of your project",
-    "Build a cat shelter":"Build a cat shelter",
+    "Name of your project": "Name of your project",
+    "Build a cat shelter": "Build a cat shelter",
     "Add your goal": "Add your goal",
-    "Add your timeline":"Add your timeline",
-    "Select category":"Select category",
-    "Education":"Education",
-    "Culture":"Culture",
-    "Animals":"Animals",
-    "Children":"Children",
-    "About your project":"About your project",
-    "Tell us about your project to build a cat shelter":"Tell us about your project to build a cat shelter...",
-    "Add media":"Add media",
-    "Upload project":"Upload project"
+    "Add your timeline": "Add your timeline",
+    "Select category": "Select category",
+    "Education": "Education",
+    "Culture": "Culture",
+    "Animals": "Animals",
+    "Children": "Children",
+    "About your project": "About your project",
+    "Tell us about your project to build a cat shelter": "Tell us about your project to build a cat shelter...",
+    "Add media": "Add media",
+    "Upload project": "Upload project"
   },
   "MyProject": {},
   "MyProjectAccordion": {},
@@ -66,5 +66,10 @@
   "SignUpAlert": {},
   "StartToday": {},
   "SuccessPage": {},
-  "Testimonials": {}
+  "Testimonial": {
+    "Lang": "English"
+  },
+  "Testimonials": {
+    "Testimonials": "Testimonials"
+  }
 }

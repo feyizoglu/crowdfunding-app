@@ -50,7 +50,7 @@
     "Tell us about your project to build a cat shelter": "Bir kedi barınağı inşa etmek için projenizi anlatın...",
     "Add media": "Medya ekle",
     "Upload project": "Projenizi yükleyin"
-  },  
+  },
   "MyProject": {},
   "MyProjectAccordion": {},
   "MyProjectDetail": {},
@@ -66,5 +66,10 @@
   "SignUpAlert": {},
   "StartToday": {},
   "SuccessPage": {},
-  "Testimonials": {}
+  "Testimonial": {
+    "Lang": "Türkçe"
+  },
+  "Testimonials": {
+    "Testimonials": "Kullanıcı Yorumları"
+  }
 }
