@@ -6,7 +6,7 @@ import Link from "next/link";
 import Loader from "../Loader/Loader";
 
 
-function projectOfTheWeek() {
+function ProjectOfTheWeek() {
   const projects = useSelector(state => state.auth.projects);
   const dispatch = useDispatch();
 
@@ -86,5 +86,5 @@ function projectOfTheWeek() {
   );
 }
 
-export default projectOfTheWeek;
+export default ProjectOfTheWeek;
 
