@@ -84,6 +84,7 @@
   "Projects": {
     "Raised:": "Toplanan:",
     "Goal:": "Hedef:",
+    "noProjectsAvailable": "\"{searchInputVal}\" ile eşleşen proje bulunamadı.",
     "No projects available in this category":"Bu kategoriye uygun proje bulunamadı.",
     "Categories":"Kategoriler",
     "All": "Hepsi",

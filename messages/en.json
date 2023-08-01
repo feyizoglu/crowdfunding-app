@@ -84,6 +84,7 @@
   "Projects": {
     "Raised:": "Raised:",
     "Goal:": "Goal:",
+    "noProjectsAvailable": "No projects available with the search: \"{searchInputVal}\".",
     "No projects available in this category":"No projects available in this category",
     "Categories":"Categories",
     "All": "All",

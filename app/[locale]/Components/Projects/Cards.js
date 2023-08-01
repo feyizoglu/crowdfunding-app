@@ -20,7 +20,7 @@ const Cards = ({ projects }) => {
     <div className="projects-part container mx-auto place-content-center pb-20 px-12 grid gap-8 md:gap-6 xl:gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {searchedProjects.length == 0 ? (
         <div className="text-center text-2xl py-20 sm:text-start md:w-[700px] md:h-screen-70 md:py-0">
-          No projects available with the search: "{searchInputVal}".
+          {t('noProjectsAvailable', { searchInputVal })}
         </div>
       ) : (
         searchedProjects.map((project) => (
