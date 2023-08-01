@@ -67,13 +67,13 @@ function ProjectOfTheWeek() {
                 </div>
                 <div className="flex justify-between">
                   <div className="raised flex flex-col justify-between">
-                    <p className="text-sm sm:text-base md:text-lg">{t("Raised")}:</p>
+                    <p className="text-sm sm:text-base md:text-lg">{t("Raised:")}</p>
                     <p className="text-lg sm:text-xl md:text-2xl font-bold py-1 sm:py-2 md:py-3">
                       ${mostRecentProject.moneyRaised}
                     </p>
                   </div>
                   <div className="goal flex flex-col justify-between">
-                    <p className="text-sm sm:text-base md:text-lg">{t("Goal")}:</p>
+                    <p className="text-sm sm:text-base md:text-lg">{t("Goal:")}</p>
                     <p className="text-lg sm:text-xl md:text-2xl font-bold py-1 sm:py-2 md:py-3">
                       ${mostRecentProject.goalAmount}
                     </p>
