@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-export default function DonationBox() {
+const FundingBoxDonationBox = () => {
   const [activeBtn, setActiveBtn] = useState(25);
   const [customValue, setCustomValue] = useState("");
 
@@ -57,4 +57,6 @@ export default function DonationBox() {
       </div>
     </div>
   );
-}
+};
+
+export default FundingBoxDonationBox;

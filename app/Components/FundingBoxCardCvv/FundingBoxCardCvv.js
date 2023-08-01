@@ -2,10 +2,15 @@
 import React, { useState } from "react";
 import { BsEyeSlash } from "react-icons/bs";
 
-const CardCvv = () => {
+const FundingBoxCardCvv = () => {
   const [type, setType] = useState("password");
   const handleCvv = () => {
     type == "password" ? setType("") : setType("password");
+  };
+
+  const handleInputChange = (e) => {
+    const inputVal = e.target.value.replace(/\D/g, "");
+    e.target.value = inputVal;
   };
   return (
     <div className="flex flex-col w-5/12">
@@ -16,6 +21,7 @@ const CardCvv = () => {
           placeholder="***"
           maxLength={3}
           className="bg-whiteColor w-1/2 outline-none "
+          onInput={handleInputChange}
         />
         <BsEyeSlash onClick={handleCvv} className="cursor-pointer" />
       </div>
@@ -23,4 +29,4 @@ const CardCvv = () => {
   );
 };
 
-export default CardCvv;
+export default FundingBoxCardCvv;
