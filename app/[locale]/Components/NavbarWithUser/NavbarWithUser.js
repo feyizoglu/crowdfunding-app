@@ -48,8 +48,9 @@ function NavbarWithUser({ activeLink, defaultLink }) {
     }
   }
 
-  const handleInfoBoxClick = () => {
-    dispatch(setSearchInputVal(''))
+  const handleInfoBoxClick = (e) => {
+    e.stopPropagation();
+    dispatch(setSearchInputVal(''));
     setTimeout(() => {
       dispatch(setShowInfoBox());
     }, 1)
@@ -71,7 +72,7 @@ function NavbarWithUser({ activeLink, defaultLink }) {
       </Link>
       {!isUserHaveProject &&
         <button onClick={handleNewProjectClick} className={style.button}>
-          New Project
+          {t('New Project')}
         </button>}
       <div className={style.userContainer}>
         <Image

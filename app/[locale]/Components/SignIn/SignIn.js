@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { FaLessThan } from 'react-icons/fa';
+import { MdOutlineArrowBackIos } from 'react-icons/md';
 import { useDispatch } from "react-redux";
 import { useForm } from 'react-hook-form';
 import * as yup from "yup";
@@ -68,9 +68,9 @@ const SignUp = () => {
       >
         <button
           onClick={() => dispatch(setShowSignInBox())}
-          className="absolute top-3 left-5 p-3 text-blackColor hover:opacity-60"
+          className="absolute top-3 left-5 p-3 text-blackColor rounded-full hover:bg-grayishColor "
         >
-          <FaLessThan />
+          <MdOutlineArrowBackIos size={20} />
         </button>
         <h2 className="text-2xl font-bold mb-5 mt-6  sm:text-3xl md:text-4xl ">
           Welcome Back

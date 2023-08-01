@@ -18,7 +18,7 @@ module.exports = {
         blueColor : '#0361FD',
         lightRedColor: '#FED7D7',
         darkRedColor: '#E53E3E',
-        greenTransparent: "rgba(212, 238, 37, 0.9)"
+        greenTransparent: "rgba(212, 238, 37, 0.8)"
       },
       borderRadius: {
         needed: '0.375rem',

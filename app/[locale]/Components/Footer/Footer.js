@@ -12,18 +12,18 @@ function Footer() {
   const dispatch = useDispatch();
 
   return (
-    <footer className="bg-greenColor pt-5 md:pt-10 text-center md:text-left">
+    <footer className="bg-greenColor pt-5 md:pt-10 text-center md:text-left text-blackColor">
       <div className="container mx-auto px-4">
         <div className='border-b border-whiteColor pb-5 md:pb-10"'>
-          <div className="grid grid-cols-1  md:grid-cols-3 gap-5 md:gap-10">
-            <div className="firstcolumn flex flex-col">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-10">
+            <div className="firstcolumn flex flex-col order-3 md:order-1">
               <h1 className='font-semibold text-l sm:text-xl md:text-2xl py-4'>
                 Givingly
               </h1>
               <p className=''>
                 Join our vibrant community of changemakers and be a part of the crowdfunding revolution. Together, we can make a difference and turn ideas into reality.
               </p>
-              <div className='icons flex py-10 space-x-5 md:space-x-8 justify-center md:justify-start'>
+              <div className='icons flex py-10 space-x-5 md:space-x-8 justify-center  md:justify-start'>
                 <Link href='#' className="flex hover:opacity-60">
                   <FaInstagram className="text-3xl" />
                 </Link>
@@ -35,13 +35,13 @@ function Footer() {
                 </Link>
               </div>
             </div>
-            <div className="secondcolumn">
+            <div className="secondcolumn order-2">
               <h1 className='font-semibold text-l sm:text-xl md:text-2xl py-4'>
                 Projects
               </h1>
               <div className='flex flex-col items-center md:items-start'>
                 {projects.slice(0, 2).map((project) => (
-                  <Link onClick={() => {dispatch(setSelectedLink('Projects'))}} href={`/projects/${project.docId}`} key={project.id} className="flex items-center mb-4 ease-in duration-200 hover:scale-105">
+                  <Link onClick={() => { dispatch(setSelectedLink('Projects')) }} href={`/projects/${project.docId}`} key={project.id} className="flex items-center mb-4 ease-in duration-200 hover:scale-105">
                     <Image
                       src={project.image}
                       alt={project.title}
@@ -54,11 +54,11 @@ function Footer() {
                 ))}
               </div>
             </div>
-            <div className="thirdcolumn ">
+            <div className="thirdcolumn order-1 md:order-3">
               <h1 className='font-bold text-l sm:text-xl md:text-2xl py-4'>
                 Our Story
               </h1>
-              <p className=''>
+              <p >
                 We connect passionate individuals and innovative projects with a community of backers. Our user-friendly platform empowers creators to raise funds and engage with supporters. Join us in bringing visions to life.
               </p>
             </div>

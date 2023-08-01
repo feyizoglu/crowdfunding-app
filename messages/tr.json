@@ -9,12 +9,14 @@
   },
   "NavbarWithUser": {
     "Home": "Anasayfa",
-    "Projects": "Projeler"
+    "Projects": "Projeler",
+    "New Project": "Yeni Proje"
   },
   "MobilNavbarWithUser": {
     "Search for projects": "Projeleri ara..",
     "Home": "Anasayfa",
-    "Projects": "Projeler"
+    "Projects": "Projeler",
+    "New Project": "Yeni Proje"
   },
   "MobilDefaultNavbar": {
     "Search for projects": "Projeleri ara..",

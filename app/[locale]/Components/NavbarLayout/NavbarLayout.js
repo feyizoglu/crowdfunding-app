@@ -15,6 +15,7 @@ import NavbarSearchInput from "../NavbarSearchInput/NavbarSearchInput";
 import SignIn from "../SignIn/SignIn";
 import KickOffBox from "../KickOffBox/KickOffBox";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { usePathname } from "next/navigation";
 
 import { useLocale, useTranslations } from 'next-intl';
 
@@ -129,15 +130,20 @@ export default function NavbarLayOut() {
     startTransition(() => {
       window.location.href = `/${nextLocale}`
     });
+    dispatch(setSelectedLink('Home'))
   }
 
   return (
     <div className={style.headerContainer}>
       <header className={`${style.header} ${bgColor && `bg-greenTransparent`}`}>
-        <Link href="/" onClick={() => {
-          dispatch(setCloseMobileNav(false));
-          dispatch(setSelectedLink('Home'))
-        }} className={`${style.headerLogo}`}>
+        <Link
+          href="/"
+          onClick={() => {
+            dispatch(setCloseMobileNav(false));
+            dispatch(setSelectedLink('Home'))
+          }}
+          className={`${style.headerLogo}`}
+        >
           Givingly
         </Link>
         <NavbarSearchInput style={style} placeholder={t('Search for projects')} />
@@ -164,8 +170,8 @@ export default function NavbarLayOut() {
           onChange={handleLocaleChange}
           value={selectedLocale}
         >
-          <option value="en">🇬🇧</option>
-          <option value="tr">🇹🇷</option>
+          <option value="en">&#x1F1EC;&#x1F1E7;</option>
+          <option value="tr">&#x1F1F9;&#x1F1F7;</option>
         </select>
       </section>
     </div>

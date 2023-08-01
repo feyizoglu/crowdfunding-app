@@ -16,30 +16,38 @@ function DefaultNavbar({ defaultLink, activeLink }) {
   const selectedLink = useSelector(state => state.auth.selectedLink);
   const t = useTranslations('DefaultNavbar');
 
-  const handleLinkClicks = (e) => {
-
-  }
-
   return (
     <div className={style.container}>
-      <Link onClick={() => {
-        dispatch(setSearchInputVal(''))
-        dispatch(setSelectedLink('Home'))
-      }} className={selectedLink === 'Home' ? activeLink : defaultLink} href="/">
+      <Link
+        onClick={() => {
+          dispatch(setSearchInputVal(''))
+          dispatch(setSelectedLink('Home'))
+        }}
+        className={selectedLink === 'Home' ? activeLink : defaultLink}
+        href="/"
+      >
         {t('Home')}
       </Link>
-      <Link onClick={() => {
-        dispatch(setSearchInputVal(''))
-        dispatch(setSelectedLink('Projects'))
-      }} className={selectedLink === 'Projects' ? activeLink : defaultLink} href="/projects">
+      <Link
+        onClick={() => {
+          dispatch(setSearchInputVal(''))
+          dispatch(setSelectedLink('Projects'))
+        }}
+        className={selectedLink === 'Projects' ? activeLink : defaultLink}
+        href="/projects"
+      >
         {t('Projects')}
       </Link>
-      <Link href='/' onClick={() => {
-        dispatch(setSelectedLink('Home'))
-        setTimeout(() => {
-          dispatch(setShowSignInBox());
-        }, 1)
-      }} className={style.headerButton}>
+      <Link
+        href='/'
+        onClick={() => {
+          dispatch(setSelectedLink('Home'))
+          setTimeout(() => {
+            dispatch(setShowSignInBox());
+          }, 1)
+        }}
+        className={style.headerButton}
+      >
         {t('Sign In')}
       </Link>
     </div >

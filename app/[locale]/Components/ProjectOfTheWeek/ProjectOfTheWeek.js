@@ -13,9 +13,9 @@ function ProjectOfTheWeek() {
   // Check if the projects array is empty or undefined
   if (!projects || projects.length === 0) {
     return (
-      <div className="bg-whiteColor h-screen-70">
-        <Loader />
-      </div>
+      <>
+
+      </>
     );
   }
 
@@ -25,35 +25,34 @@ function ProjectOfTheWeek() {
 
   return (
     <div className='bg-whiteColor text-center md:text-start'>
-      <div className="container mx-auto project-of-the-week py-20 px-4 ">
+      <div className="container mx-auto project-of-the-week pt-20 px-4 ">
         <div className='border-b border-blackColor pb-20'>
           <h1 className="project-of-the-week__title text-4xl sm:text-5xl md:text-6xl font-bold mb-4 pb-10 ">Project of the Week</h1>
-          <div className="project-of-the-week__content grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 ">
-            <div className="img-container flex flex-col justify-center items-center rounded-lg border-0">
+          <div className="project-of-the-week__content grid grid-cols-1 md:grid-cols-2 gap-10  ">
+            <div className="img-container flex flex-col items-center  rounded-lg border-0 md:items-start">
               <Link href={`/projects/${mostRecentProject.docId}`}>
-               
                 <Image
-                  className="rounded-lg object-cover" 
+                  className="rounded-lg object-cover"
                   src={mostRecentProject.image}
                   width={400}
                   height={400}
                   alt="projectImage"
                   priority
                 />
-                
+
               </Link>
             </div>
-            <div className="flex flex-col justify-center space-y-16">
+            <div className=" flex flex-col justify-center space-y-10 md:pr-10 lg:-ml-20">
               <div className="mb-2">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2">
-                <Link href={`/projects/${mostRecentProject.docId}`} passHref>
-                {mostRecentProject.title}
-               </Link>
+                  <Link href={`/projects/${mostRecentProject.docId}`} passHref>
+                    {mostRecentProject.title[0].toUpperCase() + mostRecentProject.title.slice(1)}
+                  </Link>
                 </h1>
               </div>
               <div>
                 <p className="mb-2">
-                  {mostRecentProject.description}
+                  {mostRecentProject.description[0].toUpperCase() + mostRecentProject.description.slice(1)}
                 </p>
               </div>
               <div className="progress-bar flex flex-col justify-between">

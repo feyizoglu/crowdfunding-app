@@ -48,20 +48,20 @@ function Page({ params }) {
   const progressPercentage = (project?.moneyRaised / project?.goalAmount) * 100;
 
   return (
-    <div className="bg-whiteColor md:h-screen mt-[70px]">
+    <div className="bg-whiteColor  mt-[70px]">
       {project ? (
-        <div className="container mx-auto px-4 py-6 flex flex-col justify-around items-center text-center md:flex-row  md:text-start md:space-y-0 md:h-screen">
-          <div className=" mt-4 rounded-xl md:w-2/5 md:mt-0 md:flex md:items-center md:h-[calc(100%-20rem)] grid place-content-center">
+        <div className="container mx-auto px-4 py-6 flex flex-col justify-around items-center text-center md:flex-row  md:text-start md:space-y-0 md:h-screen-70 md:space-x-6">
+          <div className=" mt-4 rounded-xl md:w-2/5 md:mt-0 md:flex md:items-center grid place-content-center">
             <Image
-              className="rounded-xl h-[500px] w-[500px]"
+              className="rounded-xl h-[200px] w-[200px] md:h-[350px] md:w-[400px] lg:h-[450px] lg:w-[450px]"
               alt={project?.title}
               src={project?.image}
-              width={500}
-              height={500}
+              width={450}
+              height={450}
             />
           </div>
           <div className="flex flex-col px-6 space-y-3 py-3 md:w-3/5 md:text-start ">
-            <h1 className="text-2xl font-bold">{project?.title}</h1>
+            <h1 className="text-2xl font-bold">{project?.title[0].toUpperCase() + project?.title.slice(1)}</h1>
             <div className="flex flex-row space-x-1 items-center justify-center md:justify-start">
               <Image
                 className=" w-6 h-6 items-start rounded-full"
@@ -75,7 +75,7 @@ function Page({ params }) {
             <div className="flex flex-col justify-between  md:border-y md:border-blackColor md:flex-row md:space-y-0 md:container">
               <div className="flex flex-col space-y-5 px-2 md:w-1/2 md:pt-5">
                 <h1 className="text-lg font-bold">{t("About Project")}</h1>
-                <p className="text-lg pb-5">{project?.description}</p>
+                <p className="text-lg pb-5">{project?.description[0].toUpperCase() + project?.description.slice(1)}</p>
               </div>
               <div className="md:border-l md:border-blackColor "></div>
               <div className="md:w-1/2 md:py-5">

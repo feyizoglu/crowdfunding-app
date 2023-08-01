@@ -48,10 +48,11 @@ function MobilNavbarWithUser({ bgColor, defaultLink, activeLink }) {
     }
   }
 
-  const handleInfoBoxClick = () => {
+  const handleInfoBoxClick = (e) => {
+    e.stopPropagation()
     setTimeout(() => {
       dispatch(setShowInfoBox())
-    }, 1)
+    }, 1);
   }
 
   return (
@@ -84,7 +85,7 @@ function MobilNavbarWithUser({ bgColor, defaultLink, activeLink }) {
       </Link>
       {!isUserHaveProject &&
         <button onClick={handleNewProjectClick} className={style.button}>
-          New Project
+          {t('New Project')}
         </button>}
     </div>
   );
