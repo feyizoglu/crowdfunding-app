@@ -2,11 +2,16 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setShowMobilNav, setUser, setCloseMobileNav, setProfilPic } from "@/app/redux/features/authSlice";
+import {
+  setShowMobilNav,
+  setUser,
+  setCloseMobileNav,
+  setProfilPic,
+} from "@/app/redux/features/authSlice";
 import { auth, db } from "@/app/firebase/firebase-confing";
 import { onAuthStateChanged } from "firebase/auth";
 
-import styles from './navbarLayout.module.css'
+import styles from "./navbarLayout.module.css";
 import DefaultNavbar from "../DefaultNavbar/DefaultNavbar";
 import MobilDefaultNavbar from "../MobilDefaultNavbar/MobilDefaultNavbar";
 import NavbarWithUser from "../NavbarWithUser/NavbarWithUser";
@@ -14,6 +19,7 @@ import MobilNavbarWithUser from "../MobilNavbarWithUser/MobilNavbarWithUser";
 import NavbarSearchInput from "../NavbarSearchInput/NavbarSearchInput";
 import SignIn from "../SignIn/SignIn";
 import KickOffBox from "../KickOffBox/KickOffBox";
+import FundingBox from "../FundingBox/FundingBox";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 
 const style = {
@@ -29,10 +35,11 @@ const style = {
 export default function NavbarLayOut() {
   const [bgColor, setBgColor] = useState(false);
   const [innerWidth, setInnerWidth] = useState(0);
-  const showMobilNav = useSelector(state => state.auth.showMobilNav);
-  const showSignInBox = useSelector(state => state.auth.showSignInBox);
-  const showKickOffBox = useSelector(state => state.auth.showKickOffBox);
-  const user = useSelector(state => state.auth.user);
+  const showMobilNav = useSelector((state) => state.auth.showMobilNav);
+  const showSignInBox = useSelector((state) => state.auth.showSignInBox);
+  const showFundingBox = useSelector((state) => state.auth.showFundingBox);
+  const showKickOffBox = useSelector((state) => state.auth.showKickOffBox);
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,29 +47,31 @@ export default function NavbarLayOut() {
       setInnerWidth(window.innerWidth);
     };
 
-    if (typeof window !== 'undefined') {
-      window.addEventListener('resize', handleResize);
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", handleResize);
     }
 
     return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('resize', handleResize);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", handleResize);
       }
     };
   }, []);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && innerWidth >= 768) {
+    if (typeof window !== "undefined" && innerWidth >= 768) {
       dispatch(setCloseMobileNav(false));
     }
   }, [innerWidth, dispatch]);
 
-
   useEffect(() => {
-    window.addEventListener('scroll', changeBgColorOnScrolling);
+    window.addEventListener("scroll", changeBgColorOnScrolling);
     const fetchProfilePicture = () => {
       if (user?.id) {
-        const q = query(collection(db, 'profilPics'), where('id', '==', user.id));
+        const q = query(
+          collection(db, "profilPics"),
+          where("id", "==", user.id)
+        );
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
           querySnapshot.forEach((doc) => {
             const data = doc.data();
@@ -74,17 +83,19 @@ export default function NavbarLayOut() {
     };
     const unsubscribeProfilePicture = fetchProfilePicture();
     return () => {
-      window.removeEventListener('scroll', changeBgColorOnScrolling)
+      window.removeEventListener("scroll", changeBgColorOnScrolling);
       unsubscribeProfilePicture && unsubscribeProfilePicture();
-    }
+    };
   }, [user, dispatch]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      dispatch(setUser({
-        email: currentUser?.email,
-        id: currentUser?.uid
-      }));
+      dispatch(
+        setUser({
+          email: currentUser?.email,
+          id: currentUser?.uid,
+        })
+      );
     });
     return () => {
       unsubscribe();
@@ -93,40 +104,52 @@ export default function NavbarLayOut() {
 
   const changeBgColorOnScrolling = () => {
     if (window.scrollY >= 70) {
-      setBgColor(true)
+      setBgColor(true);
     } else {
-      setBgColor(false)
+      setBgColor(false);
     }
   };
 
   const handleHamIconClick = () => {
     dispatch(setShowMobilNav());
-  }
+  };
 
   return (
     <div className={style.headerContainer}>
       <header className={`${style.header} ${bgColor && `bg-greenTransparent`}`}>
-        <Link href="/" onClick={() => dispatch(setCloseMobileNav(false))} className={`${style.headerLogo}`}>
+        <Link
+          href="/"
+          onClick={() => dispatch(setCloseMobileNav(false))}
+          className={`${style.headerLogo}`}
+        >
           Givingly
         </Link>
-        <NavbarSearchInput style={style} placeholder='Search for projects..' />
+        <NavbarSearchInput style={style} placeholder="Search for projects.." />
         <nav className={style.nav}>
           {user?.email ? <NavbarWithUser /> : <DefaultNavbar />}
         </nav>
         <section className={style.hamMenu} onClick={handleHamIconClick}>
-          <div className={`${styles.container} ${showMobilNav && styles.change}`}>
+          <div
+            className={`${styles.container} ${showMobilNav && styles.change}`}
+          >
             <div className={styles.bar1}></div>
             <div className={styles.bar2}></div>
             <div className={styles.bar3}></div>
           </div>
         </section>
       </header>
-      {showMobilNav &&
+      {showMobilNav && (
         <section>
-          {user?.email ? <MobilNavbarWithUser bgColor={bgColor} /> : <MobilDefaultNavbar bgColor={bgColor} />}
-        </section>}
+          {user?.email ? (
+            <MobilNavbarWithUser bgColor={bgColor} />
+          ) : (
+            <MobilDefaultNavbar bgColor={bgColor} />
+          )}
+        </section>
+      )}
       {showSignInBox && <SignIn />}
       {showKickOffBox && <KickOffBox />}
+      {showFundingBox && <FundingBox />}
     </div>
   );
 }

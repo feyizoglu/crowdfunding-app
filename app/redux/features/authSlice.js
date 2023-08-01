@@ -6,7 +6,7 @@ const initialState = {
   showInfoBox: false,
   showMobilNav: false,
   showKickOffBox: false,
-  showFundingBox: true,
+  showFundingBox: false,
   projects: [],
   profilPic: null,
   searchInputVal: "",
