@@ -50,7 +50,7 @@
     "Tell us about your project to build a cat shelter": "Bir kedi barınağı inşa etmek için projenizi anlatın...",
     "Add media": "Medya ekle",
     "Upload project": "Projenizi yükleyin"
-  },  
+  },
   "MyProject": {},
   "MyProjectAccordion": {},
   "MyProjectDetail": {},
@@ -61,10 +61,22 @@
   "MyProjectTransactionDetails": {},
   "NewsLetterBox": {},
   "ProjectOfTheWeek": {},
+  "Project": {
+    "Raised:": "Toplanan:",
+    "Goal:": "Hedef:",
+    "Fund This Project": "Projeye Bağış Yap",
+    "About Project": "Proje Hakkında",
+    "Lang": "Türkçe"
+  },
   "Projects": {},
   "SignIn": {},
   "SignUpAlert": {},
   "StartToday": {},
   "SuccessPage": {},
-  "Testimonials": {}
+  "Testimonial": {
+    "Lang": "Türkçe"
+  },
+  "Testimonials": {
+    "Testimonials": "Kullanıcı Yorumları"
+  }
 }
