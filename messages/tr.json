@@ -32,7 +32,15 @@
     "No": "Hayır",
     "Yes": "Evet"
   },
-  "Footer": {},
+  "Footer": {
+    "givinglyTitle": "Givingly",
+    "givinglyDescription": "Canlı bir değişim yaratan topluluğumuza katılın ve kitlesel fonlama devriminin bir parçası olun. Birlikte fark yaratabilir ve fikirleri gerçeğe dönüştürebiliriz.",
+    "projectsTitle": "Projeler",
+    "ourStoryTitle": "Hikayemiz",
+    "ourStoryDescription": "Tutkulu bireyleri ve yenilikçi projeleri destekçi bir toplulukla buluşturuyoruz. Kullanıcı dostu platformumuz, yaratıcıların fon toplamasına ve destekçilerle etkileşim kurmasına olanak tanır. Vizyonları hayata geçirmek için bize katılın.",
+    "allRightsReserved": "2023 Tüm hakları saklıdır.",
+    "Lang": "Türkçe"
+  },
   "HeroSection": {},
   "KickOffBox": {
     "Kick-off": "Projenize",
@@ -60,7 +68,12 @@
   "MyProjectTransaction": {},
   "MyProjectTransactionDetails": {},
   "NewsLetterBox": {},
-  "ProjectOfTheWeek": {},
+  "ProjectOfTheWeek": {
+    "Raised:": "Toplanan:",
+    "Goal:": "Hedef:",
+    "Project of the Week":"Haftanın Projesi",
+    "Lang": "Türkçe"
+  },
   "Project": {
     "Raised:": "Toplanan:",
     "Goal:": "Hedef:",

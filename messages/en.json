@@ -32,7 +32,15 @@
     "Yes": "Yes",
     "No": "No"
   },
-  "Footer": {},
+  "Footer": {
+    "givinglyTitle": "Givingly",
+    "givinglyDescription": "Join our vibrant community of changemakers and be a part of the crowdfunding revolution. Together, we can make a difference and turn ideas into reality.",
+    "projectsTitle": "Projects",
+    "ourStoryTitle": "Our Story",
+    "ourStoryDescription": "We connect passionate individuals and innovative projects with a community of backers. Our user-friendly platform empowers creators to raise funds and engage with supporters. Join us in bringing visions to life.",
+    "allRightsReserved": "2023 All rights reserved.",
+    "Lang": "English"
+  },
   "HeroSection": {},
   "KickOffBox": {
     "Kick-off": "Kick-off",
@@ -60,7 +68,12 @@
   "MyProjectTransaction": {},
   "MyProjectTransactionDetails": {},
   "NewsLetterBox": {},
-  "ProjectOfTheWeek": {},
+  "ProjectOfTheWeek": {
+    "Raised:": "Raised:",
+    "Goal:": "Goal:",
+    "Project of the Week": "Project of the Week",
+    "Lang": "English"
+  },
   "Project": {
     "Raised:": "Raised:",
     "Goal:": "Goal:",
