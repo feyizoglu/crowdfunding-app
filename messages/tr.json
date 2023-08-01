@@ -81,7 +81,18 @@
     "About Project": "Proje Hakkında",
     "Lang": "Türkçe"
   },
-  "Projects": {},
+  "Projects": {
+    "Raised:": "Toplanan:",
+    "Goal:": "Hedef:",
+    "No projects available in this category":"Bu kategoriye uygun proje bulunamadı.",
+    "Categories":"Kategoriler",
+    "All": "Hepsi",
+    "Education":"Eğitim",
+    "Culture":"Kültür",
+    "Animals":"Hayvanlar",
+    "Children":"Çocuklar",
+    "Lang": "Türkçe"
+  },
   "SignIn": {},
   "SignUpAlert": {},
   "StartToday": {},

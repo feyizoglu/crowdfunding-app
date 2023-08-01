@@ -81,7 +81,18 @@
     "About Project": "About Project",
     "Lang": "English"
   },
-  "Projects": {},
+  "Projects": {
+    "Raised:": "Raised:",
+    "Goal:": "Goal:",
+    "No projects available in this category":"No projects available in this category",
+    "Categories":"Categories",
+    "All": "All",
+    "Education":"Education",
+    "Culture":"Culture",
+    "Animals":"Animals",
+    "Children":"Children",
+    "Lang": "English"
+  },
   "SignIn": {},
   "SignUpAlert": {},
   "StartToday": {},
