@@ -33,7 +33,11 @@
     "Yes": "Evet"
   },
   "Footer": {},
-  "HeroSection": {},
+  "HeroSection": {
+    "Supporting great causes made easy": "Harika amaçları desteklemek kolaylaştı",
+    "We helped over 3,500 projects and causes Sign in today and get your idea kicked off or support others kick off their amazing projects": "3,500'den fazla proje ve amaça yardımcı olduk. Bugün giriş yapın ve fikrinizi hayata geçirin veya diğer harika projelerin başlatılmasına destek olun.",
+    "Start Today": "Bugün başla"
+  },
   "KickOffBox": {
     "Kick-off": "Projenize",
     "your project": "başlangıç yapın",
@@ -59,7 +63,11 @@
   "MyProjectStatisticsDetails": {},
   "MyProjectTransaction": {},
   "MyProjectTransactionDetails": {},
-  "NewsLetterBox": {},
+  "NewsLetterBox": {
+    "Stay informed": "Bilgili kalın",
+    "Want to be among the first people to know about amazing projects on our platform? Join our monthly digest of the best causes": "Platformumuzdaki harika projeler hakkında ilk bilgi sahibi olmak ister misiniz? En iyi amaçların yer aldığı aylık özetimize katılın.",
+    "Join Newsletter": "Bültenimize üye ol"
+  },
   "ProjectOfTheWeek": {},
   "Project": {
     "Raised:": "Toplanan:",
@@ -71,7 +79,13 @@
   "Projects": {},
   "SignIn": {},
   "SignUpAlert": {},
-  "StartToday": {},
+  "StartToday": {
+    "I want to": "Şunu yapmak istiyorum",
+    "Support": "Desteklemek",
+    "other projects": "diger projeleri",
+    "Kick-off": "Başlamak",
+    "my project": "projeme"
+  },
   "SuccessPage": {},
   "Testimonial": {
     "Lang": "Türkçe"
