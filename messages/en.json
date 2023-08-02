@@ -1,3 +1,4 @@
+
 {
   "NavbarLayout": {
     "Search for projects": "Search for projects.."
@@ -34,27 +35,26 @@
   },
   "Footer": {},
   "HeroSection": {
-    "Givingly": "Givingly",
     "Supporting great causes made easy": "Supporting great causes made easy",
-    "We helped over 3,500 projects and causes. Sign in today and get your idea kicked off or support others kick off their amazing projects.": "We helped over 3,500 projects and causes. Sign in today and get your idea kicked off or support others kick off their amazing projects.",
+    "We helped over 3,500 projects and causes Sign in today and get your idea kicked off or support others kick off their amazing projects": "We helped over 3,500 projects and causes. Sign in today and get your idea kicked off or support others kick off their amazing projects.",
     "Start Today": "Start Today"
   },
   "KickOffBox": {
-    "Kick-off" : "Kick-off",
+    "Kick-off": "Kick-off",
     "your project": "your project",
-    "Name of your project" : "Name of your project",
-    "Build a cat shelter":"Build a cat shelter",
+    "Name of your project": "Name of your project",
+    "Build a cat shelter": "Build a cat shelter",
     "Add your goal": "Add your goal",
-    "Add your timeline":"Add your timeline",
-    "Select category":"Select category",
-    "Education":"Education",
-    "Culture":"Culture",
-    "Animals":"Animals",
-    "Children":"Children",
-    "About your project":"About your project",
-    "Tell us about your project to build a cat shelter":"Tell us about your project to build a cat shelter...",
-    "Add media":"Add media",
-    "Upload project":"Upload project"
+    "Add your timeline": "Add your timeline",
+    "Select category": "Select category",
+    "Education": "Education",
+    "Culture": "Culture",
+    "Animals": "Animals",
+    "Children": "Children",
+    "About your project": "About your project",
+    "Tell us about your project to build a cat shelter": "Tell us about your project to build a cat shelter...",
+    "Add media": "Add media",
+    "Upload project": "Upload project"
   },
   "MyProject": {},
   "MyProjectAccordion": {},
@@ -66,7 +66,7 @@
   "MyProjectTransactionDetails": {},
   "NewsLetterBox": {
     "Stay informed": "Stay informed",
-    "Want to be among the first people to know about amazing projects on our platform? Join our monthly digest of the best causes.": "Want to be among the first people to know about amazing projects on our platform? Join our monthly digest of the best causes.",
+    "Want to be among the first people to know about amazing projects on our platform? Join our monthly digest of the best causes": "Want to be among the first people to know about amazing projects on our platform? Join our monthly digest of the best causes.",
     "Join Newsletter": "Join Newsletter"
   },
   "ProjectOfTheWeek": {},
@@ -76,7 +76,7 @@
   "StartToday": {
     "I want to": "I want to",
     "Support": "Support",
-    "Other projects": "Other projects",
+    "other projects": "other projects",
     "Kick-off": "Kick-off",
     "my project": "my project"
   },
