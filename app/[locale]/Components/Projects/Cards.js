@@ -6,7 +6,7 @@ const Cards = ({ projects }) => {
   const searchInputVal = useSelector(state => state.auth.searchInputVal);
 
   if (!projects || projects.length === 0) {
-    return <div className="text-center text-4xl pb-20]">No projects available in this category</div>;
+    return <div className="text-center text-4xl pb-44">No projects available in this category</div>;
   };
 
   const searchedProjects = projects.filter(project => {
@@ -16,7 +16,7 @@ const Cards = ({ projects }) => {
   return (
     <div className="projects-part container mx-auto px-4 flex flex-col items-center justify-center space-y-8  pb-20 md:space-y-0 md:grid md:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {searchedProjects.length == 0 ? (
-        <div className="text-center text-4xl py-20  md:w-[700px]">
+        <div className="text-center text-4xl pb-28  md:w-[700px]">
           No projects available with the search: "{searchInputVal}".
         </div>
       ) : (
@@ -43,10 +43,10 @@ const Cards = ({ projects }) => {
                 <div className="flex items-center justify-center space-x-2 text-sm">
                   <Image
                     src={project.profilPic}
-                    width={20}
-                    height={20}
+                    width={25}
+                    height={25}
                     alt="user-profil-pic"
-                    className="w-[30px] h-[30px] rounded-full"
+                    className="w-[25px] h-[25px] rounded-full"
                   />
                   <h2 className="text-blackColor">{project.creator.split('@')[0]}</h2>
                 </div>

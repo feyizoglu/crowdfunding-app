@@ -23,13 +23,13 @@ function Footer() {
                 Join our vibrant community of changemakers and be a part of the crowdfunding revolution. Together, we can make a difference and turn ideas into reality.
               </p>
               <div className='icons flex py-10 space-x-5 md:space-x-8 justify-center  md:justify-start'>
-                <Link href='#' className="flex hover:opacity-60">
+                <Link href='https://www.instagram.com/explore/tags/crowdfunding/' target='blank'  className="flex hover:opacity-60">
                   <FaInstagram className="text-3xl" />
                 </Link>
-                <Link href='#' className="flex hover:opacity-60">
+                <Link href='https://www.facebook.com/groups/2903714209899706/' target='blank'  className="flex hover:opacity-60">
                   <FaFacebook className="text-3xl" />
                 </Link>
-                <Link href='#' className="flex hover:opacity-60">
+                <Link href='https://twitter.com/crowdfunding' target='blank' className="flex hover:opacity-60">
                   <FaTwitter className="text-3xl" />
                 </Link>
               </div>
