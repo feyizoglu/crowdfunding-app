@@ -10,7 +10,6 @@ const initialState = {
   profilPic: null,
   searchInputVal: '',
   showConfirmationBox: false,
-  selectedLink: 'Home',
 }
 
 const authSlice = createSlice({
@@ -50,9 +49,6 @@ const authSlice = createSlice({
     setShowConfirmationBox: (state) => {
       state.showConfirmationBox = !state.showConfirmationBox;
     },
-    setSelectedLink: (state, action) => {
-      state.selectedLink = action.payload
-    }
   }
 })
 
@@ -67,8 +63,7 @@ export const {
   setProfilPic,
   setSearchInputVal,
   setShowConfirmationBox,
-  setCloseKickOffBox,
-  setSelectedLink
+  setCloseKickOffBox
 } = authSlice.actions;
 export default authSlice.reducer
 

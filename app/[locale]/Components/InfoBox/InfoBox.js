@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslations } from 'next-intl';
-import { setShowInfoBox, setShowMobilNav, setSelectedLink, setCloseMobileNav } from '@/app/redux/features/authSlice';
+import { setShowInfoBox, setShowMobilNav, setCloseMobileNav } from '@/app/redux/features/authSlice';
 import { toast } from 'react-toastify';
 
 import { BiUser, BiUserX } from 'react-icons/bi'
@@ -41,7 +41,6 @@ function InfoBox({ style }) {
     router.push('/');
     dispatch(setShowInfoBox())
     dispatch(setCloseMobileNav())
-    dispatch(setSelectedLink('Home'))
   }
 
   const viewProjectClickHandler = () => {
@@ -50,7 +49,6 @@ function InfoBox({ style }) {
       dispatch(setShowInfoBox());
       dispatch(setShowMobilNav());
       router.push('/myproject');
-      dispatch(setSelectedLink(''))
     } else {
       toast.error(`Oops! You don't have any projects yet.
       Please create a project first to access the 'My Project' page.

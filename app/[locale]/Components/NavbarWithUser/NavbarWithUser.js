@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import { toast } from 'react-toastify';
 
 import InfoBox from '../InfoBox/InfoBox';
-import { setShowInfoBox, setShowKickOffBox, setSearchInputVal, setSelectedLink } from '@/app/redux/features/authSlice';
+import { setShowInfoBox, setShowKickOffBox, setSearchInputVal } from '@/app/redux/features/authSlice';
 
 const style = {
   container: `relative flex items-center space-x-6`,
@@ -22,13 +22,12 @@ const style = {
   infoBoxPointer: `absolute top-16 right-4`,
 }
 
-function NavbarWithUser({ activeLink, defaultLink }) {
+function NavbarWithUser({ activeLink, defaultLink, selectedLink }) {
   const [isUserHaveProject, setIsUserHaveProject] = useState(false);
   const showInfoBox = useSelector((state) => state.auth.showInfoBox)
   const user = useSelector(state => state.auth.user);
   const projects = useSelector(state => state.auth.projects);
   const profilPic = useSelector(state => state.auth.profilPic);
-  const selectedLink = useSelector(state => state.auth.selectedLink)
   const dispatch = useDispatch();
   const t = useTranslations('NavbarWithUser')
 
@@ -56,18 +55,25 @@ function NavbarWithUser({ activeLink, defaultLink }) {
     }, 1)
   }
 
+  const handleLinkClicks = () => {
+    dispatch(setSearchInputVal(''))
+  }
+  console.log(selectedLink)
+
   return (
     <div className={style.container}>
-      <Link onClick={() => {
-        dispatch(setSearchInputVal(''))
-        dispatch(setSelectedLink('Home'))
-      }} className={selectedLink === 'Home' ? activeLink : defaultLink} href="/">
+      <Link
+        onClick={handleLinkClicks}
+        className={selectedLink === '/' || selectedLink ==='/tr' ? activeLink : defaultLink}
+        href="/"
+      >
         {t('Home')}
       </Link>
-      <Link onClick={() => {
-        dispatch(setSearchInputVal(''))
-        dispatch(setSelectedLink('Projects'))
-      }} className={selectedLink === 'Projects' ? activeLink : defaultLink} href="/projects">
+      <Link
+        onClick={handleLinkClicks}
+        className={selectedLink === '/projects' || selectedLink === '/tr/projects' ? activeLink : defaultLink}
+        href="/projects"
+      >
         {t('Projects')}
       </Link>
       {!isUserHaveProject &&

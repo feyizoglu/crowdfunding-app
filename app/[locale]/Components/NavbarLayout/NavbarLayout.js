@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect, useTransition, startTransition } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setShowMobilNav, setUser, setCloseMobileNav, setProfilPic, setSelectedLink } from "@/app/redux/features/authSlice";
+import { setShowMobilNav, setUser, setCloseMobileNav, setProfilPic } from "@/app/redux/features/authSlice";
 import { auth, db } from "@/app/firebase/firebase-confing";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -35,14 +35,15 @@ const style = {
 export default function NavbarLayOut() {
   const [bgColor, setBgColor] = useState(false);
   const [innerWidth, setInnerWidth] = useState(0);
+  const [selectedLink, setSelectedLink] = useState('/')
   const locale = useLocale()
   const [selectedLocale, setSelectedLocale] = useState(locale);
-  const t = useTranslations('NavbarLayout')
+  const t = useTranslations('NavbarLayout');
+  const pathname = usePathname();
 
   const showMobilNav = useSelector(state => state.auth.showMobilNav);
   const showSignInBox = useSelector(state => state.auth.showSignInBox);
   const showKickOffBox = useSelector(state => state.auth.showKickOffBox);
-  const selectedLink = useSelector(state => state.auth.selectedLink);
   const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
 
@@ -55,18 +56,11 @@ export default function NavbarLayOut() {
       fetchProfilePicture(currentUser?.uid);
     });
 
-    const savedLink = sessionStorage.getItem('selectedLink');
-    if (savedLink) {
-      dispatch(setSelectedLink(savedLink));
-    }
+
     return () => {
       unsubscribeAuth();
     };
   }, [dispatch]);
-
-  useEffect(() => {
-    sessionStorage.setItem('selectedLink', selectedLink)
-  }, [selectedLink])
 
   useEffect(() => {
     const handleResize = () => {
@@ -81,6 +75,10 @@ export default function NavbarLayOut() {
       };
     };
   }, []);
+
+  useEffect(() => {
+    setSelectedLink(pathname)
+  }, [pathname])
 
   useEffect(() => {
     setSelectedLocale(locale);
@@ -130,7 +128,6 @@ export default function NavbarLayOut() {
     startTransition(() => {
       window.location.href = `/${nextLocale}`
     });
-    dispatch(setSelectedLink('Home'))
   }
 
   return (
@@ -140,7 +137,6 @@ export default function NavbarLayOut() {
           href="/"
           onClick={() => {
             dispatch(setCloseMobileNav(false));
-            dispatch(setSelectedLink('Home'))
           }}
           className={`${style.headerLogo}`}
         >
@@ -148,7 +144,7 @@ export default function NavbarLayOut() {
         </Link>
         <NavbarSearchInput style={style} placeholder={t('Search for projects')} />
         <nav className={style.nav}>
-          {user?.email ? <NavbarWithUser defaultLink={style.headerLinks} activeLink={style.activeLink} /> : <DefaultNavbar defaultLink={style.headerLinks} activeLink={style.activeLink} />}
+          {user?.email ? <NavbarWithUser selectedLink={selectedLink} defaultLink={style.headerLinks} activeLink={style.activeLink} /> : <DefaultNavbar selectedLink={selectedLink} defaultLink={style.headerLinks} activeLink={style.activeLink} />}
         </nav>
         <section className={style.hamMenu} onClick={handleHamIconClick}>
           <div className={`${styles.container} ${showMobilNav && styles.change}`}>
@@ -160,7 +156,7 @@ export default function NavbarLayOut() {
       </header>
       {showMobilNav &&
         <section>
-          {user?.email ? <MobilNavbarWithUser defaultLink={style.headerLinks} activeLink={style.activeLink} bgColor={bgColor} /> : <MobilDefaultNavbar defaultLink={style.headerLinks} activeLink={style.activeLink} bgColor={bgColor} />}
+          {user?.email ? <MobilNavbarWithUser selectedLink={selectedLink} defaultLink={style.headerLinks} activeLink={style.activeLink} bgColor={bgColor} /> : <MobilDefaultNavbar selectedLink={selectedLink} defaultLink={style.headerLinks} activeLink={style.activeLink} bgColor={bgColor} />}
         </section>}
       {showSignInBox && <SignIn />}
       {showKickOffBox && <KickOffBox />}

@@ -3,8 +3,6 @@ import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import Image from "next/image";
 import Link from "next/link";
-import Loader from "../Loader/Loader";
-
 
 function ProjectOfTheWeek() {
   const projects = useSelector(state => state.auth.projects);
@@ -13,9 +11,7 @@ function ProjectOfTheWeek() {
   // Check if the projects array is empty or undefined
   if (!projects || projects.length === 0) {
     return (
-      <>
-
-      </>
+      <></>
     );
   }
 
@@ -25,7 +21,7 @@ function ProjectOfTheWeek() {
 
   return (
     <div className='bg-whiteColor text-center md:text-start'>
-      <div className="container mx-auto project-of-the-week pt-20 px-4 ">
+      <div className="container mx-auto project-of-the-week pt-20 pb-10 px-4 ">
         <div className='border-b border-blackColor pb-20'>
           <h1 className="project-of-the-week__title text-4xl sm:text-5xl md:text-6xl font-bold mb-4 pb-10 ">Project of the Week</h1>
           <div className="project-of-the-week__content grid grid-cols-1 md:grid-cols-2 gap-10  ">

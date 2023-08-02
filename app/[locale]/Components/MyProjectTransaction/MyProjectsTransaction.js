@@ -6,10 +6,9 @@ const MyProjectsTransaction = ({ project }) => {
   return (
     <div className="mb-10 mt-10 lg:mt-0">
       <MyProjectsAccordion
-        project={project}
         title="Transaction history"
         isOpenDefault={true}
-        component={<MyProjectsTransactionDetails project={project} />}
+        component={<MyProjectsTransactionDetails />}
       />
     </div>
   );

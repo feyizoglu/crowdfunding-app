@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { FaInstagram, FaFacebook, FaTwitter } from 'react-icons/fa';
 import { FaCopyright } from 'react-icons/fa';
 import Image from 'next/image';
-import { setSelectedLink } from '@/app/redux/features/authSlice';
 
 
 function Footer() {
@@ -41,7 +40,7 @@ function Footer() {
               </h1>
               <div className='flex flex-col items-center md:items-start'>
                 {projects.slice(0, 2).map((project) => (
-                  <Link onClick={() => { dispatch(setSelectedLink('Projects')) }} href={`/projects/${project.docId}`} key={project.id} className="flex items-center mb-4 ease-in duration-200 hover:scale-105">
+                  <Link href={`/projects/${project.docId}`} key={project.id} className="flex items-center mb-4 ease-in duration-200 hover:scale-105">
                     <Image
                       src={project.image}
                       alt={project.title}

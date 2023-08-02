@@ -1,6 +1,6 @@
 'use client'
 import { useDispatch } from "react-redux";
-import { setCloseMobileNav, setSelectedLink } from "@/app/redux/features/authSlice";
+import { setCloseMobileNav } from "@/app/redux/features/authSlice";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,7 +24,6 @@ const HeroSection = () => {
           <div className="md:mr-4">
             <Link
               onClick={() => {
-                dispatch(setSelectedLink(''));
                 dispatch(setCloseMobileNav())
               }}
               href='/starttoday'

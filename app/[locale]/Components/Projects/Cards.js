@@ -6,7 +6,7 @@ const Cards = ({ projects }) => {
   const searchInputVal = useSelector(state => state.auth.searchInputVal);
 
   if (!projects || projects.length === 0) {
-    return <div className="text-center text-4xl pb-20">No projects available in this category</div>;
+    return <div className="text-center text-4xl pb-20]">No projects available in this category</div>;
   };
 
   const searchedProjects = projects.filter(project => {
@@ -16,7 +16,7 @@ const Cards = ({ projects }) => {
   return (
     <div className="projects-part container mx-auto px-4 flex flex-col items-center justify-center space-y-8  pb-20 md:space-y-0 md:grid md:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {searchedProjects.length == 0 ? (
-        <div className="text-center text-2xl py-20 sm:text-start md:w-[700px] md:h-screen-70 md:py-0">
+        <div className="text-center text-4xl py-20  md:w-[700px]">
           No projects available with the search: "{searchInputVal}".
         </div>
       ) : (

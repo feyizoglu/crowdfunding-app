@@ -7,7 +7,7 @@ import { FaBaby } from 'react-icons/fa';
 
 const Categories = ({ selectedCategory, handleCategoryChange }) => {
   return (
-    <div className="container mx-auto place-content-center py-20 px-4">
+    <div className="container mx-auto place-content-center pt-10 pb-20 px-4">
       <div className="categories-part flex flex-col justify-between">
         <header>
           <h1 className="projects__title text-center text-4xl sm:text-5xl md:text-6xl font-bold mb-4 pb-10 md:text-start">Categories</h1>

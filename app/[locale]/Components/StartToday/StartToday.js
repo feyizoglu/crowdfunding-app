@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { setShowKickOffBox, setShowSignInBox, setSelectedLink, setCloseMobileNav } from "@/app/redux/features/authSlice";
+import { setShowKickOffBox, setShowSignInBox, setCloseMobileNav } from "@/app/redux/features/authSlice";
 import { toast } from 'react-toastify';
 
 const StartToday = () => {
@@ -15,7 +15,6 @@ const StartToday = () => {
   const dispatch = useDispatch();
 
   const supportClickHandle = () => {
-    dispatch(setSelectedLink('Projects'))
     setKickOffCheck(false);
     setSupportCheck(true)
   };
