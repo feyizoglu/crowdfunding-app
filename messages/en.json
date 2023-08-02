@@ -1,3 +1,4 @@
+
 {
   "NavbarLayout": {
     "Search for projects": "Search for projects.."
@@ -41,7 +42,11 @@
     "allRightsReserved": "2023 All rights reserved.",
     "Lang": "English"
   },
-  "HeroSection": {},
+  "HeroSection": {
+    "Supporting great causes made easy": "Supporting great causes made easy",
+    "We helped over 3,500 projects and causes Sign in today and get your idea kicked off or support others kick off their amazing projects": "We helped over 3,500 projects and causes. Sign in today and get your idea kicked off or support others kick off their amazing projects.",
+    "Start Today": "Start Today"
+  },
   "KickOffBox": {
     "Kick-off": "Kick-off",
     "your project": "your project",
@@ -67,12 +72,17 @@
   "MyProjectStatisticsDetails": {},
   "MyProjectTransaction": {},
   "MyProjectTransactionDetails": {},
-  "NewsLetterBox": {},
   "ProjectOfTheWeek": {
     "Raised:": "Raised:",
     "Goal:": "Goal:",
     "Project of the Week": "Project of the Week",
     "Lang": "English"
+  },
+
+  "NewsLetterBox": {
+    "Stay informed": "Stay informed",
+    "Want to be among the first people to know about amazing projects on our platform? Join our monthly digest of the best causes": "Want to be among the first people to know about amazing projects on our platform? Join our monthly digest of the best causes.",
+    "Join Newsletter": "Join Newsletter"
   },
   "Project": {
     "Raised:": "Raised:",
@@ -96,7 +106,13 @@
   },
   "SignIn": {},
   "SignUpAlert": {},
-  "StartToday": {},
+  "StartToday": {
+    "I want to": "I want to",
+    "Support": "Support",
+    "other projects": "other projects",
+    "Kick-off": "Kick-off",
+    "my project": "my project"
+  },
   "SuccessPage": {},
   "Testimonial": {
     "Lang": "English"
