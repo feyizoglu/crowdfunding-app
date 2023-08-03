@@ -1,11 +1,11 @@
-import Loader from "../Components/Loader/Loader";
+import Loader from "../Components/Loader/Loader"
 
-function loading() {
+const loading = () => {
   return (
-    <div className="h-screen grid place-content-center">
+    <div>
       <Loader />
     </div>
-  );
+  )
 }
 
-export default loading;
+export default loading

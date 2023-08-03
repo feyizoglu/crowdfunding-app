@@ -19,11 +19,11 @@ import { setShowSignInBox } from "../../redux/features/authSlice";
 import Alert from "../Components/SignUpAlert/Alert";
 
 const schema = yup.object().shape({
-  email: yup.string().email("please enter a valid email address.").required(),
+  email: yup.string().email("Please enter a valid email address.").required('Email is required'),
   password: yup
     .string()
     .required()
-    .min(6, "asdfasdfasdfsd"),
+    .min(6, "Password must be at least 6 characters long"),
   profilePic: yup
     .mixed()
     .test("fileRequired", "Image is required", (value) => {

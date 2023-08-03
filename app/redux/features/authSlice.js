@@ -10,6 +10,7 @@ const initialState = {
   profilPic: null,
   searchInputVal: '',
   showConfirmationBox: false,
+  showNewsletterForm: false,
 }
 
 const authSlice = createSlice({
@@ -49,6 +50,9 @@ const authSlice = createSlice({
     setShowConfirmationBox: (state) => {
       state.showConfirmationBox = !state.showConfirmationBox;
     },
+    setShowNewsletterForm: (state) => {
+      state.showNewsletterForm = !state.showNewsletterForm;
+    }
   }
 })
 
@@ -63,7 +67,8 @@ export const {
   setProfilPic,
   setSearchInputVal,
   setShowConfirmationBox,
-  setCloseKickOffBox
+  setCloseKickOffBox,
+  setShowNewsletterForm
 } = authSlice.actions;
 export default authSlice.reducer
 
