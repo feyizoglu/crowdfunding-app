@@ -1,0 +1,125 @@
+
+{
+  "NavbarLayout": {
+    "Search for projects": "Search for projects.."
+  },
+  "DefaultNavbar": {
+    "Home": "Home",
+    "Projects": "Projects",
+    "Sign In": "Sign In"
+  },
+  "NavbarWithUser": {
+    "Home": "Home",
+    "Projects": "Projects",
+    "New Project": "New Project"
+  },
+  "MobilNavbarWithUser": {
+    "Search for projects": "Search for projects..",
+    "Home": "Home",
+    "Projects": "Projects",
+    "New Project": "New Project"
+  },
+  "MobilDefaultNavbar": {
+    "Search for projects": "Search for projects..",
+    "Home": "Home",
+    "Projects": "Projects",
+    "Sign In": "Sign In"
+  },
+  "InfoBox": {
+    "View your project": "View your project",
+    "Sign out": "Sign out"
+  },
+  "ConfirmationBox": {
+    "Just to confirm": "Just to confirm",
+    "are you certain you want to delete this project": "are you certain you want to delete this project",
+    "Yes": "Yes",
+    "No": "No"
+  },
+  "Footer": {
+    "givinglyTitle": "Givingly",
+    "givinglyDescription": "Join our vibrant community of changemakers and be a part of the crowdfunding revolution. Together, we can make a difference and turn ideas into reality.",
+    "projectsTitle": "Projects",
+    "ourStoryTitle": "Our Story",
+    "ourStoryDescription": "We connect passionate individuals and innovative projects with a community of backers. Our user-friendly platform empowers creators to raise funds and engage with supporters. Join us in bringing visions to life.",
+    "allRightsReserved": "2023 All rights reserved.",
+    "Lang": "English"
+  },
+  "HeroSection": {
+    "Supporting great causes made easy": "Supporting great causes made easy",
+    "We helped over 3,500 projects and causes Sign in today and get your idea kicked off or support others kick off their amazing projects": "We helped over 3,500 projects and causes. Sign in today and get your idea kicked off or support others kick off their amazing projects.",
+    "Start Today": "Start Today"
+  },
+  "KickOffBox": {
+    "Kick-off": "Kick-off",
+    "your project": "your project",
+    "Name of your project": "Name of your project",
+    "Build a cat shelter": "Build a cat shelter",
+    "Add your goal": "Add your goal",
+    "Add your timeline": "Add your timeline",
+    "Select category": "Select category",
+    "Education": "Education",
+    "Culture": "Culture",
+    "Animals": "Animals",
+    "Children": "Children",
+    "About your project": "About your project",
+    "Tell us about your project to build a cat shelter": "Tell us about your project to build a cat shelter...",
+    "Add media": "Add media",
+    "Upload project": "Upload project"
+  },
+  "MyProject": {},
+  "MyProjectAccordion": {},
+  "MyProjectDetail": {},
+  "MyProjectDonorCard": {},
+  "MyProjectStatistics": {},
+  "MyProjectStatisticsDetails": {},
+  "MyProjectTransaction": {},
+  "MyProjectTransactionDetails": {},
+  "ProjectOfTheWeek": {
+    "Raised:": "Raised:",
+    "Goal:": "Goal:",
+    "Project of the Week": "Project of the Week",
+    "Lang": "English"
+  },
+
+  "NewsLetterBox": {
+    "Stay informed": "Stay informed",
+    "Want to be among the first people to know about amazing projects on our platform? Join our monthly digest of the best causes": "Want to be among the first people to know about amazing projects on our platform? Join our monthly digest of the best causes.",
+    "Join Newsletter": "Join Newsletter"
+  },
+  "Project": {
+    "Raised:": "Raised:",
+    "Goal:": "Goal:",
+    "Fund This Project": "Fund This Project",
+    "About Project": "About Project",
+    "Lang": "English"
+  },
+  "Projects": {
+    "Raised:": "Raised:",
+    "Goal:": "Goal:",
+    "noProjectsAvailable": "No projects available with the search: \"{searchInputVal}\".",
+    "No projects available in this category":"No projects available in this category",
+    "Categories":"Categories",
+    "All": "All",
+    "Education":"Education",
+    "Culture":"Culture",
+    "Animals":"Animals",
+    "Children":"Children",
+    "Lang": "English"
+  },
+  "SignIn": {},
+  "SignUpAlert": {},
+  "StartToday": {
+    "I want to": "I want to",
+    "Support": "Support",
+    "other projects": "other projects",
+    "Kick-off": "Kick-off",
+    "my project": "my project"
+  },
+  "SuccessPage": {},
+  "Testimonial": {
+    "Lang": "English"
+  },
+  "Testimonials": {
+    "Testimonials": "Testimonials"
+  }
+}

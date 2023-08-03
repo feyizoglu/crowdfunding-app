@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs : '340px'
+      },
       colors: {
         greenColor: '#D4EE25',
         blackColor: '#0A0A0A',
@@ -15,7 +18,7 @@ module.exports = {
         blueColor : '#0361FD',
         lightRedColor: '#FED7D7',
         darkRedColor: '#E53E3E',
-        greenTransparent: "rgba(212, 238, 37, 0.9)"
+        greenTransparent: "rgba(212, 238, 37, 0.8)"
       },
       borderRadius: {
         needed: '0.375rem',

@@ -4,12 +4,12 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBDWcCD2Ggtrn1ypqTIYHgRK-Nub8VDwN8",
-  authDomain: "crowdfunding-app-9e2e9.firebaseapp.com",
-  projectId: "crowdfunding-app-9e2e9",
-  storageBucket: "crowdfunding-app-9e2e9.appspot.com",
-  messagingSenderId: "1069798047382",
-  appId: "1:1069798047382:web:bc6344ec47fd9f578d4cb7"
+  apiKey: "AIzaSyDM2ris6K89tKXpdvtWUwaH3k2h3l2Sdc0",
+  authDomain: "crowdfunding-app-aa7db.firebaseapp.com",
+  projectId: "crowdfunding-app-aa7db",
+  storageBucket: "crowdfunding-app-aa7db.appspot.com",
+  messagingSenderId: "82453571015",
+  appId: "1:82453571015:web:9bae3f570615dcd16ca5e2"
 };
 
 const app = initializeApp(firebaseConfig);

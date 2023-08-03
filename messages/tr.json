@@ -1,0 +1,123 @@
+{
+  "NavbarLayout": {
+    "Search for projects": "Projeleri ara.."
+  },
+  "DefaultNavbar": {
+    "Home": "Anasayfa",
+    "Projects": "Projeler",
+    "Sign In": "Giriş yap"
+  },
+  "NavbarWithUser": {
+    "Home": "Anasayfa",
+    "Projects": "Projeler",
+    "New Project": "Yeni Proje"
+  },
+  "MobilNavbarWithUser": {
+    "Search for projects": "Projeleri ara..",
+    "Home": "Anasayfa",
+    "Projects": "Projeler",
+    "New Project": "Yeni Proje"
+  },
+  "MobilDefaultNavbar": {
+    "Search for projects": "Projeleri ara..",
+    "Home": "Anasayfa",
+    "Projects": "Projeler",
+    "Sign In": "Giriş yap"
+  },
+  "InfoBox": {
+    "View your project": "Projenizi goruntuleyin",
+    "Sign out": "Çıkış Yap"
+  },
+  "ConfirmationBox": {
+    "Just to confirm": "Onaylamak için",
+    "are you certain you want to delete this project": "Bu projeyi silmek istediğinizden emin misiniz",
+    "No": "Hayır",
+    "Yes": "Evet"
+  },
+  "Footer": {
+    "givinglyTitle": "Givingly",
+    "givinglyDescription": "Canlı bir değişim yaratan topluluğumuza katılın ve kitlesel fonlama devriminin bir parçası olun. Birlikte fark yaratabilir ve fikirleri gerçeğe dönüştürebiliriz.",
+    "projectsTitle": "Projeler",
+    "ourStoryTitle": "Hikayemiz",
+    "ourStoryDescription": "Tutkulu bireyleri ve yenilikçi projeleri destekçi bir toplulukla buluşturuyoruz. Kullanıcı dostu platformumuz, proje sahiplerinin fon toplamasına ve destekçilerle etkileşim kurmasına olanak tanır. Siz de hayalleri gerçeğe dönüştürmek için aramıza katılın.",
+    "allRightsReserved": "2023 Tüm hakları saklıdır.",
+    "Lang": "Türkçe"
+  },
+  "HeroSection": {
+    "Supporting great causes made easy": "Harika amaçları desteklemek kolaylaştı",
+    "We helped over 3,500 projects and causes Sign in today and get your idea kicked off or support others kick off their amazing projects": "3,500'den fazla proje ve amaça yardımcı olduk. Bugün giriş yapın ve fikrinizi hayata geçirin veya diğer harika projelerin başlatılmasına destek olun.",
+    "Start Today": "Bugün başla"
+  },
+  "KickOffBox": {
+    "Kick-off": "Projenize",
+    "your project": "başlangıç yapın",
+    "Name of your project": "Proje adı",
+    "Build a cat shelter": "Bir kedi barınağı inşa edin",
+    "Add your goal": "Hedefinizi ekleyin",
+    "Add your timeline": "Tarih aralığınızı ekleyin",
+    "Select category": "Kategori seçin",
+    "Education": "Eğitim",
+    "Culture": "Kültür",
+    "Animals": "Hayvanlar",
+    "Children": "Çocuklar",
+    "About your project": "Projeniz hakkında",
+    "Tell us about your project to build a cat shelter": "Bir kedi barınağı inşa etmek için projenizi anlatın...",
+    "Add media": "Medya ekle",
+    "Upload project": "Projenizi yükleyin"
+  },
+  "MyProject": {},
+  "MyProjectAccordion": {},
+  "MyProjectDetail": {},
+  "MyProjectDonorCard": {},
+  "MyProjectStatistics": {},
+  "MyProjectStatisticsDetails": {},
+  "MyProjectTransaction": {},
+  "MyProjectTransactionDetails": {},
+  "ProjectOfTheWeek": {
+    "Raised:": "Toplanan:",
+    "Goal:": "Hedef:",
+    "Project of the Week":"Haftanın Projesi",
+    "Lang": "Türkçe"
+  },
+  "NewsLetterBox": {
+    "Stay informed": "Bilgili kalın",
+    "Want to be among the first people to know about amazing projects on our platform? Join our monthly digest of the best causes": "Platformumuzdaki harika projeler hakkında ilk bilgi sahibi olmak ister misiniz? En iyi amaçların yer aldığı aylık özetimize katılın.",
+    "Join Newsletter": "Bültenimize üye ol"
+  },
+  "Project": {
+    "Raised:": "Toplanan:",
+    "Goal:": "Hedef:",
+    "Fund This Project": "Projeye Bağış Yap",
+    "About Project": "Proje Hakkında",
+    "Lang": "Türkçe"
+  },
+  "Projects": {
+    "Raised:": "Toplanan:",
+    "Goal:": "Hedef:",
+    "noProjectsAvailable": "\"{searchInputVal}\" ile eşleşen proje bulunamadı.",
+    "No projects available in this category":"Bu kategoriye uygun proje bulunamadı.",
+    "Categories":"Kategoriler",
+    "All": "Hepsi",
+    "Education":"Eğitim",
+    "Culture":"Kültür",
+    "Animals":"Hayvanlar",
+    "Children":"Çocuklar",
+    "Lang": "Türkçe"
+  },
+  "SignIn": {},
+  "SignUpAlert": {},
+  "StartToday": {
+    "I want to": "Şunu yapmak istiyorum",
+    "Support": "Desteklemek",
+    "other projects": "diger projeleri",
+    "Kick-off": "Başlamak",
+    "my project": "projeme"
+  },
+  "SuccessPage": {},
+  "Testimonial": {
+    "Lang": "Türkçe"
+  },
+  "Testimonials": {
+    "Testimonials": "Kullanıcı Yorumları"
+  }
+}
