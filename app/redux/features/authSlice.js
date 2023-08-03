@@ -50,16 +50,11 @@ const authSlice = createSlice({
     setShowConfirmationBox: (state) => {
       state.showConfirmationBox = !state.showConfirmationBox;
     },
-<<<<<<< HEAD
     setShowFundingBox: (state) => {
       state.showFundingBox = !state.showFundingBox;
     },
   },
 });
-=======
-  }
-})
->>>>>>> main
 
 export const {
   setShowSignInBox,

@@ -5,17 +5,13 @@ import { doc, getDoc } from "firebase/firestore";
 import Image from "next/image";
 import { FaCalendarAlt } from "react-icons/fa";
 import { parse, differenceInDays } from "date-fns";
-<<<<<<< HEAD:app/projects/[id]/page.js
 import { setShowFundingBox } from "@/app/redux/features/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-import Loader from "@/app/Components/Loader/Loader";
-import FundingBox from "@/app/Components/FundingBox/FundingBox";
-=======
+import FundingBox from "../../Components/FundingBox/FundingBox";
 import { useTranslations } from "next-intl";
 
 import Loader from "@/app/[locale]/Components/Loader/Loader";
->>>>>>> main:app/[locale]/projects/[id]/page.js
 
 function Page({ params }) {
   const [project, setProject] = useState(null);
@@ -125,7 +121,6 @@ function Page({ params }) {
               </div>
             </div>
             <div>
-<<<<<<< HEAD:app/projects/[id]/page.js
               <button
                 onClick={() => {
                   setTimeout(() => {
@@ -134,11 +129,9 @@ function Page({ params }) {
                 }}
                 className="button-dark mt-2 w-full md:w-1/2"
               >
-                Fund This Project
-=======
-              <button className="button-dark mt-2 w-full md:w-1/2">
                 {t("Fund This Project")}
->>>>>>> main:app/[locale]/projects/[id]/page.js
+
+
               </button>
             </div>
           </div>
