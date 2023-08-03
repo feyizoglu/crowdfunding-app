@@ -33,7 +33,15 @@
     "Yes": "Yes",
     "No": "No"
   },
-  "Footer": {},
+  "Footer": {
+    "givinglyTitle": "Givingly",
+    "givinglyDescription": "Join our vibrant community of changemakers and be a part of the crowdfunding revolution. Together, we can make a difference and turn ideas into reality.",
+    "projectsTitle": "Projects",
+    "ourStoryTitle": "Our Story",
+    "ourStoryDescription": "We connect passionate individuals and innovative projects with a community of backers. Our user-friendly platform empowers creators to raise funds and engage with supporters. Join us in bringing visions to life.",
+    "allRightsReserved": "2023 All rights reserved.",
+    "Lang": "English"
+  },
   "HeroSection": {
     "Supporting great causes made easy": "Supporting great causes made easy",
     "We helped over 3,500 projects and causes Sign in today and get your idea kicked off or support others kick off their amazing projects": "We helped over 3,500 projects and causes. Sign in today and get your idea kicked off or support others kick off their amazing projects.",
@@ -64,12 +72,18 @@
   "MyProjectStatisticsDetails": {},
   "MyProjectTransaction": {},
   "MyProjectTransactionDetails": {},
+  "ProjectOfTheWeek": {
+    "Raised:": "Raised:",
+    "Goal:": "Goal:",
+    "Project of the Week": "Project of the Week",
+    "Lang": "English"
+  },
+
   "NewsLetterBox": {
     "Stay informed": "Stay informed",
     "Want to be among the first people to know about amazing projects on our platform? Join our monthly digest of the best causes": "Want to be among the first people to know about amazing projects on our platform? Join our monthly digest of the best causes.",
     "Join Newsletter": "Join Newsletter"
   },
-  "ProjectOfTheWeek": {},
   "Project": {
     "Raised:": "Raised:",
     "Goal:": "Goal:",
@@ -77,7 +91,19 @@
     "About Project": "About Project",
     "Lang": "English"
   },
-  "Projects": {},
+  "Projects": {
+    "Raised:": "Raised:",
+    "Goal:": "Goal:",
+    "noProjectsAvailable": "No projects available with the search: \"{searchInputVal}\".",
+    "No projects available in this category":"No projects available in this category",
+    "Categories":"Categories",
+    "All": "All",
+    "Education":"Education",
+    "Culture":"Culture",
+    "Animals":"Animals",
+    "Children":"Children",
+    "Lang": "English"
+  },
   "SignIn": {},
   "SignUpAlert": {},
   "StartToday": {

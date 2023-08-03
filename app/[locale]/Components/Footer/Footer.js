@@ -5,11 +5,13 @@ import { FaInstagram, FaFacebook, FaTwitter } from 'react-icons/fa';
 import { FaCopyright } from 'react-icons/fa';
 import Image from 'next/image';
 import { setSelectedLink } from '@/app/redux/features/authSlice';
+import { useTranslations } from "next-intl";
 
 
 function Footer() {
   const projects = useSelector(state => state.auth.projects);
   const dispatch = useDispatch();
+  const t = useTranslations('Footer');
 
   return (
     <footer className="bg-greenColor pt-5 md:pt-10 text-center md:text-left">
@@ -18,10 +20,10 @@ function Footer() {
           <div className="grid grid-cols-1  md:grid-cols-3 gap-5 md:gap-10">
             <div className="firstcolumn flex flex-col">
               <h1 className='font-semibold text-l sm:text-xl md:text-2xl py-4'>
-                Givingly
+                {t('givinglyTitle')}
               </h1>
               <p className=''>
-                Join our vibrant community of changemakers and be a part of the crowdfunding revolution. Together, we can make a difference and turn ideas into reality.
+                {t('givinglyDescription')}
               </p>
               <div className='icons flex py-10 space-x-5 md:space-x-8 justify-center md:justify-start'>
                 <Link href='#' className="flex hover:opacity-60">
@@ -37,7 +39,7 @@ function Footer() {
             </div>
             <div className="secondcolumn">
               <h1 className='font-semibold text-l sm:text-xl md:text-2xl py-4'>
-                Projects
+                 {t('projectsTitle')}
               </h1>
               <div className='flex flex-col items-center md:items-start'>
                 {projects.slice(0, 2).map((project) => (
@@ -56,17 +58,17 @@ function Footer() {
             </div>
             <div className="thirdcolumn ">
               <h1 className='font-bold text-l sm:text-xl md:text-2xl py-4'>
-                Our Story
+               {t('ourStoryTitle')}
               </h1>
               <p className=''>
-                We connect passionate individuals and innovative projects with a community of backers. Our user-friendly platform empowers creators to raise funds and engage with supporters. Join us in bringing visions to life.
+              {t('ourStoryDescription')}
               </p>
             </div>
           </div>
         </div>
         <p className='text-center py-8'>
           <FaCopyright className="inline-block mr-2" />
-          2023 All rights reserved.
+          {t('allRightsReserved')}
         </p>
       </div>
     </footer>

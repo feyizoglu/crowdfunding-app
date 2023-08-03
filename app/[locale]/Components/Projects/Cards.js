@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useSelector } from 'react-redux';
+import { useTranslations } from 'next-intl';
 
 const Cards = ({ projects }) => {
+  const t = useTranslations('Projects');
   const searchInputVal = useSelector(state => state.auth.searchInputVal);
 
   if (projects.length === 0) {
-    return <div className="text-center text-4xl pb-20">No projects available in this category</div>;
+    return <div className="text-center text-4xl pb-20">{t("No projects available in this category")}</div>;
   };
 
   const searchedProjects = projects.filter(project => {
@@ -18,7 +20,7 @@ const Cards = ({ projects }) => {
     <div className="projects-part container mx-auto place-content-center pb-20 px-12 grid gap-8 md:gap-6 xl:gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {searchedProjects.length == 0 ? (
         <div className="text-center text-2xl py-20 sm:text-start md:w-[700px] md:h-screen-70 md:py-0">
-          No projects available with the search: "{searchInputVal}".
+          {t('noProjectsAvailable', { searchInputVal })}
         </div>
       ) : (
         searchedProjects.map((project) => (
@@ -57,13 +59,13 @@ const Cards = ({ projects }) => {
                 </div>
                 <div className="flex justify-between">
                   <div className="raised flex flex-col justify-between">
-                    <p className="text-sm  md:text-lg mt-1.5 ">Raised:</p>
+                    <p className="text-sm  md:text-lg mt-1.5 ">{t("Raised:")}</p>
                     <p className="text-md  font-semibold  py-2 ">
                       ${project.moneyRaised}
                     </p>
                   </div>
                   <div className="goal flex flex-col justify-between">
-                    <p className="text-sm  md:text-lg mt-1.5">Goal:</p>
+                    <p className="text-sm  md:text-lg mt-1.5">{t("Goal:")}</p>
                     <p className="text-md  font-semibold  py-2 ">
                       ${project.goalAmount}
                     </p>

@@ -32,7 +32,15 @@
     "No": "Hayır",
     "Yes": "Evet"
   },
-  "Footer": {},
+  "Footer": {
+    "givinglyTitle": "Givingly",
+    "givinglyDescription": "Canlı bir değişim yaratan topluluğumuza katılın ve kitlesel fonlama devriminin bir parçası olun. Birlikte fark yaratabilir ve fikirleri gerçeğe dönüştürebiliriz.",
+    "projectsTitle": "Projeler",
+    "ourStoryTitle": "Hikayemiz",
+    "ourStoryDescription": "Tutkulu bireyleri ve yenilikçi projeleri destekçi bir toplulukla buluşturuyoruz. Kullanıcı dostu platformumuz, proje sahiplerinin fon toplamasına ve destekçilerle etkileşim kurmasına olanak tanır. Siz de hayalleri gerçeğe dönüştürmek için aramıza katılın.",
+    "allRightsReserved": "2023 Tüm hakları saklıdır.",
+    "Lang": "Türkçe"
+  },
   "HeroSection": {
     "Supporting great causes made easy": "Harika amaçları desteklemek kolaylaştı",
     "We helped over 3,500 projects and causes Sign in today and get your idea kicked off or support others kick off their amazing projects": "3,500'den fazla proje ve amaça yardımcı olduk. Bugün giriş yapın ve fikrinizi hayata geçirin veya diğer harika projelerin başlatılmasına destek olun.",
@@ -63,12 +71,17 @@
   "MyProjectStatisticsDetails": {},
   "MyProjectTransaction": {},
   "MyProjectTransactionDetails": {},
+  "ProjectOfTheWeek": {
+    "Raised:": "Toplanan:",
+    "Goal:": "Hedef:",
+    "Project of the Week":"Haftanın Projesi",
+    "Lang": "Türkçe"
+  },
   "NewsLetterBox": {
     "Stay informed": "Bilgili kalın",
     "Want to be among the first people to know about amazing projects on our platform? Join our monthly digest of the best causes": "Platformumuzdaki harika projeler hakkında ilk bilgi sahibi olmak ister misiniz? En iyi amaçların yer aldığı aylık özetimize katılın.",
     "Join Newsletter": "Bültenimize üye ol"
   },
-  "ProjectOfTheWeek": {},
   "Project": {
     "Raised:": "Toplanan:",
     "Goal:": "Hedef:",
@@ -76,7 +89,19 @@
     "About Project": "Proje Hakkında",
     "Lang": "Türkçe"
   },
-  "Projects": {},
+  "Projects": {
+    "Raised:": "Toplanan:",
+    "Goal:": "Hedef:",
+    "noProjectsAvailable": "\"{searchInputVal}\" ile eşleşen proje bulunamadı.",
+    "No projects available in this category":"Bu kategoriye uygun proje bulunamadı.",
+    "Categories":"Kategoriler",
+    "All": "Hepsi",
+    "Education":"Eğitim",
+    "Culture":"Kültür",
+    "Animals":"Hayvanlar",
+    "Children":"Çocuklar",
+    "Lang": "Türkçe"
+  },
   "SignIn": {},
   "SignUpAlert": {},
   "StartToday": {
