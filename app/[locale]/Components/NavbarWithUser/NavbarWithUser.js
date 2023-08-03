@@ -29,7 +29,7 @@ function NavbarWithUser({ activeLink, defaultLink, selectedLink }) {
   const projects = useSelector(state => state.auth.projects);
   const profilPic = useSelector(state => state.auth.profilPic);
   const dispatch = useDispatch();
-  const t = useTranslations('NavbarWithUser')
+  const t = useTranslations('NavbarWithUser');
 
   useEffect(() => {
     setIsUserHaveProject(projects.some(project => project.id === user.id));
@@ -58,13 +58,12 @@ function NavbarWithUser({ activeLink, defaultLink, selectedLink }) {
   const handleLinkClicks = () => {
     dispatch(setSearchInputVal(''))
   }
-  console.log(selectedLink)
 
   return (
     <div className={style.container}>
       <Link
         onClick={handleLinkClicks}
-        className={selectedLink === '/' || selectedLink ==='/tr' ? activeLink : defaultLink}
+        className={selectedLink === '/' || selectedLink === '/tr' ? activeLink : defaultLink}
         href="/"
       >
         {t('Home')}

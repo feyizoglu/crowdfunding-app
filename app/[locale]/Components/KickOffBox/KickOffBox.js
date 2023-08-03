@@ -61,7 +61,8 @@ const KickOffBox = () => {
   useEffect(() => {
     if (errors.timeline) {
       toast.error(`Please select a future date, and also make sure to select both a start and end date.`, {
-        position: toast.POSITION.BOTTOM_RIGHT
+        position: toast.POSITION.BOTTOM_RIGHT,
+        draggable: false
       });
     }
   }, [errors.timeline])
@@ -90,12 +91,14 @@ const KickOffBox = () => {
       await addDoc(collection(db, "projects"), projectData);
       toast.success('You have successfully created your project', {
         position: toast.POSITION.BOTTOM_RIGHT,
+        draggable: false
       });
       dispatch(setShowKickOffBox());
     } catch (err) {
       console.log(err.message);
       toast.error('An error occurred while creating your project. Please try again later.', {
         position: toast.POSITION.BOTTOM_RIGHT,
+        draggable: false
       });
     } finally {
       setIsDisabled(false);

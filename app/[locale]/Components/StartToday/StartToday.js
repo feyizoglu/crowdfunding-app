@@ -26,7 +26,8 @@ const StartToday = () => {
       const isUserHaveProject = projects.find(project => project.id == user.id);
       if (isUserHaveProject) {
         toast.error(`Existing active project under ${user?.email}. Wait or delete it before creating a new one.`, {
-          position: toast.POSITION.BOTTOM_RIGHT
+          position: toast.POSITION.BOTTOM_RIGHT,
+          draggable: false
         });
       } else {
         setTimeout(() => { dispatch(setShowKickOffBox()) }, 1)
@@ -49,12 +50,12 @@ const StartToday = () => {
         >
           <div className="relative">
             <input
-              onChange={supportClickHandle}
               checked={supportCheck}
               type="checkbox"
               id="support"
               className={` appearance-none border border-blackColor p-4 rounded-md ${supportCheck && `bg-greenColor border-greenColor`
                 }`}
+              readOnly
             />
             {supportCheck && <FaCheck className="absolute top-0 left-0 translate-x-1/2 translate-y-1/2" />}
           </div>
@@ -72,12 +73,12 @@ const StartToday = () => {
         >
           <div className="relative">
             <input
-              onChange={kickOffClickHandle}
               checked={kickOffCheck}
               type="checkbox"
               id="support"
               className={` appearance-none border border-blackColor p-4 rounded-md ${kickOffCheck && `bg-greenColor border-greenColor`
                 }`}
+              readOnly
             />
             {kickOffCheck && <FaCheck className="absolute top-0 left-0 translate-x-1/2 translate-y-1/2" />}
           </div>

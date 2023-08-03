@@ -32,8 +32,8 @@ const Cards = ({ projects }) => {
                     alt={project.title}
                     src={project.image}
                     width={300}
-                    height={250}
-                    className="rounded-lg w-[300px] h-[250px] object-cover "
+                    height={230}
+                    className="rounded-lg w-[300px] h-[230px] object-cover "
                   />
                 </div>
               </Link>

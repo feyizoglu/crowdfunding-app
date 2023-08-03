@@ -1,14 +1,12 @@
 'use client'
 import React from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Image from "next/image";
 import Link from "next/link";
 
 function ProjectOfTheWeek() {
   const projects = useSelector(state => state.auth.projects);
-  const dispatch = useDispatch();
 
-  // Check if the projects array is empty or undefined
   if (!projects || projects.length === 0) {
     return (
       <></>
@@ -35,7 +33,6 @@ function ProjectOfTheWeek() {
                   alt="projectImage"
                   priority
                 />
-
               </Link>
             </div>
             <div className=" flex flex-col justify-center space-y-10 md:pr-10 lg:-ml-20">

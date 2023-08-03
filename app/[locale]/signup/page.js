@@ -15,7 +15,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 
-import { setShowSignInBox, setSelectedLink } from "../../redux/features/authSlice";
+import { setShowSignInBox } from "../../redux/features/authSlice";
 import Alert from "../Components/SignUpAlert/Alert";
 
 const schema = yup.object().shape({
@@ -58,9 +58,9 @@ const Page = () => {
       })
       let userName = data.email.split('@')[0]
       toast.success(`Congratulations ${userName[0].toUpperCase() + userName.slice(1, userName.length)}! Your sign-up was successful. Welcome to our community.`, {
-        position: toast.POSITION.BOTTOM_RIGHT
+        position: toast.POSITION.BOTTOM_RIGHT,
+        draggable: false
       });
-      dispatch(setSelectedLink('Home'))
     } catch (err) {
       let errorMsg = 'default';
       switch (err.code) {
@@ -74,7 +74,8 @@ const Page = () => {
           errorMsg = err.message;
       }
       toast.error(errorMsg, {
-        position: toast.POSITION.BOTTOM_RIGHT
+        position: toast.POSITION.BOTTOM_RIGHT,
+        draggable: false
       })
     }
   };
@@ -82,12 +83,11 @@ const Page = () => {
   const handleAlreadyMemberClick = () => {
     setTimeout(() => {
       dispatch(setShowSignInBox())
-      dispatch(setSelectedLink('Home'))
     }, 1)
   };
 
   return (
-    <div className="flex flex-col py-20 justify-start items-center mt-[70px]">
+    <div className="flex flex-col py-20 justify-start items-center mt-[70px] md:justify-center md:h-screen-70">
       <h2 className="text-4xl font-bold mb-7 text-blackColor">Sign-Up</h2>
       <div className="max-w-2xl w-full  flex flex-col items-center justify-start p-6 bg-whiteColor rounded-md shadow-md">
         <p className="text-md mb-3 max-w-lg text-center">

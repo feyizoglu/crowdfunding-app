@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { FaInstagram, FaFacebook, FaTwitter } from 'react-icons/fa';
 import { FaCopyright } from 'react-icons/fa';
 import Image from 'next/image';
@@ -8,7 +8,6 @@ import Image from 'next/image';
 
 function Footer() {
   const projects = useSelector(state => state.auth.projects);
-  const dispatch = useDispatch();
 
   return (
     <footer className="bg-greenColor pt-5 md:pt-10 text-center md:text-left text-blackColor">
@@ -23,10 +22,10 @@ function Footer() {
                 Join our vibrant community of changemakers and be a part of the crowdfunding revolution. Together, we can make a difference and turn ideas into reality.
               </p>
               <div className='icons flex py-10 space-x-5 md:space-x-8 justify-center  md:justify-start'>
-                <Link href='https://www.instagram.com/explore/tags/crowdfunding/' target='blank'  className="flex hover:opacity-60">
+                <Link href='https://www.instagram.com/explore/tags/crowdfunding/' target='blank' className="flex hover:opacity-60">
                   <FaInstagram className="text-3xl" />
                 </Link>
-                <Link href='https://www.facebook.com/groups/2903714209899706/' target='blank'  className="flex hover:opacity-60">
+                <Link href='https://www.facebook.com/groups/2903714209899706/' target='blank' className="flex hover:opacity-60">
                   <FaFacebook className="text-3xl" />
                 </Link>
                 <Link href='https://twitter.com/crowdfunding' target='blank' className="flex hover:opacity-60">
@@ -38,17 +37,17 @@ function Footer() {
               <h1 className='font-semibold text-l sm:text-xl md:text-2xl py-4'>
                 Projects
               </h1>
-              <div className='flex flex-col items-center md:items-start'>
+              <div className='flex flex-col space-y-6 items-center md:items-start'>
                 {projects.slice(0, 2).map((project) => (
-                  <Link href={`/projects/${project.docId}`} key={project.id} className="flex items-center mb-4 ease-in duration-200 hover:scale-105">
+                  <Link href={`/projects/${project.docId}`} key={project.id} className="flex items-center space-x-3 ease-in duration-200 hover:scale-105 ">
                     <Image
                       src={project.image}
                       alt={project.title}
-                      width={75}
+                      width={70}
                       height={50}
-                      className="rounded-lg shadow-lg w-[75px] h-[50px] object-cover"
+                      className="rounded-lg shadow-lg w-[70px] h-[50px] object-fill "
                     />
-                    <h3 className="font-semibold ml-2">{project.title}</h3>
+                    <h3 className="font-semibold">{project.title}</h3>
                   </Link>
                 ))}
               </div>
