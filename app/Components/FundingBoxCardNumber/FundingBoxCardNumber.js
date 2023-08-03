@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
 
-const FundingBoxCardNumber = () => {
+const FundingBoxCardNumber = ({ register, errors }) => {
   const [cardNumber, setCardNumber] = useState("");
+  const [numLength, setNumLength] = useState(false);
   const handleChange = (e) => {
     let inputVal = e.target.value.replace(/\D/g, "");
     let formattedVal = "";
@@ -13,17 +14,35 @@ const FundingBoxCardNumber = () => {
       formattedVal = formattedVal.slice(0, -1);
     }
     setCardNumber(formattedVal);
+    if (formattedVal.length === 19) {
+      setNumLength(!numLength);
+    } else {
+      setNumLength(false);
+    }
   };
 
   return (
     <div>
-      <h2 className="text-left font-semibold">Card Number</h2>
+      <label
+        htmlFor="cardNumber"
+        className={`text-left text-md font-semibold block mb-2  ${
+          numLength ? `` : `${errors.cardNumber && `text-red-500`}`
+        }`}
+      >
+        Card Number
+      </label>
       <input
+        {...register("cardNumber")}
         maxLength={19}
+        id="cardNumber"
         onChange={handleChange}
         placeholder="XXXX-XXXX-XXXX-XXXX"
         value={cardNumber}
-        className="border-b border-blackColor bg-whiteColor px-3 py-1  mb-4 w-full text-md outline-none "
+        className={`border-b border-blackColor bg-whiteColor px-3 py-1  mb-4 w-full text-md outline-none ${
+          numLength
+            ? ``
+            : `${errors.cardNumber && `border-red-500 placeholder-red-500`}`
+        }`}
       />
     </div>
   );

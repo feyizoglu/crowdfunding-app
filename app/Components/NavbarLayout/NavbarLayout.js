@@ -37,7 +37,6 @@ export default function NavbarLayOut() {
   const [innerWidth, setInnerWidth] = useState(0);
   const showMobilNav = useSelector((state) => state.auth.showMobilNav);
   const showSignInBox = useSelector((state) => state.auth.showSignInBox);
-  const showFundingBox = useSelector((state) => state.auth.showFundingBox);
   const showKickOffBox = useSelector((state) => state.auth.showKickOffBox);
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
@@ -149,7 +148,6 @@ export default function NavbarLayOut() {
       )}
       {showSignInBox && <SignIn />}
       {showKickOffBox && <KickOffBox />}
-      {showFundingBox && <FundingBox />}
     </div>
   );
 }

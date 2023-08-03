@@ -9,21 +9,26 @@ import { setShowFundingBox } from "@/app/redux/features/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import Loader from "@/app/Components/Loader/Loader";
+import FundingBox from "@/app/Components/FundingBox/FundingBox";
 
 function Page({ params }) {
   const [project, setProject] = useState(null);
+  const [snap, setSnap] = useState(null);
   const dispatch = useDispatch();
+  const showFundingBox = useSelector((state) => state.auth.showFundingBox);
+
+  const fetchData = async () => {
+    const docRef = doc(db, "projects", params.id);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      setProject(docSnap.data());
+      setSnap(docRef);
+    } else {
+      console.log("no such doc!!");
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const docRef = doc(db, "projects", params.id);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        setProject(docSnap.data());
-      } else {
-        console.log("no such doc!!");
-      }
-    };
     fetchData();
   }, [params]);
 
@@ -108,7 +113,6 @@ function Page({ params }) {
                   setTimeout(() => {
                     dispatch(setShowFundingBox());
                   }, 1);
-                  console.log("messi");
                 }}
                 className="button-dark mt-2 w-full md:w-1/2"
               >
@@ -120,6 +124,7 @@ function Page({ params }) {
       ) : (
         <Loader />
       )}
+      {showFundingBox && <FundingBox project={project} />}
     </div>
   );
 }

@@ -1,58 +1,49 @@
 "use client";
 import React, { useState } from "react";
 
-const FundingBoxDonationBox = () => {
-  const [activeBtn, setActiveBtn] = useState(25);
-  const [customValue, setCustomValue] = useState("");
-
-  const handleBtnClick = (value) => {
-    setActiveBtn(value);
-    setCustomValue("");
-  };
-
-  const handleInputChange = (e) => {
-    setCustomValue(e.target.value);
-    setActiveBtn("");
-  };
-
+const FundingBoxDonationBox = ({ handleBtnClick, amount }) => {
   return (
     <div className="flex flex-col items-center justify-center space-y-5 mb-5  ">
-      <div className="w-full flex justify-between space-x-5">
-        <button
-          className={`${activeBtn === 25 ? "button-light" : "button-dark"}`}
+      <div className="w-full flex justify-center space-x-2 sm:space-x-5 sm:justify-between">
+        <p
+          className={`${amount === 25 ? "button-light" : "button-dark"}`}
           onClick={() => handleBtnClick(25)}
         >
           $25
-        </button>
-        <button
-          className={` ${activeBtn === 50 ? "button-light" : "button-dark"}`}
+        </p>
+        <p
+          className={` ${amount === 50 ? "button-light" : "button-dark"}`}
           onClick={() => handleBtnClick(50)}
         >
           $50
-        </button>
-        <button
-          className={`${activeBtn === 75 ? "button-light" : "button-dark"}`}
+        </p>
+        <p
+          className={`${amount === 75 ? "button-light" : "button-dark"}`}
           onClick={() => handleBtnClick(75)}
         >
           $75
-        </button>
-        <button
-          className={`${activeBtn === 100 ? "button-light" : "button-dark"}`}
+        </p>
+        <p
+          className={`${amount === 100 ? "button-light" : "button-dark"}`}
           onClick={() => handleBtnClick(100)}
         >
           $100
-        </button>
+        </p>
       </div>
 
       <div className="w-full">
+        <label
+          htmlFor="customValue"
+          className={`text-left text-md font-semibold block mb-2`}
+        >
+          Custom Value
+        </label>
         <input
           placeholder="Custom"
-          className={`w-full cursor-default [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
-            customValue ? "button-light" : "button-dark"
-          }`}
+          className={`button-dark w-full cursor-default [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none `}
           type="number"
-          value={customValue}
-          onChange={handleInputChange}
+          value={amount}
+          onChange={(e) => handleBtnClick(e.target.value)}
         />
       </div>
     </div>

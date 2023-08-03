@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { BsEyeSlash } from "react-icons/bs";
 
-const FundingBoxCardCvv = () => {
+const FundingBoxCardCvv = ({ register, errors }) => {
   const [type, setType] = useState("password");
   const handleCvv = () => {
     type == "password" ? setType("") : setType("password");
@@ -14,13 +14,28 @@ const FundingBoxCardCvv = () => {
   };
   return (
     <div className="flex flex-col w-5/12">
-      <h2 className="text-left font-semibold">CVV</h2>
-      <div className="flex items-center justify-between border-b border-blackColor bg-whiteColor px-3 py-1 mb-8 text-md">
+      <label
+        htmlFor="cardCvv"
+        className={`text-left text-md font-semibold block mb-2 ${
+          errors.cardCvv && `text-red-500`
+        }`}
+      >
+        CVV
+      </label>
+      <div
+        className={`flex items-center justify-between border-b border-blackColor bg-whiteColor px-3 py-1 mb-8 text-md ${
+          errors.cardCvv && `border-red-500`
+        }`}
+      >
         <input
+          {...register("cardCvv")}
+          id="cardCvv"
           type={type}
           placeholder="***"
           maxLength={3}
-          className="bg-whiteColor w-1/2 outline-none "
+          className={`bg-whiteColor w-1/2 outline-none ${
+            errors.cardCvv && `placeholder-red-500`
+          }`}
           onInput={handleInputChange}
         />
         <BsEyeSlash onClick={handleCvv} className="cursor-pointer" />
