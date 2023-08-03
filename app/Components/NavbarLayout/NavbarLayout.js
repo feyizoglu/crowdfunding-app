@@ -2,16 +2,11 @@
 import Link from "next/link";
 import { useState, useEffect, useTransition, startTransition } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  setShowMobilNav,
-  setUser,
-  setCloseMobileNav,
-  setProfilPic,
-} from "@/app/redux/features/authSlice";
+import { setShowMobilNav, setUser, setCloseMobileNav, setProfilPic } from "@/app/redux/features/authSlice";
 import { auth, db } from "@/app/firebase/firebase-confing";
 import { onAuthStateChanged } from "firebase/auth";
 
-import styles from "./navbarLayout.module.css";
+import styles from './navbarLayout.module.css'
 import DefaultNavbar from "../DefaultNavbar/DefaultNavbar";
 import MobilDefaultNavbar from "../MobilDefaultNavbar/MobilDefaultNavbar";
 import NavbarWithUser from "../NavbarWithUser/NavbarWithUser";
@@ -22,7 +17,7 @@ import KickOffBox from "../KickOffBox/KickOffBox";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { usePathname } from "next/navigation";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale, useTranslations } from 'next-intl';
 
 const style = {
   headerContainer: `relative container mx-auto z-50`,
@@ -34,34 +29,33 @@ const style = {
   nav: `hidden md:block`,
   hamMenu: `md:hidden`,
   langPickerContainer: `fixed z-50 top-1 right-0 md:-right-2 lg:-right-1 xl:right-8`,
-  langPickerSelect: `inline-flex text-xl appearance-none outline-none cursor-pointer bg-transparent py-3 pl-2 pr-6 md:text-2xl`,
+  langPickerSelect: `inline-flex text-xl appearance-none outline-none cursor-pointer bg-transparent py-3 pl-2 pr-6 md:text-2xl`
 };
 
 export default function NavbarLayOut() {
   const [bgColor, setBgColor] = useState(false);
   const [innerWidth, setInnerWidth] = useState(0);
-  const [selectedLink, setSelectedLink] = useState("/");
-  const locale = useLocale();
+  const [selectedLink, setSelectedLink] = useState('/')
+  const locale = useLocale()
   const [selectedLocale, setSelectedLocale] = useState(locale);
-  const t = useTranslations("NavbarLayout");
+  const t = useTranslations('NavbarLayout');
   const pathname = usePathname();
 
-  const showMobilNav = useSelector((state) => state.auth.showMobilNav);
-  const showSignInBox = useSelector((state) => state.auth.showSignInBox);
-  const showKickOffBox = useSelector((state) => state.auth.showKickOffBox);
-  const user = useSelector((state) => state.auth.user);
+  const showMobilNav = useSelector(state => state.auth.showMobilNav);
+  const showSignInBox = useSelector(state => state.auth.showSignInBox);
+  const showKickOffBox = useSelector(state => state.auth.showKickOffBox);
+  const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const unsubscribeAuth = onAuthStateChanged(auth, (currentUser) => {
-      dispatch(
-        setUser({
-          email: currentUser?.email,
-          id: currentUser?.uid,
-        })
-      );
+      dispatch(setUser({
+        email: currentUser?.email,
+        id: currentUser?.uid
+      }));
       fetchProfilePicture(currentUser?.uid);
     });
+
 
     return () => {
       unsubscribeAuth();
@@ -72,40 +66,40 @@ export default function NavbarLayOut() {
     const handleResize = () => {
       setInnerWidth(window.innerWidth);
     };
-    if (typeof window !== "undefined") {
-      window.addEventListener("resize", handleResize);
-    }
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+    };
     return () => {
-      if (typeof window !== "undefined") {
-        window.removeEventListener("resize", handleResize);
-      }
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize);
+      };
     };
   }, []);
 
   useEffect(() => {
-    setSelectedLink(pathname);
-  }, [pathname]);
+    setSelectedLink(pathname)
+  }, [pathname])
 
   useEffect(() => {
     setSelectedLocale(locale);
-  }, [locale]);
+  }, [locale])
 
   useEffect(() => {
-    if (typeof window !== "undefined" && innerWidth >= 768) {
+    if (typeof window !== 'undefined' && innerWidth >= 768) {
       dispatch(setCloseMobileNav(false));
     }
   }, [innerWidth, dispatch]);
 
   useEffect(() => {
-    window.addEventListener("scroll", changeBgColorOnScrolling);
+    window.addEventListener('scroll', changeBgColorOnScrolling);
     return () => {
-      window.removeEventListener("scroll", changeBgColorOnScrolling);
-    };
+      window.removeEventListener('scroll', changeBgColorOnScrolling)
+    }
   }, [user, dispatch]);
 
   const fetchProfilePicture = (userId) => {
     if (userId) {
-      const q = query(collection(db, "profilPics"), where("id", "==", userId));
+      const q = query(collection(db, 'profilPics'), where('id', '==', userId));
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
         querySnapshot.forEach((doc) => {
           const data = doc.data();
@@ -118,23 +112,23 @@ export default function NavbarLayOut() {
 
   const changeBgColorOnScrolling = () => {
     if (window.scrollY >= 70) {
-      setBgColor(true);
+      setBgColor(true)
     } else {
-      setBgColor(false);
+      setBgColor(false)
     }
   };
 
   const handleHamIconClick = () => {
     dispatch(setShowMobilNav());
-  };
+  }
 
   const handleLocaleChange = (e) => {
     const nextLocale = e.target.value;
     setSelectedLocale(nextLocale);
     startTransition(() => {
-      window.location.href = `/${nextLocale}`;
+      window.location.href = `/${nextLocale}`
     });
-  };
+  }
 
   return (
     <div className={style.headerContainer}>
@@ -148,54 +142,22 @@ export default function NavbarLayOut() {
         >
           Givingly
         </Link>
-        <NavbarSearchInput
-          style={style}
-          placeholder={t("Search for projects")}
-        />
+        <NavbarSearchInput style={style} placeholder={t('Search for projects')} />
         <nav className={style.nav}>
-          {user?.email ? (
-            <NavbarWithUser
-              selectedLink={selectedLink}
-              defaultLink={style.headerLinks}
-              activeLink={style.activeLink}
-            />
-          ) : (
-            <DefaultNavbar
-              selectedLink={selectedLink}
-              defaultLink={style.headerLinks}
-              activeLink={style.activeLink}
-            />
-          )}
+          {user?.email ? <NavbarWithUser selectedLink={selectedLink} defaultLink={style.headerLinks} activeLink={style.activeLink} /> : <DefaultNavbar selectedLink={selectedLink} defaultLink={style.headerLinks} activeLink={style.activeLink} />}
         </nav>
         <section className={style.hamMenu} onClick={handleHamIconClick}>
-          <div
-            className={`${styles.container} ${showMobilNav && styles.change}`}
-          >
+          <div className={`${styles.container} ${showMobilNav && styles.change}`}>
             <div className={styles.bar1}></div>
             <div className={styles.bar2}></div>
             <div className={styles.bar3}></div>
           </div>
         </section>
       </header>
-      {showMobilNav && (
+      {showMobilNav &&
         <section>
-          {user?.email ? (
-            <MobilNavbarWithUser
-              selectedLink={selectedLink}
-              defaultLink={style.headerLinks}
-              activeLink={style.activeLink}
-              bgColor={bgColor}
-            />
-          ) : (
-            <MobilDefaultNavbar
-              selectedLink={selectedLink}
-              defaultLink={style.headerLinks}
-              activeLink={style.activeLink}
-              bgColor={bgColor}
-            />
-          )}
-        </section>
-      )}
+          {user?.email ? <MobilNavbarWithUser selectedLink={selectedLink} defaultLink={style.headerLinks} activeLink={style.activeLink} bgColor={bgColor} /> : <MobilDefaultNavbar selectedLink={selectedLink} defaultLink={style.headerLinks} activeLink={style.activeLink} bgColor={bgColor} />}
+        </section>}
       {showSignInBox && <SignIn />}
       {showKickOffBox && <KickOffBox />}
       <section className={style.langPickerContainer}>
