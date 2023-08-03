@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { FaLessThan } from 'react-icons/fa';
+import { MdOutlineArrowBackIos } from 'react-icons/md';
 import { useDispatch } from "react-redux";
 import { useForm } from 'react-hook-form';
 import * as yup from "yup";
@@ -9,7 +9,7 @@ import { auth } from "@/app/firebase/firebase-confing";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from 'react-toastify';
 
-import { setSelectedLink, setShowSignInBox } from "@/app/redux/features/authSlice";
+import { setShowSignInBox } from "@/app/redux/features/authSlice";
 import Alert from "../SignUpAlert/Alert";
 
 const schema = yup.object({
@@ -45,11 +45,13 @@ const SignUp = () => {
       dispatch(setShowSignInBox());
       let userName = data.email.split('@')[0];
       toast.success(`Congratulations ${userName[0].toUpperCase() + userName.slice(1, userName.length)}! You have successfully logged in.`, {
-        position: toast.POSITION.BOTTOM_RIGHT
+        position: toast.POSITION.BOTTOM_RIGHT,
+        draggable: false
       });
     } catch (err) {
       toast.error(`Invalid credentials. Please check your email and password and try again!`, {
-        position: toast.POSITION.BOTTOM_RIGHT
+        position: toast.POSITION.BOTTOM_RIGHT,
+        draggable: false
       });
     }
   };
@@ -68,9 +70,9 @@ const SignUp = () => {
       >
         <button
           onClick={() => dispatch(setShowSignInBox())}
-          className="absolute top-3 left-5 p-3 text-blackColor hover:opacity-60"
+          className="absolute top-3 left-5 p-3 text-blackColor rounded-full hover:bg-grayishColor "
         >
-          <FaLessThan />
+          <MdOutlineArrowBackIos size={20} />
         </button>
         <h2 className="text-2xl font-bold mb-5 mt-6  sm:text-3xl md:text-4xl ">
           Welcome Back
@@ -112,7 +114,6 @@ const SignUp = () => {
           <br />
           <Link href="/projects" onClick={() => {
             dispatch(setShowSignInBox())
-            dispatch(setSelectedLink('Projects'))
           }} className="cursor-pointer text-blueColor hover:opacity-60">
             Explore projects that need your help!
           </Link>
@@ -122,7 +123,6 @@ const SignUp = () => {
           <br />
           <Link href='/signup' onClick={() => {
             dispatch(setShowSignInBox())
-            setTimeout(() => { dispatch(setSelectedLink('')) }, 100)
           }} className="cursor-pointer text-blueColor hover:opacity-60"> Create an account.</Link>
         </p>
       </div>

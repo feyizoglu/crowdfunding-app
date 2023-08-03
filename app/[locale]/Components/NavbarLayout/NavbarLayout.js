@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect, useTransition, startTransition } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setShowMobilNav, setUser, setCloseMobileNav, setProfilPic, setSelectedLink } from "@/app/redux/features/authSlice";
+import { setShowMobilNav, setUser, setCloseMobileNav, setProfilPic } from "@/app/redux/features/authSlice";
 import { auth, db } from "@/app/firebase/firebase-confing";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -15,6 +15,7 @@ import NavbarSearchInput from "../NavbarSearchInput/NavbarSearchInput";
 import SignIn from "../SignIn/SignIn";
 import KickOffBox from "../KickOffBox/KickOffBox";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { usePathname } from "next/navigation";
 
 import { useLocale, useTranslations } from 'next-intl';
 
@@ -34,14 +35,15 @@ const style = {
 export default function NavbarLayOut() {
   const [bgColor, setBgColor] = useState(false);
   const [innerWidth, setInnerWidth] = useState(0);
+  const [selectedLink, setSelectedLink] = useState('/')
   const locale = useLocale()
   const [selectedLocale, setSelectedLocale] = useState(locale);
-  const t = useTranslations('NavbarLayout')
+  const t = useTranslations('NavbarLayout');
+  const pathname = usePathname();
 
   const showMobilNav = useSelector(state => state.auth.showMobilNav);
   const showSignInBox = useSelector(state => state.auth.showSignInBox);
   const showKickOffBox = useSelector(state => state.auth.showKickOffBox);
-  const selectedLink = useSelector(state => state.auth.selectedLink);
   const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
 
@@ -54,18 +56,11 @@ export default function NavbarLayOut() {
       fetchProfilePicture(currentUser?.uid);
     });
 
-    const savedLink = sessionStorage.getItem('selectedLink');
-    if (savedLink) {
-      dispatch(setSelectedLink(savedLink));
-    }
+
     return () => {
       unsubscribeAuth();
     };
   }, [dispatch]);
-
-  useEffect(() => {
-    sessionStorage.setItem('selectedLink', selectedLink)
-  }, [selectedLink])
 
   useEffect(() => {
     const handleResize = () => {
@@ -80,6 +75,10 @@ export default function NavbarLayOut() {
       };
     };
   }, []);
+
+  useEffect(() => {
+    setSelectedLink(pathname)
+  }, [pathname])
 
   useEffect(() => {
     setSelectedLocale(locale);
@@ -134,15 +133,18 @@ export default function NavbarLayOut() {
   return (
     <div className={style.headerContainer}>
       <header className={`${style.header} ${bgColor && `bg-greenTransparent`}`}>
-        <Link href="/" onClick={() => {
-          dispatch(setCloseMobileNav(false));
-          dispatch(setSelectedLink('Home'))
-        }} className={`${style.headerLogo}`}>
+        <Link
+          href="/"
+          onClick={() => {
+            dispatch(setCloseMobileNav(false));
+          }}
+          className={`${style.headerLogo}`}
+        >
           Givingly
         </Link>
         <NavbarSearchInput style={style} placeholder={t('Search for projects')} />
         <nav className={style.nav}>
-          {user?.email ? <NavbarWithUser defaultLink={style.headerLinks} activeLink={style.activeLink} /> : <DefaultNavbar defaultLink={style.headerLinks} activeLink={style.activeLink} />}
+          {user?.email ? <NavbarWithUser selectedLink={selectedLink} defaultLink={style.headerLinks} activeLink={style.activeLink} /> : <DefaultNavbar selectedLink={selectedLink} defaultLink={style.headerLinks} activeLink={style.activeLink} />}
         </nav>
         <section className={style.hamMenu} onClick={handleHamIconClick}>
           <div className={`${styles.container} ${showMobilNav && styles.change}`}>
@@ -154,7 +156,7 @@ export default function NavbarLayOut() {
       </header>
       {showMobilNav &&
         <section>
-          {user?.email ? <MobilNavbarWithUser defaultLink={style.headerLinks} activeLink={style.activeLink} bgColor={bgColor} /> : <MobilDefaultNavbar defaultLink={style.headerLinks} activeLink={style.activeLink} bgColor={bgColor} />}
+          {user?.email ? <MobilNavbarWithUser selectedLink={selectedLink} defaultLink={style.headerLinks} activeLink={style.activeLink} bgColor={bgColor} /> : <MobilDefaultNavbar selectedLink={selectedLink} defaultLink={style.headerLinks} activeLink={style.activeLink} bgColor={bgColor} />}
         </section>}
       {showSignInBox && <SignIn />}
       {showKickOffBox && <KickOffBox />}
@@ -164,8 +166,8 @@ export default function NavbarLayOut() {
           onChange={handleLocaleChange}
           value={selectedLocale}
         >
-          <option value="en">🇬🇧</option>
-          <option value="tr">🇹🇷</option>
+          <option value="en">&#x1F1EC;&#x1F1E7;</option>
+          <option value="tr">&#x1F1F9;&#x1F1F7;</option>
         </select>
       </section>
     </div>

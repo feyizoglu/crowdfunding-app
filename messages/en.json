@@ -10,12 +10,14 @@
   },
   "NavbarWithUser": {
     "Home": "Home",
-    "Projects": "Projects"
+    "Projects": "Projects",
+    "New Project": "New Project"
   },
   "MobilNavbarWithUser": {
     "Search for projects": "Search for projects..",
     "Home": "Home",
-    "Projects": "Projects"
+    "Projects": "Projects",
+    "New Project": "New Project"
   },
   "MobilDefaultNavbar": {
     "Search for projects": "Search for projects..",

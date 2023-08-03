@@ -2,7 +2,7 @@
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
-
+import Loader from '../Loader/Loader';
 import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
 import MyProjectDetails from "../MyProjectDetail/MyProjectsDetail";
 import MyProjectsTransaction from "../MyProjectTransaction/MyProjectsTransaction";
@@ -18,12 +18,17 @@ const MyProjects = () => {
     const filterForMatch = projects.filter(project => project.id === user.id);
     setMatchedProject(filterForMatch)
   }, [projects, user])
-  
+
+  if (matchedProject.length == 0) {
+    return (
+      <Loader />
+    )
+  }
 
   return (
     <>
       <div className="bg-whiteColor">
-        <div className="container min-h-screen mx-auto w-4/5 pt-[calc(70px+2rem)] pb-10 px-4 space-y-10 flex flex-col lg:flex-row lg:space-x-24 md:space-y-0 md:w-full">
+        <div className="container min-h-screen-70 mx-auto w-4/5 pt-[calc(70px+2rem)] pb-10 px-4 space-y-10 flex flex-col lg:flex-row lg:space-x-24 md:space-y-0 md:w-full">
           <div className="space-y-10 lg:w-3/5">
             <MyProjectDetails project={matchedProject[0]} />
             <div className="progress-bar flex flex-col justify-between">
@@ -38,22 +43,19 @@ const MyProjects = () => {
               </div>
               <div className="flex justify-between">
                 <div className="raised flex flex-col justify-between">
-                  <p className="mt-1.5 text-[18px] font-semibold ">Raised:</p>
-                  <p className="text-lg sm:text-xl font-bold py-1 sm:py-2 md:py-3 md:text-2xl lg:text-[32px]">
+                  <p className="mt-1.5 text-[18px] text-center font-semibold ">Raised:</p>
+                  <p className="text-lg sm:text-xl font-bold py-1 md:text-2xl lg:text-[32px]">
                     ${matchedProject[0]?.moneyRaised}
                   </p>
                 </div>
                 <div className="goal flex flex-col justify-between">
-                  <p className="text-[18px] font-semibold mt-1.5">Goal:</p>
-                  <p className="text-lg sm:text-xl font-bold py-1 sm:py-2 md:py-3 md:text-2xl lg:text-[32px]">
+                  <p className="text-[18px] text-center font-semibold mt-1.5">Goal:</p>
+                  <p className="text-lg sm:text-xl font-bold py-1 md:text-2xl lg:text-[32px]">
                     ${matchedProject[0]?.goalAmount}
                   </p>
                 </div>
-                
               </div>
-              
             </div>
-            
           </div>
           <div className="lg:w-2/5">
             {showConfirmationBox && (

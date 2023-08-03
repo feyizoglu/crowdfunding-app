@@ -3,13 +3,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setShowKickOffBox,
-  setShowSignInBox,
-  setSelectedLink,
-  setCloseMobileNav,
-} from "@/app/redux/features/authSlice";
-import { toast } from "react-toastify";
+import { setShowKickOffBox, setShowSignInBox, setCloseMobileNav } from "@/app/redux/features/authSlice";
+import { toast } from 'react-toastify';
 import { useTranslations } from "next-intl";
 
 const StartToday = () => {
@@ -22,7 +17,6 @@ const StartToday = () => {
   const dispatch = useDispatch();
 
   const supportClickHandle = () => {
-    dispatch(setSelectedLink("Projects"));
     setKickOffCheck(false);
     setSupportCheck(true);
   };
@@ -35,12 +29,10 @@ const StartToday = () => {
         (project) => project.id == user.id
       );
       if (isUserHaveProject) {
-        toast.error(
-          `Existing active project under ${user?.email}. Wait or delete it before creating a new one.`,
-          {
-            position: toast.POSITION.BOTTOM_RIGHT,
-          }
-        );
+        toast.error(`Existing active project under ${user?.email}. Wait or delete it before creating a new one.`, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          draggable: false
+        });
       } else {
         setTimeout(() => {
           dispatch(setShowKickOffBox());
@@ -66,13 +58,12 @@ const StartToday = () => {
         >
           <div className="relative">
             <input
-              onChange={supportClickHandle}
               checked={supportCheck}
               type="checkbox"
               id="support"
-              className={` appearance-none border border-blackColor p-4 rounded-md ${
-                supportCheck && `bg-greenColor border-greenColor`
-              }`}
+              className={` appearance-none border border-blackColor p-4 rounded-md ${supportCheck && `bg-greenColor border-greenColor`
+                }`}
+              readOnly
             />
             {supportCheck && (
               <FaCheck className="absolute top-0 left-0 translate-x-1/2 translate-y-1/2" />
@@ -92,13 +83,12 @@ const StartToday = () => {
         >
           <div className="relative">
             <input
-              onChange={kickOffClickHandle}
               checked={kickOffCheck}
               type="checkbox"
               id="support"
-              className={` appearance-none border border-blackColor p-4 rounded-md ${
-                kickOffCheck && `bg-greenColor border-greenColor`
-              }`}
+              className={` appearance-none border border-blackColor p-4 rounded-md ${kickOffCheck && `bg-greenColor border-greenColor`
+                }`}
+              readOnly
             />
             {kickOffCheck && (
               <FaCheck className="absolute top-0 left-0 translate-x-1/2 translate-y-1/2" />

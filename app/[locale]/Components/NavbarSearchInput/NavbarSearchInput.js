@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSearchInputVal } from "@/app/redux/features/authSlice";
 
 function NavbarSearchInput({ style, placeholder, }) {
-  const inputValue = useSelector(state => state.auth.setSearchInputVal);
+  const inputValue = useSelector(state => state.auth.searchInputVal);
   const dispatch = useDispatch();
   const { push } = useRouter();
 

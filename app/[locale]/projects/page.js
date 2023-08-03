@@ -36,13 +36,11 @@ const Page = () => {
       <div className='pt-[70px]'>
         <ProjectOfTheWeek />
       </div>
-      <div>
-        <Categories
-          selectedCategory={selectedCategory}
-          handleCategoryChange={handleCategoryChange}
-        />
-        <Cards projects={filteredProjects} />
-      </div>
+      <Categories
+        selectedCategory={selectedCategory}
+        handleCategoryChange={handleCategoryChange}
+      />
+      <Cards projects={filteredProjects} />
     </div>
   );
 };

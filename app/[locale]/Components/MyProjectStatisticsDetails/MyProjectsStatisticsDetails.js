@@ -15,20 +15,20 @@ const MyProjectsStatisticsDetails = ({ project }) => {
                 height={30}
                 alt="profil picture"
               />
-              <p className="capitalize">{project.creator.split('@')[0]}</p>
+              <p className="capitalize">{project?.creator.split('@')[0]}</p>
             </div>
           </td>
         </tr>
         <tr>
           <td className="font-semibold">End Date:</td>
           <td>
-            <p className="bg-redColor rounded-xl">{project.timeline[1]}</p>
+            <p className="bg-redColor rounded-xl">{project?.timeline}</p>
           </td>
         </tr>
         <tr>
           <td className="font-semibold">Category:</td>
           <td>
-            <p className="capitalize">{project.category}</p>
+            <p className="capitalize">{project?.category}</p>
           </td>
         </tr>
       </tbody>

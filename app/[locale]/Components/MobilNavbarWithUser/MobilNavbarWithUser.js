@@ -5,16 +5,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useTranslations } from 'next-intl';
 import { toast } from 'react-toastify';
 
-import { setShowInfoBox, setShowKickOffBox, setShowMobilNav, setSearchInputVal, setSelectedLink } from '@/app/redux/features/authSlice';
+import { setShowInfoBox, setShowKickOffBox, setShowMobilNav, setSearchInputVal } from '@/app/redux/features/authSlice';
 import NavbarSearchInput from '../NavbarSearchInput/NavbarSearchInput';
 import InfoBox from '../InfoBox/InfoBox';
 
-function MobilNavbarWithUser({ bgColor, defaultLink, activeLink }) {
-  const showInfoBox = useSelector((state) => state.auth.showInfoBox);
+function MobilNavbarWithUser({ bgColor, defaultLink, activeLink, selectedLink }) {
+  const showInfoBox = useSelector(state => state.auth.showInfoBox);
   const user = useSelector(state => state.auth.user)
   const projects = useSelector(state => state.auth.projects);
   const profilPic = useSelector(state => state.auth.profilPic);
-  const selectedLink = useSelector(state => state.auth.selectedLink);
   const dispatch = useDispatch();
   const t = useTranslations('MobilNavbarWithUser');
   const isUserHaveProject = projects.some(project => project.id === user.id);
@@ -48,10 +47,16 @@ function MobilNavbarWithUser({ bgColor, defaultLink, activeLink }) {
     }
   }
 
-  const handleInfoBoxClick = () => {
+  const handleInfoBoxClick = (e) => {
+    e.stopPropagation()
     setTimeout(() => {
       dispatch(setShowInfoBox())
-    }, 1)
+    }, 1);
+  }
+
+  const handleLinkClicks = () => {
+    dispatch(setSearchInputVal(''))
+    dispatch(setShowMobilNav())
   }
 
   return (
@@ -68,23 +73,15 @@ function MobilNavbarWithUser({ bgColor, defaultLink, activeLink }) {
         {showInfoBox && <InfoBox style={style} />}
       </div>
       <NavbarSearchInput style={style} placeholder={t('Search for projects')} />
-      <Link onClick={() => {
-        dispatch(setSearchInputVal(''))
-        dispatch(setShowMobilNav())
-        dispatch(setSelectedLink('Home'))
-      }} className={selectedLink === 'Home' ? activeLink : defaultLink} href="/">
+      <Link onClick={handleLinkClicks} className={selectedLink === '/' || selectedLink === '/tr' ? activeLink : defaultLink} href="/">
         {t('Home')}
       </Link>
-      <Link onClick={() => {
-        dispatch(setSearchInputVal(''))
-        dispatch(setShowMobilNav())
-        dispatch(setSelectedLink('Projects'))
-      }} className={selectedLink === 'Projects' ? activeLink : defaultLink} href="/projects">
+      <Link onClick={handleLinkClicks} className={selectedLink === '/projects' || selectedLink === '/tr/projects' ? activeLink : defaultLink} href="/projects">
         {t('Projects')}
       </Link>
       {!isUserHaveProject &&
         <button onClick={handleNewProjectClick} className={style.button}>
-          New Project
+          {t('New Project')}
         </button>}
     </div>
   );

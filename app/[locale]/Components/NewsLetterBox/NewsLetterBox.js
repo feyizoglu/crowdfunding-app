@@ -8,7 +8,7 @@ function NewsLetterBox() {
   const t = useTranslations('NewsLetterBox');
 
   return (
-    <div className="flex flex-col items-center w-5/6 sm:w-2/3 py-12 px-7 bg-blackColor rounded-xl space-y-6  md:w-3/6 lg:w-2/6 ">
+    <div className="flex flex-col items-center text-center w-5/6 sm:w-2/3 py-12 px-7 bg-blackColor rounded-xl space-y-6  md:w-3/6 lg:w-2/6 ">
       <div className="topBox bg-greenColor rounded-xl">
         <Image
           src="/newsletterbox.png"

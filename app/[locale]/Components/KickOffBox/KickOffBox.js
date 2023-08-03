@@ -3,7 +3,8 @@ import { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
 import { setShowKickOffBox } from "@/app/redux/features/authSlice";
-import { FaLessThan, FaUpload, FaCalendarAlt } from 'react-icons/fa';
+import {  FaUpload, FaCalendarAlt } from 'react-icons/fa';
+import { MdArrowBackIosNew } from 'react-icons/md';
 import { DateRange } from "react-date-range";
 import { addDays, format } from "date-fns";
 import * as yup from "yup";
@@ -18,7 +19,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { toast } from 'react-toastify';
 
 const schema = yup.object({
-  title: yup.string().max(20).required(),
+  title: yup.string().max(50).required(),
   goalAmount: yup.number().required(),
   timeline: yup
     .array()
@@ -60,7 +61,8 @@ const KickOffBox = () => {
   useEffect(() => {
     if (errors.timeline) {
       toast.error(`Please select a future date, and also make sure to select both a start and end date.`, {
-        position: toast.POSITION.BOTTOM_RIGHT
+        position: toast.POSITION.BOTTOM_RIGHT,
+        draggable: false
       });
     }
   }, [errors.timeline])
@@ -89,12 +91,14 @@ const KickOffBox = () => {
       await addDoc(collection(db, "projects"), projectData);
       toast.success('You have successfully created your project', {
         position: toast.POSITION.BOTTOM_RIGHT,
+        draggable: false
       });
       dispatch(setShowKickOffBox());
     } catch (err) {
       console.log(err.message);
       toast.error('An error occurred while creating your project. Please try again later.', {
         position: toast.POSITION.BOTTOM_RIGHT,
+        draggable: false
       });
     } finally {
       setIsDisabled(false);
@@ -115,9 +119,9 @@ const KickOffBox = () => {
       <div ref={containerRef} className="relative bg-whiteColor p-6 rounded-xl shadow sm:p-12">
         <button
           onClick={() => dispatch(setShowKickOffBox())}
-          className="absolute top-3 left-0  p-3 text-blackColor hover:opacity-60 sm:left-8"
+          className="absolute top-3 left-0  p-3 text-blackColor rounded-full hover:bg-grayishColor sm:left-8"
         >
-          <FaLessThan />
+          <MdArrowBackIosNew size={20} />
         </button>
         <h1 className="text-4xl font-semibold py-8 sm:text-5xl">
           {t('Kick-off')}

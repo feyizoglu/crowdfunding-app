@@ -1,5 +1,5 @@
 import '../globals.css'
-import { Inter } from 'next/font/google'
+import { Outfit } from "next/font/google";
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 
@@ -10,7 +10,7 @@ import ProjectsContainer from './Components/ProjectsContainer/ProjectsContainer'
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from './Components/Footer/Footer';
 
-const inter = Inter({ subsets: ['latin'] })
+const outfit = Outfit({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Givingly',
@@ -31,7 +31,7 @@ export default async function LocaleLayout({ children, params: { locale } }) {
 
   return (
     <html lang={locale}>
-      <body className={inter.className}>
+      <body className={outfit.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ReduxProvider>
             <ProjectsContainer>

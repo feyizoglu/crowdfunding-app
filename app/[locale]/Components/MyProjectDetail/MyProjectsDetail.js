@@ -14,26 +14,26 @@ const MyProjectDetails = ({ project }) => {
   }
 
   return (
-    <div key={0} className="space-y-10">
-      <h1 className="text-blackColor font-bold text-center text-4xl xl:text-[64px] lg:text-6xl md:text-left md:text-5xl">
+    <div className="space-y-10">
+      <h1 className="text-blackColor font-bold text-center text-4xl xl:text-[64px] lg:text-6xl lg:text-left md:text-5xl">
         My Project
       </h1>
-      <h2 className="text-blackColor text-xl text-center font-bold md:text-left">
-        {project?.title}
+      <h2 className="text-blackColor text-xl text-center font-bold lg:text-left">
+        {project?.title[0].toUpperCase() + project?.title.slice(1)}
       </h2>
-      <div className="flex items-center justify-center ">
+      <div className="flex items-center justify-center  ">
         <Image
-          className="rounded-lg w-[400px] h-[400px]"
-          src={project?.image ? project?.image : `https://placehold.co/400x400/D4EE25/0A0A0A.png`}
+          className="rounded-lg h-[200px] w-[200px] md:w-[500px] md:h-[350px]"
+          src={project?.image}
           alt='project image'
-          width={400}
-          height={400}
+          width={500}
+          height={350}
           priority
         />
       </div>
-      <div className=" flex items-center justify-between space-x-12">
-        <p className="text-blackColor font-semibold text-center  md:text-left">
-          {project?.description}
+      <div className=" flex items-center justify-center space-x-12 lg:justify-between ">
+        <p className="text-blackColor font-semibold">
+          {project?.description[0].toUpperCase() + project?.description.slice(1)}
         </p>
         <button onClick={handleDeleteClicks} className='border border-darkRedColor p-2.5 rounded-lg hover:bg-lightRedColor group'>
           <FaTrash className='text-darkRedColor group-hover:animate-bounce' />

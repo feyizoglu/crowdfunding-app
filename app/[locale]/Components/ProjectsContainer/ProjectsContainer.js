@@ -24,7 +24,7 @@ function ProjectsContainer({ children }) {
 
       const currentDate = format(new Date(), 'dd/MM/yy');
       const deletionPromises = projectsArr
-        .filter((project) => project.timeline[1] < currentDate)
+        .filter((project) => project.timeline < currentDate)
         .map(async (project) => {
           await deleteDoc(doc(db, 'projects', project.docId));
         });
