@@ -5,42 +5,50 @@ import { FaCheck } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowKickOffBox, setShowSignInBox, setCloseMobileNav } from "@/app/redux/features/authSlice";
 import { toast } from 'react-toastify';
+import { useTranslations } from "next-intl";
 
 const StartToday = () => {
   const [supportCheck, setSupportCheck] = useState(true);
   const [kickOffCheck, setKickOffCheck] = useState(false);
-  const user = useSelector(state => state.auth.user);
-  const projects = useSelector(state => state.auth.projects);
+  const user = useSelector((state) => state.auth.user);
+  const projects = useSelector((state) => state.auth.projects);
+  const t = useTranslations('StartToday');
 
   const dispatch = useDispatch();
 
   const supportClickHandle = () => {
     setKickOffCheck(false);
-    setSupportCheck(true)
+    setSupportCheck(true);
   };
   const kickOffClickHandle = () => {
-    dispatch(setCloseMobileNav())
+    dispatch(setCloseMobileNav());
     setKickOffCheck(true);
     setSupportCheck(false);
     if (user?.email) {
-      const isUserHaveProject = projects.find(project => project.id == user.id);
+      const isUserHaveProject = projects.find(
+        (project) => project.id == user.id
+      );
       if (isUserHaveProject) {
         toast.error(`Existing active project under ${user?.email}. Wait or delete it before creating a new one.`, {
           position: toast.POSITION.BOTTOM_RIGHT,
           draggable: false
         });
       } else {
-        setTimeout(() => { dispatch(setShowKickOffBox()) }, 1)
+        setTimeout(() => {
+          dispatch(setShowKickOffBox());
+        }, 1);
       }
     } else {
-      setTimeout(() => { dispatch(setShowSignInBox()) }, 1)
+      setTimeout(() => {
+        dispatch(setShowSignInBox());
+      }, 1);
     }
   };
 
   return (
     <div className="flex flex-col items-center  space-y-16 md:w-4/6 md:items-start">
       <div className="text-3xl md:ml-14">
-        <h1 className="font-semibold">I want to:</h1>
+        <h1 className="font-semibold">{t('I want to')}</h1>
       </div>
       <div className=" justify-center items-center md:ml-10">
         <Link
@@ -57,11 +65,13 @@ const StartToday = () => {
                 }`}
               readOnly
             />
-            {supportCheck && <FaCheck className="absolute top-0 left-0 translate-x-1/2 translate-y-1/2" />}
+            {supportCheck && (
+              <FaCheck className="absolute top-0 left-0 translate-x-1/2 translate-y-1/2" />
+            )}
           </div>
           <div className="flex flex-col space-y-2.5  items-center">
-            <span className="text-4xl font-bold">Support</span>
-            <span className="text-2l font-semibold">other projects</span>
+            <span className="text-4xl font-bold">{t('Support')}</span>
+            <span className="text-2l font-semibold">{t('other projects')}</span>
           </div>
         </Link>
       </div>
@@ -80,15 +90,18 @@ const StartToday = () => {
                 }`}
               readOnly
             />
-            {kickOffCheck && <FaCheck className="absolute top-0 left-0 translate-x-1/2 translate-y-1/2" />}
+            {kickOffCheck && (
+              <FaCheck className="absolute top-0 left-0 translate-x-1/2 translate-y-1/2" />
+            )}
           </div>
           <div className="flex flex-col space-y-2.5 items-center">
-            <span className="text-4xl font-bold flex">Kick<span>-</span>off</span>
-            <span className="text-2l font-semibold">my project</span>
+            <span className="text-4xl font-bold flex">{t('Kick-off')}</span>
+            <span className="text-2l font-semibold">{t('my project')}</span>
           </div>
         </button>
       </div>
     </div>
   );
 };
+
 export default StartToday;

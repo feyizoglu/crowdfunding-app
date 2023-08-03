@@ -3,8 +3,11 @@ import React from "react";
 import { useSelector } from 'react-redux';
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from 'next-intl';
+
 
 function ProjectOfTheWeek() {
+  const t = useTranslations('ProjectOfTheWeek');
   const projects = useSelector(state => state.auth.projects);
 
   if (!projects || projects.length === 0) {
@@ -21,7 +24,7 @@ function ProjectOfTheWeek() {
     <div className='bg-whiteColor text-center md:text-start'>
       <div className="container mx-auto project-of-the-week pt-20 pb-10 px-4 ">
         <div className='border-b border-blackColor pb-20'>
-          <h1 className="project-of-the-week__title text-4xl sm:text-5xl md:text-6xl font-bold mb-4 pb-10 ">Project of the Week</h1>
+          <h1 className="project-of-the-week__title text-4xl sm:text-5xl md:text-6xl font-bold mb-4 pb-10 ">{t("Project of the Week")}</h1>
           <div className="project-of-the-week__content grid grid-cols-1 md:grid-cols-2 gap-10  ">
             <div className="img-container flex flex-col items-center  rounded-lg border-0 md:items-start">
               <Link href={`/projects/${mostRecentProject.docId}`}>
@@ -57,13 +60,13 @@ function ProjectOfTheWeek() {
                 </div>
                 <div className="flex justify-between">
                   <div className="raised flex flex-col justify-between">
-                    <p className="text-sm sm:text-base md:text-lg">Raised:</p>
+                    <p className="text-sm sm:text-base md:text-lg">{t("Raised:")}</p>
                     <p className="text-lg sm:text-xl md:text-2xl font-bold py-1 sm:py-2 md:py-3">
                       ${mostRecentProject.moneyRaised}
                     </p>
                   </div>
                   <div className="goal flex flex-col justify-between">
-                    <p className="text-sm sm:text-base md:text-lg">Goal:</p>
+                    <p className="text-sm sm:text-base md:text-lg">{t("Goal:")}</p>
                     <p className="text-lg sm:text-xl md:text-2xl font-bold py-1 sm:py-2 md:py-3">
                       ${mostRecentProject.goalAmount}
                     </p>

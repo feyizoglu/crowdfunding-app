@@ -3,9 +3,12 @@ import { useDispatch } from "react-redux";
 import { setCloseMobileNav } from "@/app/redux/features/authSlice";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from 'next-intl';
+
 
 const HeroSection = () => {
   const dispatch = useDispatch();
+  const t = useTranslations('HeroSection')
 
   return (
     <div className="bg-greenColor pt-[70px] z-0">
@@ -15,11 +18,10 @@ const HeroSection = () => {
             Givingly
           </h1>
           <p className="text-[32px] font-semibold text-blackColor  ">
-            Supporting great causes made easy
+            {t('Supporting great causes made easy')}
           </p>
           <p className="font-medium text-[18px] text-blackColor">
-            We helped over 3,500 projects and causes. Sign in today and get your
-            idea kicked off or support others kick off their amazing projects.
+            {t('We helped over 3,500 projects and causes Sign in today and get your idea kicked off or support others kick off their amazing projects')}
           </p>
           <div className="md:mr-4">
             <Link
@@ -29,7 +31,7 @@ const HeroSection = () => {
               href='/starttoday'
               className="button-dark py-1.5 w-full "
             >
-              Start Today
+              {t('Start Today')}
             </Link>
           </div>
         </div>
