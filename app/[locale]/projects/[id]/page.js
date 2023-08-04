@@ -5,23 +5,32 @@ import { doc, getDoc } from "firebase/firestore";
 import Image from "next/image";
 import { FaCalendarAlt } from "react-icons/fa";
 import { parse, differenceInDays } from "date-fns";
+import { setShowFundingBox } from "@/app/redux/features/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+
+import FundingBox from "../../Components/FundingBox/FundingBox";
 import { useTranslations } from "next-intl";
 
 import Loader from "@/app/[locale]/Components/Loader/Loader";
 
 function Page({ params }) {
   const [project, setProject] = useState(null);
+  const [snap, setSnap] = useState(null);
+  const dispatch = useDispatch();
+  const showFundingBox = useSelector((state) => state.auth.showFundingBox);
+
+  const fetchData = async () => {
+    const docRef = doc(db, "projects", params.id);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      setProject(docSnap.data());
+      setSnap(docRef);
+    } else {
+      console.log("no such doc!!");
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const docRef = doc(db, "projects", params.id);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        setProject(docSnap.data());
-      } else {
-        console.log("no such doc!!");
-      }
-    };
     fetchData();
   }, [params]);
   const t = useTranslations("Project");
@@ -112,8 +121,17 @@ function Page({ params }) {
               </div>
             </div>
             <div>
-              <button className="button-dark mt-2 w-full md:w-1/2">
+              <button
+                onClick={() => {
+                  setTimeout(() => {
+                    dispatch(setShowFundingBox());
+                  }, 1);
+                }}
+                className="button-dark mt-2 w-full md:w-1/2"
+              >
                 {t("Fund This Project")}
+
+
               </button>
             </div>
           </div>
@@ -121,6 +139,7 @@ function Page({ params }) {
       ) : (
         <Loader />
       )}
+      {showFundingBox && <FundingBox project={project} />}
     </div>
   );
 }
