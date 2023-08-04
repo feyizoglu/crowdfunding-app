@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -9,21 +10,20 @@ import { createUserWithEmailAndPassword, AuthErrorCodes } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-toastify';
-
 import { db, storage } from "@/app/firebase/firebase-confing";
 import { addDoc, collection } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
-
 import { setShowSignInBox } from "../../redux/features/authSlice";
 import Alert from "../Components/SignUpAlert/Alert";
+import Spinner from "../Components/Spinner/spinner";
 
 const schema = yup.object().shape({
   email: yup.string().email("Please enter a valid email address.").required('Email is required'),
   password: yup
     .string()
     .required()
-    .min(6, "Password must be at least 6 characters long"),
+    .min(6, ""),
   profilePic: yup
     .mixed()
     .test("fileRequired", "Image is required", (value) => {
@@ -32,6 +32,7 @@ const schema = yup.object().shape({
 });
 
 const Page = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -45,6 +46,7 @@ const Page = () => {
   const route = useRouter();
 
   const onSubmit = async (data) => {
+    setIsLoading(true)
     try {
       const user = await createUserWithEmailAndPassword(auth, data.email, data.password)
       route.push('/')
@@ -77,6 +79,8 @@ const Page = () => {
         position: toast.POSITION.BOTTOM_RIGHT,
         draggable: false
       })
+    } finally {
+      setIsLoading(false)
     }
   };
 
@@ -145,8 +149,8 @@ const Page = () => {
               />
             </div>
           </div>
-          <button type="submit" className="w-full h-10 button-dark">
-            Submit
+          <button disabled={isLoading} type="submit" className="w-full h-10 button-dark">
+            {isLoading && <Spinner />} Submit
           </button>
         </form>
       </div>

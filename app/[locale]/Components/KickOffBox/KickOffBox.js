@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
 import { setShowKickOffBox } from "@/app/redux/features/authSlice";
-import {  FaUpload, FaCalendarAlt } from 'react-icons/fa';
+import { FaUpload, FaCalendarAlt } from 'react-icons/fa';
 import { MdArrowBackIosNew } from 'react-icons/md';
 import { DateRange } from "react-date-range";
 import { addDays, format } from "date-fns";
@@ -17,6 +17,7 @@ import { db, storage } from "@/app/firebase/firebase-confing";
 import { addDoc, collection } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { toast } from 'react-toastify';
+import Spinner from "../Spinner/spinner";
 
 const schema = yup.object({
   title: yup.string().max(50).required(),
@@ -37,7 +38,7 @@ const schema = yup.object({
 
 const KickOffBox = () => {
   const [showDateBox, setShowDateBox] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const user = useSelector(state => state.auth.user);
   const profilPic = useSelector(state => state.auth.profilPic);
   const dispatch = useDispatch();
@@ -68,8 +69,8 @@ const KickOffBox = () => {
   }, [errors.timeline])
 
   const onSubmit = async (data) => {
+    setIsLoading(true);
     try {
-      setIsDisabled(true);
       const imgFile = data.image[0];
       const storageRef = ref(storage, `project-img/${imgFile.name}`);
       const snapshot = await uploadBytes(storageRef, imgFile);
@@ -93,15 +94,14 @@ const KickOffBox = () => {
         position: toast.POSITION.BOTTOM_RIGHT,
         draggable: false
       });
-      dispatch(setShowKickOffBox());
     } catch (err) {
-      console.log(err.message);
       toast.error('An error occurred while creating your project. Please try again later.', {
         position: toast.POSITION.BOTTOM_RIGHT,
         draggable: false
       });
     } finally {
-      setIsDisabled(false);
+      setIsLoading(false);
+      dispatch(setShowKickOffBox());
     }
   };
 
@@ -237,7 +237,7 @@ const KickOffBox = () => {
             </div>
           </div>
           <div className="w-full">
-            <button type="submit" className={`button-dark w-full ${isDisabled && `opacity-50`}`} disabled={isDisabled}>{t('Upload project')}</button>
+            <button type="submit" className={`button-dark w-full`} disabled={isLoading}>{isLoading && <Spinner />}{t('Upload project')}</button>
           </div>
         </form>
       </div>

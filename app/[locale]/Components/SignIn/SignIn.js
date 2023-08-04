@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { MdOutlineArrowBackIos } from 'react-icons/md';
 import { useDispatch } from "react-redux";
@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 
 import { setShowSignInBox } from "@/app/redux/features/authSlice";
 import Alert from "../SignUpAlert/Alert";
+import Spinner from "../Spinner/spinner";
 
 const schema = yup.object({
   email: yup.string().email("please enter a valid email address.").required(),
@@ -21,6 +22,7 @@ const schema = yup.object({
 }).required();
 
 const SignUp = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch();
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
@@ -36,6 +38,7 @@ const SignUp = () => {
   }, [])
 
   const onsubmit = async (data) => {
+    setIsLoading(true)
     try {
       const user = await signInWithEmailAndPassword(
         auth,
@@ -53,6 +56,8 @@ const SignUp = () => {
         position: toast.POSITION.BOTTOM_RIGHT,
         draggable: false
       });
+    } finally {
+      setIsLoading(false)
     }
   };
 
@@ -88,7 +93,7 @@ const SignUp = () => {
               className="border-b border-blackColor bg-whiteColor px-3 py-1 mt-7 mb-8 w-full text-lg outline-none sm:text-xl"
             />
             <div className="">
-              {errors.email && <Alert message={errors.email?.message} />}
+              {errors.email && <div className="-mt-3"><Alert message={errors.email?.message} /></div>}
             </div>
             <input
               {...register('password')}
@@ -100,8 +105,8 @@ const SignUp = () => {
             <div className="">
               {errors.password && <Alert message={errors.password?.message} />}
             </div>
-            <button className="button-dark mt-5 w-full">
-              Continue to sign in
+            <button disabled={isLoading} className="button-dark mt-5 w-full">
+              {isLoading && <Spinner />} Continue to sign in
             </button>
           </form>
         </div>

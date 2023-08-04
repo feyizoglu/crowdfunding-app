@@ -16,9 +16,7 @@ function ProjectOfTheWeek() {
     );
   }
 
-  const mostRecentProject = projects.reduce((prev, curr) => (
-    curr.uploadTimestamp > prev.uploadTimestamp ? curr : prev
-  ));
+  const mostRecentProject = projects[projects.length - 1]
 
   return (
     <div className='bg-whiteColor text-center md:text-start'>

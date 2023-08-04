@@ -4,25 +4,45 @@ import * as yup from 'yup';
 import { MdOutlineArrowBackIos } from 'react-icons/md';
 import { useDispatch } from "react-redux";
 import { setShowNewsletterForm } from "@/app/redux/features/authSlice";
-import { useRef, useEffect } from "react";
-
-
-import Alert from "../SignUpAlert/Alert";
+import { useRef, useEffect, useState } from "react";
+import emailjs from '@emailjs/browser';
+import { toast } from "react-toastify";
 
 const schema = yup.object().shape({
-  username: yup.string().required("Username is required"),
+  username: yup.string().required("Name is required"),
   email: yup.string().email("Please enter a valid email address.").required("Email is required."),
 });
 
 const NewsletterForm = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch();
   const containerRef = useRef();
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   });
 
-  const onSubmit = (data) => {
-    console.log(data)
+  emailjs.init('49EQMlcq2BdXR7HqC');
+
+  const onSubmit = async (data) => {
+    setIsLoading(true)
+    try {
+      emailjs.send("service_91kosip", "template_alj0dpl", {
+        name: data.username[0].toUpperCase() + data.username.slice(1),
+        recipient: data.email,
+      });
+      toast.success(`Congratulations ${data.username[0].toUpperCase() + data.username.slice(1)}! You have successfully subscribed to Givingly newsletter.`, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        draggable: false
+      });
+    } catch (err) {
+      toast.error('An error occurred while subscribing your project. Please try again later.', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        draggable: false
+      });
+    } finally {
+      setIsLoading(false)
+      dispatch(setShowNewsletterForm())
+    }
   }
 
   const handleCloseForm = () => {
@@ -35,10 +55,10 @@ const NewsletterForm = () => {
     return () => {
       window.removeEventListener('click', handleOutClick)
     }
-  }, []) 
+  }, [])
 
   const handleOutClick = (e) => {
-    if( containerRef.current && !containerRef.current.contains(e.target)){
+    if (containerRef.current && !containerRef.current.contains(e.target)) {
       dispatch(setShowNewsletterForm())
     }
   }
@@ -57,30 +77,23 @@ const NewsletterForm = () => {
             <form onSubmit={handleSubmit(onSubmit)} >
               <input
                 {...register('username')}
-                id="username"
-                placeholder="Username"
-                className="border-b border-blackColor bg-whiteColor px-3 py-1 mt-7 mb-8 w-full text-lg outline-none sm:text-xl"
+                placeholder='Name'
+                className={`border-b border-blackColor bg-whiteColor px-3 py-1 mt-7 mb-8 w-full text-lg outline-none sm:text-xl ${errors.username && `border-red-500 placeholder-red-500`}`}
               />
-              {errors.username && (
-                <div className="mb-2 -mt-2">
-                  <Alert message={errors.username?.message} />
-                </div>
-              )}
               <input
                 {...register('email')}
-                placeholder="E-mail"
-                className="border-b border-blackColor bg-whiteColor px-3 py-1 mb-5 w-full outline-none text-lg sm:text-xl"
+                placeholder="Gmail"
+                className={`border-b border-blackColor bg-whiteColor px-3 py-1 mb-5 w-full outline-none text-lg sm:text-xl ${errors.email && `border-red-500 placeholder-red-500`} `}
               />
-              {errors.email && <Alert message={errors.email?.message} />}
               <button className="button-dark mt-5 w-full">
-                Subscribe to Newsletter
+                {isLoading && <span className="loader"></span>}Subscribe to Newsletter
               </button>
             </form>
           </div>
         </div>
         <hr className="mt-5 mb-6" />
         <p className="text-center">
-          Don't miss out on this chance to be part of something amazing! Enter your email address below to join our newsletter and embark on a journey of positive change and creativity.
+          Don't miss out on this chance to be part of something amazing! Enter your gmail address below to join our newsletter and embark on a journey of positive change and creativity.
         </p>
       </div>
     </section>

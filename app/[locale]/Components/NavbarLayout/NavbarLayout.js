@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect, useTransition, startTransition } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setShowMobilNav, setUser, setCloseMobileNav, setProfilPic } from "@/app/redux/features/authSlice";
+import { setShowMobilNav, setUser, setCloseMobileNav, setProfilPic, setSearchInputVal } from "@/app/redux/features/authSlice";
 import { auth, db } from "@/app/firebase/firebase-confing";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -137,6 +137,7 @@ export default function NavbarLayOut() {
           href="/"
           onClick={() => {
             dispatch(setCloseMobileNav(false));
+            dispatch(setSearchInputVal(''))
           }}
           className={`${style.headerLogo}`}
         >
