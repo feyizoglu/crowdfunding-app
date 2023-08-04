@@ -8,6 +8,7 @@ import { useRef, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import emailjs from '@emailjs/browser';
 import { toast } from "react-toastify";
+import { useTranslations } from "next-intl";
 
 const schema = yup.object().shape({
   username: yup.string().required("Name is required"),
@@ -18,13 +19,13 @@ const NewsletterForm = () => {
   const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch();
   const containerRef = useRef();
-  const pathname = usePathname()
+  const pathname = usePathname();
+  const t = useTranslations('NewsletterForm');
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   });
 
   emailjs.init('49EQMlcq2BdXR7HqC');
-
 
   let template = pathname.split('/').includes('tr') ? 'tr_temp' : 'eng_temp'
 
@@ -76,13 +77,13 @@ const NewsletterForm = () => {
             <MdOutlineArrowBackIos size={20} />
           </button>
           <h2 className="text-2xl font-bold mb-2 mt-6 text-center  md:text-3xl ">
-            Receive our content for free!
+            {t('Receive our content for free')}
           </h2>
           <div className="flex flex-col justify-center">
             <form onSubmit={handleSubmit(onSubmit)} >
               <input
                 {...register('username')}
-                placeholder='Name'
+                placeholder={t('Name')}
                 className={`border-b border-blackColor bg-whiteColor px-3 py-1 mt-7 mb-8 w-full text-lg outline-none sm:text-xl ${errors.username && `border-red-500 placeholder-red-500`}`}
               />
               <input
@@ -91,14 +92,14 @@ const NewsletterForm = () => {
                 className={`border-b border-blackColor bg-whiteColor px-3 py-1 mb-5 w-full outline-none text-lg sm:text-xl ${errors.email && `border-red-500 placeholder-red-500`} `}
               />
               <button className="button-dark mt-5 w-full">
-                {isLoading && <span className="loader"></span>}Subscribe to Newsletter
+                {isLoading && <span className="loader"></span>}{t('Subscribe to Newsletter')}
               </button>
             </form>
           </div>
         </div>
         <hr className="mt-5 mb-6" />
         <p className="text-center">
-          Don't miss out on this chance to be part of something amazing! Enter your gmail address below to join our newsletter and embark on a journey of positive change and creativity.
+          {t('Don\'t miss out on this chance to be part of something amazing! Enter your gmail address below to join our newsletter and embark on a journey of positive change and creativity')}
         </p>
       </div>
     </section>

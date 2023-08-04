@@ -76,7 +76,7 @@
   "ProjectOfTheWeek": {
     "Raised:": "Toplanan:",
     "Goal:": "Hedef:",
-    "Project of the Week":"Haftanın Projesi",
+    "Project of the Week": "Haftanın Projesi",
     "Lang": "Türkçe"
   },
   "NewsLetterBox": {
@@ -95,13 +95,13 @@
     "Raised:": "Toplanan:",
     "Goal:": "Hedef:",
     "noProjectsAvailable": "\"{searchInputVal}\" ile eşleşen proje bulunamadı.",
-    "No projects available in this category":"Bu kategoriye uygun proje bulunamadı.",
-    "Categories":"Kategoriler",
+    "No projects available in this category": "Bu kategoriye uygun proje bulunamadı.",
+    "Categories": "Kategoriler",
     "All": "Hepsi",
-    "Education":"Eğitim",
-    "Culture":"Kültür",
-    "Animals":"Hayvanlar",
-    "Children":"Çocuklar",
+    "Education": "Eğitim",
+    "Culture": "Kültür",
+    "Animals": "Hayvanlar",
+    "Children": "Çocuklar",
     "Lang": "Türkçe"
   },
   "SignIn": {},
@@ -119,5 +119,12 @@
   },
   "Testimonials": {
     "Testimonials": "Kullanıcı Yorumları"
+  },
+  "NewsletterForm": {
+    "Receive our content for free": "Ücretsiz içeriklerimizi keşfedin!",
+    "Name": "Adınız",
+    "Gmail": "Gmail",
+    "Subscribe to Newsletter": "Bültenimize abone olun",
+    "Don't miss out on this chance to be part of something amazing! Enter your gmail address below to join our newsletter and embark on a journey of positive change and creativity": "Bu muhteşem fırsatı kaçırmayın! Bültenimize katılmak ve pozitif değişim ve yaratıcılık dolu bir yolculuğa çıkmak için gmail adresinizi hemen girin."
   }
 }

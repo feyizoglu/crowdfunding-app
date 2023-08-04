@@ -16,7 +16,6 @@ import SignIn from "../SignIn/SignIn";
 import KickOffBox from "../KickOffBox/KickOffBox";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { usePathname } from "next/navigation";
-
 import { useLocale, useTranslations } from 'next-intl';
 
 const style = {
@@ -31,6 +30,11 @@ const style = {
   langPickerContainer: `fixed z-50 top-1 right-0 md:-right-2 lg:-right-1 xl:right-8`,
   langPickerSelect: `inline-flex text-xl appearance-none outline-none cursor-pointer bg-transparent py-3 pl-2 pr-6 md:text-2xl`
 };
+
+const flags = [
+  { value: 'tr', src: '/tr.svg' },
+  { value: 'en', src: '/uk.svg' }
+]
 
 export default function NavbarLayOut() {
   const [bgColor, setBgColor] = useState(false);
@@ -167,7 +171,7 @@ export default function NavbarLayOut() {
           onChange={handleLocaleChange}
           value={selectedLocale}
         >
-          <option value="en">&#x1F1EC;&#x1F1E7;</option>
+          <option value="en">&#x1F1FA;&#x1F1F8;</option>
           <option value="tr">&#x1F1F9;&#x1F1F7;</option>
         </select>
       </section>
