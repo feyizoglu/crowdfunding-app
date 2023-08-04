@@ -5,6 +5,7 @@ import { MdOutlineArrowBackIos } from 'react-icons/md';
 import { useDispatch } from "react-redux";
 import { setShowNewsletterForm } from "@/app/redux/features/authSlice";
 import { useRef, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import emailjs from '@emailjs/browser';
 import { toast } from "react-toastify";
 
@@ -17,16 +18,20 @@ const NewsletterForm = () => {
   const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch();
   const containerRef = useRef();
+  const pathname = usePathname()
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   });
 
   emailjs.init('49EQMlcq2BdXR7HqC');
 
+
+  let template = pathname.split('/').includes('tr') ? 'tr_temp' : 'eng_temp'
+
   const onSubmit = async (data) => {
     setIsLoading(true)
     try {
-      emailjs.send("service_91kosip", "template_alj0dpl", {
+      emailjs.send("service_91kosip", template, {
         name: data.username[0].toUpperCase() + data.username.slice(1),
         recipient: data.email,
       });
