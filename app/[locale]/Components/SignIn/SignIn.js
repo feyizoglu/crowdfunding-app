@@ -101,7 +101,7 @@ const SignUp = () => {
             <input
               {...register("email")}
               id="mail"
-              placeholder="Email"
+              placeholder={t("Email")}
               className="border-b border-blackColor bg-whiteColor px-3 py-1 mt-7 mb-5 w-full text-lg outline-none sm:text-xl"
             />
             <div className="">
@@ -111,7 +111,7 @@ const SignUp = () => {
               {...register("password")}
               id="password"
               type="password"
-              placeholder="Password"
+              placeholder={t("Password")}
               className="border-b border-blackColor bg-whiteColor px-3 py-1 mb-5 w-full outline-none text-lg sm:text-xl"
             />
             <div className="">

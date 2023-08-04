@@ -147,7 +147,9 @@
     "please enter a valid email address": "please enter a valid email address",
     "email is a required field": "email is required",
     "password is a required field": "password is a required field",
-    "password must be at least 6 characters long": "password must be at least 6 characters long"
+    "password must be at least 6 characters long": "password must be at least 6 characters long",
+    "Email": "Email",
+    "Password": "Password"
   },
   "StartToday": {
     "I want to": "I want to",
