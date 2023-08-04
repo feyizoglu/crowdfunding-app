@@ -1,39 +1,48 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { MdOutlineArrowBackIos } from 'react-icons/md';
+import { MdOutlineArrowBackIos } from "react-icons/md";
 import { useDispatch } from "react-redux";
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from "@hookform/resolvers/yup";
 import { auth } from "@/app/firebase/firebase-confing";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { toast } from 'react-toastify';
-
+import { toast } from "react-toastify";
 import { setShowSignInBox } from "@/app/redux/features/authSlice";
 import Alert from "../SignUpAlert/Alert";
-
-const schema = yup.object({
-  email: yup.string().email("please enter a valid email address.").required(),
-  password: yup
-    .string()
-    .required()
-    .min(6, "password must be at least 6 characters"),
-}).required();
+import { useTranslations } from "next-intl";
 
 const SignUp = () => {
+  const t = useTranslations("SignIn");
+  const schema = yup
+    .object({
+      email: yup
+        .string()
+        .email(`${t("please enter a valid email address")}`)
+        .required(`${t("email is a required field")}`),
+      password: yup
+        .string()
+        .required(`${t("password is a required field")}`)
+        .min(6, `${t("password must be at least 6 characters long")}`),
+    })
+    .required();
   const dispatch = useDispatch();
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(schema)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
   });
   const containerRef = useRef();
 
   useEffect(() => {
-    window.addEventListener('click', handleClick);
+    window.addEventListener("click", handleClick);
 
     return () => {
-      window.removeEventListener('click', handleClick)
-    }
-  }, [])
+      window.removeEventListener("click", handleClick);
+    };
+  }, []);
 
   const onsubmit = async (data) => {
     try {
@@ -43,16 +52,24 @@ const SignUp = () => {
         data.password
       );
       dispatch(setShowSignInBox());
-      let userName = data.email.split('@')[0];
-      toast.success(`Congratulations ${userName[0].toUpperCase() + userName.slice(1, userName.length)}! You have successfully logged in.`, {
-        position: toast.POSITION.BOTTOM_RIGHT,
-        draggable: false
-      });
+      let userName = data.email.split("@")[0];
+      toast.success(
+        `Congratulations ${
+          userName[0].toUpperCase() + userName.slice(1, userName.length)
+        }! You have successfully logged in.`,
+        {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          draggable: false,
+        }
+      );
     } catch (err) {
-      toast.error(`Invalid credentials. Please check your email and password and try again!`, {
-        position: toast.POSITION.BOTTOM_RIGHT,
-        draggable: false
-      });
+      toast.error(
+        `Invalid credentials. Please check your email and password and try again!`,
+        {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          draggable: false,
+        }
+      );
     }
   };
 
@@ -60,7 +77,7 @@ const SignUp = () => {
     if (!containerRef.current.contains(e.target)) {
       dispatch(setShowSignInBox());
     }
-  }
+  };
 
   return (
     <div className="bg-opacity-70 w-screen h-screen fixed top-0 left-0 grid place-content-center z-50 bg-blackColor text-center">
@@ -75,23 +92,23 @@ const SignUp = () => {
           <MdOutlineArrowBackIos size={20} />
         </button>
         <h2 className="text-2xl font-bold mb-5 mt-6  sm:text-3xl md:text-4xl ">
-          Welcome Back
+          {t("Welcome Back")}
           <br />
-          Change-Maker !
+          {t("Change-Maker !")}
         </h2>
         <div className="flex flex-col justify-center max-w-xs sm:max-w-sm md:max-w-md m-auto ">
-          <form onSubmit={handleSubmit(onsubmit)} >
+          <form onSubmit={handleSubmit(onsubmit)}>
             <input
-              {...register('email')}
+              {...register("email")}
               id="mail"
               placeholder="Email"
-              className="border-b border-blackColor bg-whiteColor px-3 py-1 mt-7 mb-8 w-full text-lg outline-none sm:text-xl"
+              className="border-b border-blackColor bg-whiteColor px-3 py-1 mt-7 mb-5 w-full text-lg outline-none sm:text-xl"
             />
             <div className="">
               {errors.email && <Alert message={errors.email?.message} />}
             </div>
             <input
-              {...register('password')}
+              {...register("password")}
               id="password"
               type="password"
               placeholder="Password"
@@ -101,29 +118,40 @@ const SignUp = () => {
               {errors.password && <Alert message={errors.password?.message} />}
             </div>
             <button className="button-dark mt-5 w-full">
-              Continue to sign in
+              {t("Continue to sign in")}
             </button>
           </form>
         </div>
         <hr className="mt-5 mb-6" />
         <h2 className="text-lg sm:text-xl md:text-3xl font-semibold mb-3">
-          New to our community?
+          {t("New to our community?")}
         </h2>
         <p className="mb-5">
-          Make an impact today.
+          {t("Make an impact today")}.
           <br />
-          <Link href="/projects" onClick={() => {
-            dispatch(setShowSignInBox())
-          }} className="cursor-pointer text-blueColor hover:opacity-60">
-            Explore projects that need your help!
+          <Link
+            href="/projects"
+            onClick={() => {
+              dispatch(setShowSignInBox());
+            }}
+            className="cursor-pointer text-blueColor hover:opacity-60"
+          >
+            {t("Explore projects that need your help!")}
           </Link>
         </p>
         <p>
-          Unlock funding opportunities!
+          {t("Unlock funding opportunities!")}
           <br />
-          <Link href='/signup' onClick={() => {
-            dispatch(setShowSignInBox())
-          }} className="cursor-pointer text-blueColor hover:opacity-60"> Create an account.</Link>
+          <Link
+            href="/signup"
+            onClick={() => {
+              dispatch(setShowSignInBox());
+            }}
+            className="cursor-pointer text-blueColor hover:opacity-60"
+          >
+            {" "}
+            {t("Create an account")}.
+          </Link>
         </p>
       </div>
     </div>
