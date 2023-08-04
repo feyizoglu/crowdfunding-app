@@ -23,7 +23,7 @@ const MyProjectDetails = ({ project }) => {
       </h2>
       <div className="flex items-center justify-center  ">
         <Image
-          className="rounded-lg h-[200px] w-[200px] md:w-[500px] md:h-[350px]"
+          className="rounded-lg h-[200px] w-[200px] md:w-[500px] md:h-[350px] object-cover"
           src={project?.image}
           alt='project image'
           width={500}
