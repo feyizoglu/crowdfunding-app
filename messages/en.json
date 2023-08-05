@@ -1,4 +1,3 @@
-
 {
   "NavbarLayout": {
     "Search for projects": "Search for projects.."
@@ -66,14 +65,30 @@
     "Add media": "Add media",
     "Upload project": "Upload project"
   },
-  "MyProject": {},
-  "MyProjectAccordion": {},
-  "MyProjectDetail": {},
-  "MyProjectDonorCard": {},
-  "MyProjectStatistics": {},
-  "MyProjectStatisticsDetails": {},
-  "MyProjectTransaction": {},
-  "MyProjectTransactionDetails": {},
+  "MyProject": {
+    "Raised:": "Raised:",
+    "Goal:": "Goal:"
+  },
+  "MyProjectDetail": {
+    "My Project": "My Project"
+  },
+  "MyProjectStatistics": {
+    "Statistics": "Statistics"
+  },
+  "MyProjectStatisticsDetails": {
+    "Creator:": "Creator:",
+    "End Date:": "End Date:",
+    "Category:": "Category:"
+  },
+  "MyProjectTransaction": {
+    "Transaction history": "Transaction history"
+  },
+  "MyProjectTransactionDetails": {
+    "All Projects": "All Projects",
+    "Sort": "Sort",
+    "View Less": "View Less",
+    "View More": "View More"
+  },
   "ProjectOfTheWeek": {
     "Raised:": "Raised:",
     "Goal:": "Goal:",
@@ -97,17 +112,45 @@
     "Raised:": "Raised:",
     "Goal:": "Goal:",
     "noProjectsAvailable": "No projects available with the search: \"{searchInputVal}\".",
-    "No projects available in this category":"No projects available in this category",
-    "Categories":"Categories",
+    "No projects available in this category": "No projects available in this category",
+    "Categories": "Categories",
     "All": "All",
-    "Education":"Education",
-    "Culture":"Culture",
-    "Animals":"Animals",
-    "Children":"Children",
+    "Education": "Education",
+    "Culture": "Culture",
+    "Animals": "Animals",
+    "Children": "Children",
     "Lang": "English"
   },
-  "SignIn": {},
-  "SignUpAlert": {},
+  "SignUp": {
+    "Sign-Up": "Sign-Up",
+    "To reach people's needs, to help people, simplify life with": "To reach people's needs, to help people, simplify life with",
+    "Crownfunding App": "Crownfunding App",
+    "Already a member? Sign-in": "Already a member? Sign-in",
+    "Your personal email address": "Your personal email address",
+    "Password": "Password",
+    "Upload Profile Picture": "Upload Profile Picture",
+    "Submit": "Submit",
+    "email is a required field": "email is required",
+    "password is a required field": "password is a required field",
+    "password must be at least 6 characters long": "password must be at least 6 characters long",
+    "please enter a valid email address": "please enter a valid email address"
+  },
+  "SignIn": {
+    "Welcome Back": "Welcome Back",
+    "Change-Maker !": "Change-Maker !",
+    "Continue to sign in": "Continue to sign in",
+    "New to our community?": "New to our community?",
+    "Make an impact today": "Make an impact today",
+    "Explore projects that need your help!": "Explore projects that need your help!",
+    "Unlock funding opportunities!": "Unlock funding opportunities!",
+    "Create an account": "Create an account",
+    "please enter a valid email address": "please enter a valid email address",
+    "email is a required field": "email is required",
+    "password is a required field": "password is a required field",
+    "password must be at least 6 characters long": "password must be at least 6 characters long",
+    "Email": "Email",
+    "Password": "Password"
+  },
   "StartToday": {
     "I want to": "I want to",
     "Support": "Support",
