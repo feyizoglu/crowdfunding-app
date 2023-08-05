@@ -12,7 +12,7 @@
     "Projects": "Projeler",
     "New Project": "Yeni Proje",
     "Existing active project under": "Bu e-posta altında aktif projeniz bulunmakta :",
-    "Wait or delete it before creating a new one": "Yeni bir tane oluşturmadan önce bekleyin veya silin"
+    "Wait or delete it before creating a new one": "Yeni bir tane oluşturmadan önce aktif projenizi silin veya bitmesini bekleyin"
   },
   "MobilNavbarWithUser": {
     "Search for projects": "Projeleri ara..",
@@ -20,7 +20,7 @@
     "Projects": "Projeler",
     "New Project": "Yeni Proje",
     "Existing active project under": "Bu e-posta altında aktif projeniz bulunmakta :",
-    "Wait or delete it before creating a new one": "Yeni bir tane oluşturmadan önce bekleyin veya silin"
+    "Wait or delete it before creating a new one": "Yeni bir tane oluşturmadan önce aktif projenizi silin veya bitmesini bekleyin"
   },
   "MobilDefaultNavbar": {
     "Search for projects": "Projeleri ara..",
@@ -31,7 +31,7 @@
   "InfoBox": {
     "View your project": "Projenizi görüntüleyin",
     "Sign out": "Çıkış Yap",
-    "Oops! You don't have any projects yet": "Hata! Henüz projeniz yok",
+    "Oops! You don't have any projects yet": "Tüh! Henüz projeniz yok",
     "Please create a project first to access the 'My Project' page": "'Projem' sayfasına erişmek için lütfen önce bir proje oluşturun",
     "Click 'New Project' to create a new project": "Yeni bir proje oluşturmak için 'Yeni Proje'ye tıklayın"
   },
@@ -195,7 +195,7 @@
     "Kick-off": "Başlamak",
     "my project": "projeme",
     "Existing active project under": "Bu e-posta altında aktif projeniz bulunmakta :",
-    "Wait or delete it before creating a new one": "Yeni bir tane oluşturmadan önce bekleyin veya silin"
+    "Wait or delete it before creating a new one": "Yeni bir tane oluşturmadan önce aktif projenizi silin veya bitmesini bekleyin"
   },
   "SuccessPage": {},
   "Testimonial": {
