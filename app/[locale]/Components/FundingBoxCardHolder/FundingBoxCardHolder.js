@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 
 const FundingBoxCardHolder = ({
   donorName,
@@ -21,6 +22,7 @@ const FundingBoxCardHolder = ({
       setHolder(false);
     }
   };
+  const t = useTranslations("FundingBox");
 
   return (
     <>
@@ -30,12 +32,12 @@ const FundingBoxCardHolder = ({
           holder ? `` : `${errors.cardHolder && `text-red-500`}`
         }`}
       >
-        Card Holder
+        {t("Card Holder")}
       </label>
       <input
         {...register("cardHolder")}
         id="cardHolder"
-        placeholder="PHIL DUNPHY"
+        placeholder={t("PHIL DUNPHY")}
         value={donorName}
         type="text"
         onChange={handleInputChange}

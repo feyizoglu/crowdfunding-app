@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 
 const FundingBoxCardDate = ({ register, errors }) => {
   const [date, setDate] = useState(false);
@@ -24,6 +25,8 @@ const FundingBoxCardDate = ({ register, errors }) => {
       setDate(false);
     }
   };
+
+  const t = useTranslations("FundingBox");
   return (
     <div className="flex flex-col w-5/12">
       <label
@@ -32,14 +35,14 @@ const FundingBoxCardDate = ({ register, errors }) => {
           date ? `` : `${errors.cardDate && `text-red-500`}`
         }`}
       >
-        Card Date
+        {t("Card Date")}
       </label>
       <input
         {...register("cardDate")}
         id="cardDate"
         maxLength={5}
         onChange={handleChange}
-        placeholder="MM/YY"
+        placeholder={t("MM/YY")}
         className={`border-b border-blackColor bg-whiteColor px-3 py-1 mb-8 text-md outline-none ${
           date
             ? ``

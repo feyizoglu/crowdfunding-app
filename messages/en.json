@@ -1,4 +1,3 @@
-
 {
   "NavbarLayout": {
     "Search for projects": "Search for projects.."
@@ -43,6 +42,18 @@
     "ourStoryDescription": "We connect passionate individuals and innovative projects with a community of backers. Our user-friendly platform empowers creators to raise funds and engage with supporters. Join us in bringing visions to life.",
     "allRightsReserved": "2023 All rights reserved.",
     "Lang": "English"
+  },
+  "FundingBox": {
+    "Make Difference": "Make Difference",
+    "Donate": "Donate",
+    "Card Date": "Card Date",
+    "MM/YY": "MM/YY",
+    "Card Holder": "Card Holder",
+    "PHIL DUNPHY": "PHIL DUNPHY",
+    "Card Number": "Card Number",
+    "Add Your Comment": "Add Your Comment",
+    "comment": "I'm happy to fund this project.",
+    "Custom Value": "Custom Value"
   },
   "HeroSection": {
     "Supporting great causes made easy": "Supporting great causes made easy",
@@ -97,13 +108,13 @@
     "Raised:": "Raised:",
     "Goal:": "Goal:",
     "noProjectsAvailable": "No projects available with the search: \"{searchInputVal}\".",
-    "No projects available in this category":"No projects available in this category",
-    "Categories":"Categories",
+    "No projects available in this category": "No projects available in this category",
+    "Categories": "Categories",
     "All": "All",
-    "Education":"Education",
-    "Culture":"Culture",
-    "Animals":"Animals",
-    "Children":"Children",
+    "Education": "Education",
+    "Culture": "Culture",
+    "Animals": "Animals",
+    "Children": "Children",
     "Lang": "English"
   },
   "SignIn": {},

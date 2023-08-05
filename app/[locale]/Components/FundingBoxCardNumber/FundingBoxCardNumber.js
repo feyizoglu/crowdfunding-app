@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 
 const FundingBoxCardNumber = ({ register, errors }) => {
   const [cardNumber, setCardNumber] = useState("");
@@ -20,6 +21,7 @@ const FundingBoxCardNumber = ({ register, errors }) => {
       setNumLength(false);
     }
   };
+  const t = useTranslations("FundingBox");
 
   return (
     <div>
@@ -29,7 +31,7 @@ const FundingBoxCardNumber = ({ register, errors }) => {
           numLength ? `` : `${errors.cardNumber && `text-red-500`}`
         }`}
       >
-        Card Number
+        {t("Card Number")}
       </label>
       <input
         {...register("cardNumber")}
