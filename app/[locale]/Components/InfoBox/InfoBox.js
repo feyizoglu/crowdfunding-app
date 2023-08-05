@@ -50,11 +50,14 @@ function InfoBox({ style }) {
       dispatch(setShowMobilNav());
       router.push('/myproject');
     } else {
-      toast.error(`Oops! You don't have any projects yet.
-      Please create a project first to access the 'My Project' page.
-      Click 'New Project' to create a new project.`, {
-        position: toast.POSITION.BOTTOM_RIGHT
-      });
+      toast.error(
+        `${t("Oops! You don't have any projects yet")}.
+      ${t("Please create a project first to access the 'My Project' page")}.
+      ${t("Click 'New Project' to create a new project")}.`,
+        {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        }
+      );
     }
   }
 
