@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 
 const FundingBoxDonationBox = ({ handleBtnClick, amount }) => {
+  const t = useTranslations("FundingBox");
   return (
     <div className="flex flex-col items-center justify-center space-y-5 mb-5  ">
       <div className="w-full flex justify-center space-x-2 sm:space-x-5 sm:justify-between">
@@ -36,7 +38,7 @@ const FundingBoxDonationBox = ({ handleBtnClick, amount }) => {
           htmlFor="customValue"
           className={`text-left text-md font-semibold block mb-2`}
         >
-          Custom Value
+          {t("Custom Value")}
         </label>
         <input
           placeholder="Custom"

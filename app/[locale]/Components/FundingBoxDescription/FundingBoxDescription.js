@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 
 const FundingBoxDescription = ({ desc, setDesc, errors, register }) => {
   const [userDesc, setUserDesc] = useState(false);
@@ -11,6 +12,7 @@ const FundingBoxDescription = ({ desc, setDesc, errors, register }) => {
       setUserDesc(false);
     }
   };
+  const t = useTranslations("FundingBox");
   return (
     <>
       <label
@@ -19,12 +21,12 @@ const FundingBoxDescription = ({ desc, setDesc, errors, register }) => {
           userDesc ? `` : `${errors.description && `text-red-500`}`
         }`}
       >
-        Add Your Comment
+        {t("Add Your Comment")}
       </label>
       <input
         {...register("description")}
         id="description"
-        placeholder="I'm happy to fund this project."
+        placeholder={t("comment")}
         value={desc}
         type="text"
         onChange={handleInputChange}

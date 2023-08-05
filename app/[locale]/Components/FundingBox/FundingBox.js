@@ -16,6 +16,7 @@ import FundingBoxDescription from "../FundingBoxDescription/FundingBoxDescriptio
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { db } from "@/app/firebase/firebase-confing";
+import { useTranslations } from "next-intl";
 
 const schema = yup
   .object({
@@ -37,6 +38,8 @@ const FundingBox = ({ project }) => {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(25);
   const [isDisabled, setIsDisabled] = useState(false);
+
+  const t = useTranslations("FundingBox");
 
   const containerRef = useRef();
 
@@ -105,7 +108,7 @@ const FundingBox = ({ project }) => {
           <FaLessThan />
         </div>
         <h2 className="text-2xl font-bold mb-5 mt-6 sm:text-4xl  ">
-          Make Difference!
+          {t("Make Difference")}!
         </h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <FundingBoxDonationBox
@@ -136,7 +139,7 @@ const FundingBox = ({ project }) => {
             disabled={isDisabled}
             className={`button-dark mt-5 w-full ${isDisabled && `opacity-50`}`}
           >
-            Donate!
+            {t("Donate")}!
           </button>
         </form>
       </div>
