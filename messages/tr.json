@@ -43,6 +43,18 @@
     "allRightsReserved": "2023 Tüm hakları saklıdır.",
     "Lang": "Türkçe"
   },
+  "FundingBox": {
+    "Make Difference": "Fark Yarat",
+    "Donate": "Bağış Yap",
+    "Card Date": "Kart Tarihi",
+    "MM/YY": "AA/YY",
+    "Card Holder": "Kart Sahibi",
+    "PHIL DUNPHY": "ARDA GÜLER",
+    "Card Number": "Kart Numarası",
+    "Add Your Comment": "Yorum Ekleyiniz",
+    "comment": "Bu projeye destek olduğum için mutluyum.",
+    "Custom Value": "Farklı Değer"
+  },
   "HeroSection": {
     "Supporting great causes made easy": "Harika amaçları desteklemek kolaylaştı",
     "We helped over 3,500 projects and causes Sign in today and get your idea kicked off or support others kick off their amazing projects": "3,500'den fazla proje ve amaça yardımcı olduk. Bugün giriş yapın ve fikrinizi hayata geçirin veya diğer harika projelerin başlatılmasına destek olun.",
@@ -65,14 +77,32 @@
     "Add media": "Medya ekle",
     "Upload project": "Projenizi yükleyin"
   },
-  "MyProject": {},
+  "MyProject": {
+    "Raised:": "Toplanan:",
+    "Goal:": "Hedef:"
+  },
   "MyProjectAccordion": {},
-  "MyProjectDetail": {},
+  "MyProjectDetail": {
+    "My Project": "Projem"
+  },
   "MyProjectDonorCard": {},
-  "MyProjectStatistics": {},
-  "MyProjectStatisticsDetails": {},
-  "MyProjectTransaction": {},
-  "MyProjectTransactionDetails": {},
+  "MyProjectStatistics": {
+    "Statistics": "İstatistikler"
+  },
+  "MyProjectStatisticsDetails": {
+    "Creator:": "Proje Sahibi:",
+    "End Date:": "Bitiş Tarihi:",
+    "Category:": "Kategori:"
+  },
+  "MyProjectTransaction": {
+    "Transaction history": "İşlem geçmişi"
+  },
+  "MyProjectTransactionDetails": {
+    "All Projects": "Tüm Projeler",
+    "Sort": "Sırala",
+    "View Less": "Daha Az",
+    "View More": "Daha Fazla"
+  },
   "ProjectOfTheWeek": {
     "Raised:": "Toplanan:",
     "Goal:": "Hedef:",
@@ -104,8 +134,36 @@
     "Children": "Çocuklar",
     "Lang": "Türkçe"
   },
-  "SignIn": {},
-  "SignUpAlert": {},
+  "SignIn": {
+    "Welcome Back": "Tekrar Hoşgeldin",
+    "Change-Maker !": "Değişim Yaratıcı !",
+    "Continue to sign in": "Oturum aç",
+    "New to our community?": "Topluluğumuzda yeni misiniz?",
+    "Make an impact today": "Bugün bir etki yaratın",
+    "Explore projects that need your help!": "Yardımınıza ihtiyacı olan projeleri keşfedin!",
+    "Unlock funding opportunities!": "Finansman fırsatlarının kilidini açın!",
+    "Create an account": "Bir hesap oluşturun",
+    "please enter a valid email address": "geçerli bir email adresi girin",
+    "email is a required field": "email girmek zorunludur",
+    "password is a required field": "şifre girmek zorunludur",
+    "password must be at least 6 characters long": "Şifre en az 6 karakter uzunluğunda olmalı",
+    "Email": "E-posta",
+    "Password": "Şifre"
+  },
+  "SignUp": {
+    "Sign-Up": "Üye Ol",
+    "To reach people's needs, to help people, simplify life with": "Crowdfunding uygulaması ile insanların ihtiyaçlarına ulaşarak onlara",
+    "Crownfunding App": "yardım edin ve hayatlarını kolaylaştırın",
+    "Already a member? Sign-in": "Zaten üye misiniz? Giriş yapın",
+    "Your personal email address": "Kişisel e-posta adresiniz",
+    "Password": "Şifre",
+    "Upload Profile Picture": "Profil Resmi Yükle",
+    "Submit": "Gönder",
+    "email is a required field": "email girmek zorunludur",
+    "password is a required field": "şifre girmek zorunludur",
+    "password must be at least 6 characters long": "Şifre en az 6 karakter uzunluğunda olmalı",
+    "please enter a valid email address": "geçerli bir email adresi girin"
+  },
   "StartToday": {
     "I want to": "Şunu yapmak istiyorum",
     "Support": "Desteklemek",

@@ -6,12 +6,13 @@ const initialState = {
   showInfoBox: false,
   showMobilNav: false,
   showKickOffBox: false,
+  showFundingBox: false,
   projects: [],
   profilPic: null,
-  searchInputVal: '',
+  searchInputVal: "",
   showConfirmationBox: false,
   showNewsletterForm: false,
-}
+};
 
 const authSlice = createSlice({
   name: "auth",
@@ -33,7 +34,7 @@ const authSlice = createSlice({
       state.showKickOffBox = !state.showKickOffBox;
     },
     setCloseKickOffBox: (state, action) => {
-      state.showKickOffBox = action.payload
+      state.showKickOffBox = action.payload;
     },
     setCloseMobileNav: (state, action) => {
       state.showMobilNav = action.payload;
@@ -52,9 +53,13 @@ const authSlice = createSlice({
     },
     setShowNewsletterForm: (state) => {
       state.showNewsletterForm = !state.showNewsletterForm;
-    }
-  }
-})
+    },
+    setShowFundingBox: (state) => {
+      state.showFundingBox = !state.showFundingBox;
+    },
+  },
+});
+
 
 export const {
   setShowSignInBox,
@@ -68,7 +73,7 @@ export const {
   setSearchInputVal,
   setShowConfirmationBox,
   setCloseKickOffBox,
-  setShowNewsletterForm
+  setShowNewsletterForm,
+  setShowFundingBox,
 } = authSlice.actions;
-export default authSlice.reducer
-
+export default authSlice.reducer;
