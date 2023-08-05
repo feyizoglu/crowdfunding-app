@@ -36,8 +36,8 @@ function ConfirmationBox({ project, user }) {
     push('/')
     await deleteDoc(doc(db, 'projects', project.docId));  
     dispatch(setShowConfirmationBox())
-    toast.success('You have successfully deleted your project', {
-      position: toast.POSITION.BOTTOM_RIGHT
+    toast.success(`${t("You have successfully deleted your project")}`, {
+      position: toast.POSITION.BOTTOM_RIGHT,
     })
   }
 

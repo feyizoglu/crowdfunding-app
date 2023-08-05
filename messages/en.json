@@ -10,13 +10,17 @@
   "NavbarWithUser": {
     "Home": "Home",
     "Projects": "Projects",
-    "New Project": "New Project"
+    "New Project": "New Project",
+    "Existing active project under": "Existing active project under",
+    "Wait or delete it before creating a new one": "Wait or delete it before creating a new one"
   },
   "MobilNavbarWithUser": {
     "Search for projects": "Search for projects..",
     "Home": "Home",
     "Projects": "Projects",
-    "New Project": "New Project"
+    "New Project": "New Project",
+    "Existing active project under": "Existing active project under",
+    "Wait or delete it before creating a new one": "Wait or delete it before creating a new one"
   },
   "MobilDefaultNavbar": {
     "Search for projects": "Search for projects..",
@@ -26,13 +30,17 @@
   },
   "InfoBox": {
     "View your project": "View your project",
-    "Sign out": "Sign out"
+    "Sign out": "Sign out",
+    "Oops! You don't have any projects yet": "Oops! You don't have any projects yet",
+    "Please create a project first to access the 'My Project' page": "Please create a project first to access the 'My Project' page",
+    "Click 'New Project' to create a new project": "Click 'New Project' to create a new project"
   },
   "ConfirmationBox": {
     "Just to confirm": "Just to confirm",
     "are you certain you want to delete this project": "are you certain you want to delete this project",
     "Yes": "Yes",
-    "No": "No"
+    "No": "No",
+    "You have successfully deleted your project": "You have successfully deleted your project"
   },
   "Footer": {
     "givinglyTitle": "Givingly",
@@ -53,7 +61,9 @@
     "Card Number": "Card Number",
     "Add Your Comment": "Add Your Comment",
     "comment": "I'm happy to fund this project.",
-    "Custom Value": "Custom Value"
+    "Custom Value": "Custom Value",
+    "You have successfully donated": "You have successfully donated",
+    "Please wait": "Please wait"
   },
   "HeroSection": {
     "Supporting great causes made easy": "Supporting great causes made easy",
@@ -75,7 +85,11 @@
     "About your project": "About your project",
     "Tell us about your project to build a cat shelter": "Tell us about your project to build a cat shelter...",
     "Add media": "Add media",
-    "Upload project": "Upload project"
+    "Upload project": "Upload project",
+    "Please select a future date, and also make sure to select both a start and end date": "Please select a future date, and also make sure to select both a start and end date",
+    "You have successfully created your project": "You have successfully created your project",
+    "An error occurred while creating your project": "An error occurred while creating your project",
+    "Please try again later": "Please try again later"
   },
   "MyProject": {
     "Raised:": "Raised:",
@@ -145,7 +159,13 @@
     "email is a required field": "email is required",
     "password is a required field": "password is a required field",
     "password must be at least 6 characters long": "password must be at least 6 characters long",
-    "please enter a valid email address": "please enter a valid email address"
+    "please enter a valid email address": "please enter a valid email address",
+    "Congratulations": "Congratulations",
+    "Your sign-up was successful": "Your sign-up was successful",
+    "Welcome to our community": "Welcome to our community",
+    "default": "default",
+    "The email address is already in use by another account": "The email address is already in use by another account",
+    "The email address is invalid": "The email address is invalid"
   },
   "SignIn": {
     "Welcome Back": "Welcome Back",
@@ -161,14 +181,20 @@
     "password is a required field": "password is a required field",
     "password must be at least 6 characters long": "password must be at least 6 characters long",
     "Email": "Email",
-    "Password": "Password"
+    "Password": "Password",
+    "Congratulations": "Congratulations",
+    "You have successfully logged in": "You have successfully logged in",
+    "Invalid credentials": "Invalid credentials",
+    "Please check your email and password and try again!": "Please check your email and password and try again!"
   },
   "StartToday": {
     "I want to": "I want to",
     "Support": "Support",
     "other projects": "other projects",
     "Kick-off": "Kick-off",
-    "my project": "my project"
+    "my project": "my project",
+    "Existing active project under": "Existing active project under",
+    "Wait or delete it before creating a new one": "Wait or delete it before creating a new one"
   },
   "SuccessPage": {},
   "Testimonial": {
@@ -178,10 +204,14 @@
     "Testimonials": "Testimonials"
   },
   "NewsletterForm": {
-    "Receive our content for free" : "Receive our content for free!",
-    "Name" : "Name",
-    "Gmail" : "Gmail",
-    "Subscribe to Newsletter" : "Subscribe to Newsletter",
-    "Don't miss out on this chance to be part of something amazing! Enter your gmail address below to join our newsletter and embark on a journey of positive change and creativity" : "Don't miss out on this chance to be part of something amazing! Enter your gmail address below to join our newsletter and embark on a journey of positive change and creativity."
+    "Receive our content for free": "Receive our content for free!",
+    "Name": "Name",
+    "Gmail": "Gmail",
+    "Subscribe to Newsletter": "Subscribe to Newsletter",
+    "Don't miss out on this chance to be part of something amazing! Enter your gmail address below to join our newsletter and embark on a journey of positive change and creativity": "Don't miss out on this chance to be part of something amazing! Enter your gmail address below to join our newsletter and embark on a journey of positive change and creativity.",
+    "Congratulations": "Congratulations",
+    "You have successfully subscribed to Givingly newsletter": "You have successfully subscribed to Givingly newsletter",
+    "An error occurred while subscribing your project": "An error occurred while subscribing your project",
+    "Please try again later": "Please try again later"
   }
 }

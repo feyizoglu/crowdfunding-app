@@ -20,15 +20,15 @@ import { toast } from 'react-toastify';
 import Spinner from "../Spinner/Spinner";
 
 const schema = yup.object({
-  title: yup.string().max(50).required(),
-  goalAmount: yup.number().required(),
+    title: yup.string().max(50).required(),
+    goalAmount: yup.number().required(),
   timeline: yup
     .array()
     .of(yup.date().min(new Date()))
     .min(2)
     .required(),
-  category: yup.string().required(),
-  description: yup.string().max(120).required(),
+    category: yup.string().required(),
+    description: yup.string().max(120).required(),
   image: yup
     .mixed()
     .test("fileRequired", "Image is required", (value) => {
@@ -61,8 +61,12 @@ const KickOffBox = () => {
 
   useEffect(() => {
     if (errors.timeline) {
-      toast.error(`Please select a future date, and also make sure to select both a start and end date.`, {
-        position: toast.POSITION.BOTTOM_RIGHT,
+      toast.error(
+        `${t(
+          "Please select a future date, and also make sure to select both a start and end date"
+        )}.`,
+        {
+          position: toast.POSITION.BOTTOM_RIGHT,
         draggable: false
       });
     }
@@ -90,13 +94,17 @@ const KickOffBox = () => {
         title: data.title,
       };
       await addDoc(collection(db, "projects"), projectData);
-      toast.success('You have successfully created your project', {
+      toast.success(`${t("You have successfully created your project")}`, {
         position: toast.POSITION.BOTTOM_RIGHT,
-        draggable: false
+        draggable: false,
       });
     } catch (err) {
-      toast.error('An error occurred while creating your project. Please try again later.', {
-        position: toast.POSITION.BOTTOM_RIGHT,
+      toast.error(
+        `${t("An error occurred while creating your project")}. ${t(
+          "Please try again later"
+        )}`,
+        {
+          position: toast.POSITION.BOTTOM_RIGHT,
         draggable: false
       });
     } finally {

@@ -29,8 +29,12 @@ const StartToday = () => {
         (project) => project.id == user.id
       );
       if (isUserHaveProject) {
-        toast.error(`Existing active project under ${user?.email}. Wait or delete it before creating a new one.`, {
-          position: toast.POSITION.BOTTOM_RIGHT,
+        toast.error(
+          `${t("Existing active project under")} ${user?.email}. ${t(
+            "Wait or delete it before creating a new one"
+          )}.`,
+          {
+            position: toast.POSITION.BOTTOM_RIGHT,
           draggable: false
         });
       } else {
@@ -62,7 +66,7 @@ const StartToday = () => {
               type="checkbox"
               id="support"
               className={` appearance-none border border-blackColor p-4 rounded-md ${supportCheck && `bg-greenColor border-greenColor`
-                }`}
+              }`}
               readOnly
             />
             {supportCheck && (
@@ -87,7 +91,7 @@ const StartToday = () => {
               type="checkbox"
               id="support"
               className={` appearance-none border border-blackColor p-4 rounded-md ${kickOffCheck && `bg-greenColor border-greenColor`
-                }`}
+              }`}
               readOnly
             />
             {kickOffCheck && (

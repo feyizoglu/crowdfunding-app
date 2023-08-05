@@ -58,17 +58,21 @@ const SignUp = () => {
       dispatch(setShowSignInBox());
       let userName = data.email.split("@")[0];
       toast.success(
-        `Congratulations ${
+        `${t("Congratulations")} ${
           userName[0].toUpperCase() + userName.slice(1, userName.length)
-        }! You have successfully logged in.`,
+        }! ${t("You have successfully logged in")}.`,
         {
           position: toast.POSITION.BOTTOM_RIGHT,
           draggable: false,
         }
       );
     } catch (err) {
-      toast.error(`Invalid credentials. Please check your email and password and try again!`, {
-        position: toast.POSITION.BOTTOM_RIGHT,
+      toast.error(
+        `${t("Invalid credentials")}. ${t(
+          "Please check your email and password and try again!"
+        )}`,
+        {
+          position: toast.POSITION.BOTTOM_RIGHT,
         draggable: false
       });
     } finally {

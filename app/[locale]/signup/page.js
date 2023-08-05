@@ -18,7 +18,7 @@ import { useTranslations } from "next-intl";
 import { setShowSignInBox } from "../../redux/features/authSlice";
 import Alert from "../Components/SignUpAlert/Alert";
 import Spinner from "../Components/Spinner/Spinner";
-  
+
 const Page = () => {
   const [isLoading, setIsLoading] = useState(false);
   const t = useTranslations("SignUp");
@@ -67,22 +67,26 @@ const Page = () => {
       });
       let userName = data.email.split("@")[0];
       toast.success(
-        `Congratulations ${
+        `${t("Congratulations")} ${
           userName[0].toUpperCase() + userName.slice(1, userName.length)
-        }! Your sign-up was successful. Welcome to our community.`,
+        }! ${t("Your sign-up was successful")}. ${t(
+          "Welcome to our community"
+        )}.`,
         {
           position: toast.POSITION.BOTTOM_RIGHT,
           draggable: false,
         }
       );
     } catch (err) {
-      let errorMsg = "default";
+      let errorMsg = `${t("default")}`;
       switch (err.code) {
         case AuthErrorCodes.EMAIL_EXISTS:
-          errorMsg = "The email address is already in use by another account.";
+          errorMsg = `${t(
+            "The email address is already in use by another account"
+          )}.`;
           break;
         case AuthErrorCodes.INVALID_EMAIL:
-          errorMsg = "The email address is invalid.";
+          errorMsg = `${t("The email address is invalid")}`;
           break;
         default:
           errorMsg = err.message;

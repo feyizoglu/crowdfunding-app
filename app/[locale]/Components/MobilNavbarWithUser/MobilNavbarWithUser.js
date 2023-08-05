@@ -36,9 +36,14 @@ function MobilNavbarWithUser({ bgColor, defaultLink, activeLink, selectedLink })
 
   const handleNewProjectClick = () => {
     if (isUserHaveProject) {
-      toast.error(`Existing active project under ${user?.email}. Wait or delete it before creating a new one.`, {
-        position: toast.POSITION.BOTTOM_RIGHT
-      });
+      toast.error(
+        `${t("Existing active project under")} ${user?.email}. ${t(
+          "Wait or delete it before creating a new one"
+        )}.`,
+        {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        }
+      );
     } else {
       dispatch(setShowMobilNav())
       setTimeout(() => {
