@@ -4,9 +4,8 @@ import NewsLetterBox from "../Components/NewsLetterBox/NewsLetterBox";
 import NewsletterForm from "../Components/NewsletterForm/NewsletterForm";
 import { useSelector } from 'react-redux';
 
-function page() {
+function StartTodayPage() {
   const showNewsletterForm = useSelector(state => state.auth.showNewsletterForm);
-
 
   return (
     <div className="relative bg-whiteColor pt-[70px]">
@@ -19,4 +18,4 @@ function page() {
   );
 }
 
-export default page;
+export default StartTodayPage;
