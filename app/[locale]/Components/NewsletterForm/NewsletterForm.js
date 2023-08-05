@@ -36,13 +36,21 @@ const NewsletterForm = () => {
         name: data.username[0].toUpperCase() + data.username.slice(1),
         recipient: data.email,
       });
-      toast.success(`Congratulations ${data.username[0].toUpperCase() + data.username.slice(1)}! You have successfully subscribed to Givingly newsletter.`, {
-        position: toast.POSITION.BOTTOM_RIGHT,
+      toast.success(
+        `${t("Congratulations")} ${
+          data.username[0].toUpperCase() + data.username.slice(1)
+        }! ${t("You have successfully subscribed to Givingly newsletter")}.`,
+        {
+          position: toast.POSITION.BOTTOM_RIGHT,
         draggable: false
       });
     } catch (err) {
-      toast.error('An error occurred while subscribing your project. Please try again later.', {
-        position: toast.POSITION.BOTTOM_RIGHT,
+      toast.error(
+        `${t("An error occurred while subscribing your project")}. ${t(
+          "Please try again later"
+        )}.`,
+        {
+          position: toast.POSITION.BOTTOM_RIGHT,
         draggable: false
       });
     } finally {
