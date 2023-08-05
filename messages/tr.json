@@ -25,7 +25,7 @@
     "Sign In": "Giriş yap"
   },
   "InfoBox": {
-    "View your project": "Projenizi goruntuleyin",
+    "View your project": "Projenizi görüntüleyin",
     "Sign out": "Çıkış Yap"
   },
   "ConfirmationBox": {
@@ -177,5 +177,12 @@
   },
   "Testimonials": {
     "Testimonials": "Kullanıcı Yorumları"
+  },
+  "NewsletterForm": {
+    "Receive our content for free": "Ücretsiz içeriklerimizi keşfedin!",
+    "Name": "Adınız",
+    "Gmail": "Gmail",
+    "Subscribe to Newsletter": "Bültenimize abone olun",
+    "Don't miss out on this chance to be part of something amazing! Enter your gmail address below to join our newsletter and embark on a journey of positive change and creativity": "Bu muhteşem fırsatı kaçırmayın! Bültenimize katılmak ve pozitif değişim ve yaratıcılık dolu bir yolculuğa çıkmak için gmail adresinizi hemen girin."
   }
 }

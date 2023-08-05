@@ -176,5 +176,12 @@
   },
   "Testimonials": {
     "Testimonials": "Testimonials"
+  },
+  "NewsletterForm": {
+    "Receive our content for free" : "Receive our content for free!",
+    "Name" : "Name",
+    "Gmail" : "Gmail",
+    "Subscribe to Newsletter" : "Subscribe to Newsletter",
+    "Don't miss out on this chance to be part of something amazing! Enter your gmail address below to join our newsletter and embark on a journey of positive change and creativity" : "Don't miss out on this chance to be part of something amazing! Enter your gmail address below to join our newsletter and embark on a journey of positive change and creativity."
   }
 }

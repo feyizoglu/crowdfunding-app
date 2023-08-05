@@ -1,12 +1,11 @@
-import React from "react";
-import Loader from "../../Components/Loader/Loader";
+import Loader from "../../Components/Loader/Loader"
 
-const Loading = () => {
+const loading = () => {
   return (
-    <div className="h-screen grid place-content-center">
+    <div>
       <Loader />
     </div>
-  );
-};
+  )
+}
 
-export default Loading;
+export default loading

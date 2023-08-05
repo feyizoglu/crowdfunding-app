@@ -70,8 +70,8 @@ const StartToday = () => {
             )}
           </div>
           <div className="flex flex-col space-y-2.5  items-center">
-            <span className="text-4xl font-bold">{t('Support')}</span>
-            <span className="text-2l font-semibold">{t('other projects')}</span>
+            <span className="text-3xl font-bold md:text-4xl">{t('Support')}</span>
+            <span className="text-lg font-semibold md:text-2xl">{t('other projects')}</span>
           </div>
         </Link>
       </div>
@@ -95,8 +95,8 @@ const StartToday = () => {
             )}
           </div>
           <div className="flex flex-col space-y-2.5 items-center">
-            <span className="text-4xl font-bold flex">{t('Kick-off')}</span>
-            <span className="text-2l font-semibold">{t('my project')}</span>
+            <span className="text-3xl font-bold flex md:text-4xl">{t('Kick-off')}</span>
+            <span className="text-lg font-semibold md:text-2xl">{t('my project')}</span>
           </div>
         </button>
       </div>

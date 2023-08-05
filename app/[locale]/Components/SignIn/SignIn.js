@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { MdOutlineArrowBackIos } from "react-icons/md";
 import { useDispatch } from "react-redux";
@@ -12,7 +12,10 @@ import { setShowSignInBox } from "@/app/redux/features/authSlice";
 import Alert from "../SignUpAlert/Alert";
 import { useTranslations } from "next-intl";
 
+import Spinner from "../Spinner/Spinner";
+
 const SignUp = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const t = useTranslations("SignIn");
   const schema = yup
     .object({
@@ -45,6 +48,7 @@ const SignUp = () => {
   }, []);
 
   const onsubmit = async (data) => {
+    setIsLoading(true)
     try {
       const user = await signInWithEmailAndPassword(
         auth,
@@ -63,13 +67,12 @@ const SignUp = () => {
         }
       );
     } catch (err) {
-      toast.error(
-        `Invalid credentials. Please check your email and password and try again!`,
-        {
-          position: toast.POSITION.BOTTOM_RIGHT,
-          draggable: false,
-        }
-      );
+      toast.error(`Invalid credentials. Please check your email and password and try again!`, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        draggable: false
+      });
+    } finally {
+      setIsLoading(false)
     }
   };
 
@@ -105,7 +108,7 @@ const SignUp = () => {
               className="border-b border-blackColor bg-whiteColor px-3 py-1 mt-7 mb-5 w-full text-lg outline-none sm:text-xl"
             />
             <div className="">
-              {errors.email && <Alert message={errors.email?.message} />}
+              {errors.email && <div className="-mt-3"><Alert message={errors.email?.message} /></div>}
             </div>
             <input
               {...register("password")}
@@ -117,8 +120,8 @@ const SignUp = () => {
             <div className="">
               {errors.password && <Alert message={errors.password?.message} />}
             </div>
-            <button className="button-dark mt-5 w-full">
-              {t("Continue to sign in")}
+            <button disabled={isLoading} className="button-dark mt-5 w-full">
+              {isLoading && <Spinner />} {t("Continue to sign in")}
             </button>
           </form>
         </div>

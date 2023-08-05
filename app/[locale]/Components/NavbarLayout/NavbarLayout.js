@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
-import { useState, useEffect, useTransition, startTransition } from "react";
+import { useState, useEffect, startTransition } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setShowMobilNav, setUser, setCloseMobileNav, setProfilPic } from "@/app/redux/features/authSlice";
+import { setShowMobilNav, setUser, setCloseMobileNav, setProfilPic, setSearchInputVal } from "@/app/redux/features/authSlice";
 import { auth, db } from "@/app/firebase/firebase-confing";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -14,9 +14,10 @@ import MobilNavbarWithUser from "../MobilNavbarWithUser/MobilNavbarWithUser";
 import NavbarSearchInput from "../NavbarSearchInput/NavbarSearchInput";
 import SignIn from "../SignIn/SignIn";
 import KickOffBox from "../KickOffBox/KickOffBox";
+import LanguagePicker from "../LanguagePicker/LanguagePicker";
+
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { usePathname } from "next/navigation";
-
 import { useLocale, useTranslations } from 'next-intl';
 
 const style = {
@@ -28,16 +29,15 @@ const style = {
   headerInput: `hidden rounded-needed outline-0 py-1 pl-4  md:block lg:pr-4`,
   nav: `hidden md:block`,
   hamMenu: `md:hidden`,
-  langPickerContainer: `fixed z-50 top-1 right-0 md:-right-2 lg:-right-1 xl:right-8`,
-  langPickerSelect: `inline-flex text-xl appearance-none outline-none cursor-pointer bg-transparent py-3 pl-2 pr-6 md:text-2xl`
 };
+
 
 export default function NavbarLayOut() {
   const [bgColor, setBgColor] = useState(false);
   const [innerWidth, setInnerWidth] = useState(0);
   const [selectedLink, setSelectedLink] = useState('/')
   const locale = useLocale()
-  const [selectedLocale, setSelectedLocale] = useState(locale);
+  const [selectedLang, setSelectedLang] = useState(locale);
   const t = useTranslations('NavbarLayout');
   const pathname = usePathname();
 
@@ -55,8 +55,6 @@ export default function NavbarLayOut() {
       }));
       fetchProfilePicture(currentUser?.uid);
     });
-
-
     return () => {
       unsubscribeAuth();
     };
@@ -81,7 +79,7 @@ export default function NavbarLayOut() {
   }, [pathname])
 
   useEffect(() => {
-    setSelectedLocale(locale);
+    setSelectedLang(locale)
   }, [locale])
 
   useEffect(() => {
@@ -122,11 +120,10 @@ export default function NavbarLayOut() {
     dispatch(setShowMobilNav());
   }
 
-  const handleLocaleChange = (e) => {
-    const nextLocale = e.target.value;
-    setSelectedLocale(nextLocale);
+  const handleLocaleChange = (lang) => {
+    setSelectedLang(lang)
     startTransition(() => {
-      window.location.href = `/${nextLocale}`
+      window.location.href = `/${lang}`
     });
   }
 
@@ -137,6 +134,7 @@ export default function NavbarLayOut() {
           href="/"
           onClick={() => {
             dispatch(setCloseMobileNav(false));
+            dispatch(setSearchInputVal(''))
           }}
           className={`${style.headerLogo}`}
         >
@@ -160,16 +158,10 @@ export default function NavbarLayOut() {
         </section>}
       {showSignInBox && <SignIn />}
       {showKickOffBox && <KickOffBox />}
-      <section className={style.langPickerContainer}>
-        <select
-          className={style.langPickerSelect}
-          onChange={handleLocaleChange}
-          value={selectedLocale}
-        >
-          <option value="en">&#x1F1EC;&#x1F1E7;</option>
-          <option value="tr">&#x1F1F9;&#x1F1F7;</option>
-        </select>
-      </section>
+      <LanguagePicker
+        selectedLang={selectedLang}
+        handleLocaleChange={handleLocaleChange}
+      />
     </div>
   );
 }

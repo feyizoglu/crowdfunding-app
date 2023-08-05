@@ -1,5 +1,4 @@
 'use client'
-import React from "react";
 import { useSelector } from 'react-redux';
 import Image from "next/image";
 import Link from "next/link";
@@ -16,9 +15,7 @@ function ProjectOfTheWeek() {
     );
   }
 
-  const mostRecentProject = projects.reduce((prev, curr) => (
-    curr.uploadTimestamp > prev.uploadTimestamp ? curr : prev
-  ));
+  const mostRecentProject = projects[projects.length - 2]
 
   return (
     <div className='bg-whiteColor text-center md:text-start'>
@@ -29,7 +26,7 @@ function ProjectOfTheWeek() {
             <div className="img-container flex flex-col items-center  rounded-lg border-0 md:items-start">
               <Link href={`/projects/${mostRecentProject.docId}`}>
                 <Image
-                  className="rounded-lg object-cover"
+                  className="rounded-lg h-[200px] w-[200px] md:h-[350px] md:w-[400px] lg:h-[400px] lg:w-[400px] object-cover"
                   src={mostRecentProject.image}
                   width={400}
                   height={400}

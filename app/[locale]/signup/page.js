@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -16,8 +17,10 @@ import { useTranslations } from "next-intl";
 
 import { setShowSignInBox } from "../../redux/features/authSlice";
 import Alert from "../Components/SignUpAlert/Alert";
-
+import Spinner from "../Components/Spinner/Spinner";
+  
 const Page = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const t = useTranslations("SignUp");
   const schema = yup.object().shape({
     email: yup
@@ -43,10 +46,10 @@ const Page = () => {
   });
 
   const dispatch = useDispatch();
-
   const route = useRouter();
 
   const onSubmit = async (data) => {
+    setIsLoading(true)
     try {
       const user = await createUserWithEmailAndPassword(
         auth,
@@ -86,8 +89,10 @@ const Page = () => {
       }
       toast.error(errorMsg, {
         position: toast.POSITION.BOTTOM_RIGHT,
-        draggable: false,
-      });
+        draggable: false
+      })
+    } finally {
+      setIsLoading(false)
     }
   };
 
@@ -169,8 +174,8 @@ const Page = () => {
               />
             </div>
           </div>
-          <button type="submit" className="w-full h-10 button-dark">
-            {t("Submit")}
+          <button disabled={isLoading} type="submit" className="w-full h-10 button-dark">
+            {isLoading && <Spinner />} {t("Submit")}
           </button>
         </form>
       </div>
