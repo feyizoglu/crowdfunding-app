@@ -83,9 +83,12 @@ const FundingBox = ({ project }) => {
       // const ref = doc(db, "projects", project.id);
       // await updateDoc(ref, formData);
 
-      toast.success("You have successfully donated. Please wait...", {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
+      toast.success(
+        `${t("You have successfully donated")}. ${t("Please wait")}...`,
+        {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        }
+      );
       push("/successpage");
       dispatch(setShowFundingBox());
     } catch (error) {
