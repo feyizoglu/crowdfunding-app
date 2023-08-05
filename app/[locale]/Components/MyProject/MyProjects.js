@@ -1,28 +1,31 @@
-'use client'
-import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+"use client";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
-import Loader from '../Loader/Loader';
-import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
+import Loader from "../Loader/Loader";
+import ConfirmationBox from "../ConfirmationBox/ConfirmationBox";
 import MyProjectDetails from "../MyProjectDetail/MyProjectsDetail";
 import MyProjectsTransaction from "../MyProjectTransaction/MyProjectsTransaction";
 import MyProjectsStatistics from "../MyProjectStatistics/MyProjectsStatistics";
+import { useTranslations } from "next-intl";
 
 const MyProjects = () => {
   const [matchedProject, setMatchedProject] = useState([]);
-  const projects = useSelector(state => state.auth.projects);
-  const user = useSelector(state => state.auth.user);
-  const showConfirmationBox = useSelector(state => state.auth.showConfirmationBox);
+  const projects = useSelector((state) => state.auth.projects);
+  const user = useSelector((state) => state.auth.user);
+  const t = useTranslations("MyProject");
+
+  const showConfirmationBox = useSelector(
+    (state) => state.auth.showConfirmationBox
+  );
 
   useEffect(() => {
-    const filterForMatch = projects.filter(project => project.id === user.id);
-    setMatchedProject(filterForMatch)
-  }, [projects, user])
+    const filterForMatch = projects.filter((project) => project.id === user.id);
+    setMatchedProject(filterForMatch);
+  }, [projects, user]);
 
   if (matchedProject.length == 0) {
-    return (
-      <Loader />
-    )
+    return <Loader />;
   }
 
   return (
@@ -36,20 +39,27 @@ const MyProjects = () => {
                 <div
                   className="h-full rounded-lg bg-greenColor"
                   style={{
-                    width: `${(matchedProject[0]?.moneyRaised / matchedProject[0]?.goalAmount) * 100
-                      }%`,
+                    width: `${
+                      (matchedProject[0]?.moneyRaised /
+                        matchedProject[0]?.goalAmount) *
+                      100
+                    }%`,
                   }}
                 />
               </div>
               <div className="flex justify-between">
                 <div className="raised flex flex-col justify-between">
-                  <p className="mt-1.5 text-[18px] text-center font-semibold ">Raised:</p>
+                  <p className="mt-1.5 text-[18px] text-center font-semibold ">
+                    {t("Raised:")}
+                  </p>
                   <p className="text-lg sm:text-xl font-bold py-1 md:text-2xl lg:text-[32px]">
                     ${matchedProject[0]?.moneyRaised}
                   </p>
                 </div>
                 <div className="goal flex flex-col justify-between">
-                  <p className="text-[18px] text-center font-semibold mt-1.5">Goal:</p>
+                  <p className="text-[18px] text-center font-semibold mt-1.5">
+                    {t("Goal:")}
+                  </p>
                   <p className="text-lg sm:text-xl font-bold py-1 md:text-2xl lg:text-[32px]">
                     ${matchedProject[0]?.goalAmount}
                   </p>

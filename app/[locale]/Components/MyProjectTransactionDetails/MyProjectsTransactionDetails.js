@@ -3,10 +3,12 @@ import React, { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import placeholderDonations from "@/app/data/placeholderDonations";
 import MyProjectsDonorCard from "../MyProjectDonorCard/MyProjectsDonorCard";
+import { useTranslations } from "next-intl";
 
 const MyProjectsTransactionDetails = () => {
   const [showAllDonors, setShowAllDonors] = useState(false);
   const [sortOrder, setSortOrder] = useState("desc");
+  const t = useTranslations("MyProjectTransactionDetails");
 
   const sortAmounts = () => {
     const sortedAmounts = [...placeholderDonations];
@@ -36,12 +38,12 @@ const MyProjectsTransactionDetails = () => {
   return (
     <div className="w-full mx-auto bg-gradient-to-r from-whiteColor to-grayishColor p-5 rounded-md shadow-lg my-5">
       <div className="text-blackColor flex items-center space-x-10">
-        <h3>All Projects</h3>
+        <h3>{t("All Projects")}</h3>
         <div
           className="flex items-center space-x-2 cursor-pointer"
           onClick={handleSort}
         >
-          <h3>Sort</h3>
+          <h3>{t("Sort")}</h3>
           {sortOrder === "asc" ? (
             <FaChevronUp size={15} />
           ) : (
@@ -58,7 +60,7 @@ const MyProjectsTransactionDetails = () => {
             className="button-light w-full "
             onClick={showAllDonors ? handleViewLess : handleViewMore}
           >
-            {showAllDonors ? "View Less" : "View More"}
+            {showAllDonors ? `${t("View Less")}` : `${t("View More")}`}
           </button>
         )}
       </div>
