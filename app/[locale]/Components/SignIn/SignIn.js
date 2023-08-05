@@ -12,7 +12,7 @@ import { setShowSignInBox } from "@/app/redux/features/authSlice";
 import Alert from "../SignUpAlert/Alert";
 import { useTranslations } from "next-intl";
 
-import Spinner from "../Spinner/spinner";
+import Spinner from "../Spinner/Spinner";
 
 const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false)

@@ -17,7 +17,7 @@ import { db, storage } from "@/app/firebase/firebase-confing";
 import { addDoc, collection } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { toast } from 'react-toastify';
-import Spinner from "../Spinner/spinner";
+import Spinner from "../Spinner/Spinner";
 
 const schema = yup.object({
   title: yup.string().max(50).required(),
