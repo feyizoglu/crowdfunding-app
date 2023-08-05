@@ -19,12 +19,12 @@ const LanguagePicker = ({ handleLocaleChange, selectedLang }) => {
 
   return (
     <div
-      className="fixed z-50 top-6 right-0 md:-right-2 lg:-right-1 xl:right-8"
+      className="fixed z-50 top-5 right-5 md:right-8 md:top-6 lg:right-12 xl:right-16"
       onMouseEnter={toggleChoices}
       onMouseLeave={hideChoices}
     >
       <button
-        className="inline-flex text-xl appearance-none outline-none cursor-pointer bg-transparent pl-2 pr-6 md:text-2xl"
+        className=" cursor-pointer pb-2"
         onClick={toggleChoices}
       >
         <Image
@@ -35,10 +35,10 @@ const LanguagePicker = ({ handleLocaleChange, selectedLang }) => {
         />
       </button>
       {showChoices && (
-        <div className="flex flex-col space-y-6">
+        <div className="flex flex-col">
           {selectedLang === 'tr' && (
             <button
-              className="inline-flex text-xl appearance-none outline-none cursor-pointer bg-transparent pl-2 pr-6 md:text-2xl"
+              className=" cursor-pointer"
               onClick={() => handleLocaleButtonClick("en")}
             >
               <Image src="/uk.svg" alt="English" width={20} height={15} />
@@ -46,7 +46,7 @@ const LanguagePicker = ({ handleLocaleChange, selectedLang }) => {
           )}
           {selectedLang === 'en' && (
             <button
-              className="inline-flex text-xl appearance-none outline-none cursor-pointer bg-transparent pl-2 pr-6 md:text-2xl"
+              className=" cursor-pointer"
               onClick={() => handleLocaleButtonClick("tr")}
             >
               <Image src="/tr.svg" alt="Turkish" width={20} height={15} />
