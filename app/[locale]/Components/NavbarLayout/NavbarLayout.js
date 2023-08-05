@@ -31,10 +31,6 @@ const style = {
   langPickerSelect: `inline-flex text-xl appearance-none outline-none cursor-pointer bg-transparent py-3 pl-2 pr-6 md:text-2xl`
 };
 
-const flags = [
-  { value: 'tr', src: '/tr.svg' },
-  { value: 'en', src: '/uk.svg' }
-]
 
 export default function NavbarLayOut() {
   const [bgColor, setBgColor] = useState(false);

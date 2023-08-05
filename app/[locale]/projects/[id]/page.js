@@ -53,7 +53,7 @@ function Page({ params }) {
         <div className="container mx-auto px-4 py-6 flex flex-col justify-around items-center text-center md:flex-row  md:text-start md:space-y-0 md:h-screen-70 md:space-x-6">
           <div className=" mt-4 rounded-xl md:w-2/5 md:mt-0 md:flex md:items-center grid place-content-center">
             <Image
-              className="rounded-xl h-[200px] w-[200px] md:h-[350px] md:w-[400px] lg:h-[450px] lg:w-[450px]"
+              className="rounded-xl h-[200px] w-[200px] md:h-[350px] md:w-[400px] lg:h-[450px] lg:w-[450px] object-cover"
               alt={project?.title}
               src={project?.image}
               width={450}
