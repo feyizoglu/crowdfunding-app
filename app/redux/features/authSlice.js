@@ -27,6 +27,9 @@ const authSlice = createSlice({
     setShowInfoBox: (state) => {
       state.showInfoBox = !state.showInfoBox;
     },
+    setCloseInfoBox: (state, action) => {
+      state.showInfoBox = action.payload
+    },
     setShowMobilNav: (state) => {
       state.showMobilNav = !state.showMobilNav;
     },
@@ -75,5 +78,6 @@ export const {
   setCloseKickOffBox,
   setShowNewsletterForm,
   setShowFundingBox,
+  setCloseInfoBox
 } = authSlice.actions;
 export default authSlice.reducer;

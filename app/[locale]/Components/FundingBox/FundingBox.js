@@ -1,22 +1,24 @@
-"use client";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { FaLessThan } from "react-icons/fa";
+import { MdOutlineArrowBackIos } from "react-icons/md";
 import { setShowFundingBox } from "@/app/redux/features/authSlice";
+import { addDoc, doc, updateDoc } from "firebase/firestore";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import { db } from "@/app/firebase/firebase-confing";
+import { useTranslations } from "next-intl";
+
 import FundingBoxDonationBox from "../FundingBoxDonationBox/FundingBoxDonationBox";
 import FundingBoxCardNumber from "../FundingBoxCardNumber/FundingBoxCardNumber";
 import FundingBoxCardHolder from "../FundingBoxCardHolder/FundingBoxCardHolder";
 import FundingBoxCardCvv from "../FundingBoxCardCvv/FundingBoxCardCvv";
 import FundingBoxCardDate from "../FundingBoxCardDate/FundingBoxCardDate";
-import { doc, updateDoc } from "firebase/firestore";
 import FundingBoxDescription from "../FundingBoxDescription/FundingBoxDescription";
-import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
-import { db } from "@/app/firebase/firebase-confing";
-import { useTranslations } from "next-intl";
+import Spinner from "../Spinner/Spinner";
+
 
 const schema = yup
   .object({
@@ -31,16 +33,14 @@ const schema = yup
   })
   .required();
 
-const FundingBox = ({ project }) => {
+const FundingBox = ({ docId, project }) => {
+  const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch();
   const { push } = useRouter();
   const [cardHolder, setcardHolder] = useState("");
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(25);
-  const [isDisabled, setIsDisabled] = useState(false);
-
   const t = useTranslations("FundingBox");
-
   const containerRef = useRef();
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const FundingBox = ({ project }) => {
   }, []);
 
   const handleClick = (e) => {
-    if (!containerRef.current.contains(e.target)) {
+    if (containerRef.current && !containerRef.current.contains(e.target)) {
       dispatch(setShowFundingBox());
     }
   };
@@ -68,49 +68,50 @@ const FundingBox = ({ project }) => {
   const handleBtnClick = (value) => {
     setAmount(value);
   };
-  const handleInputChange = (e) => {
-    setAmount("");
-  };
+
   const onSubmit = async (data) => {
-    setIsDisabled(true);
+    setIsLoading(true)
     try {
       const cardholder = data.cardHolder;
-      const formData = {
+      const newDonation = {
         cardholder,
         description,
         amount,
       };
-      // const ref = doc(db, "projects", project.id);
-      // await updateDoc(ref, formData);
-
+      const existDonations = project.donations;
+      const withNewDonation = [...existDonations, newDonation];
+      const ref = doc(db, "projects", docId);
+      await updateDoc(ref, {
+        donations: withNewDonation
+      });
+      push("/successpage");
       toast.success(
         `${t("You have successfully donated")}. ${t("Please wait")}...`,
         {
           position: toast.POSITION.BOTTOM_RIGHT,
         }
       );
-      push("/successpage");
       dispatch(setShowFundingBox());
     } catch (error) {
       console.log(error.message);
     } finally {
-      setIsDisabled(false);
+      setIsLoading(false)
     }
   };
 
   return (
-    <div className="bg-opacity-70 w-screen h-screen fixed top-0 left-0 grid place-content-center z-50 bg-blackColor text-center">
+    <div className="bg-opacity-70 w-screen h-screen fixed top-0 left-0 grid place-content-center z-50  bg-blackColor text-center ">
       <div
         ref={containerRef}
-        className="bg-whiteColor p-6 sm:p-8 md:p-10 rounded-xl shadow relative max-w-xs sm:max-w-lg"
+        className="bg-whiteColor p-6 sm:p-8 md:p-10 -mt-5 rounded-xl shadow relative max-w-xs sm:max-w-lg sm:-mt-0"
       >
-        <div
+        <button
           onClick={() => dispatch(setShowFundingBox())}
-          className="absolute top-3 left-5 p-3 text-blackColor hover:opacity-60"
+          className="absolute top-3 left-5 p-3 text-blackColor rounded-full hover:bg-grayishColor"
         >
-          <FaLessThan />
-        </div>
-        <h2 className="text-2xl font-bold mb-5 mt-6 sm:text-4xl  ">
+          <MdOutlineArrowBackIos size={20} />
+        </button>
+        <h2 className="text-2xl font-bold my-3 sm:text-4xl md:mb-5 md:mt-6 ">
           {t("Make Difference")}!
         </h2>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -118,7 +119,7 @@ const FundingBox = ({ project }) => {
             amount={amount}
             handleBtnClick={handleBtnClick}
           />
-          <div className="flex flex-col justify-center w-full  m-auto">
+          <div className="flex flex-col justify-center w-full m-auto">
             <FundingBoxDescription
               desc={description}
               setDesc={setDescription}
@@ -139,10 +140,10 @@ const FundingBox = ({ project }) => {
           </div>
           <button
             type="submit"
-            disabled={isDisabled}
-            className={`button-dark mt-5 w-full ${isDisabled && `opacity-50`}`}
+            disabled={isLoading}
+            className={`button-dark w-full`}
           >
-            {t("Donate")}!
+            {isLoading && <Spinner />} {t("Donate")}!
           </button>
         </form>
       </div>

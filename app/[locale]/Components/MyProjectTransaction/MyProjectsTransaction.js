@@ -10,7 +10,7 @@ const MyProjectsTransaction = ({ project }) => {
       <MyProjectsAccordion
         title={t("Transaction history")}
         isOpenDefault={true}
-        component={<MyProjectsTransactionDetails />}
+        component={<MyProjectsTransactionDetails project={project} />}
       />
     </div>
   );

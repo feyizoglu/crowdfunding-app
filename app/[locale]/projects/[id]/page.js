@@ -139,7 +139,7 @@ function Page({ params }) {
       ) : (
         <Loader />
       )}
-      {showFundingBox && <FundingBox project={project} />}
+      {showFundingBox && <FundingBox docId={params.id} project={project} />}
     </div>
   );
 }

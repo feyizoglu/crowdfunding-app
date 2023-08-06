@@ -110,10 +110,11 @@
     "Transaction history": "Transaction history"
   },
   "MyProjectTransactionDetails": {
-    "All Projects": "All Projects",
+    "All donations": "All donations",
     "Sort": "Sort",
     "View Less": "View Less",
-    "View More": "View More"
+    "View More": "View More",
+    "Currently, no donations have been made" : "Currently, no donations have been made."
   },
   "ProjectOfTheWeek": {
     "Raised:": "Raised:",

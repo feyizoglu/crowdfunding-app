@@ -58,8 +58,7 @@ const SignUp = () => {
       dispatch(setShowSignInBox());
       let userName = data.email.split("@")[0];
       toast.success(
-        `${t("Congratulations")} ${
-          userName[0].toUpperCase() + userName.slice(1, userName.length)
+        `${t("Congratulations")} ${userName[0].toUpperCase() + userName.slice(1, userName.length)
         }! ${t("You have successfully logged in")}.`,
         {
           position: toast.POSITION.BOTTOM_RIGHT,
@@ -73,8 +72,8 @@ const SignUp = () => {
         )}`,
         {
           position: toast.POSITION.BOTTOM_RIGHT,
-        draggable: false
-      });
+          draggable: false
+        });
     } finally {
       setIsLoading(false)
     }
@@ -98,7 +97,7 @@ const SignUp = () => {
         >
           <MdOutlineArrowBackIos size={20} />
         </button>
-        <h2 className="text-2xl font-bold mb-5 mt-6  sm:text-3xl md:text-4xl ">
+        <h2 className="text-2xl font-bold mt-4   sm:text-3xl md:text-4xl md:mb-5 md:mt-6 ">
           {t("Welcome Back")}
           <br />
           {t("Change-Maker !")}
@@ -109,7 +108,7 @@ const SignUp = () => {
               {...register("email")}
               id="mail"
               placeholder={t("Email")}
-              className="border-b border-blackColor bg-whiteColor px-3 py-1 mt-7 mb-5 w-full text-lg outline-none sm:text-xl"
+              className="border-b border-blackColor bg-whiteColor px-3 py-1 my-4 w-full text-lg outline-none sm:text-xl md:mt-7 md:mb-5"
             />
             <div className="">
               {errors.email && <div className="-mt-3"><Alert message={errors.email?.message} /></div>}
@@ -119,21 +118,21 @@ const SignUp = () => {
               id="password"
               type="password"
               placeholder={t("Password")}
-              className="border-b border-blackColor bg-whiteColor px-3 py-1 mb-5 w-full outline-none text-lg sm:text-xl"
+              className="border-b border-blackColor bg-whiteColor px-3 py-1  w-full outline-none text-lg sm:text-xl md:mb-5"
             />
             <div className="">
               {errors.password && <Alert message={errors.password?.message} />}
             </div>
-            <button disabled={isLoading} className="button-dark mt-5 w-full">
+            <button disabled={isLoading} className="button-dark mt-4 w-full md:mt-5">
               {isLoading && <Spinner />} {t("Continue to sign in")}
             </button>
           </form>
         </div>
-        <hr className="mt-5 mb-6" />
-        <h2 className="text-lg sm:text-xl md:text-3xl font-semibold mb-3">
+        <hr className="mt-3 mb-2 md:mt-5 md:mb-4" />
+        <h2 className="text-lg mb-1.5 sm:text-xl md:text-3xl font-semibold md:mb-3">
           {t("New to our community?")}
         </h2>
-        <p className="mb-5">
+        <p className="mb-2 md:mb-5">
           {t("Make an impact today")}.
           <br />
           <Link

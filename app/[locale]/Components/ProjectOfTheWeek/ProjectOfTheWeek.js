@@ -4,19 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from 'next-intl';
 
-
 function ProjectOfTheWeek() {
   const t = useTranslations('ProjectOfTheWeek');
   const projects = useSelector(state => state.auth.projects);
-
   if (!projects || projects.length === 0) {
     return (
       <></>
     );
   }
-
-  const mostRecentProject = projects[projects.length - 2]
-
+  const mostRecentProject = projects[0]
   return (
     <div className='bg-whiteColor text-center md:text-start'>
       <div className="container mx-auto project-of-the-week pt-20 pb-10 px-4 ">
@@ -35,13 +31,25 @@ function ProjectOfTheWeek() {
                 />
               </Link>
             </div>
-            <div className=" flex flex-col justify-center space-y-10 md:pr-10 lg:-ml-20">
-              <div className="mb-2">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2">
+            <div className=" flex flex-col justify-center space-y-8 md:pr-10 lg:-ml-20">
+              <div>
+                <h1 className="text-3xl sm:text-4xl  font-bold mb-2">
                   <Link href={`/projects/${mostRecentProject.docId}`} passHref>
                     {mostRecentProject.title[0].toUpperCase() + mostRecentProject.title.slice(1)}
                   </Link>
                 </h1>
+                <div className='flex items-center justify-center space-x-2 mt-2 md:justify-start'>
+                  <Image
+                    src={mostRecentProject.profilPic}
+                    height={30}
+                    width={30}
+                    alt={`${mostRecentProject.creator} profil picture`}
+                    className='rounded-full w-[30px] h-[30px]'
+                  />
+                  <h2>
+                    {mostRecentProject.creator.split('@')[0]}
+                  </h2>
+                </div>
               </div>
               <div>
                 <p className="mb-2">

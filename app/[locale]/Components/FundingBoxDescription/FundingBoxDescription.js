@@ -17,9 +17,8 @@ const FundingBoxDescription = ({ desc, setDesc, errors, register }) => {
     <>
       <label
         htmlFor="description"
-        className={`text-left font-semibold ${
-          userDesc ? `` : `${errors.description && `text-red-500`}`
-        }`}
+        className={`text-left font-semibold sm:mb-2 ${userDesc ? `` : `${errors.description && `text-red-500`}`
+          }`}
       >
         {t("Add Your Comment")}
       </label>
@@ -30,11 +29,10 @@ const FundingBoxDescription = ({ desc, setDesc, errors, register }) => {
         value={desc}
         type="text"
         onChange={handleInputChange}
-        className={`border-b border-blackColor bg-whiteColor px-3 py-1 mb-4 w-full text-md outline-none ${
-          userDesc
-            ? ``
-            : `${errors.description && `border-red-500 placeholder-red-500`}`
-        }`}
+        className={`border-b border-blackColor bg-whiteColor px-3 py-1 mb-2 w-full text-md outline-none sm:mb-4 ${userDesc
+          ? ``
+          : `${errors.description && `border-red-500 placeholder-red-500`}`
+          }`}
       />
     </>
   );

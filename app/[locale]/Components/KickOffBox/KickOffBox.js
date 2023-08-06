@@ -20,15 +20,15 @@ import { toast } from 'react-toastify';
 import Spinner from "../Spinner/Spinner";
 
 const schema = yup.object({
-    title: yup.string().max(50).required(),
-    goalAmount: yup.number().required(),
+  title: yup.string().max(50).required(),
+  goalAmount: yup.number().required(),
   timeline: yup
     .array()
     .of(yup.date().min(new Date()))
     .min(2)
     .required(),
-    category: yup.string().required(),
-    description: yup.string().max(120).required(),
+  category: yup.string().required(),
+  description: yup.string().max(150).required(),
   image: yup
     .mixed()
     .test("fileRequired", "Image is required", (value) => {
@@ -67,8 +67,8 @@ const KickOffBox = () => {
         )}.`,
         {
           position: toast.POSITION.BOTTOM_RIGHT,
-        draggable: false
-      });
+          draggable: false
+        });
     }
   }, [errors.timeline])
 
@@ -80,18 +80,18 @@ const KickOffBox = () => {
       const snapshot = await uploadBytes(storageRef, imgFile);
       const downloadURL = await getDownloadURL(snapshot.ref);
       const formattedTimeline = data.timeline.map((date) => format(date, "dd/MM/yy"));
-      const moneyRaised = Math.floor(data.goalAmount * Math.random());
+      const creator = user.email.split('@')[0].replace(/[0-9]/g, '');
       const projectData = {
         category: data.category,
-        creator: user.email,
+        creator: creator,
         description: data.description,
         goalAmount: data.goalAmount,
         id: user.id,
         image: downloadURL,
-        moneyRaised: moneyRaised,
         profilPic: profilPic,
         timeline: formattedTimeline[1],
         title: data.title,
+        donations: []
       };
       await addDoc(collection(db, "projects"), projectData);
       toast.success(`${t("You have successfully created your project")}`, {
@@ -105,8 +105,8 @@ const KickOffBox = () => {
         )}`,
         {
           position: toast.POSITION.BOTTOM_RIGHT,
-        draggable: false
-      });
+          draggable: false
+        });
     } finally {
       setIsLoading(false);
       dispatch(setShowKickOffBox());

@@ -1,6 +1,4 @@
-import React from 'react'
-
-function Loader() {
+function Spinner() {
   return (
     <div className="h-screen grid place-content-center">
       <div role="status">
@@ -26,4 +24,4 @@ function Loader() {
   )
 }
 
-export default Loader
+export default Spinner

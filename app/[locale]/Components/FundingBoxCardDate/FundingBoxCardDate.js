@@ -31,9 +31,8 @@ const FundingBoxCardDate = ({ register, errors }) => {
     <div className="flex flex-col w-5/12">
       <label
         htmlFor="cardDate"
-        className={`text-left text-md font-semibold block mb-2 ${
-          date ? `` : `${errors.cardDate && `text-red-500`}`
-        }`}
+        className={`text-left text-md font-semibold block sm:mb-2 ${date ? `` : `${errors.cardDate && `text-red-500`}`
+          }`}
       >
         {t("Card Date")}
       </label>
@@ -43,11 +42,10 @@ const FundingBoxCardDate = ({ register, errors }) => {
         maxLength={5}
         onChange={handleChange}
         placeholder={t("MM/YY")}
-        className={`border-b border-blackColor bg-whiteColor px-3 py-1 mb-8 text-md outline-none ${
-          date
+        className={`border-b border-blackColor bg-whiteColor px-3 py-1 sm:mb-8 text-md outline-none ${date
             ? ``
             : `${errors.cardDate && `border-red-500 placeholder-red-500`}`
-        }`}
+          }`}
       />
     </div>
   );

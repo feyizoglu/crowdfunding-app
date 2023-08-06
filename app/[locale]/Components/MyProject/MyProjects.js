@@ -39,11 +39,10 @@ const MyProjects = () => {
                 <div
                   className="h-full rounded-lg bg-greenColor"
                   style={{
-                    width: `${
-                      (matchedProject[0]?.moneyRaised /
-                        matchedProject[0]?.goalAmount) *
+                    width: `${(matchedProject[0]?.moneyRaised /
+                      matchedProject[0]?.goalAmount) *
                       100
-                    }%`,
+                      }%`,
                   }}
                 />
               </div>

@@ -112,10 +112,11 @@
     "Transaction history": "İşlem geçmişi"
   },
   "MyProjectTransactionDetails": {
-    "All Projects": "Tüm Projeler",
+    "All donations": "Tüm bağışlar",
     "Sort": "Sırala",
     "View Less": "Daha Az",
-    "View More": "Daha Fazla"
+    "View More": "Daha Fazla",
+    "Currently, no donations have been made" : "Şu anda herhangi bir bağış bulunmamaktadır."
   },
   "ProjectOfTheWeek": {
     "Raised:": "Toplanan:",
