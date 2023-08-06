@@ -89,7 +89,7 @@ const SignUp = () => {
     <div className="bg-opacity-70 w-screen h-screen fixed top-0 left-0 grid place-content-center z-50 bg-blackColor text-center">
       <div
         ref={containerRef}
-        className="bg-whiteColor p-6 sm:p-8 md:p-10 rounded-xl shadow relative max-w-xs sm:max-w-md md:max-w-lg"
+        className="bg-whiteColor p-7 sm:p-8 md:p-10 rounded-xl shadow relative max-w-xs sm:max-w-md md:max-w-lg"
       >
         <button
           onClick={() => dispatch(setShowSignInBox())}
@@ -97,7 +97,7 @@ const SignUp = () => {
         >
           <MdOutlineArrowBackIos size={20} />
         </button>
-        <h2 className="text-2xl font-bold mt-4   sm:text-3xl md:text-4xl md:mb-5 md:mt-6 ">
+        <h2 className="text-2xl font-bold mt-5 mb-1 sm:text-3xl md:text-4xl md:mb-5 md:mt-6 ">
           {t("Welcome Back")}
           <br />
           {t("Change-Maker !")}
@@ -128,11 +128,11 @@ const SignUp = () => {
             </button>
           </form>
         </div>
-        <hr className="mt-3 mb-2 md:mt-5 md:mb-4" />
+        <hr className="mt-4 mb-3 md:mt-5 md:mb-4" />
         <h2 className="text-lg mb-1.5 sm:text-xl md:text-3xl font-semibold md:mb-3">
           {t("New to our community?")}
         </h2>
-        <p className="mb-2 md:mb-5">
+        <p className="mb-3.5 md:mb-5">
           {t("Make an impact today")}.
           <br />
           <Link

@@ -29,7 +29,7 @@ const FundingBoxDescription = ({ desc, setDesc, errors, register }) => {
         value={desc}
         type="text"
         onChange={handleInputChange}
-        className={`border-b border-blackColor bg-whiteColor px-3 py-1 mb-2 w-full text-md outline-none sm:mb-4 ${userDesc
+        className={`border-b border-blackColor bg-whiteColor px-3 py-1 mb-3.5 w-full text-md outline-none sm:mb-4 ${userDesc
           ? ``
           : `${errors.description && `border-red-500 placeholder-red-500`}`
           }`}

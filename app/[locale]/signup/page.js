@@ -67,8 +67,7 @@ const Page = () => {
       });
       let userName = data.email.split("@")[0];
       toast.success(
-        `${t("Congratulations")} ${
-          userName[0].toUpperCase() + userName.slice(1, userName.length)
+        `${t("Congratulations")} ${userName[0].toUpperCase() + userName.slice(1, userName.length)
         }! ${t("Your sign-up was successful")}. ${t(
           "Welcome to our community"
         )}.`,
@@ -126,7 +125,7 @@ const Page = () => {
         </Link>
         <form onSubmit={handleSubmit(onSubmit)} className="w-full p-8">
           <div className="mb-4">
-            <label htmlFor="email" className="text-xl font-semibold block mb-2">
+            <label htmlFor="email" className="text-xl mb-1 font-semibold block ">
               {t("Your personal email address")}
             </label>
             <input
@@ -139,7 +138,7 @@ const Page = () => {
           <div className="mb-4">
             <label
               htmlFor="password"
-              className="text-xl font-semibold block mb-2"
+              className="text-xl font-semibold block "
             >
               {t("Password")}
             </label>
@@ -158,15 +157,13 @@ const Page = () => {
             <div className="file-input m-5 ml-0">
               <label
                 htmlFor="file-upload"
-                className={`file-label button-light ${
-                  errors.profilePic &&
+                className={`file-label button-light ${errors.profilePic &&
                   `bg-redColor text-red-500 border-red-500 hover:bg-lightRedColor hover:text-red-500 hover:opacity-60`
-                }`}
+                  }`}
               >
                 <FaUpload
-                  className={`text-[#0361FD] mr-4 ${
-                    errors.profilePic && "text-darkRedColor"
-                  }`}
+                  className={`text-[#0361FD] mr-4 ${errors.profilePic && "text-darkRedColor"
+                    }`}
                 />{" "}
                 {t("Upload Profile Picture")}
               </label>

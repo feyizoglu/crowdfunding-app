@@ -11,7 +11,7 @@ import { setShowInfoBox, setShowKickOffBox, setSearchInputVal } from '@/app/redu
 const style = {
   container: `relative flex items-center space-x-6`,
   button: `button-dark hover:bg-transparent text-center text-sm lg:text-lg`,
-  userContainer: `flex w-[50px] h-[50px]`,
+  userContainer: `flex w-[45px] h-[45px]`,
   userImage: `rounded-full hover:opacity-80 cursor-pointer`,
   InfoBoxContainer: `absolute flex flex-col top-16 right-0 py-2 px-6 rounded-md bg-grayishColor text-blackColor text-[12px] shadow-lg`,
   infoBoxLinks: `flex items-center gap-1 whitespace-nowrap font-medium hover:opacity-60`,
@@ -89,8 +89,8 @@ function NavbarWithUser({ activeLink, defaultLink, selectedLink }) {
           onClick={handleInfoBoxClick}
           className={style.userImage}
           src={profilPic ? profilPic : `https://via.placeholder.com/150/0A0A0A/FAFAFA?text=${user.email[0].toUpperCase()}`}
-          width={50}
-          height={50}
+          width={45}
+          height={45}
           alt="Picture of the user"
         />
         {showInfoBox && <InfoBox style={style} />}

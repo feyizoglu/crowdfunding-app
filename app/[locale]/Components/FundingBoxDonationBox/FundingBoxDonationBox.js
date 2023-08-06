@@ -3,8 +3,8 @@ import { useTranslations } from "next-intl";
 const FundingBoxDonationBox = ({ handleBtnClick, amount }) => {
   const t = useTranslations("FundingBox");
   return (
-    <div className="flex flex-col items-center justify-center space-y-2 md:space-y-5 mb-2 sm:mb-5 ">
-      <div className="w-full flex justify-center space-x-2 sm:space-x-5 sm:justify-between">
+    <div className="flex flex-col items-center justify-center space-y-2 md:space-y-5 mb-3 sm:mb-5 ">
+      <div className="w-full flex justify-center space-x-1.5 sm:space-x-5 sm:justify-between ">
         <p
           className={` ${amount === 25 && 'bg-whiteColor text-blackColor border border-blackColor'} button-dark`}
           onClick={() => handleBtnClick(25)}

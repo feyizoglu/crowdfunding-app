@@ -31,7 +31,7 @@ const FundingBoxCardDate = ({ register, errors }) => {
     <div className="flex flex-col w-5/12">
       <label
         htmlFor="cardDate"
-        className={`text-left text-md font-semibold block sm:mb-2 ${date ? `` : `${errors.cardDate && `text-red-500`}`
+        className={`text-left text-md font-semibold block mb-2 ${date ? `` : `${errors.cardDate && `text-red-500`}`
           }`}
       >
         {t("Card Date")}

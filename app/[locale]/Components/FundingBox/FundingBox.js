@@ -103,7 +103,7 @@ const FundingBox = ({ docId, project }) => {
     <div className="bg-opacity-70 w-screen h-screen fixed top-0 left-0 grid place-content-center z-50  bg-blackColor text-center ">
       <div
         ref={containerRef}
-        className="bg-whiteColor p-6 sm:p-8 md:p-10 -mt-5 rounded-xl shadow relative max-w-xs sm:max-w-lg sm:-mt-0"
+        className="bg-whiteColor p-7 sm:p-8 md:p-10 -mt-5 rounded-xl shadow relative max-w-xs sm:max-w-lg sm:-mt-0"
       >
         <button
           onClick={() => dispatch(setShowFundingBox())}
@@ -111,7 +111,7 @@ const FundingBox = ({ docId, project }) => {
         >
           <MdOutlineArrowBackIos size={20} />
         </button>
-        <h2 className="text-2xl font-bold my-3 sm:text-4xl md:mb-5 md:mt-6 ">
+        <h2 className="text-2xl font-bold my-4 sm:text-4xl md:mb-5 md:mt-6 ">
           {t("Make Difference")}!
         </h2>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -141,7 +141,7 @@ const FundingBox = ({ docId, project }) => {
           <button
             type="submit"
             disabled={isLoading}
-            className={`button-dark w-full`}
+            className={`button-dark w-full mt-2`}
           >
             {isLoading && <Spinner />} {t("Donate")}!
           </button>

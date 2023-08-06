@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useTranslations } from 'next-intl';
+import { setCloseMobileNav } from "@/app/redux/features/authSlice";
 
 const Cards = ({ projects }) => {
   const t = useTranslations('Projects');
+  const dispatch = useDispatch();
   const searchInputVal = useSelector(state => state.auth.searchInputVal);
 
   if (!projects || projects.length === 0) {
@@ -14,6 +16,9 @@ const Cards = ({ projects }) => {
   const searchedProjects = projects.filter(project => {
     return project.title.toLowerCase().includes(searchInputVal.toLowerCase());
   })
+  const handleCardClick = () => {
+    dispatch(setCloseMobileNav(false))
+  }
 
   return (
     <div className="projects-part container mx-auto px-4 flex flex-col items-center justify-center space-y-8  pb-20 md:space-y-0 md:grid md:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
@@ -28,7 +33,7 @@ const Cards = ({ projects }) => {
             className="w-[300px] bg-whiteColor border border-grayishColor rounded-lg shadow ease-in duration-200 hover:scale-105 flex flex-col justify-between"
           >
             <div className="img-container flex flex-col justify-center items-center bg-grayishColor rounded-lg border-0">
-              <Link href={`/projects/${project.docId}`}>
+              <Link onClick={handleCardClick} href={`/projects/${project.docId}`}>
                 <div className="image-wrapper flex justify-center items-center  ">
                   <Image
                     alt={project.title}
@@ -41,7 +46,7 @@ const Cards = ({ projects }) => {
               </Link>
             </div>
             <div className="p-5">
-              <Link href={`/projects/${project.docId}`}>
+              <Link onClick={handleCardClick} href={`/projects/${project.docId}`}>
                 <div className="flex items-center justify-center space-x-2 text-sm">
                   <Image
                     src={project.profilPic}
@@ -52,16 +57,18 @@ const Cards = ({ projects }) => {
                   />
                   <h2 className="text-blackColor">{project.creator.split('@')[0]}</h2>
                 </div>
-                <h2 className="mb-4 mt-1 text-lg text-center font-bold tracking-tight text-blackColor">
-                  {project.title[0].toUpperCase() + project.title.slice(1)}
-                </h2>
+                <div className="h-16">
+                  <h2 className="mb-4 mt-1 text-lg text-center font-bold tracking-tight text-blackColor">
+                    {project.title[0].toUpperCase() + project.title.slice(1)}
+                  </h2>
+                </div>
               </Link>
               <div className="progress-bar flex flex-col justify-between">
                 <div className="h-4 bg-grayishColor rounded-lg">
                   <div
                     className="h-full rounded-lg bg-greenColor"
                     style={{
-                      width: `${(project.moneyRaised / project.goalAmount) * 100
+                      width: `${(project.donations.reduce((acc, donation) => acc + Number(donation.amount), 0) / project.goalAmount) * 100
                         }%`,
                     }}
                   />
@@ -70,7 +77,7 @@ const Cards = ({ projects }) => {
                   <div className="raised flex flex-col justify-between">
                     <p className="text-sm  md:text-lg mt-1.5 ">{t("Raised:")}</p>
                     <p className="text-md  font-semibold  py-2 ">
-                      ${project.moneyRaised}
+                      ${project.donations.reduce((acc, donation) => acc + Number(donation.amount), 0)}
                     </p>
                   </div>
                   <div className="goal flex flex-col justify-between">

@@ -11,10 +11,10 @@ const MyProjectsStatisticsDetails = ({ project }) => {
           <td>
             <div className="flex items-center justify-center space-x-2">
               <Image
-                className="rounded-full mt-1"
+                className="rounded-full mt-1 w-[25px] h-[25px]"
                 src={project.profilPic}
-                width={30}
-                height={30}
+                width={25}
+                height={25}
                 alt="profil picture"
               />
               <p className="capitalize">{project?.creator.split("@")[0]}</p>

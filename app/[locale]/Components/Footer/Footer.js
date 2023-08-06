@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
+import { setCloseMobileNav } from '@/app/redux/features/authSlice';
 import { FaInstagram, FaFacebook, FaTwitter } from 'react-icons/fa';
 import { FaCopyright } from 'react-icons/fa';
 import Image from 'next/image';
@@ -11,7 +12,7 @@ import { useTranslations } from "next-intl";
 function Footer() {
   const projects = useSelector(state => state.auth.projects);
   const t = useTranslations('Footer');
-
+  const dispatch = useDispatch();
 
   return (
     <footer className="bg-greenColor pt-5 md:pt-10 text-center md:text-left text-blackColor">
@@ -43,7 +44,7 @@ function Footer() {
               </h1>
               <div className='flex flex-col space-y-6 items-center md:items-start'>
                 {projects.slice(0, 2).map((project) => (
-                  <Link href={`/projects/${project.docId}`} key={project.id} className="flex items-center space-x-3 ease-in duration-200 hover:scale-105 ">
+                  <Link onClick={() => dispatch(setCloseMobileNav(false)) } href={`/projects/${project.docId}`} key={project.id} className="flex items-center space-x-3 ease-in duration-200 hover:scale-105 ">
                     <Image
                       src={project.image}
                       alt={project.title}

@@ -17,7 +17,7 @@ const FundingBoxCardCvv = ({ register, errors }) => {
     <div className="flex flex-col w-5/12">
       <label
         htmlFor="cardCvv"
-        className={`text-left text-md font-semibold block sm:mb-2 ${errors.cardCvv && `text-red-500`
+        className={`text-left text-md font-semibold block mb-2 ${errors.cardCvv && `text-red-500`
           }`}
       >
         CVV
