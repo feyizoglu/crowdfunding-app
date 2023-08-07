@@ -8,7 +8,6 @@ import { useTranslations } from 'next-intl';
 
 const Categories = ({ selectedCategory, handleCategoryChange }) => {
   const t = useTranslations('Projects');
-
   return (
     <div className="container mx-auto place-content-center pt-10 pb-20 px-4">
       <div className="categories-part flex flex-col justify-between">

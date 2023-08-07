@@ -8,7 +8,6 @@ const Cards = ({ projects }) => {
   const t = useTranslations('Projects');
   const dispatch = useDispatch();
   const searchInputVal = useSelector(state => state.auth.searchInputVal);
-
   if (!projects || projects.length === 0) {
     return <div className="text-center text-4xl pb-44 md:pb-56 lg:pb-60 xl:pb-72">{t("No projects available in this category")}</div>;
   };
@@ -22,7 +21,7 @@ const Cards = ({ projects }) => {
 
   return (
     <div className="projects-part container mx-auto px-4 flex flex-col items-center justify-center space-y-8  pb-20 md:space-y-0 md:grid md:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
-      {searchedProjects.length == 0 ? (
+      {searchedProjects.length === 0 ? (
         <div className="text-center text-4xl pb-28  md:w-[700px] lg:pb-32 xl:pb-40 2xl:pb-44">
           {t('noProjectsAvailable', { searchInputVal })}
         </div>

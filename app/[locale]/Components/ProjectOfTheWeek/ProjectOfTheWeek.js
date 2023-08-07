@@ -9,11 +9,13 @@ function ProjectOfTheWeek() {
   const t = useTranslations('ProjectOfTheWeek');
   const dispatch = useDispatch();
   const projects = useSelector(state => state.auth.projects);
+
   if (!projects || projects.length === 0) {
     return (
       <></>
     );
   };
+
   const mostSupportedProject = projects.reduce((acc, project) => {
     const moneyRaised = project.donations.reduce((total, donation) => total + Number(donation.amount), 0);
     if (moneyRaised > acc.moneyRaised) {
@@ -22,6 +24,7 @@ function ProjectOfTheWeek() {
     return acc;
   }, { moneyRaised: 0 });
   const moneyRaised = mostSupportedProject.donations.reduce((acc, donation) => acc + Number(donation.amount), 0);
+
   return (
     <div className='bg-whiteColor text-center md:text-start'>
       <div className="container mx-auto project-of-the-week pt-20 pb-10 px-4 ">
