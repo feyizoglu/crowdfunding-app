@@ -171,7 +171,13 @@
     "Kick-off": "Başlamak",
     "my project": "projeme"
   },
-  "SuccessPage": {},
+  "SuccessPage": {
+    "Thank you!":"Teşekkürler!",
+    "for supporting us!":"Bizi desteklemeye devam et!",
+    "Make another donation":"Başka bir bağış yap",
+    "Go to home page":"Anasayfaya git",
+    "Lang": "Türkçe"
+  },
   "Testimonial": {
     "Lang": "Türkçe"
   },

@@ -170,7 +170,13 @@
     "Kick-off": "Kick-off",
     "my project": "my project"
   },
-  "SuccessPage": {},
+  "SuccessPage": {
+    "Thank you!":"Thank you!",
+    "for supporting us!":"for supporting us!",
+    "Make another donation":"Make another donation",
+    "Go to home page":"Go to home page",
+    "Lang": "English"
+  },
   "Testimonial": {
     "Lang": "English"
   },
