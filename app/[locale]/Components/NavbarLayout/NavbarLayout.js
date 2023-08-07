@@ -19,6 +19,7 @@ import LanguagePicker from "../LanguagePicker/LanguagePicker";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from 'next-intl';
+import { throttle } from "lodash";
 
 const style = {
   headerContainer: `relative container mx-auto z-50`,
@@ -89,10 +90,10 @@ export default function NavbarLayOut() {
 
   useEffect(() => {
     setTimeout(() => { dispatch(setCloseSignInBox(false)) }, 100);
-    window.addEventListener('scroll', changeBgColorOnScrolling);
+    window.addEventListener('scroll', throttledChangeBgColor);
 
     return () => {
-      window.removeEventListener('scroll', changeBgColorOnScrolling)
+      window.removeEventListener('scroll', throttledChangeBgColor)
     }
   }, [user, dispatch]);
 
@@ -117,6 +118,8 @@ export default function NavbarLayOut() {
       setBgColor(false)
     }
   };
+
+  const throttledChangeBgColor = throttle(changeBgColorOnScrolling, 150)
 
   const handleHamIconClick = () => {
     dispatch(setShowMobilNav());
