@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
-import { setShowKickOffBox } from "@/app/redux/features/authSlice";
+import { setShowKickOffBox, setCloseKickOffBox } from "@/app/redux/features/authSlice";
 import { FaUpload, FaCalendarAlt } from 'react-icons/fa';
 import { MdArrowBackIosNew } from 'react-icons/md';
 import { DateRange } from "react-date-range";
@@ -41,8 +41,11 @@ const KickOffBox = () => {
   const [isLoading, setIsLoading] = useState(false)
   const user = useSelector(state => state.auth.user);
   const profilPic = useSelector(state => state.auth.profilPic);
+  const projects = useSelector(state => state.auth.projects);
   const dispatch = useDispatch();
-  const t = useTranslations('KickOffBox')
+  const t = useTranslations('KickOffBox');
+
+  const isUserHasProject = projects.every(project => project.id === user.id)
 
   useEffect(() => {
     window.addEventListener('click', clickHandler);
@@ -50,6 +53,12 @@ const KickOffBox = () => {
       window.removeEventListener('click', clickHandler);
     }
   }, []);
+
+  useEffect(() => {
+    if (isUserHasProject) {
+      dispatch(setCloseKickOffBox(false));
+    };
+  }, [user, dispatch])
 
   const containerRef = useRef();
   const rangeRef = useRef();

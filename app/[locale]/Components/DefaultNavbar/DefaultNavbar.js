@@ -1,9 +1,9 @@
-
 'use client'
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { useDispatch } from 'react-redux';
 import { setShowSignInBox, setSearchInputVal } from '@/app/redux/features/authSlice';
+import { useRouter } from 'next/navigation';
 
 const style = {
   container: `flex items-center space-x-6`,
@@ -13,6 +13,7 @@ const style = {
 function DefaultNavbar({ defaultLink, activeLink, selectedLink }) {
   const dispatch = useDispatch();
   const t = useTranslations('DefaultNavbar');
+  const { push } = useRouter()
 
   const handleLinkClicks = () => {
     dispatch(setSearchInputVal(''))
@@ -34,17 +35,17 @@ function DefaultNavbar({ defaultLink, activeLink, selectedLink }) {
       >
         {t('Projects')}
       </Link>
-      <Link
-        href='/'
+      <button
         onClick={() => {
           setTimeout(() => {
             dispatch(setShowSignInBox());
-          }, 1)
+          }, 1);
+          push('/')
         }}
         className={style.headerButton}
       >
         {t('Sign In')}
-      </Link>
+      </button>
     </div >
   );
 }

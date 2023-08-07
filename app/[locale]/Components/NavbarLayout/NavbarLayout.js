@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect, startTransition } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setShowMobilNav, setUser, setCloseMobileNav, setProfilPic, setSearchInputVal } from "@/app/redux/features/authSlice";
+import { setShowMobilNav, setUser, setCloseMobileNav, setProfilPic, setSearchInputVal, setCloseSignInBox, setCloseKickOffBox } from "@/app/redux/features/authSlice";
 import { auth, db } from "@/app/firebase/firebase-confing";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -89,7 +89,9 @@ export default function NavbarLayOut() {
   }, [innerWidth, dispatch]);
 
   useEffect(() => {
+    setTimeout(() => { dispatch(setCloseSignInBox(false)) }, 100);
     window.addEventListener('scroll', changeBgColorOnScrolling);
+
     return () => {
       window.removeEventListener('scroll', changeBgColorOnScrolling)
     }

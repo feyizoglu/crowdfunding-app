@@ -58,7 +58,7 @@ const SignUp = () => {
       dispatch(setShowSignInBox());
       let userName = data.email.split("@")[0];
       toast.success(
-        `${t("Congratulations")} ${userName[0].toUpperCase() + userName.slice(1, userName.length)
+        `${t("Congratulations")} ${userName[0].toUpperCase() + userName.slice(1).replace(/[0-9]/g, '')
         }! ${t("You have successfully logged in")}.`,
         {
           position: toast.POSITION.BOTTOM_RIGHT,

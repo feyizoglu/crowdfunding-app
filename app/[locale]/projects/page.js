@@ -33,7 +33,7 @@ const Page = () => {
   }
   return (
     <div className='bg-whiteColor'>
-      <div className='pt-[70px]'>
+      <div className='pt-[55px]'>
         <ProjectOfTheWeek />
       </div>
       <Categories
