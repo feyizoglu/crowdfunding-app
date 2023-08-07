@@ -31,7 +31,6 @@ const style = {
   hamMenu: `md:hidden`,
 };
 
-
 export default function NavbarLayOut() {
   const [bgColor, setBgColor] = useState(false);
   const [innerWidth, setInnerWidth] = useState(0);

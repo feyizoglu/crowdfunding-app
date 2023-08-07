@@ -107,11 +107,11 @@ const FundingBox = ({ docId, project }) => {
       >
         <button
           onClick={() => dispatch(setShowFundingBox())}
-          className="absolute top-3 left-5 p-3 text-blackColor rounded-full hover:bg-grayishColor"
+          className="absolute top-2 left-5 p-3 text-blackColor rounded-full hover:bg-grayishColor sm:top-3"
         >
           <MdOutlineArrowBackIos size={20} />
         </button>
-        <h2 className="text-2xl font-bold my-4 sm:text-4xl md:mb-5 md:mt-6 ">
+        <h2 className="text-2xl font-bold my-3 sm:text-4xl md:mb-5 md:mt-6 ">
           {t("Make Difference")}!
         </h2>
         <form onSubmit={handleSubmit(onSubmit)}>
