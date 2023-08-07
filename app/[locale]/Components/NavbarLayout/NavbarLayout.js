@@ -109,18 +109,14 @@ export default function NavbarLayOut() {
       return unsubscribe;
     }
   };
-
   const changeBgColorOnScrolling = () => {
     if (window.scrollY >= 70) {
-      console.log('deneme')
       setBgColor(true)
     } else {
       setBgColor(false)
     }
   };
-
   const throttledChangeBgColor = throttle(changeBgColorOnScrolling, 150)
-
   const handleHamIconClick = () => {
     dispatch(setShowMobilNav());
   }
