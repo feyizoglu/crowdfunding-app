@@ -111,6 +111,7 @@ export default function NavbarLayOut() {
 
   const changeBgColorOnScrolling = () => {
     if (window.scrollY >= 70) {
+      console.log('deneme')
       setBgColor(true)
     } else {
       setBgColor(false)

@@ -187,7 +187,8 @@
     "Welcome to our community": "Topluluğumuza hoş geldiniz",
     "default": "varsayılan",
     "The email address is already in use by another account": "E-posta adresi zaten başka bir hesap tarafından kullanılıyor",
-    "The email address is invalid": "Geçersiz e-posta adresi"
+    "The email address is invalid": "Geçersiz e-posta adresi",
+    "Email":"E-posta"
   },
   "StartToday": {
     "I want to": "Şunu yapmak istiyorum",

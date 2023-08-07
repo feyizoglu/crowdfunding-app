@@ -1,4 +1,4 @@
-function Spinner() {
+function Loader() {
   return (
     <div className="h-screen grid place-content-center">
       <div role="status">
@@ -24,4 +24,4 @@ function Spinner() {
   )
 }
 
-export default Spinner
+export default Loader

@@ -106,7 +106,7 @@ const Page = () => {
   };
 
   return (
-    <div className="flex flex-col py-20 justify-start items-center mt-[70px] md:justify-center md:h-screen-70">
+    <div className="flex flex-col py-12 justify-start items-center mt-[70px] md:justify-center md:h-screen-70 sm:py-20">
       <h2 className="text-4xl font-bold mb-7 text-blackColor">
         {t("Sign-Up")}
       </h2>
@@ -130,6 +130,7 @@ const Page = () => {
             </label>
             <input
               id="email"
+              placeholder={t("Email")}
               className="bg-whiteColor w-full px-4 py-2 border-b border-blackColor border-opacity-100 focus:outline-none"
               {...register("email")}
             />
@@ -145,6 +146,7 @@ const Page = () => {
             <input
               type="password"
               id="password"
+              placeholder={t("Password")}
               className="bg-whiteColor w-full px-4 py-2 border-b border-blackColor border-opacity-100 focus:outline-none"
               {...register("password")}
             />

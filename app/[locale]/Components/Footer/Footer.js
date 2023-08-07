@@ -40,11 +40,11 @@ function Footer() {
             </div>
             <div className="secondcolumn order-2">
               <h1 className='font-semibold text-l sm:text-xl md:text-2xl py-4'>
-                 {t('projectsTitle')}
+                {t('projectsTitle')}
               </h1>
               <div className='flex flex-col space-y-6 items-center md:items-start'>
-                {projects.slice(0, 2).map((project) => (
-                  <Link onClick={() => dispatch(setCloseMobileNav(false)) } href={`/projects/${project.docId}`} key={project.id} className="flex items-center space-x-3 ease-in duration-200 hover:scale-105 ">
+                {projects?.slice(0, 2).map((project) => (
+                  <Link onClick={() => dispatch(setCloseMobileNav(false))} href={`/projects/${project.docId}`} key={project.id} className="flex items-center space-x-3 ease-in duration-200 hover:scale-105 ">
                     <Image
                       src={project.image}
                       alt={project.title}
@@ -59,10 +59,10 @@ function Footer() {
             </div>
             <div className="thirdcolumn order-1 md:order-3">
               <h1 className='font-bold text-l sm:text-xl md:text-2xl py-4'>
-               {t('ourStoryTitle')}
+                {t('ourStoryTitle')}
               </h1>
               <p className=''>
-              {t('ourStoryDescription')}
+                {t('ourStoryDescription')}
               </p>
             </div>
           </div>

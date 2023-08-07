@@ -166,7 +166,8 @@
     "Welcome to our community": "Welcome to our community",
     "default": "default",
     "The email address is already in use by another account": "The email address is already in use by another account",
-    "The email address is invalid": "The email address is invalid"
+    "The email address is invalid": "The email address is invalid",
+    "Email":"Email"
   },
   "SignIn": {
     "Welcome Back": "Welcome Back",
