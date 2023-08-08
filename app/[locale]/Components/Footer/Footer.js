@@ -71,7 +71,7 @@ function Footer() {
                     </Link>
                   ))
                 ) : (
-                  <p>Currently, no trending projects to display.</p>
+                  <p>{t('Currently, no trending projects to display')}</p>
                 )}
               </div>
             </div>
