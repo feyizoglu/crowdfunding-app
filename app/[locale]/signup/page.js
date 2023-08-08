@@ -67,8 +67,7 @@ const Page = () => {
       });
       let userName = data.email.split("@")[0];
       toast.success(
-        `${t("Congratulations")} ${
-          userName[0].toUpperCase() + userName.slice(1, userName.length)
+        `${t("Congratulations")} ${userName[0].toUpperCase() + userName.slice(1, userName.length)
         }! ${t("Your sign-up was successful")}. ${t(
           "Welcome to our community"
         )}.`,
@@ -107,12 +106,12 @@ const Page = () => {
   };
 
   return (
-    <div className="flex flex-col py-20 justify-start items-center mt-[70px] md:justify-center md:h-screen-70">
+    <div className="flex flex-col py-12 justify-start items-center mt-[70px] md:justify-center md:h-screen-70 sm:py-20">
       <h2 className="text-4xl font-bold mb-7 text-blackColor">
         {t("Sign-Up")}
       </h2>
       <div className="max-w-2xl w-full  flex flex-col items-center justify-start p-6 bg-whiteColor rounded-md shadow-md">
-        <p className="text-md mb-3 max-w-lg text-center">
+        <p className="text-md mb-3 max-w-lg text-center md:text-lg">
           {t("To reach people's needs, to help people, simplify life with")}
           <br /> {t("Crownfunding App")}.
         </p>
@@ -120,17 +119,18 @@ const Page = () => {
         <Link
           href="/"
           onClick={handleAlreadyMemberClick}
-          className="text-sm text-[#0361FD] hover:opacity-60"
+          className="text-sm text-[#0361FD] hover:opacity-60 md:text-lg"
         >
           {t("Already a member? Sign-in")}
         </Link>
         <form onSubmit={handleSubmit(onSubmit)} className="w-full p-8">
           <div className="mb-4">
-            <label htmlFor="email" className="text-xl font-semibold block mb-2">
+            <label htmlFor="email" className="text-xl mb-1 font-semibold block ">
               {t("Your personal email address")}
             </label>
             <input
               id="email"
+              placeholder={t("Email")}
               className="bg-whiteColor w-full px-4 py-2 border-b border-blackColor border-opacity-100 focus:outline-none"
               {...register("email")}
             />
@@ -139,13 +139,14 @@ const Page = () => {
           <div className="mb-4">
             <label
               htmlFor="password"
-              className="text-xl font-semibold block mb-2"
+              className="text-xl font-semibold block "
             >
               {t("Password")}
             </label>
             <input
               type="password"
               id="password"
+              placeholder={t("Password")}
               className="bg-whiteColor w-full px-4 py-2 border-b border-blackColor border-opacity-100 focus:outline-none"
               {...register("password")}
             />
@@ -158,15 +159,13 @@ const Page = () => {
             <div className="file-input m-5 ml-0">
               <label
                 htmlFor="file-upload"
-                className={`file-label button-light ${
-                  errors.profilePic &&
+                className={`file-label button-light ${errors.profilePic &&
                   `bg-redColor text-red-500 border-red-500 hover:bg-lightRedColor hover:text-red-500 hover:opacity-60`
-                }`}
+                  }`}
               >
                 <FaUpload
-                  className={`text-[#0361FD] mr-4 ${
-                    errors.profilePic && "text-darkRedColor"
-                  }`}
+                  className={`text-[#0361FD] mr-4 ${errors.profilePic && "text-darkRedColor"
+                    }`}
                 />{" "}
                 {t("Upload Profile Picture")}
               </label>

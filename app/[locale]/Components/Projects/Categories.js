@@ -8,7 +8,6 @@ import { useTranslations } from 'next-intl';
 
 const Categories = ({ selectedCategory, handleCategoryChange }) => {
   const t = useTranslations('Projects');
-
   return (
     <div className="container mx-auto place-content-center pt-10 pb-20 px-4">
       <div className="categories-part flex flex-col justify-between">
@@ -18,7 +17,7 @@ const Categories = ({ selectedCategory, handleCategoryChange }) => {
         <div className="cat-buttons flex justify-center md:justify-start gap-4 flex-wrap">
           <div className="flex flex-col items-center">
             <button
-              className={`category-button ${selectedCategory === 'all' ? `bg-blackColor text-whiteColor` : ''} px-4 py-4 hover:bg-blackColor hover:text-whiteColor  border border-grayishColor focus:ring-4 focus:outline-none focus:ring-grayishColor font-medium rounded-lg text-sm text-center mr-2 mb-2   `}
+              className={` ${selectedCategory === 'all' ? `bg-blackColor text-whiteColor` : ''}   category-button `}
               onClick={() => handleCategoryChange('all')}
             >
               <TfiWorld size={20} />
@@ -27,7 +26,7 @@ const Categories = ({ selectedCategory, handleCategoryChange }) => {
           </div>
           <div className="flex flex-col items-center">
             <button
-              className={`category-button ${selectedCategory === 'education' ? `bg-blackColor text-whiteColor` : ''} px-4 py-4 hover:bg-blackColor hover:text-whiteColor   border border-grayishColor focus:ring-4 focus:outline-none focus:ring-grayishColor font-medium rounded-lg text-sm text-center mr-2 mb-2  `}
+              className={` ${selectedCategory === 'education' ? `bg-blackColor text-whiteColor` : ''} category-button `}
               onClick={() => handleCategoryChange('education')}
             >
               <FaGraduationCap size={20} />
@@ -36,7 +35,7 @@ const Categories = ({ selectedCategory, handleCategoryChange }) => {
           </div>
           <div className="flex flex-col items-center">
             <button
-              className={`category-button ${selectedCategory === 'culture' ? `bg-blackColor text-whiteColor` : ''} px-4 py-4 hover:bg-blackColor hover:text-whiteColor   border border-grayishColor focus:ring-4 focus:outline-none focus:ring-grayishColor font-medium rounded-lg text-sm text-center mr-2 mb-2  `}
+              className={` ${selectedCategory === 'culture' ? `bg-blackColor text-whiteColor` : ''}  category-button `}
               onClick={() => handleCategoryChange('culture')}
             >
               <FaTheaterMasks size={20} />
@@ -45,7 +44,7 @@ const Categories = ({ selectedCategory, handleCategoryChange }) => {
           </div>
           <div className="flex flex-col items-center">
             <button
-              className={`category-button ${selectedCategory === 'animals' ? `bg-blackColor text-whiteColor` : ''} px-4 py-4 hover:bg-blackColor hover:text-whiteColor   border border-grayishColor focus:ring-4 focus:outline-none focus:ring-grayishColor font-medium rounded-lg text-sm text-center mr-2 mb-2  `}
+              className={` ${selectedCategory === 'animals' ? `bg-blackColor text-whiteColor` : ''} category-button  `}
               onClick={() => handleCategoryChange('animals')}
             >
               <IoIosPaw size={20} />
@@ -54,7 +53,7 @@ const Categories = ({ selectedCategory, handleCategoryChange }) => {
           </div>
           <div className="flex flex-col items-center">
             <button
-              className={`category-button ${selectedCategory === 'children' ? `bg-blackColor text-whiteColor` : ''} px-4 py-4 hover:bg-blackColor hover:text-whiteColor border border-grayishColor focus:ring-4 focus:outline-none focus:ring-grayishColor font-medium rounded-lg text-sm text-center mr-2 mb-2  `}
+              className={` ${selectedCategory === 'children' ? `bg-blackColor text-whiteColor` : ''} category-button   `}
               onClick={() => handleCategoryChange('children')}
             >
               <FaBaby size={20} />

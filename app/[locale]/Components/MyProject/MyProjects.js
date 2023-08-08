@@ -1,24 +1,23 @@
 "use client";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 import Loader from "../Loader/Loader";
 import ConfirmationBox from "../ConfirmationBox/ConfirmationBox";
 import MyProjectDetails from "../MyProjectDetail/MyProjectsDetail";
 import MyProjectsTransaction from "../MyProjectTransaction/MyProjectsTransaction";
 import MyProjectsStatistics from "../MyProjectStatistics/MyProjectsStatistics";
-import { useTranslations } from "next-intl";
+
 
 const MyProjects = () => {
   const [matchedProject, setMatchedProject] = useState([]);
   const projects = useSelector((state) => state.auth.projects);
   const user = useSelector((state) => state.auth.user);
   const t = useTranslations("MyProject");
-
   const showConfirmationBox = useSelector(
     (state) => state.auth.showConfirmationBox
   );
-
   useEffect(() => {
     const filterForMatch = projects.filter((project) => project.id === user.id);
     setMatchedProject(filterForMatch);
@@ -27,11 +26,12 @@ const MyProjects = () => {
   if (matchedProject.length == 0) {
     return <Loader />;
   }
+  const moneyRaised = matchedProject[0].donations.reduce((acc, donation) => acc + Number(donation.amount), 0)
 
   return (
     <>
       <div className="bg-whiteColor">
-        <div className="container min-h-screen-70 mx-auto w-4/5 pt-[calc(70px+2rem)] pb-10 px-4 space-y-10 flex flex-col lg:flex-row lg:space-x-24 md:space-y-0 md:w-full">
+        <div className="container min-h-screen-70 mx-auto w-4/5 pt-[calc(70px+4rem)] pb-20 px-4 space-y-10 flex flex-col lg:flex-row lg:space-x-24 md:space-y-0 md:w-full">
           <div className="space-y-10 lg:w-3/5">
             <MyProjectDetails project={matchedProject[0]} />
             <div className="progress-bar flex flex-col justify-between">
@@ -39,11 +39,10 @@ const MyProjects = () => {
                 <div
                   className="h-full rounded-lg bg-greenColor"
                   style={{
-                    width: `${
-                      (matchedProject[0]?.moneyRaised /
-                        matchedProject[0]?.goalAmount) *
+                    width: `${(moneyRaised /
+                      matchedProject[0]?.goalAmount) *
                       100
-                    }%`,
+                      }%`,
                   }}
                 />
               </div>
@@ -53,7 +52,7 @@ const MyProjects = () => {
                     {t("Raised:")}
                   </p>
                   <p className="text-lg sm:text-xl font-bold py-1 md:text-2xl lg:text-[32px]">
-                    ${matchedProject[0]?.moneyRaised}
+                    ${moneyRaised}
                   </p>
                 </div>
                 <div className="goal flex flex-col justify-between">

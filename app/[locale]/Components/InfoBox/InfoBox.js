@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslations } from 'next-intl';
-import { setShowInfoBox, setShowMobilNav, setCloseMobileNav } from '@/app/redux/features/authSlice';
+import { setShowInfoBox, setShowMobilNav, setCloseMobileNav, setCloseInfoBox } from '@/app/redux/features/authSlice';
 import { toast } from 'react-toastify';
 
 import { BiUser, BiUserX } from 'react-icons/bi'
@@ -39,7 +39,7 @@ function InfoBox({ style }) {
   const signOutHandler = async () => {
     await signOut(auth);
     router.push('/');
-    dispatch(setShowInfoBox())
+    dispatch(setCloseInfoBox(false))
     dispatch(setCloseMobileNav())
   }
 
@@ -67,7 +67,7 @@ function InfoBox({ style }) {
         <div className={`${style.userInfos}`}>
           <p className={style.infoBoxUserName} >
             <BiUser size={15} />
-            {user.email.split('@')[0]}
+            {user.email.split('@')[0].replace(/[0-9]/g, '')}
           </p>
           <p className={style.infoBoxEmail} >
             <HiOutlineMail size={15} />

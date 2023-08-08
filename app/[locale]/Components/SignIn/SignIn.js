@@ -58,8 +58,7 @@ const SignUp = () => {
       dispatch(setShowSignInBox());
       let userName = data.email.split("@")[0];
       toast.success(
-        `${t("Congratulations")} ${
-          userName[0].toUpperCase() + userName.slice(1, userName.length)
+        `${t("Congratulations")} ${userName[0].toUpperCase() + userName.slice(1).replace(/[0-9]/g, '')
         }! ${t("You have successfully logged in")}.`,
         {
           position: toast.POSITION.BOTTOM_RIGHT,
@@ -73,8 +72,8 @@ const SignUp = () => {
         )}`,
         {
           position: toast.POSITION.BOTTOM_RIGHT,
-        draggable: false
-      });
+          draggable: false
+        });
     } finally {
       setIsLoading(false)
     }
@@ -90,7 +89,7 @@ const SignUp = () => {
     <div className="bg-opacity-70 w-screen h-screen fixed top-0 left-0 grid place-content-center z-50 bg-blackColor text-center">
       <div
         ref={containerRef}
-        className="bg-whiteColor p-6 sm:p-8 md:p-10 rounded-xl shadow relative max-w-xs sm:max-w-md md:max-w-lg"
+        className="bg-whiteColor p-7 -mt-6 sm:p-8 md:p-10 rounded-xl shadow relative max-w-xs sm:max-w-md sm:-mt-0 md:max-w-lg"
       >
         <button
           onClick={() => dispatch(setShowSignInBox())}
@@ -98,7 +97,7 @@ const SignUp = () => {
         >
           <MdOutlineArrowBackIos size={20} />
         </button>
-        <h2 className="text-2xl font-bold mb-5 mt-6  sm:text-3xl md:text-4xl ">
+        <h2 className="text-2xl font-bold mt-5 mb-3 sm:text-3xl md:text-4xl md:mb-5 md:mt-6 ">
           {t("Welcome Back")}
           <br />
           {t("Change-Maker !")}
@@ -109,7 +108,7 @@ const SignUp = () => {
               {...register("email")}
               id="mail"
               placeholder={t("Email")}
-              className="border-b border-blackColor bg-whiteColor px-3 py-1 mt-7 mb-5 w-full text-lg outline-none sm:text-xl"
+              className="border-b border-blackColor bg-whiteColor px-3 py-1 mb-6 w-full text-md outline-none sm:text-xl md:my-7"
             />
             <div className="">
               {errors.email && <div className="-mt-3"><Alert message={errors.email?.message} /></div>}
@@ -119,21 +118,21 @@ const SignUp = () => {
               id="password"
               type="password"
               placeholder={t("Password")}
-              className="border-b border-blackColor bg-whiteColor px-3 py-1 mb-5 w-full outline-none text-lg sm:text-xl"
+              className="border-b border-blackColor bg-whiteColor px-3 py-1 mb-3 w-full outline-none text-md sm:text-xl md:mb-4"
             />
             <div className="">
               {errors.password && <Alert message={errors.password?.message} />}
             </div>
-            <button disabled={isLoading} className="button-dark mt-5 w-full">
+            <button disabled={isLoading} className="button-dark mt-4 w-full md:mt-3">
               {isLoading && <Spinner />} {t("Continue to sign in")}
             </button>
           </form>
         </div>
-        <hr className="mt-5 mb-6" />
-        <h2 className="text-lg sm:text-xl md:text-3xl font-semibold mb-3">
+        <hr className="mt-4 mb-3 md:mt-5 md:mb-4" />
+        <h2 className="text-md mb-1.5 font-semibold sm:text-xl md:text-2xl  md:mb-3">
           {t("New to our community?")}
         </h2>
-        <p className="mb-5">
+        <p className="text-sm mb-3.5 md:mb-5 sm:text-base md:text-lg">
           {t("Make an impact today")}.
           <br />
           <Link
@@ -141,12 +140,12 @@ const SignUp = () => {
             onClick={() => {
               dispatch(setShowSignInBox());
             }}
-            className="cursor-pointer text-blueColor hover:opacity-60"
+            className="text-sm cursor-pointer text-blueColor hover:opacity-60 sm:text-base md:text-lg"
           >
             {t("Explore projects that need your help!")}
           </Link>
         </p>
-        <p>
+        <p className="text-sm sm:text-base md:text-lg">
           {t("Unlock funding opportunities!")}
           <br />
           <Link

@@ -1,8 +1,7 @@
-import React from "react";
 import MyProjects from "../Components/MyProject/MyProjects";
 
-const page = () => {
+const MyProjectPage = () => {
   return <MyProjects />;
 };
 
-export default page;
+export default MyProjectPage;

@@ -22,7 +22,7 @@ function MobilNavbarWithUser({ bgColor, defaultLink, activeLink, selectedLink })
     container: `fixed top-[69px] left-1/2 -translate-x-1/2 w-full bg-greenColor flex flex-col space-y-3 py-5 items-center md:hidden z-50 ${bgColor && `bg-greenTransparent`}`,
     button: `button-dark hover:bg-transparent`,
     userContainer: `flex flex-col items-center space-y-1`,
-    userImage: `rounded-full cursor-pointer w-[50px] h-[50px] hover:opacity-80`,
+    userImage: `rounded-full cursor-pointer w-[45px] h-[45px] hover:opacity-80`,
     signOutButton: `flex space-x-[1px] items-center text-xs text-red-600 hover:opacity-60`,
     headerInput: `rounded-needed outline-0 py-1 pl-2 placeholder:text-center `,
     InfoBoxContainer: `flex flex-col mt-3 py-2 px-6 rounded-md bg-grayishColor text-blackColor text-[12px] shadow-lg`,
@@ -71,8 +71,8 @@ function MobilNavbarWithUser({ bgColor, defaultLink, activeLink, selectedLink })
           className={style.userImage}
           onClick={handleInfoBoxClick}
           src={profilPic ? profilPic : `https://via.placeholder.com/150/0A0A0A/FAFAFA?text=${user.email[0].toUpperCase()}`}
-          width={50}
-          height={50}
+          width={45}
+          height={45}
           alt="Picture of the user"
         />
         {showInfoBox && <InfoBox style={style} />}

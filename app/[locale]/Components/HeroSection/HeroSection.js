@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from 'next-intl';
 
-
 const HeroSection = () => {
   const dispatch = useDispatch();
   const t = useTranslations('HeroSection')
@@ -13,7 +12,7 @@ const HeroSection = () => {
   return (
     <div className="bg-greenColor pt-[70px] z-0">
       <div className="relative container mx-auto px-4  py-16  flex flex-col items-center justify-center md:py-0  md:flex-row md:justify-start md:h-screen-70">
-        <div className="flex flex-col w-3/5 text-center text-blackColor space-y-10  md:text-left md:w-1/2 lg:w-1/3 xl:w-1/4 z-10">
+        <div className="flex flex-col w-3/5 text-center text-blackColor space-y-10  md:text-left md:w-1/2 lg:w-1/3 z-10">
           <h1 className="text-5xl font-semibold text-blackColor md:text-[100px]">
             Givingly
           </h1>
@@ -29,7 +28,7 @@ const HeroSection = () => {
                 dispatch(setCloseMobileNav())
               }}
               href='/starttoday'
-              className="button-dark py-1.5 w-full "
+              className="button-dark py-1.5 w-full lg:text-lg "
             >
               {t('Start Today')}
             </Link>

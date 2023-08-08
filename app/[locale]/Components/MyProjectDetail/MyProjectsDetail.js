@@ -22,13 +22,13 @@ const MyProjectDetails = ({ project }) => {
       <h2 className="text-blackColor text-xl text-center font-bold lg:text-left">
         {project?.title[0].toUpperCase() + project?.title.slice(1)}
       </h2>
-      <div className="flex items-center justify-center  ">
+      <div className="flex items-center justify-center lg:justify-start">
         <Image
-          className="rounded-lg h-[200px] w-[200px] md:w-[500px] md:h-[350px] object-cover"
+          className="rounded-lg h-[200px] w-[200px] md:w-[400px] md:h-[300px] xl:w-[500px] xl:h-[320px] object-cover"
           src={project?.image}
           alt="project image"
-          width={500}
-          height={350}
+          width={450}
+          height={320}
           priority
         />
       </div>

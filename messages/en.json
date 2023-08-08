@@ -49,6 +49,7 @@
     "ourStoryTitle": "Our Story",
     "ourStoryDescription": "We connect passionate individuals and innovative projects with a community of backers. Our user-friendly platform empowers creators to raise funds and engage with supporters. Join us in bringing visions to life.",
     "allRightsReserved": "2023 All rights reserved.",
+    "Currently, no trending projects to display": "Currently, no trending projects to display.",
     "Lang": "English"
   },
   "FundingBox": {
@@ -110,10 +111,11 @@
     "Transaction history": "Transaction history"
   },
   "MyProjectTransactionDetails": {
-    "All Projects": "All Projects",
+    "All donations": "All donations",
     "Sort": "Sort",
     "View Less": "View Less",
-    "View More": "View More"
+    "View More": "View More",
+    "Currently, no donations have been made" : "Currently, no donations have been made."
   },
   "ProjectOfTheWeek": {
     "Raised:": "Raised:",
@@ -165,7 +167,8 @@
     "Welcome to our community": "Welcome to our community",
     "default": "default",
     "The email address is already in use by another account": "The email address is already in use by another account",
-    "The email address is invalid": "The email address is invalid"
+    "The email address is invalid": "The email address is invalid",
+    "Email":"Email"
   },
   "SignIn": {
     "Welcome Back": "Welcome Back",

@@ -27,6 +27,9 @@ const authSlice = createSlice({
     setShowInfoBox: (state) => {
       state.showInfoBox = !state.showInfoBox;
     },
+    setCloseInfoBox: (state, action) => {
+      state.showInfoBox = action.payload
+    },
     setShowMobilNav: (state) => {
       state.showMobilNav = !state.showMobilNav;
     },
@@ -57,12 +60,15 @@ const authSlice = createSlice({
     setShowFundingBox: (state) => {
       state.showFundingBox = !state.showFundingBox;
     },
+    setCloseSignInBox: (state, action) => {
+      state.showSignInBox = action.payload
+    }
   },
 });
 
-
 export const {
   setShowSignInBox,
+  setCloseSignInBox,
   setShowInfoBox,
   setShowMobilNav,
   setUser,
@@ -75,5 +81,6 @@ export const {
   setCloseKickOffBox,
   setShowNewsletterForm,
   setShowFundingBox,
+  setCloseInfoBox
 } = authSlice.actions;
 export default authSlice.reducer;

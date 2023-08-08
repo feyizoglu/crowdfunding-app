@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect, startTransition } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setShowMobilNav, setUser, setCloseMobileNav, setProfilPic, setSearchInputVal } from "@/app/redux/features/authSlice";
+import { setShowMobilNav, setUser, setCloseMobileNav, setProfilPic, setSearchInputVal, setCloseSignInBox, setCloseKickOffBox } from "@/app/redux/features/authSlice";
 import { auth, db } from "@/app/firebase/firebase-confing";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -19,6 +19,7 @@ import LanguagePicker from "../LanguagePicker/LanguagePicker";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from 'next-intl';
+import { throttle } from "lodash";
 
 const style = {
   headerContainer: `relative container mx-auto z-50`,
@@ -30,7 +31,6 @@ const style = {
   nav: `hidden md:block`,
   hamMenu: `md:hidden`,
 };
-
 
 export default function NavbarLayOut() {
   const [bgColor, setBgColor] = useState(false);
@@ -89,9 +89,11 @@ export default function NavbarLayOut() {
   }, [innerWidth, dispatch]);
 
   useEffect(() => {
-    window.addEventListener('scroll', changeBgColorOnScrolling);
+    setTimeout(() => { dispatch(setCloseSignInBox(false)) }, 100);
+    window.addEventListener('scroll', throttledChangeBgColor);
+
     return () => {
-      window.removeEventListener('scroll', changeBgColorOnScrolling)
+      window.removeEventListener('scroll', throttledChangeBgColor)
     }
   }, [user, dispatch]);
 
@@ -107,7 +109,6 @@ export default function NavbarLayOut() {
       return unsubscribe;
     }
   };
-
   const changeBgColorOnScrolling = () => {
     if (window.scrollY >= 70) {
       setBgColor(true)
@@ -115,7 +116,7 @@ export default function NavbarLayOut() {
       setBgColor(false)
     }
   };
-
+  const throttledChangeBgColor = throttle(changeBgColorOnScrolling, 150)
   const handleHamIconClick = () => {
     dispatch(setShowMobilNav());
   }

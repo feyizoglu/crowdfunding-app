@@ -28,9 +28,8 @@ const FundingBoxCardHolder = ({
     <>
       <label
         htmlFor="cardHolder"
-        className={`text-left text-md font-semibold block mb-2 ${
-          holder ? `` : `${errors.cardHolder && `text-red-500`}`
-        }`}
+        className={`text-left text-md font-semibold block sm:mb-2 ${holder ? `` : `${errors.cardHolder && `text-red-500`}`
+          }`}
       >
         {t("Card Holder")}
       </label>
@@ -41,11 +40,10 @@ const FundingBoxCardHolder = ({
         value={donorName}
         type="text"
         onChange={handleInputChange}
-        className={`border-b border-blackColor bg-whiteColor px-3 py-1 mb-8 w-full text-md outline-none ${
-          holder
+        className={`border-b border-blackColor bg-whiteColor px-3 py-1 mb-3.5  w-full text-md outline-none sm:mb-8 ${holder
             ? ``
             : `${errors.cardHolder && `border-red-500 placeholder-red-500`}`
-        }`}
+          }`}
       />
     </>
   );

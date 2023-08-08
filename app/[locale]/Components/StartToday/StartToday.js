@@ -19,6 +19,7 @@ const StartToday = () => {
   const supportClickHandle = () => {
     setKickOffCheck(false);
     setSupportCheck(true);
+    dispatch(setCloseMobileNav(false))
   };
   const kickOffClickHandle = () => {
     dispatch(setCloseMobileNav());

@@ -5,17 +5,15 @@ import { doc, getDoc } from "firebase/firestore";
 import Image from "next/image";
 import { FaCalendarAlt } from "react-icons/fa";
 import { parse, differenceInDays } from "date-fns";
-import { setShowFundingBox } from "@/app/redux/features/authSlice";
+import { setShowFundingBox, setCloseMobileNav } from "@/app/redux/features/authSlice";
 import { useDispatch, useSelector } from "react-redux";
-
-import FundingBox from "../../Components/FundingBox/FundingBox";
 import { useTranslations } from "next-intl";
 
+import FundingBox from "../../Components/FundingBox/FundingBox";
 import Loader from "@/app/[locale]/Components/Loader/Loader";
 
 function Page({ params }) {
   const [project, setProject] = useState(null);
-  const [snap, setSnap] = useState(null);
   const dispatch = useDispatch();
   const showFundingBox = useSelector((state) => state.auth.showFundingBox);
 
@@ -24,7 +22,6 @@ function Page({ params }) {
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       setProject(docSnap.data());
-      setSnap(docRef);
     } else {
       console.log("no such doc!!");
     }
@@ -53,9 +50,8 @@ function Page({ params }) {
       message = `${dayLeft} gün kaldı`;
     }
   }
-
-  const progressPercentage = (project?.moneyRaised / project?.goalAmount) * 100;
-
+  const moneyRaised = project?.donations.reduce((acc, donation) => acc + Number(donation.amount), 0)
+  const progressPercentage = (moneyRaised / project?.goalAmount) * 100;
   return (
     <div className="bg-whiteColor  mt-[70px]">
       {project ? (
@@ -84,7 +80,7 @@ function Page({ params }) {
             <div className="flex flex-col justify-between  md:border-y md:border-blackColor md:flex-row md:space-y-0 md:container">
               <div className="flex flex-col space-y-5 px-2 md:w-1/2 md:pt-5">
                 <h1 className="text-lg font-bold">{t("About Project")}</h1>
-                <p className="text-lg pb-5">{project?.description[0].toUpperCase() + project?.description.slice(1)}</p>
+                <p className="text-lg pb-5 md:leading-tight lg:leading-normal">{project?.description[0].toUpperCase() + project?.description.slice(1)}</p>
               </div>
               <div className="md:border-l md:border-blackColor "></div>
               <div className="md:w-1/2 md:py-5">
@@ -95,7 +91,7 @@ function Page({ params }) {
                         {t("Raised:")}
                       </p>
                       <p className="text-lg sm:text-xl md:text-xl font-bold py-1 sm:py-2 md:py-3">
-                        ${project?.moneyRaised}
+                        ${moneyRaised}
                       </p>
                     </div>
                     <div className="bg-greenColor px-6 py-2 rounded-lg flex flex-col justify-between ">
@@ -125,6 +121,7 @@ function Page({ params }) {
                 onClick={() => {
                   setTimeout(() => {
                     dispatch(setShowFundingBox());
+                    dispatch(setCloseMobileNav(false))
                   }, 1);
                 }}
                 className="button-dark mt-2 w-full md:w-1/2"
@@ -139,7 +136,7 @@ function Page({ params }) {
       ) : (
         <Loader />
       )}
-      {showFundingBox && <FundingBox project={project} />}
+      {showFundingBox && <FundingBox docId={params.id} project={project} />}
     </div>
   );
 }

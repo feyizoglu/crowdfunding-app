@@ -19,7 +19,7 @@ const LanguagePicker = ({ handleLocaleChange, selectedLang }) => {
 
   return (
     <div
-      className="fixed z-50 top-5 right-5 md:right-8 md:top-6 lg:right-12 xl:right-16"
+      className="fixed z-50 top-5 right-6 md:top-6 xl:right-16"
       onMouseEnter={toggleChoices}
       onMouseLeave={hideChoices}
     >

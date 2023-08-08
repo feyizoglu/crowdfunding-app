@@ -1,23 +1,24 @@
 import Image from "next/image";
 
-const MyProjectsDonorCard = ({ donor }) => {
+const MyProjectsDonorCard = ({ donation }) => {
+  const donor = donation?.cardholder.split(' ');
   return (
     <>
       <div className="text-blackColor flex items-center space-x-4 cursor-pointer p-2 rounded-xl transition-all duration-300 ease-in-out hover:bg-blackColor hover:text-whiteColor ">
-        <div className="w-10 h-10">
+        <div className="w-[50px] h-[50px]">
           <Image
-            src={donor.avatar}
-            alt={donor.donorName}
-            width={100}
-            height={100}
+            src={`https://via.placeholder.com/150/D4EE25/0A0A0A?text=${donor[0][0] + donor[1][0]}`}
+            alt={donation?.cardholder}
+            width={50}
+            height={50}
             className="rounded-md"
           />
         </div>
         <div className="grow w-3/5">
-          <h4 className="text-[18px] font-semibold">{donor.donorName}</h4>
-          <p className="text-[14px] font-medium">{donor.comment}</p>
+          <h4 className="text-sm font-semibold sm:text-lg md:text-[18px]">{donation?.cardholder}</h4>
+          <p className="text-xs font-medium sm:text-sm md:text-[14px]">{donation?.description[0].toUpperCase() + donation?.description.slice(1)}</p>
         </div>
-        <p className="text-[18px] font-semibold w-1/5">${donor.amount}</p>
+        <p className="text-sm font-semibold sm:text-lg w-1/5 md:text-[18px]">${donation?.amount}</p>
       </div>
     </>
   );

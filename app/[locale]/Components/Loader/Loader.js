@@ -1,5 +1,3 @@
-import React from 'react'
-
 function Loader() {
   return (
     <div className="h-screen grid place-content-center">

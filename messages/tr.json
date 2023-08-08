@@ -49,6 +49,7 @@
     "ourStoryTitle": "Hikayemiz",
     "ourStoryDescription": "Tutkulu bireyleri ve yenilikçi projeleri destekçi bir toplulukla buluşturuyoruz. Kullanıcı dostu platformumuz, proje sahiplerinin fon toplamasına ve destekçilerle etkileşim kurmasına olanak tanır. Siz de hayalleri gerçeğe dönüştürmek için aramıza katılın.",
     "allRightsReserved": "2023 Tüm hakları saklıdır.",
+    "Currently, no trending projects to display": "Şu anda görüntülenecek popüler proje bulunmuyor.",
     "Lang": "Türkçe"
   },
   "FundingBox": {
@@ -112,10 +113,11 @@
     "Transaction history": "İşlem geçmişi"
   },
   "MyProjectTransactionDetails": {
-    "All Projects": "Tüm Projeler",
+    "All donations": "Tüm bağışlar",
     "Sort": "Sırala",
     "View Less": "Daha Az",
-    "View More": "Daha Fazla"
+    "View More": "Daha Fazla",
+    "Currently, no donations have been made" : "Şu anda herhangi bir bağış bulunmamaktadır."
   },
   "ProjectOfTheWeek": {
     "Raised:": "Toplanan:",
@@ -186,7 +188,8 @@
     "Welcome to our community": "Topluluğumuza hoş geldiniz",
     "default": "varsayılan",
     "The email address is already in use by another account": "E-posta adresi zaten başka bir hesap tarafından kullanılıyor",
-    "The email address is invalid": "Geçersiz e-posta adresi"
+    "The email address is invalid": "Geçersiz e-posta adresi",
+    "Email":"E-posta"
   },
   "StartToday": {
     "I want to": "Şunu yapmak istiyorum",

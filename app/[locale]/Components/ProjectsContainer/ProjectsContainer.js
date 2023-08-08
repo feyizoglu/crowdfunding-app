@@ -21,22 +21,21 @@ function ProjectsContainer({ children }) {
         };
       });
       dispatch(setProjects(projectsArr));
-
+      const totalDonations = projectsArr.map(project => project.donations.reduce((acc, amount) => acc + Number(amount.amount), 0));
       const currentDate = format(new Date(), 'dd/MM/yy');
       const deletionPromises = projectsArr
-        .filter((project) => project.timeline < currentDate)
-        .map(async (project) => {
+        .filter((project, i) => project.timeline < currentDate || totalDonations[i] >= project.goalAmount)
+        .map(async project => {
           await deleteDoc(doc(db, 'projects', project.docId));
         });
 
       Promise.all(deletionPromises);
     });
+
     return () => {
       unsubscribe();
     };
   }, [dispatch])
-
-
 
   return children;
 }

@@ -1,10 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { BsEyeSlash } from "react-icons/bs";
+import { BsEyeSlash, BsEye } from "react-icons/bs";
 
 const FundingBoxCardCvv = ({ register, errors }) => {
   const [type, setType] = useState("password");
-  const handleCvv = () => {
+  const handleCvv = (e) => {
+    e.stopPropagation()
     type == "password" ? setType("") : setType("password");
   };
 
@@ -16,16 +17,14 @@ const FundingBoxCardCvv = ({ register, errors }) => {
     <div className="flex flex-col w-5/12">
       <label
         htmlFor="cardCvv"
-        className={`text-left text-md font-semibold block mb-2 ${
-          errors.cardCvv && `text-red-500`
-        }`}
+        className={`text-left text-md font-semibold block mb-2 ${errors.cardCvv && `text-red-500`
+          }`}
       >
         CVV
       </label>
       <div
-        className={`flex items-center justify-between border-b border-blackColor bg-whiteColor px-3 py-1 mb-8 text-md ${
-          errors.cardCvv && `border-red-500`
-        }`}
+        className={`flex items-center justify-between border-b border-blackColor bg-whiteColor px-3 py-1 mb-4 sm:mb-8 text-md ${errors.cardCvv && `border-red-500`
+          }`}
       >
         <input
           {...register("cardCvv")}
@@ -33,12 +32,11 @@ const FundingBoxCardCvv = ({ register, errors }) => {
           type={type}
           placeholder="***"
           maxLength={3}
-          className={`bg-whiteColor w-1/2 outline-none ${
-            errors.cardCvv && `placeholder-red-500`
-          }`}
+          className={`bg-whiteColor w-1/2 outline-none ${errors.cardCvv && `placeholder-red-500`
+            }`}
           onInput={handleInputChange}
         />
-        <BsEyeSlash onClick={handleCvv} className="cursor-pointer" />
+        {type == 'password' ? <BsEyeSlash onClick={handleCvv} size={18} className="cursor-pointer" /> : <BsEye onClick={handleCvv} size={18} className="cursor-pointer" />}
       </div>
     </div>
   );

@@ -27,9 +27,8 @@ const FundingBoxCardNumber = ({ register, errors }) => {
     <div>
       <label
         htmlFor="cardNumber"
-        className={`text-left text-md font-semibold block mb-2  ${
-          numLength ? `` : `${errors.cardNumber && `text-red-500`}`
-        }`}
+        className={`text-left text-md font-semibold block sm:mb-2 ${numLength ? `` : `${errors.cardNumber && `text-red-500`}`
+          }`}
       >
         {t("Card Number")}
       </label>
@@ -40,11 +39,10 @@ const FundingBoxCardNumber = ({ register, errors }) => {
         onChange={handleChange}
         placeholder="XXXX-XXXX-XXXX-XXXX"
         value={cardNumber}
-        className={`border-b border-blackColor bg-whiteColor px-3 py-1  mb-4 w-full text-md outline-none ${
-          numLength
-            ? ``
-            : `${errors.cardNumber && `border-red-500 placeholder-red-500`}`
-        }`}
+        className={`border-b border-blackColor bg-whiteColor px-3 py-1  mb-3.5 w-full text-md outline-none sm:mb-4 ${numLength
+          ? ``
+          : `${errors.cardNumber && `border-red-500 placeholder-red-500`}`
+          }`}
       />
     </div>
   );
