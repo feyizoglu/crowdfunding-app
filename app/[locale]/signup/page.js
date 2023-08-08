@@ -111,7 +111,7 @@ const Page = () => {
         {t("Sign-Up")}
       </h2>
       <div className="max-w-2xl w-full  flex flex-col items-center justify-start p-6 bg-whiteColor rounded-md shadow-md">
-        <p className="text-md mb-3 max-w-lg text-center">
+        <p className="text-md mb-3 max-w-lg text-center md:text-lg">
           {t("To reach people's needs, to help people, simplify life with")}
           <br /> {t("Crownfunding App")}.
         </p>
@@ -119,7 +119,7 @@ const Page = () => {
         <Link
           href="/"
           onClick={handleAlreadyMemberClick}
-          className="text-sm text-[#0361FD] hover:opacity-60"
+          className="text-sm text-[#0361FD] hover:opacity-60 md:text-lg"
         >
           {t("Already a member? Sign-in")}
         </Link>
