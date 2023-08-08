@@ -16,7 +16,7 @@ const SuccessPage = () => {
         <h1 className=' text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-center'>Thank you!</h1>
         <h2 className='text-2xl font-bold mb-2 text-center'>for supporting us!</h2>
       </div>
-      <div className='donation-buttons flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center text-center'>
+      <div className='donation-buttons flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center text-center lg:text-lg'>
         <Link href="/projects" className='button-light'>
           Make another donation
         </Link>

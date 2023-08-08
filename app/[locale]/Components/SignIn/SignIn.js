@@ -132,7 +132,7 @@ const SignUp = () => {
         <h2 className="text-md mb-1.5 font-semibold sm:text-xl md:text-2xl  md:mb-3">
           {t("New to our community?")}
         </h2>
-        <p className="text-sm mb-3.5 md:mb-5 sm:text-base md:text-xl">
+        <p className="text-sm mb-3.5 md:mb-5 sm:text-base md:text-lg">
           {t("Make an impact today")}.
           <br />
           <Link
@@ -140,12 +140,12 @@ const SignUp = () => {
             onClick={() => {
               dispatch(setShowSignInBox());
             }}
-            className="text-sm cursor-pointer text-blueColor hover:opacity-60 sm:text-base md:text-xl"
+            className="text-sm cursor-pointer text-blueColor hover:opacity-60 sm:text-base md:text-lg"
           >
             {t("Explore projects that need your help!")}
           </Link>
         </p>
-        <p className="text-sm sm:text-base md:text-xl">
+        <p className="text-sm sm:text-base md:text-lg">
           {t("Unlock funding opportunities!")}
           <br />
           <Link

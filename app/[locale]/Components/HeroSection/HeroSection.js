@@ -28,7 +28,7 @@ const HeroSection = () => {
                 dispatch(setCloseMobileNav())
               }}
               href='/starttoday'
-              className="button-dark py-1.5 w-full "
+              className="button-dark py-1.5 w-full lg:text-lg "
             >
               {t('Start Today')}
             </Link>
