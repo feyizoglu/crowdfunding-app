@@ -13,7 +13,7 @@ const Cards = ({ projects }) => {
   };
 
   const searchedProjects = projects.filter(project => {
-    return project.title.toLowerCase().includes(searchInputVal.toLowerCase());
+    return project.title.toLowerCase().includes(searchInputVal.toLowerCase()) || project.creator.toLowerCase().includes(searchInputVal.toLowerCase());
   })
   const handleCardClick = () => {
     dispatch(setCloseMobileNav(false))
@@ -65,7 +65,7 @@ const Cards = ({ projects }) => {
               <div className="progress-bar flex flex-col justify-between">
                 <div className="h-4 bg-grayishColor rounded-lg">
                   <div
-                    className="h-full rounded-lg bg-greenColor"
+                    className="h-full bg-greenColor rounded-lg"
                     style={{
                       width: `${(project.donations.reduce((acc, donation) => acc + Number(donation.amount), 0) / project.goalAmount) * 100
                         }%`,

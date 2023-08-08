@@ -5,9 +5,8 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { MdOutlineArrowBackIos } from "react-icons/md";
 import { setShowFundingBox } from "@/app/redux/features/authSlice";
-import { addDoc, doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
 import { db } from "@/app/firebase/firebase-confing";
 import { useTranslations } from "next-intl";
 
@@ -72,6 +71,7 @@ const FundingBox = ({ docId, project }) => {
   const onSubmit = async (data) => {
     setIsLoading(true)
     try {
+      push("/successpage");
       const cardholder = data.cardHolder;
       const newDonation = {
         cardholder,
@@ -84,13 +84,7 @@ const FundingBox = ({ docId, project }) => {
       await updateDoc(ref, {
         donations: withNewDonation
       });
-      push("/successpage");
-      toast.success(
-        `${t("You have successfully donated")}. ${t("Please wait")}...`,
-        {
-          position: toast.POSITION.BOTTOM_RIGHT,
-        }
-      );
+
       dispatch(setShowFundingBox());
     } catch (error) {
       console.log(error.message);

@@ -80,7 +80,7 @@ function Page({ params }) {
             <div className="flex flex-col justify-between  md:border-y md:border-blackColor md:flex-row md:space-y-0 md:container">
               <div className="flex flex-col space-y-5 px-2 md:w-1/2 md:pt-5">
                 <h1 className="text-lg font-bold">{t("About Project")}</h1>
-                <p className="text-lg pb-5">{project?.description[0].toUpperCase() + project?.description.slice(1)}</p>
+                <p className="text-lg pb-5 md:leading-tight lg:leading-normal">{project?.description[0].toUpperCase() + project?.description.slice(1)}</p>
               </div>
               <div className="md:border-l md:border-blackColor "></div>
               <div className="md:w-1/2 md:py-5">

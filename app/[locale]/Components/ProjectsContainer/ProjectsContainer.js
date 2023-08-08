@@ -31,9 +31,6 @@ function ProjectsContainer({ children }) {
         });
 
       Promise.all(deletionPromises);
-
-
-
     });
 
     return () => {
