@@ -14,7 +14,7 @@ const outfit = Outfit({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Givingly',
-  description: 'The project will be created by team 9 in the near future',
+  description: 'Welcome to Givingly - where crowdfunding meets impact! Our team has worked tirelessly to bring this project to life, and we\'re excited to present our finished product.',
 }
 
 export function generateStaticParams() {
