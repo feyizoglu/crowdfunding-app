@@ -6,7 +6,6 @@
 - [Gürkan Yiğit](https://github.com/gurkanyigitgr)
 - [Mira Amer](https://github.com/bohemianmir)
 - [Sumeyra Aybike Ustun](https://github.com/aybikeustun)
-- [Anas Almezyd](https://github.com/anasalmezyd)
 - [Medetcan Diler](https://github.com/medetcandiler)
 
 ## About the Project
