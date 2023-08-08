@@ -200,7 +200,13 @@
     "Existing active project under": "Bu e-posta altında aktif projeniz bulunmakta :",
     "Wait or delete it before creating a new one": "Yeni bir tane oluşturmadan önce aktif projenizi silin veya bitmesini bekleyin"
   },
-  "SuccessPage": {},
+  "SuccessPage": {
+    "Thank you!":"Teşekkürler!",
+    "for supporting us!":"Bizi desteklemeye devam et!",
+    "Make another donation":"Başka bir bağış yap",
+    "Go to home page":"Anasayfaya git",
+    "Lang": "Türkçe"
+  },
   "Testimonial": {
     "Lang": "Türkçe"
   },

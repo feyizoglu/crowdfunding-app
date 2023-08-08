@@ -1,9 +1,15 @@
+'use client'
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 const SuccessPage = () => {
+
+  const t = useTranslations('SuccessPage');
+
   return (
+    
     <div className='container mx-auto px-4 flex flex-col h-screen items-center justify-center'>
       <Image
         src="/thankyou.png"
@@ -13,15 +19,15 @@ const SuccessPage = () => {
         className='mx-auto pt-10'
       />
       <div className='pb-10'>
-        <h1 className=' text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-center'>Thank you!</h1>
-        <h2 className='text-2xl font-bold mb-2 text-center'>for supporting us!</h2>
+        <h1 className=' text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-center'>{t("Thank you!")}</h1>
+        <h2 className='text-2xl font-bold mb-2 text-center'>{t("for supporting us!")}</h2>
       </div>
       <div className='donation-buttons flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center text-center lg:text-lg'>
         <Link href="/projects" className='button-light'>
-          Make another donation
+        {t("Make another donation")}
         </Link>
         <Link href="/" className='px-10 button-light'>
-          Go to home page
+        {t("Go to home page")}
         </Link>
       </div>
     </div>
