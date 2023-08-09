@@ -29,7 +29,10 @@ function Footer() {
   }
 
   return (
-    <footer className="bg-greenColor pt-5 md:pt-10 text-center md:text-left text-blackColor">
+    <footer
+      className="bg-greenColor pt-5 md:pt-10 text-center md:text-left text-blackColor"
+      data-testid="footer"
+    >
       <div className="container mx-auto px-4">
         <div className='border-b border-whiteColor pb-5 md:pb-10"'>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-10">
