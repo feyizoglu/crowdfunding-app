@@ -1,6 +1,6 @@
 function Loader() {
   return (
-    <div className="h-screen grid place-content-center">
+    <div className="h-screen grid place-content-center" data-testid="loader">
       <div role="status">
         <svg
           aria-hidden="true"

@@ -97,7 +97,10 @@ const SignUp = () => {
         >
           <MdOutlineArrowBackIos size={20} />
         </button>
-        <h2 className="text-2xl font-bold mt-5 mb-3 sm:text-3xl md:text-4xl md:mb-5 md:mt-6 ">
+        <h2
+          data-testid="welcome-back"
+          className="text-2xl font-bold mt-5 mb-3 sm:text-3xl md:text-4xl md:mb-5 md:mt-6 "
+        >
           {t("Welcome Back")}
           <br />
           {t("Change-Maker !")}
