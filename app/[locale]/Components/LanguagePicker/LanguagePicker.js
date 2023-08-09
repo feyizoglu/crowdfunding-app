@@ -19,12 +19,10 @@ const LanguagePicker = ({ handleLocaleChange, selectedLang }) => {
 
   return (
     <div
-      className="fixed z-50 top-5 right-6 md:top-6 xl:right-16"
-      onMouseEnter={toggleChoices}
-      onMouseLeave={hideChoices}
+      className="fixed z-50 top-5 right-6 md:top-6 md:right-5 lg:right-7 xl:right-16"
     >
       <button
-        className=" cursor-pointer pb-2"
+        className=" cursor-pointer mb-3"
         onClick={toggleChoices}
       >
         <Image

@@ -13,13 +13,13 @@ const style = {
   button: `button-dark hover:bg-transparent text-center text-sm lg:text-lg`,
   userContainer: `flex w-[45px] h-[45px]`,
   userImage: `rounded-full hover:opacity-80 cursor-pointer`,
-  InfoBoxContainer: `absolute flex flex-col top-16 right-0 py-2 px-6 rounded-md bg-grayishColor text-blackColor text-[12px] shadow-lg`,
+  InfoBoxContainer: `absolute flex flex-col top-16 right-0 py-2 px-6 rounded-md bg-grayishColor text-blackColor text-[13px] shadow-lg`,
   infoBoxLinks: `flex items-center gap-1 whitespace-nowrap font-medium hover:opacity-60`,
   infoBoxUserName: `flex items-center gap-1 font-medium cursor-default capitalize `,
   infoBoxEmail: `flex items-center gap-1 font-medium cursor-default `,
   userInfos: `flex flex-col items-start py-2 px-1 border-b border-blackColor space-y-2`,
   userFeatures: `flex flex-col items-start  px-1 py-2 space-y-2`,
-  infoBoxPointer: `absolute top-16 right-4`,
+  infoBoxPointer: `absolute top-16 right-3.5`,
 }
 
 function NavbarWithUser({ activeLink, defaultLink, selectedLink }) {
